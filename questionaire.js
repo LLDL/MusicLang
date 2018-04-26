@@ -10,27 +10,25 @@ function disable_next(){
     next_button_curr.innerText = "Please answer all questions before continuing";
 }
 
-var personal_info = {
+var contact_info = {
     type: 'survey-text',
-    preamble: header + "<p>Add a brief description detailing what this data is used for and whether this may be skipped.</p>",
+    preamble: header + "<h3>Participant Contact Information</h3>",
     questions: [
-        {prompt: "Surname"},
-        {prompt: "First Name"},
-        {prompt: "Age"},
-        {prompt: "Phone Number"},
-        {prompt: "Email"}
+        {prompt: "Surname", required: true},
+        {prompt: "First Name", required: true},
+        {prompt: "Phone Number", required: true},
+        {prompt: "Email", required: true}
     ],
-    button_label: "Continue",
     data: {
         subject_id
     },
-    on_load: function(personal_info){
+    on_load: function(contact_info){
         disable_next();
         form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_personal_info);
+        form_curr.addEventListener("change", validate_contact_info);
     },
-    on_finish: function(personal_info){
-        form_curr.removeEventListener("change", validate_personal_info);
+    on_finish: function(contact_info){
+        form_curr.removeEventListener("change", validate_contact_info);
     },
     on_finish: function(data){
         data.blur_count = blur_count;
@@ -62,7 +60,8 @@ var language_info = {
     }
 }
 jsPsych.init({
-    timeline: [personal_info, language_info],
+    timeline: [contact_info, language_info],
+    show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){
         if(data.event == "blur"){
