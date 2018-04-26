@@ -143,8 +143,8 @@ var musical_info = {
     }
 }
 jsPsych.init({
-    // timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
-    timeline: [language_info, contact_info, personal_info, background_info, language_detailed_info, musical_info],
+    timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
+    //timeline: [language_info, contact_info, personal_info, background_info, language_detailed_info, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){
