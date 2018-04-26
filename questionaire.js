@@ -77,9 +77,12 @@ var background_info = {
 }
 var language_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Language Information</h3>",
+    preamble: header + "<h3>Language Information</h3><p>Please list all the lanuages you speak, from most to least dominant.</p>",
     questions: [
-        {prompt: "TODO!"}        
+        {prompt: "Most Dominant"},
+        {prompt: "Second Most Dominant"},
+        {prompt: "Third Most Dominant"},
+        {prompt: "Fourth Most Dominant"}
     ],
     data: {
         subject_id
@@ -93,11 +96,36 @@ var language_info = {
         form_curr.removeEventListener("change", validate_language_info);
     }
 }
+var language_detailed_info = {
+    type: 'survey-text',
+    preamble: header + "<h3>Language Information, Continued</h3>",
+    questions: [
+        {prompt: "When did you start learning " + "?"},
+        {prompt: "How many years did you learn " + " for?"},
+        {prompt: "When did you start learning " + "?"},
+        {prompt: "How many years did you learn " + " for?"},
+        {prompt: "When did you start learning " + "?"},
+        {prompt: "How many years did you learn " + " for?"},
+        {prompt: "When did you start learning " + "?"},
+        {prompt: "How many years did you learn " + " for?"}
+    ],
+    data: {
+        subject_id
+    },
+    on_load: function(language_info){
+        disable_next();
+        form_curr = document.getElementById("jspsych-content");
+        form_curr.addEventListener("change", validate_language_detailed_info);
+    },
+    on_finish: function(language_info){
+        form_curr.removeEventListener("change", validate_language_detailed_info);
+    }
+}
 var musical_info = {
     type: 'survey-text',
     preamble: header + "<h3>Musical Background</h3>",
     questions: [
-        {prompt: "Have you played any musical instruments? If so, please specify which one(s) you have played, the age you began and the number of years you have practiced."}
+        {prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"}
     ],
     data: {
         subject_id
@@ -115,7 +143,8 @@ var musical_info = {
     }
 }
 jsPsych.init({
-    timeline: [contact_info, personal_info, background_info, language_info, musical_info],
+    // timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
+    timeline: [language_info, contact_info, personal_info, background_info, language_detailed_info, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

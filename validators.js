@@ -122,6 +122,14 @@ function validate_language_info(){
     prepare_globals();
     next_button.disabled = true;
     
+    dom_lang1 = form.children[1].children[1].value;
+
+    if (dom_lang1.length < 2 || dom_lang1.length > 50){
+        next_button.innerText = "Please enter at least your most dominant language";
+        is_valid = false;
+    }
+
+
 
     if(is_valid){
         enable_button();
@@ -134,7 +142,7 @@ function validate_musical_info(){
     musical_instruments = form.children[1].children[1].value;
 
     if(is_valid && (musical_instruments.length == 0 || musical_instruments.length > 1000)){
-        next_button.innerText = "Please enter the instruments you have played or n/a";
+        next_button.innerText = "Please enter your musical experience or n/a";
         is_valid = false;
     }
     if(is_valid){
