@@ -7,7 +7,7 @@ var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language
 function disable_next(){
     next_button_curr = document.getElementById("jspsych-survey-text-next");
     next_button_curr.disabled = true;
-    next_button_curr.innerText = "Please answer all questions before continuing";
+    next_button_curr.innerText = "Please answer all the questions above";
 }
 
 var contact_info = {
@@ -58,7 +58,7 @@ var background_info = {
     type: 'survey-text',
     preamble: header + "<h3>Background Information</h3>",
     questions: [
-        {prompt: "Age of Arrival in Canada"},
+        {prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"},
         {prompt: "Native Language"},
         {prompt: "Parent 1's Native Language"},
         {prompt: "Parent 2's Native Language"}
@@ -79,12 +79,7 @@ var language_info = {
     type: 'survey-text',
     preamble: header + "<h3>Language Information</h3>",
     questions: [
-        {prompt: "Birth Country"},
-        {prompt: "Age of Arrival in Canada"},
-        {prompt: "Native Language"},
-        {prompt: "Parent 1's Native Language"},
-        {prompt: "Parent 2's Native Language"},
-        
+        {prompt: "TODO!"}        
     ],
     data: {
         subject_id
