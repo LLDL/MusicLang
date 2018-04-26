@@ -135,6 +135,14 @@ function validate_language_info(){
         enable_button();
     }
 }
+
+function validate_language_detailed_info(){
+    prepare_globals();
+    next_button.disabled = true;
+    if(is_valid){
+        enable_button();
+    }
+}
 function validate_musical_info(){
     prepare_globals();
     next_button.disabled = true;
