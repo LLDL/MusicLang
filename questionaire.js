@@ -2,37 +2,42 @@ var subject_id = jsPsych.randomization.randomID(15)
 var blur_count = 0;
 var next_button_curr;
 var form_curr;
+//regex from: https://cs.chromium.org/chromium/src/third_party/WebKit/LayoutTests/fast/forms/resources/ValidityState-typeMismatch-email.js?sq=package:chromium&type=cs
+var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-function validatePersonal(){
+function validate_personal_info(){
+    next_button_curr.disabled = true;
     console.log("attempting validation");
     var questions = form_curr.children;
-    is_valid = true;
+    var is_valid = true;
 
-    lname = form_curr.children[1].children[1]
-    fname = form_curr.children[2].children[1]
-    age   = form_curr.children[3].children[1]
-    phone = form_curr.children[4].children[1]
-    email = form_curr.children[5].children[1]
+    lname = form_curr.children[1].children[1].value
+    fname = form_curr.children[2].children[1].value
+    age   = form_curr.children[3].children[1].value
+    phone = form_curr.children[4].children[1].value
+    email = form_curr.children[5].children[1].value
 
-    if(is_valid && lname.value == ""){
-        next_button_curr.innerText = "Enter your surname"
+    if(is_valid && (lname.length == 0 || lname.length > 100)){
+        next_button_curr.innerText = "Invalid surname";
         is_valid = false;
     } 
-    if(is_valid && fname.value == ""){
-        next_button_curr.innerText = "Enter your first name"
+    if(is_valid && fname.length == 0 || lname.length > 100){
+        next_button_curr.innerText = "Invalid first name";
         is_valid = false;
     } 
-    if(is_valid && age.value == ""){
-        next_button_curr.innerText = "Enter your age"
-        is_valid = false
+    if(is_valid && (isNaN(age) || age <= 0 || age > 120)){
+        console.log("entered age")
+        next_button_curr.innerText = "Invalid age";
+        is_valid = false;
     }
-    if(is_valid && phone.value == ""){
-        next_button_curr.innerText = "Enter your phone number"
+    if(is_valid && phone.length == 0 || phone.length > 100){
+        next_button_curr.innerText = "Invalid phone number";
         is_valid = false;
     } 
-    if(is_valid && email.value == ""){
-        next_button_curr.innerText = "Enter your email address"
-        is_valid = false
+    if(is_valid && !email_regex.test(String(email).toLowerCase())){
+        
+        next_button_curr.innerText = "Invalid email address";
+        is_valid = false;
     }
     if(is_valid){
         next_button_curr.disabled = false;
@@ -54,7 +59,7 @@ var personal_info = {
         form_curr = document.getElementById("jspsych-content");
         next_button_curr.disabled = true;
         next_button_curr.innerText = "Please answer the above questions before continuing";
-        form_curr.addEventListener("change", validatePersonal);
+        form_curr.addEventListener("change", validate_personal_info);
     },
     data: {
         subject_id
@@ -93,7 +98,7 @@ jsPsych.init({
     },
     on_trial_finish: function(){
         console.log("trial finished");
-        form_curr.removeEventListener("change", validatePersonal);
+        form_curr.removeEventListener("change", validate_personal_info);
         
     }
 })
