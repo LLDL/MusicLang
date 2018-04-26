@@ -5,8 +5,39 @@ var form_curr;
 
 function validatePersonal(){
     console.log("attempting validation");
-    next_button_curr.disabled = false;
-    next_button_curr.innerText = "Continue";
+    var questions = form_curr.children;
+    is_valid = true;
+
+    lname = form_curr.children[1].children[1]
+    fname = form_curr.children[2].children[1]
+    age   = form_curr.children[3].children[1]
+    phone = form_curr.children[4].children[1]
+    email = form_curr.children[5].children[1]
+
+    if(is_valid && lname.value == ""){
+        next_button_curr.innerText = "Enter your surname"
+        is_valid = false;
+    } 
+    if(is_valid && fname.value == ""){
+        next_button_curr.innerText = "Enter your first name"
+        is_valid = false;
+    } 
+    if(is_valid && age.value == ""){
+        next_button_curr.innerText = "Enter your age"
+        is_valid = false
+    }
+    if(is_valid && phone.value == ""){
+        next_button_curr.innerText = "Enter your phone number"
+        is_valid = false;
+    } 
+    if(is_valid && email.value == ""){
+        next_button_curr.innerText = "Enter your email address"
+        is_valid = false
+    }
+    if(is_valid){
+        next_button_curr.disabled = false;
+        next_button_curr.innerText = "Continue";
+    }
 }
 var personal_info = {
     type: 'survey-text',
@@ -16,13 +47,11 @@ var personal_info = {
         {prompt: "First Name"},
         {prompt: "Age"},
         {prompt: "Phone Number"},
-        {prompt: "Email"},
-        {prompt: "Phone"},
+        {prompt: "Email"}
     ],
     on_load: function(personal_info){
         next_button_curr = document.getElementById("jspsych-survey-text-next");
         form_curr = document.getElementById("jspsych-content");
-        var questions = form_curr.children;
         next_button_curr.disabled = true;
         next_button_curr.innerText = "Please answer the above questions before continuing";
         form_curr.addEventListener("change", validatePersonal);
@@ -64,5 +93,7 @@ jsPsych.init({
     },
     on_trial_finish: function(){
         console.log("trial finished");
+        form_curr.removeEventListener("change", validatePersonal);
+        
     }
 })
