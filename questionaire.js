@@ -31,7 +31,6 @@ var personal_info = {
     questions: [
         {prompt: "Age"},
         {prompt: "Gender"},
-        {prompt: "Birth Country"},
         {prompt: "If you have any hearing problems, please specify"},
         {prompt: "If you have any language disorders, please specify"},
         {prompt: "If you have any learning disorders, please specify"}
@@ -52,6 +51,7 @@ var background_info = {
     type: 'survey-text',
     preamble: header + "<h2>Background Information</h2>",
     questions: [
+        {prompt: "Birth Country"},
         {prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"},
         {prompt: "Native Language"},
         {prompt: "Parent 1's Native Language"},
@@ -137,8 +137,10 @@ var musical_info = {
     }
 }
 jsPsych.init({
-    timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
-    //timeline: [language_info, contact_info, personal_info, background_info, language_detailed_info, musical_info],
+    //production timeline:
+    //timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
+    //timeline for testing: 
+    timeline: [background_info, language_info, language_detailed_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){
