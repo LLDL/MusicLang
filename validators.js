@@ -3,21 +3,30 @@ var form;
 var questions;
 var is_valid;
 
-function prepare_globals(){
+function set_globals(){
     next_button = document.getElementById("jspsych-survey-text-next");
     form = document.getElementById("jspsych-content");
     questions = form.children;
     is_valid = true;
 }
 
-function enable_button(){
-    next_button.disabled = false;
-    next_button.innerText = "Continue";
+function allow_next(enable){
+    next_button = document.getElementById("jspsych-survey-text-next");
+    if(enable){
+        next_button.disabled = false;
+        next_button.style.backgroundColor = "#37904b";
+        next_button.innerText = "Continue";
+    }
+    if(!enable){
+        next_button.disabled = false;  
+        next_button.style.backgroundColor = "#903738";
+        next_button.innerText = "Please answer all the questions above";
+    }
 }
 
 function validate_contact_info(){
-    prepare_globals();
-    next_button.disabled = true;
+    set_globals();
+    allow_next(false);
 
     lname = form.children[1].children[1].value;
     fname = form.children[2].children[1].value;
@@ -45,13 +54,13 @@ function validate_contact_info(){
         is_valid = false;
     }
     if(is_valid){
-        enable_button();
+        allow_next(true);
     }    
 }
 
 function validate_personal_info(){
-    prepare_globals();
-    next_button.disabled = true;
+    set_globals();
+    allow_next(false);
 
     age = form.children[1].children[1].value;
     gender = form.children[2].children[1].value;
@@ -85,14 +94,13 @@ function validate_personal_info(){
         is_valid = false;
     }
     if(is_valid){
-        enable_button();
+        allow_next(true);
     }
 }
 
 function validate_background_info(){
-    prepare_globals();
-    next_button.disabled = true;
-
+    set_globals();
+    allow_next(false);
     age_arrival = form.children[1].children[1].value;
     native_language = form.children[2].children[1].value;
     parent_1_lang = form.children[3].children[1].value;
@@ -115,12 +123,12 @@ function validate_background_info(){
         is_valid = false;
     }
     if(is_valid){
-        enable_button();
+        allow_next(true);
     }
 }
 function validate_language_info(){
-    prepare_globals();
-    next_button.disabled = true;
+    set_globals();
+    allow_next(false);
     
     dom_lang1 = form.children[1].children[1].value;
 
@@ -132,20 +140,20 @@ function validate_language_info(){
 
 
     if(is_valid){
-        enable_button();
+        allow_next(true);
     }
 }
 
 function validate_language_detailed_info(){
-    prepare_globals();
-    next_button.disabled = true;
+    set_globals();
+    allow_next(false);
     if(is_valid){
-        enable_button();
+        allow_next(true);
     }
 }
 function validate_musical_info(){
-    prepare_globals();
-    next_button.disabled = true;
+    set_globals();
+    allow_next(false);
 
     musical_instruments = form.children[1].children[1].value;
 
@@ -154,6 +162,6 @@ function validate_musical_info(){
         is_valid = false;
     }
     if(is_valid){
-        enable_button();
+        allow_next(true);
     }
 }

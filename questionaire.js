@@ -4,15 +4,9 @@ var next_button_curr;
 var form_curr;
 var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"
 
-function disable_next(){
-    next_button_curr = document.getElementById("jspsych-survey-text-next");
-    next_button_curr.disabled = true;
-    next_button_curr.innerText = "Please answer all the questions above";
-}
-
 var contact_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Contact Information</h3>",
+    preamble: header + "<h2>Contact Information</h2>",
     questions: [
         {prompt: "Surname"},
         {prompt: "First Name"},
@@ -23,7 +17,7 @@ var contact_info = {
         subject_id
     },
     on_load: function(contact_info){
-        disable_next();
+        allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_contact_info);
     },
@@ -33,7 +27,7 @@ var contact_info = {
 }
 var personal_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Personal Information</h3>",
+    preamble: header + "<h2>Personal Information</h2>",
     questions: [
         {prompt: "Age"},
         {prompt: "Gender"},
@@ -46,7 +40,7 @@ var personal_info = {
         subject_id
     },
     on_load: function(contact_info){
-        disable_next();
+        allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_personal_info);
     },
@@ -56,7 +50,7 @@ var personal_info = {
 }
 var background_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Background Information</h3>",
+    preamble: header + "<h2>Background Information</h2>",
     questions: [
         {prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"},
         {prompt: "Native Language"},
@@ -67,7 +61,7 @@ var background_info = {
         subject_id
     },
     on_load: function(contact_info){
-        disable_next();
+        allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_background_info);
     },
@@ -77,7 +71,7 @@ var background_info = {
 }
 var language_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Language Information</h3><p>Please list all the lanuages you speak, from most to least dominant.</p>",
+    preamble: header + "<h2>Language Information</h2><p>Please list all the lanuages you speak, from most to least dominant.</p>",
     questions: [
         {prompt: "Most Dominant"},
         {prompt: "Second Most Dominant"},
@@ -88,7 +82,7 @@ var language_info = {
         subject_id
     },
     on_load: function(language_info){
-        disable_next();
+        allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_language_info);
     },
@@ -98,7 +92,7 @@ var language_info = {
 }
 var language_detailed_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Language Information, Continued</h3>",
+    preamble: header + "<h2>Language Information, Continued</h2>",
     questions: [
         {prompt: "When did you start learning " + "?"},
         {prompt: "How many years did you learn " + " for?"},
@@ -113,7 +107,7 @@ var language_detailed_info = {
         subject_id
     },
     on_load: function(language_info){
-        disable_next();
+        allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_language_detailed_info);
     },
@@ -123,7 +117,7 @@ var language_detailed_info = {
 }
 var musical_info = {
     type: 'survey-text',
-    preamble: header + "<h3>Musical Background</h3>",
+    preamble: header + "<h2>Musical Background</h2>",
     questions: [
         {prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"}
     ],
@@ -131,7 +125,7 @@ var musical_info = {
         subject_id
     },
     on_load: function(musical_info){
-        disable_next();
+        allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_musical_info);
     },
