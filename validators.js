@@ -42,19 +42,19 @@ function validate_contact_info(){
     var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if(is_valid && (lname.length == 0 || lname.length > 100)){
-        allow_next(false, "Invalid surname");
+        allow_next(false, "Enter your surname");
         is_valid = false;
     } 
     if(is_valid && fname.length == 0 || lname.length > 100){
-        allow_next(false, "Invalid first name");
+        allow_next(false, "Enter your first name");
         is_valid = false;
     }
     if(is_valid && phone.length < 5 || phone.length > 100){
-        allow_next(false, "Invalid phone number");
+        allow_next(false, "Enter a valid phone number");
         is_valid = false;
     } 
     if(is_valid && !email_regex.test(String(email).toLowerCase())){
-        allow_next(false, "Invalid email address");
+        allow_next(false, "Enter a valid email address");
         is_valid = false;
     }
     if(is_valid){
@@ -74,27 +74,27 @@ function validate_personal_info(){
     var learning_disorders = get_answer(6);
 
     if(is_valid && (isNaN(age) || age <= 0 || age > 120)){
-        next_button.innerText = "Invalid age";
+        next_button.innerText = "Enter your age (0-120)";
         is_valid = false;
     }
-    if(is_valid && (gender.length == 0 || gender.length > 20)){
-        next_button.innerText = "Invalid gender";
+    if(is_valid && (gender.length == 0 || gender.length > 100)){
+        next_button.innerText = "Enter your gender";
         is_valid = false;
     }
-    if(is_valid && (birth_country.length < 2 || birth_country.length > 50)){
-        next_button.innerText = "Invalid birth country";
+    if(is_valid && (birth_country.length == 0 || birth_country.length > 100)){
+        next_button.innerText = "Enter your country of birth";
         is_valid = false;
     }    
-    if(is_valid && (hearing_problems.length == 0 || hearing_problems.length > 1000)){
-        next_button.innerText = "Please enter any hearing problems you have or n/a";
+    if(is_valid && (hearing_problems.length > 1000)){
+        next_button.innerText = "Describe any hearing problems in under 1000 characters";
         is_valid = false;
     }
-    if(is_valid && (language_disorders.length == 0 || language_disorders.length > 1000)){
-        next_button.innerText = "Please enter any language disorders you have or n/a";
+    if(is_valid && (language_disorders.length > 1000)){
+        next_button.innerText = "Describe any language disorders in under 1000 characters";
         is_valid = false;
     }
-    if(is_valid && (learning_disorders.length == 0 || learning_disorders.length > 1000)){
-        next_button.innerText = "Please enter any learning disorders you have or n/a";
+    if(is_valid && (learning_disorders.length > 1000)){
+        next_button.innerText = "Describe any learning disorders in under 1000 characters";
         is_valid = false;
     }
     if(is_valid){
@@ -105,25 +105,26 @@ function validate_personal_info(){
 function validate_background_info(){
     set_globals();
     allow_next(false);
+
     var age_arrival = get_answer(1);
     var native_language = get_answer(2);
     var parent_1_lang = get_answer(3);
     var parent_2_lang = get_answer(4);
     
-    if(is_valid && (isNaN(age) || age < 0 || age > 120)){
-        next_button.innerText = "Invalid age of arrival in Canada";
+    if(is_valid && (isNaN(age_arrival) || age_arrival < 0 || age_arrival > 120)){
+        next_button.innerText = "Enter your age of arrival in Canada (0-120)";
         is_valid = false;
     }
     if(is_valid && (native_language.length < 2 || native_language.length > 50)){
-        next_button.innerText = "Invalid native language";
+        next_button.innerText = "Enter your native language";
         is_valid = false;
     }
     if(is_valid && (parent_1_lang.length < 2 || parent_1_lang.length > 50)){
-        next_button.innerText = "Invalid parent 1's native language";
+        next_button.innerText = "Enter parent 1's native language";
         is_valid = false;
     }
     if(is_valid && (parent_2_lang.length < 2 || parent_2_lang.length > 50)){
-        next_button.innerText = "Invalid parent 2's native language";
+        next_button.innerText = "Enter parent 2's native language";
         is_valid = false;
     }
     if(is_valid){
@@ -137,11 +138,9 @@ function validate_language_info(){
     var dom_lang1 = get_answer(1);
 
     if (dom_lang1.length < 2 || dom_lang1.length > 50){
-        next_button.innerText = "Please enter at least your most dominant language";
+        next_button.innerText = "Enter at least your most dominant language";
         is_valid = false;
     }
-
-
 
     if(is_valid){
         allow_next(true);
@@ -161,8 +160,8 @@ function validate_musical_info(){
 
     var musical_instruments = get_answer(1);
 
-    if(is_valid && (musical_instruments.length == 0 || musical_instruments.length > 1000)){
-        next_button.innerText = "Please enter your musical experience or n/a";
+    if(is_valid && (musical_instruments.length > 1000)){
+        next_button.innerText = "Describe any musical experience in under 1000 characters";
         is_valid = false;
     }
     if(is_valid){
