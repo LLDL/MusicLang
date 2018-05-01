@@ -153,7 +153,7 @@ jsPsych.init({
     //production timeline:
     //timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
     //timeline for testing: 
-    timeline: [language_details, language_info, language_detailed_info, musical_info],
+    timeline: [language_details, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

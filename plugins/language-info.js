@@ -73,8 +73,8 @@ jsPsych.plugins["language-info"] = (function() {
     for (var i = 0; i < trial.languages.length; i++){
       html += '<tr class="jspsych-language-info-lang-row">';
       html += '<td class="jspsych-language-info-lang">' + trial.languages[i].language + '</td>';
-      html += '<td class="jspsych-language-info-age">' + '<input type="text" name="#jspsych-language-info-age-response" size="10"></input>' + '</td>';
-      html += '<td class="jspsych-language-info-years">' + '<input type="text" name="#jspsych-language-info-years-response" size="10"></input>' + '</td>';
+      html += '<td class="jspsych-language-info-age">' + '<input class="jspsych-language-info-age-response" type="text" name="#jspsych-language-info-age-response" size="10"></input>' + '</td>';
+      html += '<td class="jspsych-language-info-years">' + '<input class="jspsych-language-info-year-response" type="text" name="#jspsych-language-info-year-response" size="10"></input>' + '</td>';
       html += '</tr>'
     }
     html += '</table>';
@@ -90,14 +90,15 @@ jsPsych.plugins["language-info"] = (function() {
 
       // create object to hold responses
       var lang_data = {};
-      var langs = display_element.querySelectorAll('tr.jspsych-language-info-lang-row');
-      // var ages =  display_element.querySelectorAll('td.jspsych-language-info-age');
-      // var years = display_element.querySelectorAll('td.jspsych-language-info-years');
+      var langs = display_element.querySelectorAll('.jspsych-language-info-lang');
+      var ages =  display_element.querySelectorAll('.jspsych-language-info-age-response');
+      var years = display_element.querySelectorAll('.jspsych-language-info-year-response');
       for(var i = 0; i < langs.length; i++){
-        var id = "L" + i;
-        var val = langs[i].value;
+        var id = langs[i].innerHTML;
+        var age = ages[i].value;
+        var year = years[i].value;
         var obje = {};
-        obje[id] = val;
+        obje[id] = [age, year];
         Object.assign(lang_data, obje);
       }
       // save data
