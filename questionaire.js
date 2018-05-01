@@ -1,5 +1,6 @@
 var subject_id = jsPsych.randomization.randomID(15)
 var blur_count = 0;
+var likely_invalid = false; //gets set to true if user is leaving the screen a lot
 var next_button_curr;
 var form_curr;
 var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"
@@ -71,7 +72,7 @@ var background_info = {
 }
 var language_info = {
     type: 'survey-text',
-    preamble: header + "<h2>Language Information</h2><p>Please list all the lanuages you speak, from most to least dominant.</p>",
+    preamble: header + "<h2>Language Information</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
     questions: [
         {prompt: "Most Dominant"},
         {prompt: "Second Most Dominant"},
@@ -133,23 +134,26 @@ var musical_info = {
         form_curr.removeEventListener("change", validate_musical_info);
     },
     on_finish: function(data){
-        data.blur_count = blur_count;
+        data.likely_invalid = likely_invalid;
     }
 }
 jsPsych.init({
     //production timeline:
     //timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
     //timeline for testing: 
-    timeline: [background_info, language_info, language_detailed_info],
+    timeline: [language_info, language_detailed_info, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){
         if(data.event == "blur"){
             console.log(data);
             blur_count++;
+            if(blur_count > 10){
+                likely_invalid = true;
+            }
         };
     },
     on_finish: function(){
         jsPsych.data.displayData();
     }
-})
+});

@@ -1,16 +1,14 @@
 var next_button;
-var form;
 var questions;
 var is_valid;
 
 function set_globals(){
     next_button = document.getElementById("jspsych-survey-text-next");
-    form = document.getElementById("jspsych-content");
-    questions = form.children;
+    questions = document.getElementById("jspsych-content").children;
     is_valid = true;
 }
 
-function allow_next(enable, text_on_false = "Please answer all the questions above"){
+function allow_next(enable, text_on_false = "Please answer the questions above"){
     next_button = document.getElementById("jspsych-survey-text-next");
     if(enable){
         next_button.disabled = false;
@@ -26,8 +24,7 @@ function allow_next(enable, text_on_false = "Please answer all the questions abo
 }
 
 function get_answer(question){
-    form = document.getElementById("jspsych-content");
-    return form.children[question].children[1].value;
+    return questions[question].children[1].value;
 }
 
 function validate_contact_info(){
@@ -106,7 +103,7 @@ function validate_background_info(){
     if(is_valid && (birth_country.length == 0 || birth_country.length > 100)){
         allow_next(false, "Enter your country of birth");
     }    
-    if(is_valid && (isNaN(parseInt(age_arrival))| ( age_arrival < 0 || age_arrival > 120))){
+    if(is_valid && (isNaN(parseInt(age_arrival)) || ( age_arrival < 0 || age_arrival > 120))){
         allow_next(false, "Enter your age of arrival in Canada (0-120)");
     }
     if(is_valid && (native_language.length < 2 || native_language.length > 50)){
@@ -129,7 +126,7 @@ function validate_language_info(){
     
     var dom_lang1 = get_answer(1);
 
-    if (dom_lang1.length < 2 || dom_lang1.length > 50){
+    if (dom_lang1.length == 0 || dom_lang1.length > 50){
         allow_next(false, "Enter at least your most dominant language");
     }
 
