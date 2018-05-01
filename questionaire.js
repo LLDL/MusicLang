@@ -137,11 +137,23 @@ var musical_info = {
         data.likely_invalid = likely_invalid;
     }
 }
+var language_details = {
+    type: 'language-info',
+    preamble: header + "<h2>Test Language Details</h2>",
+    languages: [
+        {language: "English"},
+        {language: "French"},
+        {language: "Spanish"}
+    ],
+    data: {
+        subject_id
+    }
+}
 jsPsych.init({
     //production timeline:
     //timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
     //timeline for testing: 
-    timeline: [language_info, language_detailed_info, musical_info],
+    timeline: [language_details, language_info, language_detailed_info, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){
