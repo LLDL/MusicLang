@@ -4,6 +4,7 @@ var likely_invalid = false; //gets set to true if user is leaving the screen a l
 var next_button_curr;
 var form_curr;
 var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"
+var known_langs;
 
 var contact_info = {
     type: 'survey-text',
@@ -91,7 +92,7 @@ var language_info = {
         form_curr.removeEventListener("change", validate_language_info);
     }
 }
-var language_detailed_info = {
+/* var language_detailed_info = {
     type: 'survey-text',
     preamble: header + "<h2>Language Information, Continued</h2>",
     questions: [
@@ -115,7 +116,7 @@ var language_detailed_info = {
     on_finish: function(language_info){
         form_curr.removeEventListener("change", validate_language_detailed_info);
     }
-}
+} */
 var musical_info = {
     type: 'survey-text',
     preamble: header + "<h2>Musical Background</h2>",
@@ -130,26 +131,28 @@ var musical_info = {
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_musical_info);
     },
-    on_finish: function(language_info){
-        form_curr.removeEventListener("change", validate_musical_info);
-    },
     on_finish: function(data){
         data.likely_invalid = likely_invalid;
+        form_curr.removeEventListener("change", validate_musical_info);
     }
 }
 var language_details = {
     type: 'language-info',
     preamble: header + "<h2>Test Language Details</h2>",
-    languages: ["English", "French", "Spanish"],
+    languages: {},
     data: {
         subject_id
+    },
+    on_start: function(trial){
+        known_langs = get_known_langs();
+        trial.languages = known_langs;
     }
 }
 jsPsych.init({
     //production timeline:
-    //timeline: [contact_info, personal_info, background_info, language_info, language_detailed_info, musical_info],
+    //timeline: [contact_info, personal_info, background_info, language_info, language_details, musical_info],
     //timeline for testing: 
-    timeline: [language_details, musical_info],
+    timeline: [language_info, language_details, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

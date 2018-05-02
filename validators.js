@@ -1,6 +1,7 @@
 var next_button;
 var questions;
 var is_valid;
+var langs;
 
 function set_globals(){
     next_button = document.getElementById("jspsych-survey-text-next");
@@ -27,6 +28,17 @@ function get_answer(question){
     return questions[question].children[1].value;
 }
 
+function update_known_langs(){
+    var known = {};
+    known["dom0"] = get_answer(1);
+    known["dom1"] = get_answer(2);
+    known["dom2"] = get_answer(3);
+    known["dom3"] = get_answer(4);
+    langs = known;
+}
+function get_known_langs(){
+    return langs;
+}
 function validate_contact_info(){
     set_globals();
     allow_next(false);
@@ -131,19 +143,20 @@ function validate_language_info(){
     }
 
     if(is_valid){
+        update_known_langs();
         allow_next(true);
     }
 }
 
-function validate_language_detailed_info(){
-    set_globals();
-    allow_next(false);
-    is_valid = true;
+// function validate_language_detailed_info(){
+//     set_globals();
+//     allow_next(false);
+//     is_valid = true;
 
-    if(is_valid){
-        allow_next(true);
-    }
-}
+//     if(is_valid){
+//         allow_next(true);
+//     }
+// }
 function validate_musical_info(){
     set_globals();
     allow_next(false);

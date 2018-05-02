@@ -18,6 +18,30 @@ p {
     background-color: #37904b;
     font-size: 0.9em;
 }
-.jspsych-language-info-header{
+#jspsych-language-info-next{
+    color: #ffffff;
+    background-color: #37904b;
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0px;
+    font-weight: 400;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    line-height: 1.4;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+#jspsych-language-info-next:hover{
+    cursor: pointer;
+}
+.jspsych-language-info-header td{
     font-weight: bold;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+
+}
+.jspsych-language-info-lang-row td{
+    padding: 5px 10px 5px 10px;
+    text-align: center;
 }
