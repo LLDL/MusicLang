@@ -4,7 +4,6 @@ var likely_invalid = false; //gets set to true if user is leaving the screen a l
 var next_button_curr;
 var form_curr;
 var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"
-var known_langs;
 
 var contact_info = {
     type: 'survey-text',
@@ -71,9 +70,9 @@ var background_info = {
         form_curr.removeEventListener("change", validate_background_info);
     }
 }
-var language_info = {
+var dominant_languages = {
     type: 'survey-text',
-    preamble: header + "<h2>Language Information</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
+    preamble: header + "<h2>Languages You Know</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
     questions: [
         {prompt: "Most Dominant"},
         {prompt: "Second Most Dominant"},
@@ -83,40 +82,16 @@ var language_info = {
     data: {
         subject_id
     },
-    on_load: function(language_info){
+    on_load: function(dominant_languages){
         allow_next(false);
         form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_language_info);
+        form_curr.addEventListener("change", validate_dominant_languages);
     },
-    on_finish: function(language_info){
-        form_curr.removeEventListener("change", validate_language_info);
+    on_finish: function(dominant_languages){
+        form_curr.removeEventListener("change", validate_dominant_languages);
     }
+
 }
-/* var language_detailed_info = {
-    type: 'survey-text',
-    preamble: header + "<h2>Language Information, Continued</h2>",
-    questions: [
-        {prompt: "When did you start learning " + "?"},
-        {prompt: "How many years did you learn " + " for?"},
-        {prompt: "When did you start learning " + "?"},
-        {prompt: "How many years did you learn " + " for?"},
-        {prompt: "When did you start learning " + "?"},
-        {prompt: "How many years did you learn " + " for?"},
-        {prompt: "When did you start learning " + "?"},
-        {prompt: "How many years did you learn " + " for?"}
-    ],
-    data: {
-        subject_id
-    },
-    on_load: function(language_info){
-        allow_next(false);
-        form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_language_detailed_info);
-    },
-    on_finish: function(language_info){
-        form_curr.removeEventListener("change", validate_language_detailed_info);
-    }
-} */
 var musical_info = {
     type: 'survey-text',
     preamble: header + "<h2>Musical Background</h2>",
@@ -144,15 +119,22 @@ var language_details = {
         subject_id
     },
     on_start: function(trial){
-        known_langs = get_known_langs();
-        trial.languages = known_langs;
+        trial.languages = get_known_langs();
+    },
+    on_load: function(language_info){
+        allow_next(false);
+        form_curr = document.getElementById("jspsych-content");
+        form_curr.addEventListener("change", validate_language_details);
+    },
+    on_finish: function(language_info){
+        form_curr.removeEventListener("change", validate_language_details);
     }
 }
 jsPsych.init({
     //production timeline:
     //timeline: [contact_info, personal_info, background_info, language_info, language_details, musical_info],
     //timeline for testing: 
-    timeline: [language_info, language_details, musical_info],
+    timeline: [dominant_languages, language_details, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

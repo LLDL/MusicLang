@@ -3,14 +3,20 @@ var questions;
 var is_valid;
 var langs;
 
-function set_globals(){
+function find_next_button(){
     next_button = document.getElementById("jspsych-survey-text-next");
+    if(next_button == null){
+        next_button = document.getElementById("jspsych-language-info-next");
+    }
+}
+function set_globals(){
+    find_next_button();
     questions = document.getElementById("jspsych-content").children;
     is_valid = true;
 }
 
 function allow_next(enable, text_on_false = "Please answer the questions above"){
-    next_button = document.getElementById("jspsych-survey-text-next");
+    find_next_button();
     if(enable){
         next_button.disabled = false;
         next_button.style.backgroundColor = "#37904b";
@@ -134,7 +140,7 @@ function validate_background_info(){
         allow_next(true);
     }
 }
-function validate_language_info(){
+function validate_dominant_languages(){
     set_globals();
     allow_next(false);
     is_valid = true;
@@ -151,15 +157,15 @@ function validate_language_info(){
     }
 }
 
-// function validate_language_detailed_info(){
-//     set_globals();
-//     allow_next(false);
-//     is_valid = true;
+function validate_language_details(){
+    set_globals();
+    allow_next(false);
+    // is_valid = true;
 
-//     if(is_valid){
-//         allow_next(true);
-//     }
-// }
+    if(is_valid){
+        allow_next(true);
+    }
+}
 function validate_musical_info(){
     set_globals();
     allow_next(false);
