@@ -1,11 +1,10 @@
-var subject_id = jsPsych.randomization.randomID(15)
-var blur_count = 0;
-var likely_invalid = false; //gets set to true if user is leaving the screen a lot
-var next_button_curr;
-var form_curr;
-var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"
+var subject_id = jsPsych.randomization.randomID(15); //random id assigned to each subject
+var blur_count = 0; //number of times subject's focus leaves tab
+var form; //current jspych-content element, to enable event listeners
+var likely_invalid = false; //gets set to true if blur_count>threshold
+var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //gets prepended to preludes
 
-var contact_info = {
+var contact = {
     type: 'survey-text',
     preamble: header + "<h2>Contact Information</h2>",
     questions: [
@@ -17,13 +16,13 @@ var contact_info = {
     data: {
         subject_id
     },
-    on_load: function(contact_info){
+    on_load: function(){
         allow_next(false);
-        form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_contact_info);
+        form = document.getElementById("jspsych-content");
+        form.addEventListener("change", validate_contact);
     },
-    on_finish: function(contact_info){
-        form_curr.removeEventListener("change", validate_contact_info);
+    on_finish: function(){
+        form.removeEventListener("change", validate_contact);
     }
 }
 var personal_info = {
@@ -36,15 +35,12 @@ var personal_info = {
         {prompt: "If you have any language disorders, please specify"},
         {prompt: "If you have any learning disorders, please specify"}
     ],
-    data: {
-        subject_id
-    },
-    on_load: function(contact_info){
+    on_load: function(){
         allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_personal_info);
     },
-    on_finish: function(contact_info){
+    on_finish: function(){
         form_curr.removeEventListener("change", validate_personal_info);
     }
 }
@@ -61,12 +57,12 @@ var background_info = {
     data: {
         subject_id
     },
-    on_load: function(contact_info){
+    on_load: function(){
         allow_next(false);
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_background_info);
     },
-    on_finish: function(contact_info){
+    on_finish: function(){
         form_curr.removeEventListener("change", validate_background_info);
     }
 }
@@ -79,18 +75,31 @@ var dominant_languages = {
         {prompt: "Third Most Dominant"},
         {prompt: "Fourth Most Dominant"}
     ],
-    data: {
-        subject_id
-    },
-    on_load: function(dominant_languages){
+    on_load: function(){
         allow_next(false);
-        form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_dominant_languages);
+        form = document.getElementById("jspsych-content");
+        form.addEventListener("change", validate_dominant_languages);
     },
-    on_finish: function(dominant_languages){
-        form_curr.removeEventListener("change", validate_dominant_languages);
+    on_finish: function(){
+        form.removeEventListener("change", validate_dominant_languages);
     }
 
+}
+var language_details = {
+    type: 'language-info',
+    preamble: header + "<h2>Test Language Details</h2>",
+    languages: [],
+    on_start: function(trial){
+        trial.languages = get_known_langs();
+    },
+    on_load: function(){
+        allow_next(false);
+        form = document.getElementById("jspsych-content");
+        form.addEventListener("change", validate_language_details);
+    },
+    on_finish: function(){
+        form.removeEventListener("change", validate_language_details);
+    }
 }
 var musical_info = {
     type: 'survey-text',
@@ -98,43 +107,21 @@ var musical_info = {
     questions: [
         {prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"}
     ],
-    data: {
-        subject_id
-    },
-    on_load: function(musical_info){
+    on_load: function(){
         allow_next(false);
-        form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_musical_info);
+        form = document.getElementById("jspsych-content");
+        form.addEventListener("change", validate_musical_info);
     },
     on_finish: function(data){
         data.likely_invalid = likely_invalid;
-        form_curr.removeEventListener("change", validate_musical_info);
-    }
-}
-var language_details = {
-    type: 'language-info',
-    preamble: header + "<h2>Test Language Details</h2>",
-    languages: [],
-    data: {
-        subject_id
-    },
-    on_start: function(trial){
-        trial.languages = get_known_langs();
-    },
-    on_load: function(language_info){
-        allow_next(false);
-        form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_language_details);
-    },
-    on_finish: function(language_info){
-        form_curr.removeEventListener("change", validate_language_details);
+        form.removeEventListener("change", validate_musical_info);
     }
 }
 jsPsych.init({
     //production timeline:
-    //timeline: [contact_info, personal_info, background_info, language_info, language_details, musical_info],
+    timeline: [contact, personal_info, background_info, dominant_languages, language_details, musical_info],
     //timeline for testing: 
-    timeline: [dominant_languages, language_details, musical_info],
+    // timeline: [background_info, dominant_languages, language_details, musical_info],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

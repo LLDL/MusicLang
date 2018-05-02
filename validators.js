@@ -48,7 +48,7 @@ function update_known_langs(){
 function get_known_langs(){
     return langs;
 }
-function validate_contact_info(){
+function validate_contact(){
     set_globals();
     allow_next(false);
     is_valid = true;
@@ -160,7 +160,7 @@ function validate_dominant_languages(){
 function validate_language_details(){
     set_globals();
     allow_next(false);
-    // is_valid = true;
+    is_valid = true;
 
     if(is_valid){
         allow_next(true);
