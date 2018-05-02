@@ -25,7 +25,7 @@ var contact = {
         form.removeEventListener("change", validate_contact);
     }
 }
-var personal_info = {
+var personal = {
     type: 'survey-text',
     preamble: header + "<h2>Personal Information</h2>",
     questions: [
@@ -38,13 +38,13 @@ var personal_info = {
     on_load: function(){
         allow_next(false);
         form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_personal_info);
+        form_curr.addEventListener("change", validate_personal);
     },
     on_finish: function(){
-        form_curr.removeEventListener("change", validate_personal_info);
+        form_curr.removeEventListener("change", validate_personal);
     }
 }
-var background_info = {
+var background = {
     type: 'survey-text',
     preamble: header + "<h2>Background Information</h2>",
     questions: [
@@ -60,10 +60,10 @@ var background_info = {
     on_load: function(){
         allow_next(false);
         form_curr = document.getElementById("jspsych-content");
-        form_curr.addEventListener("change", validate_background_info);
+        form_curr.addEventListener("change", validate_background);
     },
     on_finish: function(){
-        form_curr.removeEventListener("change", validate_background_info);
+        form_curr.removeEventListener("change", validate_background);
     }
 }
 var dominant_languages = {
@@ -101,7 +101,7 @@ var language_details = {
         form.removeEventListener("change", validate_language_details);
     }
 }
-var musical_info = {
+var musical = {
     type: 'survey-text',
     preamble: header + "<h2>Musical Background</h2>",
     questions: [
@@ -110,18 +110,18 @@ var musical_info = {
     on_load: function(){
         allow_next(false);
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_musical_info);
+        form.addEventListener("change", validate_musical);
     },
     on_finish: function(data){
         data.likely_invalid = likely_invalid;
-        form.removeEventListener("change", validate_musical_info);
+        form.removeEventListener("change", validate_musical);
     }
 }
 jsPsych.init({
     //production timeline:
-    timeline: [contact, personal_info, background_info, dominant_languages, language_details, musical_info],
+    timeline: [contact, personal, background, dominant_languages, language_details, musical],
     //timeline for testing: 
-    // timeline: [background_info, dominant_languages, language_details, musical_info],
+    // timeline: [background, dominant_languages, language_details, musical],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

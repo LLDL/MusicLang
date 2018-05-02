@@ -78,7 +78,7 @@ function validate_contact(){
     }    
 }
 
-function validate_personal_info(){
+function validate_personal(){
     set_globals();
     allow_next(false);
     is_valid = true;
@@ -109,7 +109,7 @@ function validate_personal_info(){
     }
 }
 
-function validate_background_info(){
+function validate_background(){
     set_globals();
     allow_next(false);
     is_valid = true;
@@ -166,7 +166,7 @@ function validate_language_details(){
         allow_next(true);
     }
 }
-function validate_musical_info(){
+function validate_musical(){
     set_globals();
     allow_next(false);
     is_valid = true;
