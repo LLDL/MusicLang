@@ -139,7 +139,7 @@ var musical_info = {
 var language_details = {
     type: 'language-info',
     preamble: header + "<h2>Test Language Details</h2>",
-    languages: {},
+    languages: [],
     data: {
         subject_id
     },

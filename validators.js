@@ -29,11 +29,14 @@ function get_answer(question){
 }
 
 function update_known_langs(){
-    var known = {};
-    known["dom0"] = get_answer(1);
-    known["dom1"] = get_answer(2);
-    known["dom2"] = get_answer(3);
-    known["dom3"] = get_answer(4);
+    var known = [];
+    for(var i = 0; i<4; i++){
+        if(get_answer(i+1) != ''){
+            known[i] = get_answer(i+1);
+        }else{
+            break;
+        }
+    }
     langs = known;
 }
 function get_known_langs(){
