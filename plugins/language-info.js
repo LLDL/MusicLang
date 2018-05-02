@@ -1,7 +1,8 @@
 /*
  * language-info
- * a jspsych plugin for giving 2 additional pieces of information
- *  about each element in a list of user inputs
+ * A jspsych plugin which given a list of languages produces a
+ * table to be filled in detailing the age learning a language 
+ * began and how many years of learning have been completed.
  * Ankit Dassor
  */
 
@@ -14,29 +15,11 @@ jsPsych.plugins["language-info"] = (function() {
     description: '',
     parameters: {
       languages: {
-        type: jsPsych.plugins.parameterType.COMPLEX,
+        type: jsPsych.plugins.parameterType.STRING,
         array: true,
         pretty_name: 'Languages',
         description: 'The languages the subject specified in language_info, ordered from most to least dominant',
-        default: undefined,
-        nested: {
-          language: {
-            type: jsPsych.plugins.parameterType.STRING,
-            pretty_name: 'Language',
-            default: 'test',
-            description: 'Language that subject will give additional information about'
-          },
-          age: {
-            type: jsPsych.plugins.parameterType.INT,
-            default: 0,
-            pretty_name: 'Age Learning Started'
-          },
-          years: {
-            type: jsPsych.plugins.parameterType.INT,
-            default: 0,
-            pretty_name: 'Years of Learning'
-          }
-        }
+        default: undefined
       },
       preamble: {
         type: jsPsych.plugins.parameterType.STRING,
@@ -49,30 +32,28 @@ jsPsych.plugins["language-info"] = (function() {
         pretty_name: 'Button label',
         default:  'Continue',
         description: 'The text that appears on the button to finish the trial.'
-      },
-      language_count: {
-        type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Number of Languages subject speaks',
-        default: 1,
-        description: 'The number of languages specified by the subject in the language_info'
       }
     }
   }
 
   plugin.trial = function(display_element, trial) {
+    // Initialize form and add preamble if any
     var html = '';
     if(trial.preamble !== null){
       html += '<div id="jspsych-language-info-preamble" class="jspsych-language-info-preamble">'+trial.preamble+'</div>';
     }
+    // Table headers and formatting
     html += '<table align="center" id="jspsych-language-info-table class="jspsych-language-info-table">';
     html += '<tr class="jspsych-language-info-header" id="jspsych-language-info-table-header">';
     html += '<td class="jspsych-language-info-header-col">Language</td>';
     html += '<td class="jspsych-language-info-header-col">Age Began</td>';
     html += '<td class="jspsych-language-info-header-col">Years Learned</td>';
     html += '</tr>';
+
+    //Show all languages in table
     for (var i = 0; i < trial.languages.length; i++){
       html += '<tr class="jspsych-language-info-lang-row">';
-      html += '<td class="jspsych-language-info-lang">' + trial.languages[i].language + '</td>';
+      html += '<td class="jspsych-language-info-lang">' + trial.languages[i] + '</td>';
       html += '<td class="jspsych-language-info-age">' + '<input class="jspsych-language-info-age-response" type="text" name="#jspsych-language-info-age-response" size="10"></input>' + '</td>';
       html += '<td class="jspsych-language-info-years">' + '<input class="jspsych-language-info-year-response" type="text" name="#jspsych-language-info-year-response" size="10"></input>' + '</td>';
       html += '</tr>'
