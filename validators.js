@@ -3,23 +3,19 @@ var langs;
 var color_enabled = "#37904b";
 var color_disabled = "#903738";
 
-
-function set_globals(){
-    // find_next_button();
-    
-    is_valid = true;
-}
-
-function allow_next(button, enable, text_on_false = "Please answer the questions above"){
+function allow_next(next_button, enable, text_on_false){
+    if(text_on_false == null){
+        text_on_false = "Please answer the questions above";
+    } 
     if(enable){
-        button.disabled = false;
-        button.style.backgroundColor = color_enabled;
-        button.innerText = "Continue";
+        next_button.innerText = "Continue";
+        next_button.disabled = false;
+        next_button.style.backgroundColor = color_enabled;
     }
     if(!enable){
-        button.disabled = true;  
-        button.style.backgroundColor = color_disabled;
-        button.innerText = text_on_false;
+        next_button.innerText = text_on_false;
+        next_button.disabled = true;  
+        next_button.style.backgroundColor = color_disabled;
         is_valid = false;
     }
 }

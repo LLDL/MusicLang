@@ -13,9 +13,7 @@ var contact = {
         {prompt: "Phone Number"},
         {prompt: "Email"}
     ],
-    data: {
-        subject_id
-    },
+    data: subject_id,
     on_load: function(){
         validate_contact();
         form = document.getElementById("jspsych-content");
@@ -24,7 +22,7 @@ var contact = {
     on_finish: function(){
         form.removeEventListener("change", validate_contact);
     }
-}
+};
 var personal = {
     type: 'survey-text',
     preamble: header + "<h2>Personal Information</h2>",
@@ -43,7 +41,7 @@ var personal = {
     on_finish: function(){
         form_curr.removeEventListener("change", validate_personal);
     }
-}
+};
 var background = {
     type: 'survey-text',
     preamble: header + "<h2>Background Information</h2>",
@@ -62,7 +60,7 @@ var background = {
     on_finish: function(){
         form_curr.removeEventListener("change", validate_background);
     }
-}
+};
 var dominant_languages = {
     type: 'survey-text',
     preamble: header + "<h2>Languages You Know</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
@@ -81,7 +79,7 @@ var dominant_languages = {
         form.removeEventListener("change", validate_dominant_languages);
     }
 
-}
+};
 var language_details = {
     type: 'language-info',
     preamble: header + "<h2>Test Language Details</h2>",
@@ -97,7 +95,7 @@ var language_details = {
     on_finish: function(){
         form.removeEventListener("change", validate_language_details);
     }
-}
+};
 var musical = {
     type: 'survey-text',
     preamble: header + "<h2>Musical Background</h2>",
@@ -113,7 +111,7 @@ var musical = {
         data.likely_invalid = likely_invalid;
         form.removeEventListener("change", validate_musical);
     }
-}
+};
 jsPsych.init({
     //production timeline:
     timeline: [contact, personal, background, dominant_languages, language_details, musical],
