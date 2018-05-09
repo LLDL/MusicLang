@@ -2,7 +2,7 @@ var subject_id = jsPsych.randomization.randomID(15); //random id assigned to eac
 var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to enable event listeners
 var likely_invalid = false; //gets set to true if blur_count>threshold
-var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //gets prepended to preludes
+var header = "<img id=\"logo\" src=\"assets/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //to be prepended to preludes
 
 var contact = {
     type: 'survey-text',
@@ -17,7 +17,7 @@ var contact = {
         subject_id
     },
     on_load: function(){
-        allow_next(false);
+        validate_contact();
         form = document.getElementById("jspsych-content");
         form.addEventListener("change", validate_contact);
     },
@@ -36,7 +36,7 @@ var personal = {
         {prompt: "If you have any learning disorders, please specify"}
     ],
     on_load: function(){
-        allow_next(false);
+        validate_personal();
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_personal);
     },
@@ -54,11 +54,8 @@ var background = {
         {prompt: "Parent 1's Native Language"},
         {prompt: "Parent 2's Native Language"}
     ],
-    data: {
-        subject_id
-    },
     on_load: function(){
-        allow_next(false);
+        validate_background();
         form_curr = document.getElementById("jspsych-content");
         form_curr.addEventListener("change", validate_background);
     },
@@ -76,7 +73,7 @@ var dominant_languages = {
         {prompt: "Fourth Most Dominant"}
     ],
     on_load: function(){
-        allow_next(false);
+        validate_dominant_languages();
         form = document.getElementById("jspsych-content");
         form.addEventListener("change", validate_dominant_languages);
     },
@@ -93,7 +90,7 @@ var language_details = {
         trial.languages = get_known_langs();
     },
     on_load: function(){
-        allow_next(false);
+        validate_language_details();
         form = document.getElementById("jspsych-content");
         form.addEventListener("change", validate_language_details);
     },
@@ -108,7 +105,7 @@ var musical = {
         {prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"}
     ],
     on_load: function(){
-        allow_next(false);
+        validate_musical();
         form = document.getElementById("jspsych-content");
         form.addEventListener("change", validate_musical);
     },
@@ -119,9 +116,9 @@ var musical = {
 }
 jsPsych.init({
     //production timeline:
-    //timeline: [contact, personal, background, dominant_languages, language_details, musical],
+    timeline: [contact, personal, background, dominant_languages, language_details, musical],
     //timeline for testing: 
-    timeline: [dominant_languages, language_details, musical],
+    //timeline: [dominant_languages, language_details, musical],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){
