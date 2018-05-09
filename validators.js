@@ -4,8 +4,9 @@ var is_valid;
 var langs;
 
 function find_next_button(){
-    next_button = document.getElementById("jspsych-survey-text-next");
-    if(next_button == null){
+    if(document.getElementById("jspsych-survey-text-next") != null){
+        next_button = document.getElementById("jspsych-survey-text-next");
+    }else{
         next_button = document.getElementById("jspsych-language-info-next");
     }
 }
@@ -161,7 +162,19 @@ function validate_language_details(){
     set_globals();
     allow_next(false);
     is_valid = true;
-
+    for(var i=0; i<4; i++){
+        currRow = document.getElementById("lang-row-" + i);
+        if(currRow == null || !is_valid){
+            break;
+        }
+        var age_began = currRow.children[1].children[0].value;
+        var years_learned = currRow.children[2].children[0].value;
+        if (isNaN(parseInt(age_began)) || ( age_began < 0 || age_began > 120)){
+            allow_next(false, "Please enter age you began learning "+ currRow.children[0].innerText);
+        } else if (isNaN(parseInt(years_learned)) || (years_learned < 0 || years_learned > 120)){
+            allow_next(false, "Please specify how many years you have learned " + currRow.children[0].innerText);
+        }
+    }
     if(is_valid){
         allow_next(true);
     }

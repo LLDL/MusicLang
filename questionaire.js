@@ -119,9 +119,9 @@ var musical = {
 }
 jsPsych.init({
     //production timeline:
-    timeline: [contact, personal, background, dominant_languages, language_details, musical],
+    //timeline: [contact, personal, background, dominant_languages, language_details, musical],
     //timeline for testing: 
-    // timeline: [background, dominant_languages, language_details, musical],
+    timeline: [dominant_languages, language_details, musical],
     show_progress_bar: true,
     //Checks how many times user left
     on_interaction_data_update: function(data){

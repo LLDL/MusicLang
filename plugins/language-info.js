@@ -55,7 +55,7 @@ jsPsych.plugins["language-info"] = (function() {
       if(trial.languages[i] == undefined){
         break;
       }
-      html += '<tr class="jspsych-language-info-lang-row">';
+      html += '<tr class="jspsych-language-info-lang-row" id="lang-row-'+ i +'">';
       html += '<td class="jspsych-language-info-lang">' + trial.languages[i] + '</td>';
       html += '<td class="jspsych-language-info-age">' + '<input class="jspsych-language-info-age-response" type="text" name="#jspsych-language-info-age-response" size="10"></input>' + '</td>';
       html += '<td class="jspsych-language-info-years">' + '<input class="jspsych-language-info-year-response" type="text" name="#jspsych-language-info-year-response" size="10"></input>' + '</td>';
