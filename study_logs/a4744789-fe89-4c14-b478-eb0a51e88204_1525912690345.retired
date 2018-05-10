@@ -1,6 +1,0 @@
-
-{"timestamp":1525912679779,"msg":"Initial entry","studyUuid":"a4744789-fe89-4c14-b478-eb0a51e88204","jatosVersion":"3.2.2","serversMac":"38-D5-47-19-19-77","hashFunction":"SHA-256"}
-{"msg":"Created study","timestamp":1525912679779}
-{"msg":"Removed batch","batchId":3,"timestamp":1525912690340}
-{"msg":"Removed study","timestamp":1525912690342}
-{"msg":"Last entry of the study log","studyUuid":"a4744789-fe89-4c14-b478-eb0a51e88204","timestamp":1525912690344}
