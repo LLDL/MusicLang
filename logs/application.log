@@ -1,0 +1,1453 @@
+2018-05-09 16:59:15,517 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
+2018-05-09 16:59:15,549 [INFO] - application - Creating Pool for datasource 'default'
+2018-05-09 16:59:15,556 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
+2018-05-09 16:59:15,771 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
+2018-05-09 16:59:15,826 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
+2018-05-09 16:59:16,032 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2018-05-09 16:59:16,033 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
+2018-05-09 16:59:16,066 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2018-05-09 16:59:16,066 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
+2018-05-09 16:59:16,260 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: h2PersistenceUnit
+	...]
+2018-05-09 16:59:16,323 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2018-05-09 16:59:16,324 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
+2018-05-09 16:59:16,325 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
+2018-05-09 16:59:16,360 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-09 16:59:16,495 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-09 16:59:16,750 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
+2018-05-09 16:59:17,903 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root
+2018-05-09 16:59:17,903 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_logs
+2018-05-09 16:59:18,135 [INFO] - g.Initializer - JATOS initialized
+2018-05-09 16:59:18,136 [INFO] - g.OnStartStop - JATOS has started
+2018-05-09 16:59:18,328 [INFO] - p.a.Play - Application started (Prod)
+2018-05-09 16:59:18,474 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
+2018-05-09 16:59:19,522 [WARN] - c.g.a.AuthenticationAction - Invalid session: user admin tried to access page /jatos from remote address 127.0.0.1.
+2018-05-09 16:59:19,580 [INFO] - gui_access - GET /jatos/login (null)
+2018-05-09 16:59:23,066 [INFO] - gui_access - POST /jatos/login (null)
+2018-05-09 16:59:23,092 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2018-05-09 16:59:23,163 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 16:59:23,287 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 16:59:33,460 [INFO] - gui_access - POST /jatos/import/study (admin)
+2018-05-09 16:59:33,999 [INFO] - g.ErrorHandler - JatosGuiException during call /jatos/import/study: Study is invalid
+2018-05-09 17:00:43,795 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:01:14,897 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:01:19,608 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:01:29,363 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:01:29,409 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:01:29,590 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:01:29,660 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910489547 (admin)
+2018-05-09 17:01:47,004 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:01:47,148 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:01:47,180 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910507115 (admin)
+2018-05-09 17:01:47,313 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:01:47,394 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:01:47,424 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910507371 (admin)
+2018-05-09 17:01:48,326 [INFO] - gui_access - GET /jatos/1/run (admin)
+2018-05-09 17:01:48,338 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:01:48,342 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-09 17:01:48,346 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:01:48,347 [INFO] - g.ErrorHandler - PublixException during call /publix/1/start?batchId=-1&jatosWorkerId=1: The study with ID 1 has no active components.
+2018-05-09 17:01:49,959 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:01:49,959 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-09 17:01:49,961 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:01:49,962 [INFO] - g.ErrorHandler - PublixException during call /publix/1/start?batchId=-1&jatosWorkerId=1: The study with ID 1 has no active components.
+2018-05-09 17:01:51,431 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910511374 (admin)
+2018-05-09 17:02:19,357 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:02:19,501 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:02:19,536 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910539470 (admin)
+2018-05-09 17:02:24,720 [INFO] - gui_access - GET /jatos/1/properties (admin)
+2018-05-09 17:02:27,664 [INFO] - gui_access - POST /jatos/1/properties (admin)
+2018-05-09 17:02:27,671 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:02:31,135 [INFO] - gui_access - GET /jatos/1/log?limit=100 (admin)
+2018-05-09 17:02:56,398 [INFO] - gui_access - POST /jatos/1/component (admin)
+2018-05-09 17:02:59,516 [INFO] - gui_access - POST /jatos/1/component (admin)
+2018-05-09 17:02:59,531 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-09 17:02:59,539 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:02:59,539 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-09 17:02:59,542 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:02:59,560 [INFO] - publix_access - GET /publix/1/1/start?srid=1
+2018-05-09 17:02:59,560 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 1, logged-in user's email admin
+2018-05-09 17:02:59,625 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,674 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,687 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,709 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,730 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,731 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,744 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,782 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,787 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,791 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,795 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,809 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,814 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,815 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:02:59,845 [INFO] - publix_access - GET /publix/1/1/initData?srid=1
+2018-05-09 17:02:59,846 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 1
+2018-05-09 17:02:59,866 [INFO] - publix_access - POST /publix/1/heartbeat?srid=1
+2018-05-09 17:02:59,902 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 1
+2018-05-09 17:03:02,626 [INFO] - publix_access - GET /publix/1/1/start?srid=1
+2018-05-09 17:03:02,627 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 1, logged-in user's email admin
+2018-05-09 17:03:02,645 [INFO] - publix_access - GET /publix/1/end?srid=1&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-09 17:03:02,645 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 1, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-09 17:03:02,662 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:03:02,742 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:03:02,772 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910582714 (admin)
+2018-05-09 17:03:04,689 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-09 17:03:04,696 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:03:04,696 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-09 17:03:04,698 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:03:04,708 [INFO] - publix_access - GET /publix/1/1/start?srid=2
+2018-05-09 17:03:04,708 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 2, logged-in user's email admin
+2018-05-09 17:03:04,760 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,762 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,763 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,764 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,765 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,767 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,782 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,790 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,793 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,796 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,804 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,812 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,815 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,816 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:04,887 [INFO] - publix_access - GET /publix/1/1/initData?srid=2
+2018-05-09 17:03:04,887 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 2
+2018-05-09 17:03:04,897 [INFO] - publix_access - POST /publix/1/heartbeat?srid=2
+2018-05-09 17:03:04,901 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 2
+2018-05-09 17:03:08,302 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:08,302 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:03:53,545 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910633434 (admin)
+2018-05-09 17:03:56,489 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-09 17:03:56,603 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:03:56,655 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1525910636581 (admin)
+2018-05-09 17:04:00,103 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910640056 (admin)
+2018-05-09 17:04:04,370 [INFO] - gui_access - DELETE /jatos/1/1 (admin)
+2018-05-09 17:04:04,401 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:04:04,402 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910640057 (admin)
+2018-05-09 17:04:56,169 [INFO] - gui_access - POST /jatos/import/study (admin)
+2018-05-09 17:04:56,262 [INFO] - g.ErrorHandler - JatosGuiException during call /jatos/import/study: Study is invalid
+2018-05-09 17:05:00,100 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:05:00,224 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:05:00,259 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910700198 (admin)
+2018-05-09 17:05:01,710 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:05:01,780 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:05:01,804 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525910701758 (admin)
+2018-05-09 17:05:03,994 [INFO] - gui_access - POST /jatos/1/lock/toggle (admin)
+2018-05-09 17:05:04,004 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:05:04,834 [INFO] - gui_access - POST /jatos/1/lock/toggle (admin)
+2018-05-09 17:05:04,844 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:05:07,516 [INFO] - gui_access - DELETE /jatos/1 (admin)
+2018-05-09 17:05:07,545 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:05:07,608 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:07:37,627 [INFO] - gui_access - POST /jatos/import/study (admin)
+2018-05-09 17:07:39,419 [INFO] - gui_access - POST /jatos/import/studyConfirmed (admin)
+2018-05-09 17:07:39,444 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:07:40,992 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:07:41,126 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:07:41,163 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525910861095 (admin)
+2018-05-09 17:08:07,885 [INFO] - gui_access - GET /jatos/2/2/properties (admin)
+2018-05-09 17:11:31,739 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:11:42,759 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:11:53,983 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:12:02,453 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:12:22,675 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:12:26,043 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:12:26,067 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:12:26,201 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:12:26,243 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911146174 (admin)
+2018-05-09 17:13:02,814 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:13:02,937 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:13:02,967 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911182908 (admin)
+2018-05-09 17:13:03,709 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:13:03,783 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:13:03,806 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911183762 (admin)
+2018-05-09 17:13:04,779 [INFO] - gui_access - GET /jatos/3/run (admin)
+2018-05-09 17:13:04,784 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:13:04,784 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:13:04,786 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:13:04,786 [INFO] - g.ErrorHandler - PublixException during call /publix/3/start?batchId=-1&jatosWorkerId=1: The study with ID 3 has no active components.
+2018-05-09 17:13:06,483 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:13:06,483 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:13:06,484 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:13:06,484 [INFO] - g.ErrorHandler - PublixException during call /publix/3/start?batchId=-1&jatosWorkerId=1: The study with ID 3 has no active components.
+2018-05-09 17:13:07,403 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911187351 (admin)
+2018-05-09 17:13:21,904 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:13:22,054 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:13:22,085 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911202023 (admin)
+2018-05-09 17:13:23,044 [INFO] - gui_access - GET /jatos/3/run (admin)
+2018-05-09 17:13:23,050 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:13:23,050 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:13:23,052 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:13:23,052 [INFO] - g.ErrorHandler - PublixException during call /publix/3/start?batchId=-1&jatosWorkerId=1: The study with ID 3 has no active components.
+2018-05-09 17:13:25,077 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911205035 (admin)
+2018-05-09 17:13:26,068 [INFO] - gui_access - GET /jatos/3/properties (admin)
+2018-05-09 17:13:45,495 [INFO] - gui_access - POST /jatos/3/component (admin)
+2018-05-09 17:13:45,503 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:13:45,506 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911205036 (admin)
+2018-05-09 17:13:46,687 [INFO] - gui_access - GET /jatos/3/3/run (admin)
+2018-05-09 17:13:46,695 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:13:46,695 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:13:46,698 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:13:46,708 [INFO] - publix_access - GET /publix/3/3/start?srid=3
+2018-05-09 17:13:46,708 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 3, logged-in user's email admin
+2018-05-09 17:13:46,762 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,793 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,796 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,796 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,797 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,805 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,838 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,843 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,851 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,855 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,858 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,862 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,869 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,871 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:13:46,954 [INFO] - publix_access - GET /publix/3/3/initData?srid=3
+2018-05-09 17:13:46,954 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 3, studyResultId 3
+2018-05-09 17:13:46,962 [INFO] - publix_access - POST /publix/3/heartbeat?srid=3
+2018-05-09 17:13:46,963 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 3
+2018-05-09 17:13:48,948 [INFO] - publix_access - GET /publix/3/3/start?srid=3
+2018-05-09 17:13:48,948 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 3, logged-in user's email admin
+2018-05-09 17:13:48,959 [INFO] - publix_access - GET /publix/3/end?srid=3&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+3%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:13:48,959 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 3, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 3). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:13:48,972 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:13:49,048 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:13:49,081 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911229021 (admin)
+2018-05-09 17:13:59,232 [INFO] - gui_access - GET /jatos/3/3/properties (admin)
+2018-05-09 17:14:10,050 [INFO] - gui_access - POST /jatos/3/3/properties (admin)
+2018-05-09 17:14:10,058 [INFO] - gui_access - GET /jatos/3/3/run (admin)
+2018-05-09 17:14:10,064 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:14:10,064 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:14:10,066 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:14:10,075 [INFO] - publix_access - GET /publix/3/3/start?srid=4
+2018-05-09 17:14:10,075 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 4, logged-in user's email admin
+2018-05-09 17:14:10,137 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,139 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,139 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,140 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,140 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,144 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,162 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,218 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,224 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,228 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,230 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,233 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,236 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,237 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:10,315 [INFO] - publix_access - GET /publix/3/3/initData?srid=4
+2018-05-09 17:14:10,315 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 3, studyResultId 4
+2018-05-09 17:14:10,324 [INFO] - publix_access - POST /publix/3/heartbeat?srid=4
+2018-05-09 17:14:10,327 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 4
+2018-05-09 17:14:12,482 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:14:12,482 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:48,916 [INFO] - publix_access - GET /publix/3/3/start?srid=4
+2018-05-09 17:15:48,916 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 4, logged-in user's email admin
+2018-05-09 17:15:48,925 [INFO] - publix_access - GET /publix/3/end?srid=4&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+3%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:15:48,925 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 4, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 3). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:15:48,936 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:15:49,123 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:15:49,165 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911349065 (admin)
+2018-05-09 17:15:51,006 [INFO] - gui_access - GET /jatos/3/3/run (admin)
+2018-05-09 17:15:51,013 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:15:51,013 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:15:51,015 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:15:51,025 [INFO] - publix_access - GET /publix/3/3/start?srid=5
+2018-05-09 17:15:51,025 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 5, logged-in user's email admin
+2018-05-09 17:15:51,088 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,088 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,089 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,089 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,089 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,091 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,092 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,191 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,215 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,220 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,225 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,225 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:15:51,320 [INFO] - publix_access - GET /publix/3/3/initData?srid=5
+2018-05-09 17:15:51,320 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 3, studyResultId 5
+2018-05-09 17:15:51,331 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 5
+2018-05-09 17:15:51,358 [INFO] - publix_access - POST /publix/3/heartbeat?srid=5
+2018-05-09 17:16:24,605 [INFO] - publix_access - GET /publix/3/3/start?srid=5
+2018-05-09 17:16:24,606 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 5, logged-in user's email admin
+2018-05-09 17:16:24,613 [INFO] - publix_access - GET /publix/3/end?srid=5&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+3%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:16:24,613 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 5, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 3). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:16:24,626 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:16:24,808 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:16:24,843 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911384755 (admin)
+2018-05-09 17:16:25,612 [INFO] - gui_access - GET /jatos/3/3/run (admin)
+2018-05-09 17:16:25,618 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:16:25,618 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:16:25,619 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:16:25,629 [INFO] - publix_access - GET /publix/3/3/start?srid=6
+2018-05-09 17:16:25,630 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 6, logged-in user's email admin
+2018-05-09 17:16:25,700 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,701 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,702 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,704 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,704 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,705 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,705 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,799 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,820 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,824 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,828 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,829 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:16:25,942 [INFO] - publix_access - GET /publix/3/3/initData?srid=6
+2018-05-09 17:16:25,943 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 3, studyResultId 6
+2018-05-09 17:16:25,955 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 6
+2018-05-09 17:16:25,975 [INFO] - publix_access - POST /publix/3/heartbeat?srid=6
+2018-05-09 17:16:28,666 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911388574 (admin)
+2018-05-09 17:17:41,321 [INFO] - gui_access - GET /jatos/3/3/run (admin)
+2018-05-09 17:17:41,326 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:17:41,326 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:17:41,328 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:17:41,350 [INFO] - publix_access - GET /publix/3/3/start?srid=7
+2018-05-09 17:17:41,350 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 7, logged-in user's email admin
+2018-05-09 17:17:41,472 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,474 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,475 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,475 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,475 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,476 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,500 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,656 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,682 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,688 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,694 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,695 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:17:41,786 [INFO] - publix_access - GET /publix/3/3/initData?srid=7
+2018-05-09 17:17:41,786 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 3, studyResultId 7
+2018-05-09 17:17:41,797 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 7
+2018-05-09 17:17:41,818 [INFO] - publix_access - POST /publix/3/heartbeat?srid=7
+2018-05-09 17:18:42,706 [INFO] - publix_access - GET /publix/3/3/start?srid=7
+2018-05-09 17:18:42,706 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 7, logged-in user's email admin
+2018-05-09 17:18:42,715 [INFO] - publix_access - GET /publix/3/end?srid=7&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+3%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:18:42,715 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 7, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 3). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:18:42,732 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:18:42,966 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:18:43,010 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911522913 (admin)
+2018-05-09 17:18:44,190 [INFO] - gui_access - GET /jatos/3/3/run (admin)
+2018-05-09 17:18:44,195 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:18:44,195 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:18:44,196 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:18:44,205 [INFO] - publix_access - GET /publix/3/3/start?srid=8
+2018-05-09 17:18:44,205 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 3, studyResultId 8, logged-in user's email admin
+2018-05-09 17:18:44,269 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,269 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,270 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,271 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,272 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,274 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,274 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,366 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,370 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,396 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,401 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,403 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/3/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:44,509 [INFO] - publix_access - GET /publix/3/3/initData?srid=8
+2018-05-09 17:18:44,509 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 3, studyResultId 8
+2018-05-09 17:18:44,520 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 8
+2018-05-09 17:18:44,542 [INFO] - publix_access - POST /publix/3/heartbeat?srid=8
+2018-05-09 17:18:46,215 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911526122 (admin)
+2018-05-09 17:18:48,932 [INFO] - gui_access - GET /jatos/3/3/clone (admin)
+2018-05-09 17:18:48,958 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911526123 (admin)
+2018-05-09 17:18:48,958 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:18:52,672 [INFO] - gui_access - DELETE /jatos/3/3 (admin)
+2018-05-09 17:18:52,687 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911526124 (admin)
+2018-05-09 17:18:52,687 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:18:53,658 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:18:53,665 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:18:53,665 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:18:53,666 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:18:53,676 [INFO] - publix_access - GET /publix/3/4/start?srid=9
+2018-05-09 17:18:53,676 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 9, logged-in user's email admin
+2018-05-09 17:18:53,745 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,748 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,749 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,750 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,752 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,753 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,777 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,840 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,847 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,873 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,876 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/3/4/jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:18:53,993 [INFO] - publix_access - GET /publix/3/4/initData?srid=9
+2018-05-09 17:18:53,994 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 9
+2018-05-09 17:18:54,004 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 9
+2018-05-09 17:18:54,028 [INFO] - publix_access - POST /publix/3/heartbeat?srid=9
+2018-05-09 17:19:40,181 [INFO] - publix_access - GET /publix/3/4/start?srid=9
+2018-05-09 17:19:40,181 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 9, logged-in user's email admin
+2018-05-09 17:19:40,188 [INFO] - publix_access - GET /publix/3/end?srid=9&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:19:40,188 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 9, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:19:40,197 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:19:40,498 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911580337 (admin)
+2018-05-09 17:19:40,499 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:19:41,464 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:19:41,470 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:19:41,470 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:19:41,471 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:19:41,480 [INFO] - publix_access - GET /publix/3/4/start?srid=10
+2018-05-09 17:19:41,480 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 10, logged-in user's email admin
+2018-05-09 17:19:41,483 [INFO] - g.ErrorHandler - PublixException during call /publix/3/4/start?srid=10: HTML file questionaire_clone.html in study assets questionaire couldn't be found.
+2018-05-09 17:19:44,578 [INFO] - publix_access - GET /publix/3/4/start?srid=10
+2018-05-09 17:19:44,578 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 10, logged-in user's email admin
+2018-05-09 17:19:44,581 [INFO] - g.ErrorHandler - PublixException during call /publix/3/4/start?srid=10: HTML file questionaire_clone.html in study assets questionaire couldn't be found.
+2018-05-09 17:19:45,552 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911585459 (admin)
+2018-05-09 17:19:47,137 [INFO] - gui_access - GET /jatos/3/4/properties (admin)
+2018-05-09 17:19:53,763 [INFO] - gui_access - POST /jatos/3/4/properties (admin)
+2018-05-09 17:19:53,771 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:19:53,778 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:19:53,778 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:19:53,779 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:19:53,787 [INFO] - publix_access - GET /publix/3/4/start?srid=11
+2018-05-09 17:19:53,787 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 11, logged-in user's email admin
+2018-05-09 17:19:54,183 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,183 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,186 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,187 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,188 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,189 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,451 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,451 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,454 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,461 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:54,462 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:19:55,118 [INFO] - publix_access - GET /publix/3/4/initData?srid=11
+2018-05-09 17:19:55,119 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 11
+2018-05-09 17:19:55,128 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 11
+2018-05-09 17:19:55,132 [INFO] - publix_access - POST /publix/3/heartbeat?srid=11
+2018-05-09 17:19:56,458 [INFO] - publix_access - GET /publix/3/4/start?srid=11
+2018-05-09 17:19:56,458 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 11, logged-in user's email admin
+2018-05-09 17:19:56,466 [INFO] - publix_access - GET /publix/3/end?srid=11&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:19:56,466 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 11, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:19:56,476 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:19:56,653 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:19:56,694 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911596603 (admin)
+2018-05-09 17:20:36,639 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:20:36,826 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:20:36,867 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525911636776 (admin)
+2018-05-09 17:20:38,793 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:20:38,978 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:20:39,025 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911638925 (admin)
+2018-05-09 17:20:40,041 [INFO] - gui_access - GET /jatos/3/run (admin)
+2018-05-09 17:20:40,047 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:20:40,047 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:20:40,048 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:20:40,058 [INFO] - publix_access - GET /publix/3/4/start?srid=12
+2018-05-09 17:20:40,058 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 12, logged-in user's email admin
+2018-05-09 17:20:40,457 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:40,584 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:40,585 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:40,585 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:40,586 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:40,587 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:40,711 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,091 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,095 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,099 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,103 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,110 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,110 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:20:41,890 [INFO] - publix_access - GET /publix/3/4/initData?srid=12
+2018-05-09 17:20:41,890 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 12
+2018-05-09 17:20:41,902 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 12
+2018-05-09 17:20:42,039 [INFO] - publix_access - POST /publix/3/heartbeat?srid=12
+2018-05-09 17:22:42,532 [INFO] - publix_access - POST /publix/3/heartbeat?srid=12
+2018-05-09 17:23:28,025 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
+2018-05-09 17:23:28,057 [INFO] - application - Creating Pool for datasource 'default'
+2018-05-09 17:23:28,063 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
+2018-05-09 17:23:28,281 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
+2018-05-09 17:23:28,336 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
+2018-05-09 17:23:28,520 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2018-05-09 17:23:28,524 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
+2018-05-09 17:23:28,554 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2018-05-09 17:23:28,554 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
+2018-05-09 17:23:28,724 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: h2PersistenceUnit
+	...]
+2018-05-09 17:23:28,762 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2018-05-09 17:23:28,763 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
+2018-05-09 17:23:28,764 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
+2018-05-09 17:23:28,787 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-09 17:23:28,904 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-09 17:23:29,125 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
+2018-05-09 17:23:30,163 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root
+2018-05-09 17:23:30,163 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_logs
+2018-05-09 17:23:30,372 [INFO] - g.Initializer - JATOS initialized
+2018-05-09 17:23:30,372 [INFO] - g.OnStartStop - JATOS has started
+2018-05-09 17:23:30,543 [INFO] - p.a.Play - Application started (Prod)
+2018-05-09 17:23:30,674 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
+2018-05-09 17:23:38,088 [WARN] - c.g.a.AuthenticationAction - Invalid session: user admin tried to access page / from remote address 127.0.0.1.
+2018-05-09 17:23:38,141 [INFO] - gui_access - GET /jatos/login (null)
+2018-05-09 17:23:41,001 [INFO] - gui_access - POST /jatos/login (null)
+2018-05-09 17:23:41,028 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2018-05-09 17:23:41,112 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:23:41,246 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:23:44,547 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:23:44,648 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:23:44,676 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911824616 (admin)
+2018-05-09 17:23:45,568 [INFO] - gui_access - GET /jatos/3/run (admin)
+2018-05-09 17:23:45,582 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:23:45,587 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:23:45,592 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:23:45,633 [INFO] - publix_access - GET /publix/3/4/start?srid=33
+2018-05-09 17:23:45,634 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 33, logged-in user's email admin
+2018-05-09 17:23:45,706 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,714 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,731 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,731 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,763 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,793 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,794 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,804 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:45,915 [INFO] - publix_access - GET /publix/3/4/initData?srid=33
+2018-05-09 17:23:45,916 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 33
+2018-05-09 17:23:45,926 [INFO] - publix_access - POST /publix/3/heartbeat?srid=33
+2018-05-09 17:23:45,959 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 33
+2018-05-09 17:23:49,171 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:23:49,172 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:25:08,822 [INFO] - g.ErrorHandler - bad request: Cannot parse parameter studyId as Long: For input string: "tests"
+2018-05-09 17:25:11,946 [INFO] - gui_access - GET /jatos/ (admin)
+2018-05-09 17:25:12,127 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:17,155 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:25:17,276 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:21,909 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:25:21,987 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:22,012 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911921963 (admin)
+2018-05-09 17:25:26,339 [INFO] - gui_access - GET /jatos/3/4/properties (admin)
+2018-05-09 17:25:30,910 [INFO] - gui_access - POST /jatos/3/4/properties (admin)
+2018-05-09 17:25:30,972 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:30,974 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911921964 (admin)
+2018-05-09 17:25:36,920 [INFO] - gui_access - GET /jatos/3/properties (admin)
+2018-05-09 17:25:40,161 [INFO] - gui_access - GET /jatos/3/workers (admin)
+2018-05-09 17:25:40,283 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:40,319 [INFO] - gui_access - GET /jatos/3/workersTableData?_=1525911940260 (admin)
+2018-05-09 17:25:43,623 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:25:43,699 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:43,717 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911943673 (admin)
+2018-05-09 17:25:45,044 [INFO] - gui_access - GET /jatos/3/batchManager (admin)
+2018-05-09 17:25:45,114 [INFO] - gui_access - GET /jatos/3/batches (admin)
+2018-05-09 17:25:45,124 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:47,710 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:25:47,782 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:47,802 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911947757 (admin)
+2018-05-09 17:25:55,334 [INFO] - gui_access - GET /jatos/3/4/results (admin)
+2018-05-09 17:25:55,401 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:25:55,443 [INFO] - gui_access - GET /jatos/3/4/tableData?_=1525911955380 (admin)
+2018-05-09 17:26:01,671 [INFO] - gui_access - DELETE /jatos/3/4/allResults (admin)
+2018-05-09 17:26:01,695 [INFO] - gui_access - GET /jatos/3/4/tableData?_=1525911955381 (admin)
+2018-05-09 17:26:03,358 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:26:03,454 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:26:03,500 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911963424 (admin)
+2018-05-09 17:26:05,172 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:26:05,178 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:26:05,178 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:26:05,180 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:26:05,192 [INFO] - publix_access - GET /publix/3/4/start?srid=34
+2018-05-09 17:26:05,192 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 34, logged-in user's email admin
+2018-05-09 17:26:05,249 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,251 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,253 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,255 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,257 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,249 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,249 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,289 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,293 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,296 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,299 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,305 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,306 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:05,391 [INFO] - publix_access - GET /publix/3/4/initData?srid=34
+2018-05-09 17:26:05,391 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 34
+2018-05-09 17:26:05,416 [INFO] - publix_access - POST /publix/3/heartbeat?srid=34
+2018-05-09 17:26:05,416 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 34
+2018-05-09 17:26:09,536 [INFO] - publix_access - GET /publix/3/4/start?srid=34
+2018-05-09 17:26:09,537 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 34, logged-in user's email admin
+2018-05-09 17:26:09,554 [INFO] - publix_access - GET /publix/3/end?srid=34&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:26:09,554 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 34, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:26:09,577 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:26:09,685 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:26:09,727 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911969650 (admin)
+2018-05-09 17:26:16,992 [INFO] - gui_access - GET /jatos/3/4/properties (admin)
+2018-05-09 17:26:32,819 [INFO] - gui_access - POST /jatos/3/4/properties (admin)
+2018-05-09 17:26:32,830 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:26:32,836 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:26:32,836 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:26:32,838 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:26:32,850 [INFO] - publix_access - GET /publix/3/4/start?srid=35
+2018-05-09 17:26:32,850 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 35, logged-in user's email admin
+2018-05-09 17:26:32,908 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,910 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,911 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,911 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,913 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,913 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,959 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,986 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,989 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,992 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:32,995 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:33,000 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:33,000 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:33,097 [INFO] - publix_access - GET /publix/3/4/initData?srid=35
+2018-05-09 17:26:33,097 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 35
+2018-05-09 17:26:33,105 [INFO] - publix_access - POST /publix/3/heartbeat?srid=35
+2018-05-09 17:26:33,108 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 35
+2018-05-09 17:26:34,748 [INFO] - publix_access - GET /publix/3/4/start?srid=35
+2018-05-09 17:26:34,748 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 35, logged-in user's email admin
+2018-05-09 17:26:34,756 [INFO] - publix_access - GET /publix/3/end?srid=35&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:26:34,757 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 35, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:26:34,768 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:26:34,843 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:26:34,877 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525911994815 (admin)
+2018-05-09 17:26:52,774 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:26:52,900 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:26:52,934 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912012872 (admin)
+2018-05-09 17:26:54,304 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:26:54,311 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:26:54,311 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:26:54,313 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:26:54,321 [INFO] - publix_access - GET /publix/3/4/start?srid=36
+2018-05-09 17:26:54,321 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 36, logged-in user's email admin
+2018-05-09 17:26:54,375 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,376 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,376 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,378 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,381 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,381 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,382 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,419 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,443 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,451 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,455 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,476 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:54,477 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:55,326 [INFO] - publix_access - GET /publix/3/4/initData?srid=36
+2018-05-09 17:26:55,326 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 36
+2018-05-09 17:26:55,350 [INFO] - publix_access - POST /publix/3/heartbeat?srid=36
+2018-05-09 17:26:55,351 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 36
+2018-05-09 17:26:56,546 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:26:56,546 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:27:55,519 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jatos_directory/logs/application.log but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:27:59,606 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jatos_directory/logs/application.log but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:00,193 [INFO] - publix_access - GET /publix/3/4/start?srid=36
+2018-05-09 17:28:00,193 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 36, logged-in user's email admin
+2018-05-09 17:28:00,201 [INFO] - publix_access - GET /publix/3/end?srid=36&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:28:00,201 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 36, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:28:00,439 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912080349 (admin)
+2018-05-09 17:28:01,712 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:28:01,719 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:28:01,719 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:28:01,721 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:28:01,729 [INFO] - publix_access - GET /publix/3/4/start?srid=37
+2018-05-09 17:28:01,730 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 37, logged-in user's email admin
+2018-05-09 17:28:01,785 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,788 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,791 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,796 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,796 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,798 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,796 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,884 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/jspsych.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,889 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/plugins/jspsych-survey-text.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,918 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file plugins/language-info.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,924 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/validators.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,928 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file scripts/questionaire.js but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,933 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jspsych-6.0.2/css/jspsych.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:01,933 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file styles/stylesheet.css but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:02,027 [INFO] - publix_access - GET /publix/3/4/initData?srid=37
+2018-05-09 17:28:02,027 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 37
+2018-05-09 17:28:02,057 [INFO] - publix_access - POST /publix/3/heartbeat?srid=37
+2018-05-09 17:28:02,058 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 37
+2018-05-09 17:28:03,277 [INFO] - publix_access - GET /publix/3/4/start?srid=37
+2018-05-09 17:28:03,277 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 37, logged-in user's email admin
+2018-05-09 17:28:03,285 [INFO] - publix_access - GET /publix/3/end?srid=37&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:28:03,285 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 37, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:28:03,297 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:28:03,466 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:28:03,508 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912083417 (admin)
+2018-05-09 17:28:08,901 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file jatos_directory/logs/application.lo but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:13,085 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file logs/application.lo but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:16,261 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file logs/application.log but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:28:21,582 [INFO] - gui_access - GET / (admin)
+2018-05-09 17:28:21,697 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:28:23,094 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:28:23,169 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:28:23,195 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912103143 (admin)
+2018-05-09 17:28:24,261 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:28:24,325 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:28:24,348 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912104303 (admin)
+2018-05-09 17:28:25,358 [INFO] - gui_access - GET /jatos/2/2/run (admin)
+2018-05-09 17:28:25,363 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:28:25,364 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:28:25,365 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:28:25,373 [INFO] - publix_access - GET /publix/2/2/start?srid=38
+2018-05-09 17:28:25,373 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 38, logged-in user's email admin
+2018-05-09 17:28:25,567 [INFO] - publix_access - GET /publix/2/2/initData?srid=38
+2018-05-09 17:28:25,567 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 2, studyResultId 38
+2018-05-09 17:28:25,578 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 38
+2018-05-09 17:28:25,604 [INFO] - publix_access - POST /publix/2/heartbeat?srid=38
+2018-05-09 17:28:27,928 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912107882 (admin)
+2018-05-09 17:29:36,688 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:29:36,813 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:29:36,848 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912176787 (admin)
+2018-05-09 17:29:37,383 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:29:37,459 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:29:37,480 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912177435 (admin)
+2018-05-09 17:29:38,336 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:29:38,342 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:29:38,342 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:29:38,343 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:29:38,352 [INFO] - publix_access - GET /publix/3/4/start?srid=39
+2018-05-09 17:29:38,352 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 39, logged-in user's email admin
+2018-05-09 17:29:38,419 [INFO] - g.ErrorHandler - not found: Requested page  /assets/questionaire/javascripts/jatos.js couldn't be found.
+2018-05-09 17:29:38,423 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:29:38,563 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:29:40,511 [INFO] - publix_access - GET /publix/3/4/start?srid=39
+2018-05-09 17:29:40,511 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 39, logged-in user's email admin
+2018-05-09 17:29:40,519 [INFO] - publix_access - GET /publix/3/end?srid=39&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+3%29+at+this+point.
+2018-05-09 17:29:40,519 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 3, studyResultId 39, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 3) at this point."
+2018-05-09 17:29:40,530 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:29:40,599 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:29:40,622 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912180577 (admin)
+2018-05-09 17:29:51,766 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:29:51,888 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:29:51,918 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912191860 (admin)
+2018-05-09 17:29:53,039 [INFO] - gui_access - GET /jatos/3/4/run (admin)
+2018-05-09 17:29:53,044 [INFO] - publix_access - GET /publix/3/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:29:53,044 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 3, batchId -1, logged-in user's email admin
+2018-05-09 17:29:53,046 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 3, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:29:53,056 [INFO] - publix_access - GET /publix/3/4/start?srid=40
+2018-05-09 17:29:53,056 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 3, componentId 4, studyResultId 40, logged-in user's email admin
+2018-05-09 17:29:53,110 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:29:53,219 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:29:53,238 [INFO] - publix_access - GET /publix/3/4/initData?srid=40
+2018-05-09 17:29:53,238 [INFO] - c.p.Publix - .getInitData: studyId 3, componentId 4, studyResultId 40
+2018-05-09 17:29:53,272 [INFO] - publix_access - POST /publix/3/heartbeat?srid=40
+2018-05-09 17:29:53,273 [INFO] - c.p.JatosBatchChannel - .open: studyId 3, studyResultId 40
+2018-05-09 17:29:54,644 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912194604 (admin)
+2018-05-09 17:30:12,739 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
+2018-05-09 17:30:12,765 [INFO] - application - Creating Pool for datasource 'default'
+2018-05-09 17:30:12,771 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
+2018-05-09 17:30:12,925 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
+2018-05-09 17:30:12,958 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
+2018-05-09 17:30:13,120 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2018-05-09 17:30:13,121 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
+2018-05-09 17:30:13,149 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2018-05-09 17:30:13,149 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
+2018-05-09 17:30:13,344 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: h2PersistenceUnit
+	...]
+2018-05-09 17:30:13,386 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2018-05-09 17:30:13,387 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
+2018-05-09 17:30:13,388 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
+2018-05-09 17:30:13,411 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-09 17:30:13,519 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-09 17:30:13,748 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
+2018-05-09 17:30:15,096 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root
+2018-05-09 17:30:15,097 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_logs
+2018-05-09 17:30:15,319 [INFO] - g.Initializer - JATOS initialized
+2018-05-09 17:30:15,320 [INFO] - g.OnStartStop - JATOS has started
+2018-05-09 17:30:15,482 [INFO] - p.a.Play - Application started (Prod)
+2018-05-09 17:30:15,614 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
+2018-05-09 17:30:16,551 [WARN] - c.g.a.AuthenticationAction - Invalid session: user admin tried to access page / from remote address 127.0.0.1.
+2018-05-09 17:30:16,603 [INFO] - gui_access - GET /jatos/login (null)
+2018-05-09 17:30:19,654 [INFO] - gui_access - POST /jatos/login (null)
+2018-05-09 17:30:19,680 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2018-05-09 17:30:19,756 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:30:19,881 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:31:21,900 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:31:31,055 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:31:36,289 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:31:39,827 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:31:52,955 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:32:04,472 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:32:09,556 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:32:20,833 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:32:28,649 [INFO] - gui_access - POST /jatos/import/study (admin)
+2018-05-09 17:32:30,269 [INFO] - gui_access - POST /jatos/import/studyConfirmed (admin)
+2018-05-09 17:32:30,291 [ERROR] - g.c.StudyLogger - A study log with C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_logs\8b224e96-14fa-4c1d-ac7b-f457498e8880.log exists already.
+2018-05-09 17:32:30,333 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:32:31,642 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:32:31,795 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:32:31,827 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525912351759 (admin)
+2018-05-09 17:33:20,612 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:24,620 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:25,021 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:34,302 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:35,218 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:38,030 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:48,091 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:33:50,743 [INFO] - gui_access - GET /jatos/1/1/properties (admin)
+2018-05-09 17:34:00,727 [INFO] - gui_access - GET /jatos/1/properties (admin)
+2018-05-09 17:34:14,968 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:34:15,000 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:34:15,122 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:34:15,160 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912455098 (admin)
+2018-05-09 17:34:25,565 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:34:25,708 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:34:25,739 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912465679 (admin)
+2018-05-09 17:34:26,441 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:34:26,507 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:34:26,526 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912466488 (admin)
+2018-05-09 17:34:44,291 [INFO] - gui_access - POST /jatos/2/component (admin)
+2018-05-09 17:34:44,312 [INFO] - gui_access - GET /jatos/2/2/run (admin)
+2018-05-09 17:34:44,322 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:34:44,328 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:34:44,331 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:34:44,351 [INFO] - publix_access - GET /publix/2/2/start?srid=1
+2018-05-09 17:34:44,352 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 1, logged-in user's email admin
+2018-05-09 17:34:44,499 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:34:44,615 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:34:44,662 [INFO] - publix_access - GET /publix/2/2/initData?srid=1
+2018-05-09 17:34:44,663 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 2, studyResultId 1
+2018-05-09 17:34:44,709 [INFO] - publix_access - POST /publix/2/heartbeat?srid=1
+2018-05-09 17:34:44,724 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 1
+2018-05-09 17:34:46,496 [INFO] - publix_access - GET /publix/2/2/start?srid=1
+2018-05-09 17:34:46,497 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 1, logged-in user's email admin
+2018-05-09 17:34:46,515 [INFO] - publix_access - GET /publix/2/end?srid=1&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+2%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:34:46,516 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 1, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 2). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:34:46,531 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:34:46,611 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:34:46,635 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912486580 (admin)
+2018-05-09 17:34:47,957 [INFO] - gui_access - GET /jatos/2/2/run (admin)
+2018-05-09 17:34:47,963 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:34:47,963 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:34:47,965 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:34:47,975 [INFO] - publix_access - GET /publix/2/2/start?srid=2
+2018-05-09 17:34:47,975 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 2, logged-in user's email admin
+2018-05-09 17:34:48,039 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:34:48,135 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:34:48,156 [INFO] - publix_access - GET /publix/2/2/initData?srid=2
+2018-05-09 17:34:48,156 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 2, studyResultId 2
+2018-05-09 17:34:48,195 [INFO] - publix_access - POST /publix/2/heartbeat?srid=2
+2018-05-09 17:34:48,197 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 2
+2018-05-09 17:35:49,935 [INFO] - publix_access - GET /publix/2/2/start?srid=2
+2018-05-09 17:35:49,935 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 2, logged-in user's email admin
+2018-05-09 17:35:49,944 [INFO] - publix_access - GET /publix/2/end?srid=2&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+2%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:35:49,944 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 2, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 2). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:35:49,956 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:35:50,206 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:35:50,245 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912550140 (admin)
+2018-05-09 17:35:51,577 [INFO] - gui_access - GET /jatos/2/2/run (admin)
+2018-05-09 17:35:51,584 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:35:51,584 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:35:51,586 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:35:51,598 [INFO] - publix_access - GET /publix/2/2/start?srid=3
+2018-05-09 17:35:51,598 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 3, logged-in user's email admin
+2018-05-09 17:35:51,662 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:35:51,763 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/plugins/language-info.js
+2018-05-09 17:35:51,842 [INFO] - publix_access - GET /publix/2/2/initData?srid=3
+2018-05-09 17:35:51,842 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 2, studyResultId 3
+2018-05-09 17:35:51,857 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 3
+2018-05-09 17:35:51,884 [INFO] - publix_access - POST /publix/2/heartbeat?srid=3
+2018-05-09 17:36:16,211 [INFO] - publix_access - GET /publix/2/2/start?srid=3
+2018-05-09 17:36:16,211 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 3, logged-in user's email admin
+2018-05-09 17:36:16,223 [INFO] - publix_access - GET /publix/2/end?srid=3&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+2%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:36:16,224 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 3, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 2). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:36:16,237 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:36:16,525 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:36:16,571 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912576451 (admin)
+2018-05-09 17:36:17,926 [INFO] - gui_access - GET /jatos/2/2/run (admin)
+2018-05-09 17:36:17,933 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:36:17,933 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:36:17,934 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:36:17,944 [INFO] - publix_access - GET /publix/2/2/start?srid=4
+2018-05-09 17:36:17,944 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 4, logged-in user's email admin
+2018-05-09 17:36:18,174 [INFO] - publix_access - GET /publix/2/2/initData?srid=4
+2018-05-09 17:36:18,174 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 2, studyResultId 4
+2018-05-09 17:36:18,190 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 4
+2018-05-09 17:36:18,209 [INFO] - publix_access - POST /publix/2/heartbeat?srid=4
+2018-05-09 17:37:25,887 [INFO] - publix_access - GET /publix/2/2/start?srid=4
+2018-05-09 17:37:25,888 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 2, studyResultId 4, logged-in user's email admin
+2018-05-09 17:37:25,897 [INFO] - publix_access - GET /publix/2/end?srid=4&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+2%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:37:25,897 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 4, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 2). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:37:25,909 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:37:26,099 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:37:26,138 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912646047 (admin)
+2018-05-09 17:37:28,173 [INFO] - gui_access - GET /jatos/2/2/clone (admin)
+2018-05-09 17:37:28,195 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:37:28,195 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912646048 (admin)
+2018-05-09 17:37:33,229 [INFO] - gui_access - DELETE /jatos/2/2 (admin)
+2018-05-09 17:37:33,260 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912646049 (admin)
+2018-05-09 17:37:33,261 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:37:48,111 [INFO] - gui_access - DELETE /jatos/2/3 (admin)
+2018-05-09 17:37:48,132 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:37:48,135 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912646050 (admin)
+2018-05-09 17:37:59,525 [INFO] - gui_access - GET /jatos/2/clone (admin)
+2018-05-09 17:37:59,785 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:38:06,100 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:38:06,303 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:38:06,340 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912686238 (admin)
+2018-05-09 17:38:07,295 [INFO] - gui_access - GET /jatos/3 (admin)
+2018-05-09 17:38:07,474 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:38:07,509 [INFO] - gui_access - GET /jatos/3/componentsTableData?_=1525912687423 (admin)
+2018-05-09 17:38:10,330 [INFO] - gui_access - DELETE /jatos/3 (admin)
+2018-05-09 17:38:10,359 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:38:10,585 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:38:11,169 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:38:11,359 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:38:11,409 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912691295 (admin)
+2018-05-09 17:38:12,773 [INFO] - gui_access - GET /jatos/2/run (admin)
+2018-05-09 17:38:12,779 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:38:12,779 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:38:12,780 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:38:12,782 [INFO] - g.ErrorHandler - PublixException during call /publix/2/start?batchId=-1&jatosWorkerId=1: The study with ID 2 has no active components.
+2018-05-09 17:38:14,391 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912694302 (admin)
+2018-05-09 17:38:32,115 [INFO] - gui_access - POST /jatos/2/component (admin)
+2018-05-09 17:38:32,126 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:38:32,132 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:38:32,132 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:38:32,134 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:38:32,145 [INFO] - publix_access - GET /publix/2/4/start?srid=5
+2018-05-09 17:38:32,146 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 5, logged-in user's email admin
+2018-05-09 17:38:32,409 [INFO] - publix_access - GET /publix/2/4/initData?srid=5
+2018-05-09 17:38:32,410 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 5
+2018-05-09 17:38:32,444 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 5
+2018-05-09 17:38:32,446 [INFO] - publix_access - POST /publix/2/heartbeat?srid=5
+2018-05-09 17:39:02,064 [INFO] - publix_access - GET /publix/2/4/start?srid=5
+2018-05-09 17:39:02,064 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 5, logged-in user's email admin
+2018-05-09 17:39:02,072 [INFO] - publix_access - GET /publix/2/end?srid=5&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:39:02,072 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 5, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:39:02,086 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:39:02,268 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:39:02,310 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912742217 (admin)
+2018-05-09 17:39:03,358 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:39:03,364 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:39:03,364 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:39:03,366 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:39:03,374 [INFO] - publix_access - GET /publix/2/4/start?srid=6
+2018-05-09 17:39:03,375 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 6, logged-in user's email admin
+2018-05-09 17:39:03,591 [INFO] - publix_access - GET /publix/2/4/initData?srid=6
+2018-05-09 17:39:03,591 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 6
+2018-05-09 17:39:03,613 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 6
+2018-05-09 17:39:03,676 [INFO] - publix_access - POST /publix/2/heartbeat?srid=6
+2018-05-09 17:39:24,364 [INFO] - publix_access - GET /publix/2/4/start?srid=6
+2018-05-09 17:39:24,364 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 6, logged-in user's email admin
+2018-05-09 17:39:24,376 [INFO] - publix_access - GET /publix/2/end?srid=6&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:39:24,376 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 6, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:39:24,388 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:39:24,627 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:39:24,671 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912764575 (admin)
+2018-05-09 17:39:25,589 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:39:25,595 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:39:25,595 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:39:25,596 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:39:25,607 [INFO] - publix_access - GET /publix/2/4/start?srid=7
+2018-05-09 17:39:25,607 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 7, logged-in user's email admin
+2018-05-09 17:39:25,817 [INFO] - publix_access - GET /publix/2/4/initData?srid=7
+2018-05-09 17:39:25,818 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 7
+2018-05-09 17:39:25,841 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 7
+2018-05-09 17:39:25,870 [INFO] - publix_access - POST /publix/2/heartbeat?srid=7
+2018-05-09 17:39:42,762 [INFO] - publix_access - GET /publix/2/4/start?srid=7
+2018-05-09 17:39:42,763 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 7, logged-in user's email admin
+2018-05-09 17:39:42,777 [INFO] - publix_access - GET /publix/2/end?srid=7&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:39:42,777 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 7, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:39:42,788 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:39:43,030 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:39:43,070 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912782978 (admin)
+2018-05-09 17:39:44,189 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:39:44,194 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:39:44,194 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:39:44,195 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:39:44,203 [INFO] - publix_access - GET /publix/2/4/start?srid=8
+2018-05-09 17:39:44,203 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 8, logged-in user's email admin
+2018-05-09 17:39:44,444 [INFO] - publix_access - GET /publix/2/4/initData?srid=8
+2018-05-09 17:39:44,445 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 8
+2018-05-09 17:39:44,461 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 8
+2018-05-09 17:39:44,481 [INFO] - publix_access - POST /publix/2/heartbeat?srid=8
+2018-05-09 17:39:46,628 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912786539 (admin)
+2018-05-09 17:41:16,402 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:41:16,585 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:41:16,618 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912876532 (admin)
+2018-05-09 17:41:17,525 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:41:17,531 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:41:17,531 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:41:17,532 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:41:17,542 [INFO] - publix_access - GET /publix/2/4/start?srid=9
+2018-05-09 17:41:17,542 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 9, logged-in user's email admin
+2018-05-09 17:41:18,018 [INFO] - publix_access - GET /publix/2/4/initData?srid=9
+2018-05-09 17:41:18,018 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 9
+2018-05-09 17:41:18,030 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 9
+2018-05-09 17:41:18,051 [INFO] - publix_access - POST /publix/2/heartbeat?srid=9
+2018-05-09 17:41:30,626 [INFO] - publix_access - GET /publix/2/4/start?srid=9
+2018-05-09 17:41:30,626 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 9, logged-in user's email admin
+2018-05-09 17:41:30,632 [INFO] - publix_access - GET /publix/2/end?srid=9&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:41:30,632 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 9, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:41:30,643 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:41:30,827 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:41:30,865 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912890777 (admin)
+2018-05-09 17:41:32,336 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:41:32,341 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:41:32,341 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:41:32,342 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:41:32,352 [INFO] - publix_access - GET /publix/2/4/start?srid=10
+2018-05-09 17:41:32,352 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 10, logged-in user's email admin
+2018-05-09 17:41:32,591 [INFO] - publix_access - GET /publix/2/4/initData?srid=10
+2018-05-09 17:41:32,591 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 10
+2018-05-09 17:41:32,615 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 10
+2018-05-09 17:41:32,640 [INFO] - publix_access - POST /publix/2/heartbeat?srid=10
+2018-05-09 17:41:33,877 [INFO] - publix_access - GET /publix/2/4/start?srid=10
+2018-05-09 17:41:33,877 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 10, logged-in user's email admin
+2018-05-09 17:41:33,882 [INFO] - publix_access - GET /publix/2/end?srid=10&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:41:33,883 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 10, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:41:33,893 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:41:34,071 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:41:34,115 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912894019 (admin)
+2018-05-09 17:41:39,770 [INFO] - gui_access - GET /jatos/2/run (admin)
+2018-05-09 17:41:39,774 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:41:39,774 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:41:39,775 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:41:39,785 [INFO] - publix_access - GET /publix/2/4/start?srid=11
+2018-05-09 17:41:39,785 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 11, logged-in user's email admin
+2018-05-09 17:41:40,035 [INFO] - publix_access - GET /publix/2/4/initData?srid=11
+2018-05-09 17:41:40,036 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 11
+2018-05-09 17:41:40,054 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 11
+2018-05-09 17:41:40,092 [INFO] - publix_access - POST /publix/2/heartbeat?srid=11
+2018-05-09 17:42:29,877 [INFO] - publix_access - GET /publix/2/4/start?srid=11
+2018-05-09 17:42:29,877 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 11, logged-in user's email admin
+2018-05-09 17:42:29,887 [INFO] - publix_access - GET /publix/2/end?srid=11&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:42:29,887 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 11, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:42:29,898 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:42:30,101 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:42:30,143 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912950044 (admin)
+2018-05-09 17:42:31,165 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:42:31,170 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:42:31,170 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:42:31,171 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:42:31,181 [INFO] - publix_access - GET /publix/2/4/start?srid=12
+2018-05-09 17:42:31,181 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 12, logged-in user's email admin
+2018-05-09 17:42:31,405 [INFO] - publix_access - GET /publix/2/4/initData?srid=12
+2018-05-09 17:42:31,406 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 12
+2018-05-09 17:42:31,426 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 12
+2018-05-09 17:42:31,455 [INFO] - publix_access - POST /publix/2/heartbeat?srid=12
+2018-05-09 17:43:12,916 [INFO] - publix_access - GET /publix/2/4/start?srid=12
+2018-05-09 17:43:12,916 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 12, logged-in user's email admin
+2018-05-09 17:43:12,925 [INFO] - publix_access - GET /publix/2/end?srid=12&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:43:12,925 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 12, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:43:12,935 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:43:13,126 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:43:13,170 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525912993068 (admin)
+2018-05-09 17:43:14,179 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:43:14,185 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:43:14,185 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:43:14,186 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:43:14,194 [INFO] - publix_access - GET /publix/2/4/start?srid=13
+2018-05-09 17:43:14,195 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 13, logged-in user's email admin
+2018-05-09 17:43:25,487 [INFO] - publix_access - GET /publix/2/4/start?srid=13
+2018-05-09 17:43:25,487 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 13, logged-in user's email admin
+2018-05-09 17:43:25,494 [INFO] - publix_access - GET /publix/2/end?srid=13&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:43:25,494 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 13, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:43:25,505 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:43:25,698 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:43:25,743 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525913005641 (admin)
+2018-05-09 17:43:27,245 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:43:27,251 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:43:27,251 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:43:27,252 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:43:27,260 [INFO] - publix_access - GET /publix/2/4/start?srid=14
+2018-05-09 17:43:27,260 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 14, logged-in user's email admin
+2018-05-09 17:43:51,002 [INFO] - publix_access - GET /publix/2/4/start?srid=14
+2018-05-09 17:43:51,002 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 14, logged-in user's email admin
+2018-05-09 17:43:51,012 [INFO] - publix_access - GET /publix/2/end?srid=14&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:43:51,012 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 14, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:43:51,022 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:43:51,217 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:43:51,260 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525913031162 (admin)
+2018-05-09 17:43:52,267 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:43:52,273 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:43:52,273 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:43:52,274 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:43:52,284 [INFO] - publix_access - GET /publix/2/4/start?srid=15
+2018-05-09 17:43:52,284 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 15, logged-in user's email admin
+2018-05-09 17:43:52,512 [INFO] - publix_access - GET /publix/2/4/initData?srid=15
+2018-05-09 17:43:52,512 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 15
+2018-05-09 17:43:52,535 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 15
+2018-05-09 17:43:52,569 [INFO] - publix_access - POST /publix/2/heartbeat?srid=15
+2018-05-09 17:44:10,644 [INFO] - publix_access - GET /publix/2/4/start?srid=15
+2018-05-09 17:44:10,644 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 15, logged-in user's email admin
+2018-05-09 17:44:10,649 [INFO] - publix_access - GET /publix/2/end?srid=15&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:44:10,649 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 15, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:44:10,661 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:44:10,851 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:44:10,889 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525913050796 (admin)
+2018-05-09 17:44:11,915 [INFO] - gui_access - GET /jatos/2/4/run (admin)
+2018-05-09 17:44:11,921 [INFO] - publix_access - GET /publix/2/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:44:11,921 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 2, batchId -1, logged-in user's email admin
+2018-05-09 17:44:11,922 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 2, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:44:11,931 [INFO] - publix_access - GET /publix/2/4/start?srid=16
+2018-05-09 17:44:11,931 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 16, logged-in user's email admin
+2018-05-09 17:44:12,159 [INFO] - publix_access - GET /publix/2/4/initData?srid=16
+2018-05-09 17:44:12,160 [INFO] - c.p.Publix - .getInitData: studyId 2, componentId 4, studyResultId 16
+2018-05-09 17:44:12,191 [INFO] - c.p.JatosBatchChannel - .open: studyId 2, studyResultId 16
+2018-05-09 17:44:12,212 [INFO] - publix_access - POST /publix/2/heartbeat?srid=16
+2018-05-09 17:45:50,274 [INFO] - publix_access - GET /publix/2/4/start?srid=16
+2018-05-09 17:45:50,274 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 2, componentId 4, studyResultId 16, logged-in user's email admin
+2018-05-09 17:45:50,282 [INFO] - publix_access - GET /publix/2/end?srid=16&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+4%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+2%29+at+this+point.
+2018-05-09 17:45:50,282 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 2, studyResultId 16, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 4). Unfortunately it is neccessary to finish this study (ID: 2) at this point."
+2018-05-09 17:45:50,295 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:45:50,516 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:45:50,554 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525913150460 (admin)
+2018-05-09 17:46:05,649 [INFO] - gui_access - DELETE /jatos/2/4 (admin)
+2018-05-09 17:46:05,669 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525913150461 (admin)
+2018-05-09 17:46:05,669 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:46:06,568 [INFO] - gui_access - GET /jatos/2 (admin)
+2018-05-09 17:46:06,749 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:46:06,785 [INFO] - gui_access - GET /jatos/2/componentsTableData?_=1525913166700 (admin)
+2018-05-09 17:46:10,626 [INFO] - gui_access - DELETE /jatos/2 (admin)
+2018-05-09 17:46:10,650 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:46:10,836 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:46:18,232 [INFO] - gui_access - POST /jatos/study (admin)
+2018-05-09 17:46:18,251 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:46:18,480 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:46:18,532 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913178421 (admin)
+2018-05-09 17:46:31,710 [INFO] - gui_access - POST /jatos/4/component (admin)
+2018-05-09 17:46:38,910 [INFO] - gui_access - POST /jatos/4/component (admin)
+2018-05-09 17:46:38,920 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:46:38,926 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:46:38,926 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:46:38,927 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:46:38,935 [INFO] - publix_access - GET /publix/4/5/start?srid=17
+2018-05-09 17:46:38,935 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 17, logged-in user's email admin
+2018-05-09 17:46:39,433 [INFO] - publix_access - GET /publix/4/5/initData?srid=17
+2018-05-09 17:46:39,434 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 17
+2018-05-09 17:46:39,458 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 17
+2018-05-09 17:46:39,483 [INFO] - publix_access - POST /publix/4/heartbeat?srid=17
+2018-05-09 17:48:39,664 [INFO] - publix_access - POST /publix/4/heartbeat?srid=17
+2018-05-09 17:49:17,975 [INFO] - publix_access - GET /publix/4/5/start?srid=17
+2018-05-09 17:49:17,976 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 17, logged-in user's email admin
+2018-05-09 17:49:17,982 [INFO] - publix_access - GET /publix/4/end?srid=17&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:49:17,982 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 17, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:49:17,991 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:49:18,205 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:49:18,248 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913358122 (admin)
+2018-05-09 17:49:19,504 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:49:19,510 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:49:19,510 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:49:19,511 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:49:19,519 [INFO] - publix_access - GET /publix/4/5/start?srid=18
+2018-05-09 17:49:19,520 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 18, logged-in user's email admin
+2018-05-09 17:49:19,883 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file img/langdev-logo.jpg but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:49:19,902 [INFO] - publix_access - GET /publix/4/5/initData?srid=18
+2018-05-09 17:49:19,902 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 18
+2018-05-09 17:49:19,919 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 18
+2018-05-09 17:49:19,975 [INFO] - publix_access - POST /publix/4/heartbeat?srid=18
+2018-05-09 17:49:41,663 [INFO] - publix_access - GET /publix/4/5/start?srid=18
+2018-05-09 17:49:41,664 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 18, logged-in user's email admin
+2018-05-09 17:49:41,670 [INFO] - publix_access - GET /publix/4/end?srid=18&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:49:41,670 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 18, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:49:41,680 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:49:41,862 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:49:41,901 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913381810 (admin)
+2018-05-09 17:49:42,772 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:49:42,778 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:49:42,778 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:49:42,779 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:49:42,786 [INFO] - publix_access - GET /publix/4/5/start?srid=19
+2018-05-09 17:49:42,786 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 19, logged-in user's email admin
+2018-05-09 17:49:43,169 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file img/langdev-logo.jpg but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:49:43,193 [INFO] - publix_access - GET /publix/4/5/initData?srid=19
+2018-05-09 17:49:43,193 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 19
+2018-05-09 17:49:43,217 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 19
+2018-05-09 17:49:43,256 [INFO] - publix_access - POST /publix/4/heartbeat?srid=19
+2018-05-09 17:49:59,350 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file img/langdev-logo.jpg but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:50:06,475 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file img/langdev-logo.jpg but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:50:33,706 [INFO] - publix_access - GET /publix/4/5/start?srid=19
+2018-05-09 17:50:33,706 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 19, logged-in user's email admin
+2018-05-09 17:50:33,713 [INFO] - publix_access - GET /publix/4/end?srid=19&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:50:33,716 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 19, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:50:33,725 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:50:33,917 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:50:33,955 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913433857 (admin)
+2018-05-09 17:50:34,728 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:50:34,734 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:50:34,734 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:50:34,735 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:50:34,743 [INFO] - publix_access - GET /publix/4/5/start?srid=20
+2018-05-09 17:50:34,743 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 20, logged-in user's email admin
+2018-05-09 17:50:35,106 [INFO] - publix_access - GET /publix/4/5/initData?srid=20
+2018-05-09 17:50:35,106 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 20
+2018-05-09 17:50:35,120 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 20
+2018-05-09 17:50:35,159 [INFO] - publix_access - POST /publix/4/heartbeat?srid=20
+2018-05-09 17:50:37,132 [INFO] - publix_access - GET /publix/4/5/start?srid=20
+2018-05-09 17:50:37,132 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 20, logged-in user's email admin
+2018-05-09 17:50:37,139 [INFO] - publix_access - GET /publix/4/end?srid=20&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:50:37,139 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 20, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:50:37,150 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:50:37,369 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:50:37,408 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913437315 (admin)
+2018-05-09 17:51:14,115 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:51:14,300 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:51:14,337 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913474250 (admin)
+2018-05-09 17:51:14,958 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:51:14,963 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:51:14,964 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:51:14,964 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:51:14,972 [INFO] - publix_access - GET /publix/4/5/start?srid=21
+2018-05-09 17:51:14,972 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 21, logged-in user's email admin
+2018-05-09 17:51:15,472 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/4/5/assets/langdev-logo.jpg but it seems you have no access rights. Maybe this study was never started?
+2018-05-09 17:51:15,534 [INFO] - publix_access - GET /publix/4/5/initData?srid=21
+2018-05-09 17:51:15,534 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 21
+2018-05-09 17:51:15,552 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 21
+2018-05-09 17:51:15,601 [INFO] - publix_access - POST /publix/4/heartbeat?srid=21
+2018-05-09 17:51:49,248 [INFO] - publix_access - GET /publix/4/5/start?srid=21
+2018-05-09 17:51:49,248 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 21, logged-in user's email admin
+2018-05-09 17:51:49,253 [INFO] - publix_access - GET /publix/4/end?srid=21&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:51:49,253 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 21, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:51:49,265 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:51:49,526 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:51:49,526 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913509412 (admin)
+2018-05-09 17:51:50,272 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:51:50,278 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:51:50,278 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:51:50,279 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:51:50,290 [INFO] - publix_access - GET /publix/4/5/start?srid=22
+2018-05-09 17:51:50,290 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 22, logged-in user's email admin
+2018-05-09 17:51:50,698 [INFO] - c.p.StudyAssets - .versioned: failed loading from path C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root\questionaire/assets/langdev-logo.jpg
+2018-05-09 17:51:50,764 [INFO] - publix_access - GET /publix/4/5/initData?srid=22
+2018-05-09 17:51:50,764 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 22
+2018-05-09 17:51:50,774 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 22
+2018-05-09 17:51:50,830 [INFO] - publix_access - POST /publix/4/heartbeat?srid=22
+2018-05-09 17:52:02,149 [INFO] - publix_access - GET /publix/4/5/start?srid=22
+2018-05-09 17:52:02,149 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 22, logged-in user's email admin
+2018-05-09 17:52:02,162 [INFO] - publix_access - GET /publix/4/end?srid=22&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:52:02,163 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 22, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:52:02,174 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:52:02,390 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:52:02,431 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913522335 (admin)
+2018-05-09 17:52:03,284 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:52:03,290 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:52:03,290 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:52:03,290 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:52:03,299 [INFO] - publix_access - GET /publix/4/5/start?srid=23
+2018-05-09 17:52:03,299 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 23, logged-in user's email admin
+2018-05-09 17:52:03,802 [INFO] - publix_access - GET /publix/4/5/initData?srid=23
+2018-05-09 17:52:03,803 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 23
+2018-05-09 17:52:03,812 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 23
+2018-05-09 17:52:03,867 [INFO] - publix_access - POST /publix/4/heartbeat?srid=23
+2018-05-09 17:52:06,668 [INFO] - publix_access - GET /publix/4/5/start?srid=23
+2018-05-09 17:52:06,668 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 23, logged-in user's email admin
+2018-05-09 17:52:06,673 [INFO] - publix_access - GET /publix/4/end?srid=23&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:52:06,673 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 23, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:52:06,682 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:52:06,855 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:52:06,896 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913526805 (admin)
+2018-05-09 17:52:13,002 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:52:13,169 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:52:13,204 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525913533122 (admin)
+2018-05-09 17:52:16,430 [INFO] - gui_access - DELETE /jatos/1/1 (admin)
+2018-05-09 17:52:16,445 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525913533123 (admin)
+2018-05-09 17:52:16,445 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:52:18,322 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:52:18,905 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:52:18,944 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913538857 (admin)
+2018-05-09 17:52:19,553 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:52:19,747 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:52:19,783 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525913539694 (admin)
+2018-05-09 17:56:26,330 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
+2018-05-09 17:56:26,383 [INFO] - application - Creating Pool for datasource 'default'
+2018-05-09 17:56:26,396 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
+2018-05-09 17:56:26,602 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
+2018-05-09 17:56:26,641 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
+2018-05-09 17:56:26,816 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2018-05-09 17:56:26,817 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
+2018-05-09 17:56:26,863 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2018-05-09 17:56:26,863 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
+2018-05-09 17:56:27,049 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: h2PersistenceUnit
+	...]
+2018-05-09 17:56:27,106 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2018-05-09 17:56:27,107 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
+2018-05-09 17:56:27,108 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
+2018-05-09 17:56:27,142 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-09 17:56:27,287 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-09 17:56:27,541 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
+2018-05-09 17:56:29,083 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_assets_root
+2018-05-09 17:56:29,084 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLangServer\jatos-3.2.2_win_java\study_logs
+2018-05-09 17:56:29,340 [INFO] - g.Initializer - JATOS initialized
+2018-05-09 17:56:29,340 [INFO] - g.OnStartStop - JATOS has started
+2018-05-09 17:56:29,539 [INFO] - p.a.Play - Application started (Prod)
+2018-05-09 17:56:29,688 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
+2018-05-09 17:56:29,827 [WARN] - c.g.a.AuthenticationAction - Invalid session: user admin tried to access page / from remote address 127.0.0.1.
+2018-05-09 17:56:29,883 [INFO] - gui_access - GET /jatos/login (null)
+2018-05-09 17:56:33,569 [INFO] - gui_access - POST /jatos/login (null)
+2018-05-09 17:56:33,600 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2018-05-09 17:56:33,682 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:56:33,849 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:56:44,336 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-09 17:56:44,476 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:56:44,512 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1525913804443 (admin)
+2018-05-09 17:56:48,234 [INFO] - gui_access - DELETE /jatos/1 (admin)
+2018-05-09 17:56:48,285 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 17:56:48,349 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:56:48,943 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:56:49,023 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:56:49,046 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913808995 (admin)
+2018-05-09 17:56:50,119 [INFO] - gui_access - GET /jatos/4/run (admin)
+2018-05-09 17:56:50,130 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:56:50,133 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:56:50,135 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:56:50,162 [INFO] - publix_access - GET /publix/4/5/start?srid=33
+2018-05-09 17:56:50,162 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 33, logged-in user's email admin
+2018-05-09 17:56:50,440 [INFO] - publix_access - GET /publix/4/5/initData?srid=33
+2018-05-09 17:56:50,440 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 33
+2018-05-09 17:56:50,473 [INFO] - publix_access - POST /publix/4/heartbeat?srid=33
+2018-05-09 17:56:50,484 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 33
+2018-05-09 17:57:48,257 [INFO] - publix_access - GET /publix/4/5/start?srid=33
+2018-05-09 17:57:48,257 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 33, logged-in user's email admin
+2018-05-09 17:57:48,276 [INFO] - publix_access - GET /publix/4/end?srid=33&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 17:57:48,276 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 33, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 17:57:48,292 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:57:48,402 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:57:48,429 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913868363 (admin)
+2018-05-09 17:57:50,194 [INFO] - gui_access - GET /jatos/4/5/results (admin)
+2018-05-09 17:57:50,269 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:57:50,313 [INFO] - gui_access - GET /jatos/4/5/tableData?_=1525913870247 (admin)
+2018-05-09 17:58:03,501 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:58:03,628 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:58:03,660 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913883601 (admin)
+2018-05-09 17:58:05,698 [INFO] - gui_access - GET /jatos/4/5/results (admin)
+2018-05-09 17:58:05,764 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:58:05,803 [INFO] - gui_access - GET /jatos/4/5/tableData?_=1525913885744 (admin)
+2018-05-09 17:58:30,364 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 17:58:30,490 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 17:58:30,521 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525913910461 (admin)
+2018-05-09 17:59:59,233 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 17:59:59,240 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 17:59:59,240 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 17:59:59,242 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 17:59:59,254 [INFO] - publix_access - GET /publix/4/5/start?srid=34
+2018-05-09 17:59:59,254 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 34, logged-in user's email admin
+2018-05-09 17:59:59,510 [INFO] - publix_access - GET /publix/4/5/initData?srid=34
+2018-05-09 17:59:59,511 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 34
+2018-05-09 17:59:59,527 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 34
+2018-05-09 17:59:59,544 [INFO] - publix_access - POST /publix/4/heartbeat?srid=34
+2018-05-09 18:00:42,976 [INFO] - publix_access - PUT /publix/4/5/resultData?srid=34
+2018-05-09 18:00:42,976 [INFO] - c.p.Publix - .submitResultData: studyId 4, componentId 5, studyResultId 34
+2018-05-09 18:00:42,992 [INFO] - publix_access - POST /publix/4/studySessionData?srid=34
+2018-05-09 18:00:42,993 [INFO] - c.p.Publix - .setStudySessionData: studyId 4, studyResultId 34
+2018-05-09 18:00:43,004 [INFO] - publix_access - GET /publix/4/nextComponent/start?srid=34
+2018-05-09 18:00:43,004 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 4, studyResultId 34, logged-in user's email admin
+2018-05-09 18:00:43,013 [INFO] - publix_access - GET /publix/4/end?srid=34
+2018-05-09 18:00:43,013 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 34, logged-in user email admin, successful true, errorMsg "null"
+2018-05-09 18:00:43,033 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 18:00:43,179 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:00:43,214 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525914043139 (admin)
+2018-05-09 18:00:44,853 [INFO] - gui_access - GET /jatos/4/5/results (admin)
+2018-05-09 18:00:44,923 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:00:44,959 [INFO] - gui_access - GET /jatos/4/5/tableData?_=1525914044901 (admin)
+2018-05-09 18:01:24,212 [INFO] - gui_access - GET /jatos/componentResult/export/resultData?componentResultIds=34 (admin)
+2018-05-09 18:01:34,594 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 18:01:34,680 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:01:34,707 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525914094651 (admin)
+2018-05-09 18:01:43,045 [INFO] - gui_access - GET /jatos/4/properties (admin)
+2018-05-09 18:01:45,858 [INFO] - gui_access - POST /jatos/4/5/properties/active?active=false (admin)
+2018-05-09 18:01:46,491 [INFO] - gui_access - POST /jatos/4/5/properties/active?active=true (admin)
+2018-05-09 18:01:49,110 [INFO] - gui_access - GET /jatos/4/5/results (admin)
+2018-05-09 18:01:49,230 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:01:49,273 [INFO] - gui_access - GET /jatos/4/5/tableData?_=1525914109205 (admin)
+2018-05-09 18:02:05,310 [INFO] - gui_access - DELETE /jatos/componentResult?componentResultIds=33,23,22,21,20,19,18,17 (admin)
+2018-05-09 18:02:16,307 [INFO] - gui_access - GET /jatos/componentResult/export/resultData?componentResultIds=34 (admin)
+2018-05-09 18:02:18,009 [INFO] - gui_access - GET /jatos/4/5/export/allResultData (admin)
+2018-05-09 18:03:00,399 [INFO] - gui_access - POST /jatos/import/study (admin)
+2018-05-09 18:03:01,709 [INFO] - gui_access - POST /jatos/import/studyConfirmed (admin)
+2018-05-09 18:03:01,738 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:03:02,629 [INFO] - gui_access - GET /jatos/33 (admin)
+2018-05-09 18:03:02,716 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:03:02,754 [INFO] - gui_access - GET /jatos/33/componentsTableData?_=1525914182687 (admin)
+2018-05-09 18:03:04,167 [INFO] - gui_access - GET /jatos/33/33/run (admin)
+2018-05-09 18:03:04,173 [INFO] - publix_access - GET /publix/33/start?batchId=-1&jatosWorkerId=1
+2018-05-09 18:03:04,173 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 33, batchId -1, logged-in user's email admin
+2018-05-09 18:03:04,175 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 33, batch ID -1) assigned to worker with ID 1
+2018-05-09 18:03:04,185 [INFO] - publix_access - GET /publix/33/33/start?srid=35
+2018-05-09 18:03:04,186 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 33, componentId 33, studyResultId 35, logged-in user's email admin
+2018-05-09 18:03:04,404 [INFO] - publix_access - GET /publix/33/33/initData?srid=35
+2018-05-09 18:03:04,404 [INFO] - c.p.Publix - .getInitData: studyId 33, componentId 33, studyResultId 35
+2018-05-09 18:03:04,425 [INFO] - c.p.JatosBatchChannel - .open: studyId 33, studyResultId 35
+2018-05-09 18:03:04,428 [INFO] - publix_access - POST /publix/33/heartbeat?srid=35
+2018-05-09 18:03:37,320 [INFO] - publix_access - PUT /publix/33/33/resultData?srid=35
+2018-05-09 18:03:37,320 [INFO] - c.p.Publix - .submitResultData: studyId 33, componentId 33, studyResultId 35
+2018-05-09 18:03:37,339 [INFO] - publix_access - POST /publix/33/studySessionData?srid=35
+2018-05-09 18:03:37,340 [INFO] - c.p.Publix - .setStudySessionData: studyId 33, studyResultId 35
+2018-05-09 18:03:37,348 [INFO] - publix_access - GET /publix/33/nextComponent/start?srid=35
+2018-05-09 18:03:37,348 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 33, studyResultId 35, logged-in user's email admin
+2018-05-09 18:03:37,355 [INFO] - publix_access - GET /publix/33/end?srid=35
+2018-05-09 18:03:37,355 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 33, studyResultId 35, logged-in user email admin, successful true, errorMsg "null"
+2018-05-09 18:03:37,371 [INFO] - gui_access - GET /jatos/33 (admin)
+2018-05-09 18:03:37,536 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:03:37,569 [INFO] - gui_access - GET /jatos/33/componentsTableData?_=1525914217494 (admin)
+2018-05-09 18:03:38,826 [INFO] - gui_access - GET /jatos/33/33/run (admin)
+2018-05-09 18:03:38,833 [INFO] - publix_access - GET /publix/33/start?batchId=-1&jatosWorkerId=1
+2018-05-09 18:03:38,833 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 33, batchId -1, logged-in user's email admin
+2018-05-09 18:03:38,836 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 33, batch ID -1) assigned to worker with ID 1
+2018-05-09 18:03:38,847 [INFO] - publix_access - GET /publix/33/33/start?srid=36
+2018-05-09 18:03:38,847 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 33, componentId 33, studyResultId 36, logged-in user's email admin
+2018-05-09 18:03:39,053 [INFO] - publix_access - GET /publix/33/33/initData?srid=36
+2018-05-09 18:03:39,053 [INFO] - c.p.Publix - .getInitData: studyId 33, componentId 33, studyResultId 36
+2018-05-09 18:03:39,066 [INFO] - c.p.JatosBatchChannel - .open: studyId 33, studyResultId 36
+2018-05-09 18:03:39,103 [INFO] - publix_access - POST /publix/33/heartbeat?srid=36
+2018-05-09 18:03:40,355 [INFO] - gui_access - GET /jatos/33/componentsTableData?_=1525914220302 (admin)
+2018-05-09 18:03:41,257 [INFO] - gui_access - GET /jatos/33/33/results (admin)
+2018-05-09 18:03:41,367 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:03:41,404 [INFO] - gui_access - GET /jatos/33/33/tableData?_=1525914221319 (admin)
+2018-05-09 18:04:16,102 [INFO] - gui_access - GET /jatos/33/33/export/allResultData (admin)
+2018-05-09 18:09:41,559 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
+2018-05-09 18:09:41,589 [INFO] - application - Creating Pool for datasource 'default'
+2018-05-09 18:09:41,598 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
+2018-05-09 18:09:41,833 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
+2018-05-09 18:09:41,879 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
+2018-05-09 18:09:42,049 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2018-05-09 18:09:42,051 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
+2018-05-09 18:09:42,082 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2018-05-09 18:09:42,082 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
+2018-05-09 18:09:42,256 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: h2PersistenceUnit
+	...]
+2018-05-09 18:09:42,300 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2018-05-09 18:09:42,300 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
+2018-05-09 18:09:42,301 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
+2018-05-09 18:09:42,328 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-09 18:09:42,460 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-09 18:09:42,703 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
+2018-05-09 18:09:43,813 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLang\study_assets_root
+2018-05-09 18:09:43,813 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLang\study_logs
+2018-05-09 18:09:44,117 [INFO] - g.Initializer - JATOS initialized
+2018-05-09 18:09:44,118 [INFO] - g.OnStartStop - JATOS has started
+2018-05-09 18:09:44,327 [INFO] - p.a.Play - Application started (Prod)
+2018-05-09 18:09:44,482 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
+2018-05-09 18:09:48,001 [WARN] - c.g.a.AuthenticationAction - Invalid session: user admin tried to access page / from remote address 127.0.0.1.
+2018-05-09 18:09:48,098 [INFO] - gui_access - GET /jatos/login (null)
+2018-05-09 18:09:51,031 [INFO] - gui_access - POST /jatos/login (null)
+2018-05-09 18:09:51,061 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2018-05-09 18:09:51,140 [INFO] - gui_access - GET /jatos (admin)
+2018-05-09 18:09:51,292 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:09:54,662 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 18:09:54,776 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:09:54,804 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525914594735 (admin)
+2018-05-09 18:09:56,315 [INFO] - gui_access - GET /jatos/4/5/run (admin)
+2018-05-09 18:09:56,332 [INFO] - publix_access - GET /publix/4/start?batchId=-1&jatosWorkerId=1
+2018-05-09 18:09:56,336 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 4, batchId -1, logged-in user's email admin
+2018-05-09 18:09:56,344 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 4, batch ID -1) assigned to worker with ID 1
+2018-05-09 18:09:56,409 [INFO] - publix_access - GET /publix/4/5/start?srid=65
+2018-05-09 18:09:56,409 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 65, logged-in user's email admin
+2018-05-09 18:09:56,777 [INFO] - publix_access - GET /publix/4/5/initData?srid=65
+2018-05-09 18:09:56,777 [INFO] - c.p.Publix - .getInitData: studyId 4, componentId 5, studyResultId 65
+2018-05-09 18:09:56,804 [INFO] - publix_access - POST /publix/4/heartbeat?srid=65
+2018-05-09 18:09:56,922 [INFO] - c.p.JatosBatchChannel - .open: studyId 4, studyResultId 65
+2018-05-09 18:09:59,082 [INFO] - publix_access - GET /publix/4/5/start?srid=65
+2018-05-09 18:09:59,083 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 4, componentId 5, studyResultId 65, logged-in user's email admin
+2018-05-09 18:09:59,101 [INFO] - publix_access - GET /publix/4/end?srid=65&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+5%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+4%29+at+this+point.
+2018-05-09 18:09:59,101 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 4, studyResultId 65, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 5). Unfortunately it is neccessary to finish this study (ID: 4) at this point."
+2018-05-09 18:09:59,121 [INFO] - gui_access - GET /jatos/4 (admin)
+2018-05-09 18:09:59,211 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-09 18:09:59,240 [INFO] - gui_access - GET /jatos/4/componentsTableData?_=1525914599180 (admin)

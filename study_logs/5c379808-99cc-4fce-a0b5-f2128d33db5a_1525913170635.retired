@@ -1,0 +1,39 @@
+
+{"timestamp":1525912454975,"msg":"Initial entry","studyUuid":"5c379808-99cc-4fce-a0b5-f2128d33db5a","jatosVersion":"3.2.2","serversMac":"38-D5-47-19-19-77","hashFunction":"SHA-256"}
+{"msg":"Created study","timestamp":1525912454985}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912484337}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912486521}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912487967}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912549947}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912551588}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912576228}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912577936}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912645899}
+{"msg":"Removed component result data","componentUuids":["c7c40a34-61a8-40d2-918a-da46a9252734","c7c40a34-61a8-40d2-918a-da46a9252734","c7c40a34-61a8-40d2-918a-da46a9252734","c7c40a34-61a8-40d2-918a-da46a9252734"],"workerIds":[1,1,1,1],"dataHashes":["no data","no data","no data","no data"],"timestamp":1525912653238}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912712137}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912742075}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912743367}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912764378}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912765598}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912782781}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912784196}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912877534}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912890634}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912892343}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912893884}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912899778}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912949890}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912951173}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912992928}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912994187}
+{"msg":"Finished study run","workerId":1,"timestamp":1525913005496}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525913007254}
+{"msg":"Finished study run","workerId":1,"timestamp":1525913031014}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525913032275}
+{"msg":"Finished study run","workerId":1,"timestamp":1525913050651}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525913051924}
+{"msg":"Finished study run","workerId":1,"timestamp":1525913150283}
+{"msg":"Removed component result data","componentUuids":["a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5","a2b19e1b-d197-41e8-8e94-57848ed929c5"],"workerIds":[1,1,1,1,1,1,1,1,1,1,1,1],"dataHashes":["no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data"],"timestamp":1525913165655}
+{"msg":"Removed batch","batchId":2,"timestamp":1525913170631}
+{"msg":"Removed study","timestamp":1525913170634}
+{"msg":"Last entry of the study log","studyUuid":"5c379808-99cc-4fce-a0b5-f2128d33db5a","timestamp":1525913170635}

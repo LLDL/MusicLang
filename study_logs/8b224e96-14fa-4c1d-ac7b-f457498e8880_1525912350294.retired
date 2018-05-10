@@ -1,0 +1,5 @@
+
+{"timestamp":1525910859430,"msg":"Initial entry","studyUuid":"8b224e96-14fa-4c1d-ac7b-f457498e8880","jatosVersion":"3.2.2","serversMac":"38-D5-47-19-19-77","hashFunction":"SHA-256"}
+{"msg":"Created study","timestamp":1525910859434}
+{"msg":"Started study run with Jatos worker","batchId":2,"workerId":1,"timestamp":1525912105367}
+{"msg":"Last entry of the study log","studyUuid":"8b224e96-14fa-4c1d-ac7b-f457498e8880","timestamp":1525912350291}

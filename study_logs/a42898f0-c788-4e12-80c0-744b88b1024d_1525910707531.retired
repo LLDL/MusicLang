@@ -1,0 +1,12 @@
+
+{"timestamp":1525910489379,"msg":"Initial entry","studyUuid":"a42898f0-c788-4e12-80c0-744b88b1024d","jatosVersion":"3.2.2","serversMac":"38-D5-47-19-19-77","hashFunction":"SHA-256"}
+{"msg":"Created study","timestamp":1525910489381}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1525910579548}
+{"msg":"Finished study run","workerId":1,"timestamp":1525910582652}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1525910584700}
+{"msg":"Removed component result data","componentUuids":["d5a6d92b-8afc-44cf-ba2c-215d475ee94e","d5a6d92b-8afc-44cf-ba2c-215d475ee94e"],"workerIds":[1,1],"dataHashes":["no data","no data"],"timestamp":1525910644377}
+{"msg":"Locked study","timestamp":1525910703996}
+{"msg":"Unlocked study","timestamp":1525910704835}
+{"msg":"Removed batch","batchId":1,"timestamp":1525910707525}
+{"msg":"Removed study","timestamp":1525910707528}
+{"msg":"Last entry of the study log","studyUuid":"a42898f0-c788-4e12-80c0-744b88b1024d","timestamp":1525910707530}

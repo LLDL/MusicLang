@@ -1,0 +1,33 @@
+
+{"timestamp":1525911146049,"msg":"Initial entry","studyUuid":"1c860b27-ab7c-43a7-aeda-fa95d042d62f","jatosVersion":"3.2.2","serversMac":"38-D5-47-19-19-77","hashFunction":"SHA-256"}
+{"msg":"Created study","timestamp":1525911146052}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911226700}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911228961}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911250068}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911348928}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911351017}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911384617}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911385621}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911461342}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911522717}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911524197}
+{"msg":"Removed component result data","componentUuids":["cd0bd3b3-cd87-48e6-8dd2-56dc01ea28bf","cd0bd3b3-cd87-48e6-8dd2-56dc01ea28bf","cd0bd3b3-cd87-48e6-8dd2-56dc01ea28bf","cd0bd3b3-cd87-48e6-8dd2-56dc01ea28bf","cd0bd3b3-cd87-48e6-8dd2-56dc01ea28bf","cd0bd3b3-cd87-48e6-8dd2-56dc01ea28bf"],"workerIds":[1,1,1,1,1,1],"dataHashes":["no data","no data","no data","no data","no data","no data"],"timestamp":1525911532676}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911533668}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911580190}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911581472}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911593780}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911596468}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911640049}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911825613}
+{"msg":"Removed component result data","componentUuids":["4e67de84-ff61-4c08-8dc7-b99bbf58d95e","4e67de84-ff61-4c08-8dc7-b99bbf58d95e","4e67de84-ff61-4c08-8dc7-b99bbf58d95e","4e67de84-ff61-4c08-8dc7-b99bbf58d95e"],"workerIds":[1,1,1,1],"dataHashes":["no data","no data","no data","no data"],"timestamp":1525911961686}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911965184}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911969564}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525911992841}
+{"msg":"Finished study run","workerId":1,"timestamp":1525911994759}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525912014315}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912080205}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525912081723}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912083288}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525912178345}
+{"msg":"Finished study run","workerId":1,"timestamp":1525912180523}
+{"msg":"Started study run with Jatos worker","batchId":3,"workerId":1,"timestamp":1525912193050}
