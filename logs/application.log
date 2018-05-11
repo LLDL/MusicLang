@@ -297,3 +297,19 @@
 2018-05-11 11:18:14,610 [INFO] - gui_access - GET /jatos/1/1/results (admin)
 2018-05-11 11:18:14,684 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
 2018-05-11 11:18:14,715 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526062694660 (admin)
+2018-05-11 11:32:33,955 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-11 11:32:34,111 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-11 11:32:34,160 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526063554062 (admin)
+2018-05-11 11:32:35,477 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-11 11:32:35,561 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-11 11:32:35,578 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526063555525 (admin)
+2018-05-11 11:32:36,730 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-11 11:32:36,736 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-11 11:32:36,736 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-11 11:32:36,737 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-11 11:32:36,746 [INFO] - publix_access - GET /publix/1/1/start?srid=73
+2018-05-11 11:32:36,746 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 73, logged-in user's email admin
+2018-05-11 11:32:36,853 [INFO] - publix_access - GET /publix/1/1/initData?srid=73
+2018-05-11 11:32:36,853 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 73
+2018-05-11 11:32:36,867 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 73
+2018-05-11 11:32:36,872 [INFO] - publix_access - POST /publix/1/heartbeat?srid=73

@@ -6,11 +6,11 @@ var color_disabled = "#903738";
 function toggle_listeners(form, on, validator){
     if(on){
         form.addEventListener("change", validator);
-        form.addEventListener("mousemove", validator);
+        // form.addEventListener("mousemove", validator);
         form.addEventListener("keyup", validator);
     }else{
         form.removeEventListener("change", validator);
-        form.removeEventListener("mousemove", validator);
+        // form.removeEventListener("mousemove", validator);
         form.removeEventListener("keyup", validator);
     }
 

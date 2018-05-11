@@ -24,3 +24,4 @@
 {"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526062652887}
 {"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"066ea53d0e1d2223706f3788a36875c2e457ff1f6e58d53273fec71de1b84992","timestamp":1526062692925}
 {"msg":"Finished study run","workerId":1,"timestamp":1526062692953}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526063556739}
