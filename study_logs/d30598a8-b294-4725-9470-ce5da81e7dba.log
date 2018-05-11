@@ -3,3 +3,6 @@
 {"msg":"Created study","timestamp":1525915259735}
 {"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1525915281008}
 {"msg":"Finished study run","workerId":1,"timestamp":1525915282713}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526061202830}
+{"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"b026f1ceb55bfc93b1fda0e1833aa41f1b6fb9bb5e9c1d21479b063c13529122","timestamp":1526061255807}
+{"msg":"Finished study run","workerId":1,"timestamp":1526061255854}

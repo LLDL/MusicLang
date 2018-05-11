@@ -100,6 +100,9 @@ var dominant_languages = {
         },
         {
             prompt: "Fourth Most Dominant"
+        },
+        {
+            prompt: "Fifth Most Dominant"
         }
     ],
     on_load: function () {

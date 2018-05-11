@@ -49,7 +49,7 @@ jsPsych.plugins["language-info"] = (function () {
 		html += '</tr>';
 
 		//Show all languages in table
-		for (var i = 0; i < 4; i++) {
+		for (var i = 0; i < 5; i++) {
 			if (trial.languages[i] == undefined) {
 				break;
 			}

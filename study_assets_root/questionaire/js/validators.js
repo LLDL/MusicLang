@@ -26,7 +26,7 @@ function get_answer(questions, question) {
 
 function update_known_langs(questions) {
     var known = [];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         if (get_answer(questions, i + 1) != '') {
             known[i] = get_answer(questions, i + 1);
         } else {
@@ -158,7 +158,7 @@ function validate_language_details() {
     var next = document.getElementById("jspsych-language-info-next");
     allow_next(next, false);
     is_valid = true;
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         currRow = document.getElementById("lang-row-" + i);
         if (currRow == null || !is_valid) {
             break;
