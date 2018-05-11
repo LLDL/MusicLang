@@ -4,6 +4,7 @@ var form; //current jspych-content element, to enable event listeners
 var likely_invalid = false; //gets set to true if blur_count>threshold
 var header = "<img id=\"logo\" src=\"/study_assets/questionaire/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //to be prepended to preludes
 
+
 var contact = {
     type: 'survey-text',
     preamble: header + "<h2>Contact Information</h2>",
@@ -24,10 +25,10 @@ var contact = {
     on_load: function () {
         validate_contact();
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_contact);
+        toggle_listeners(form, true, validate_contact);
     },
     on_finish: function () {
-        form.removeEventListener("change", validate_contact);
+        toggle_listeners(form, false, validate_contact);
     }
 };
 var personal = {
@@ -52,10 +53,10 @@ var personal = {
     on_load: function () {
         validate_personal();
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_personal);
+        toggle_listeners(form, true, validate_personal);
     },
     on_finish: function () {
-        form.removeEventListener("change", validate_personal);
+        toggle_listeners(form, false, validate_personal);
     }
 };
 var background = {
@@ -80,10 +81,10 @@ var background = {
     on_load: function () {
         validate_background();
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_background);
+        toggle_listeners(form, true, validate_background);
     },
     on_finish: function () {
-        form.removeEventListener("change", validate_background);
+        toggle_listeners(form, false, validate_background);
     }
 };
 var dominant_languages = {
@@ -108,10 +109,10 @@ var dominant_languages = {
     on_load: function () {
         validate_dominant_languages();
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_dominant_languages);
+        toggle_listeners(form, true, validate_dominant_languages);
     },
     on_finish: function () {
-        form.removeEventListener("change", validate_dominant_languages);
+        toggle_listeners(form, false, validate_dominant_languages);
     }
 
 };
@@ -125,10 +126,10 @@ var language_details = {
     on_load: function () {
         validate_language_details();
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_language_details);
+        toggle_listeners(form, true, validate_language_details);
     },
     on_finish: function () {
-        form.removeEventListener("change", validate_language_details);
+        toggle_listeners(form, false, validate_language_details);
     }
 };
 var musical = {
@@ -140,11 +141,11 @@ var musical = {
     on_load: function () {
         validate_musical();
         form = document.getElementById("jspsych-content");
-        form.addEventListener("change", validate_musical);
+        toggle_listeners(form, true, validate_musical);
     },
     on_finish: function (data) {
         data.likely_invalid = likely_invalid;
-        form.removeEventListener("change", validate_musical);
+        toggle_listeners(form, false, validate_musical);
     }
 };
 jatos.onLoad(
@@ -152,7 +153,7 @@ jatos.onLoad(
         //production timeline:
         timeline: [contact, personal, background, dominant_languages, language_details, musical],
         //timeline for testing: 
-        //timeline: [dominant_languages, language_details, musical],
+        // timeline: [contact],
         show_progress_bar: true,
         //Checks how many times user left
         on_interaction_data_update: function (data) {

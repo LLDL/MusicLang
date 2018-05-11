@@ -3,6 +3,19 @@ var known_langs;
 var color_enabled = "#37904b";
 var color_disabled = "#903738";
 
+function toggle_listeners(form, on, validator){
+    if(on){
+        form.addEventListener("change", validator);
+        form.addEventListener("mousemove", validator);
+        form.addEventListener("keyup", validator);
+    }else{
+        form.removeEventListener("change", validator);
+        form.removeEventListener("mousemove", validator);
+        form.removeEventListener("keyup", validator);
+    }
+
+};
+
 function allow_next(next, enable, prompt) {
     if (prompt == null) {
         prompt = "Please answer the questions above";

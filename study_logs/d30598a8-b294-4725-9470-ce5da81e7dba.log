@@ -6,3 +6,21 @@
 {"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526061202830}
 {"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"b026f1ceb55bfc93b1fda0e1833aa41f1b6fb9bb5e9c1d21479b063c13529122","timestamp":1526061255807}
 {"msg":"Finished study run","workerId":1,"timestamp":1526061255854}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526061456505}
+{"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"e82873231b4f8539ab586da65d447f2e3011b3b1ae65a0c6d33002150fad9993","timestamp":1526061466564}
+{"msg":"Finished study run","workerId":1,"timestamp":1526061466610}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526061932682}
+{"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"0f96b5c7f825300c5404fa39e7cb75b367c57d8caa3d479214aa72793cb189cd","timestamp":1526061942725}
+{"msg":"Finished study run","workerId":1,"timestamp":1526061942755}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526061992170}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526062070292}
+{"msg":"Finished study run","workerId":1,"timestamp":1526062072125}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526062134239}
+{"msg":"Finished study run","workerId":1,"timestamp":1526062333783}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526062335269}
+{"msg":"Finished study run","workerId":1,"timestamp":1526062535097}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526062536779}
+{"msg":"Finished study run","workerId":1,"timestamp":1526062651764}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526062652887}
+{"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"066ea53d0e1d2223706f3788a36875c2e457ff1f6e58d53273fec71de1b84992","timestamp":1526062692925}
+{"msg":"Finished study run","workerId":1,"timestamp":1526062692953}
