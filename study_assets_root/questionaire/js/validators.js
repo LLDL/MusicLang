@@ -48,16 +48,25 @@ function update_known_langs(questions) {
     known_langs = known;
 };
 
-// function get_known_langs() {
-//     return known_langs;
-// }
+function get_known_langs() {
+    return known_langs;
+}
 
 
-// function update_musical_exp(){
-//     var experiences = [];
-
-//     musical_exp = experiences;
-// }
+function update_musical_exp(){
+    var experiences = [];
+    for(var i = 0; i<3; i++){
+        var yes = document.getElementById("survey-yes-no-response-"+ i + "-0").checked;
+        var no = document.getElementById("survey-yes-no-response-"+ i + "-1").checked;
+        if(yes){
+            experiences[i] = true;
+        }else{
+            experiences[i] = false;
+        }
+    }
+    musical_exp = experiences;
+    console.log(musical_exp);
+}
 function get_musical_exp(){
     return musical_exp;
 };
@@ -198,36 +207,23 @@ function validate_language_details() {
     }
 };
 
-function validate_musical() {
-    var questions = document.getElementById("jspsych-content").children;
-    var next = document.getElementById("jspsych-survey-text-next");
-    allow_next(next, false);
-
-    var musical_instruments = get_answer(questions, 1);
-
-    if (musical_instruments.length > 1000) {
-        allow_next(next, false, "Describe any musical experience in under 1000 characters");
-    } else {
-        allow_next(next, true);
-    }
-};
 
 function validate_musical_summary() {
-    console.log("in validate");
-    // var next = document.getElementById("jspsych-survey-multi-choice-next");
-    // allow_next(next, false, "Please answer the questions above");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please answer the questions above");
 
-    // var is_valid = true;
+    var is_valid = true;
 
-    // for(var i = 0; i<3; i++){
-    //     var curr_yes = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-0");
-    //     var curr_no = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-1");
-    //     if(!curr_yes.checked && !curr_no.checked){
-    //         allow_next(next, false, "Please answer the questions above");
-    //         is_valid = false;
-    //     }
-    // }
-    // if (is_valid) {
-    //     allow_next(next, true);
-    // }
+    for(var i = 0; i<3; i++){
+        var curr_yes = document.getElementById("survey-yes-no-response-"+ i + "-0");
+        var curr_no = document.getElementById("survey-yes-no-response-"+ i + "-1");
+        if(!curr_yes.checked && !curr_no.checked){
+            allow_next(next, false, "Please answer the questions above");
+            is_valid = false;
+        }
+    }
+    if (is_valid) {
+        update_musical_exp();
+        allow_next(next, true);
+    }
 };

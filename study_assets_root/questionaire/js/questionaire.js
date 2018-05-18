@@ -109,22 +109,6 @@ var language_details = {
         toggle_listeners(form, false, validate_language_details);
     }
 };
-var musical = {
-    type: 'survey-text-custom',
-    preamble: header + "<h2>Musical Background</h2>",
-    questions: [
-        {prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"}
-    ],
-    on_load: function () {
-        validate_musical();
-        form = document.getElementById("jspsych-content");
-        toggle_listeners(form, true, validate_musical);
-    },
-    on_finish: function (data) {
-        data.likely_invalid = likely_invalid;
-        toggle_listeners(form, false, validate_musical);
-    }
-};
 var musical_summary = {
     type: 'survey-yes-no',
     preamble: header + "<h2>Musical Experience</h2>",
@@ -145,9 +129,9 @@ var musical_summary = {
 jatos.onLoad(
     jsPsych.init({
         //production timeline:
-        // timeline: [contact, personal, gender, background, dominant_languages, language_details, musical],
+        timeline: [contact, personal, gender, background, dominant_languages, language_details, musical_summary],
         //timeline for testing: 
-        timeline: [musical_summary],
+        //timeline: [musical_summary],
         show_progress_bar: true,
         //Checks how many times user left
         on_interaction_data_update: function (data) {

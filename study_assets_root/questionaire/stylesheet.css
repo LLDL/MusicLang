@@ -18,7 +18,7 @@ p {
     background-color: #37904b;
     font-size: 0.9em;
 }
-#jspsych-language-info-next, #jspsych-gender-info-next{
+#jspsych-language-info-next, #jspsych-gender-info-next, #survey-yes-no-next{
     color: #ffffff;
     background-color: #37904b;
     font-size: 0.9em;
@@ -32,7 +32,7 @@ p {
     border: 1px solid transparent;
     border-radius: 4px; 
 }
-#jspsych-language-info-next:hover, #jspsych-gender-info-next:hover{
+#jspsych-language-info-next:hover, #jspsych-gender-info-next:hover, #survey-yes-no-next:hover{
     cursor: pointer;
 }
 .jspsych-language-info-header td{
