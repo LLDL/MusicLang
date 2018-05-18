@@ -8,20 +8,12 @@ var header = "<img id=\"logo\" src=\"/study_assets/questionaire/img/langdev-logo
 var contact = {
     type: 'survey-text-custom',
     preamble: header + "<h2>Contact Information</h2>",
-    questions: [{
-            prompt: "Surname"
-        },
-        {
-            prompt: "First Name"
-        },
-        {
-            prompt: "Phone Number"
-        },
-        {
-            prompt: "Email"
-        }
+    questions: [
+        {prompt: "Surname"},
+        {prompt: "First Name"},
+        {prompt: "Phone Number"},
+        {prompt: "Email"}
     ],
-    data: subject_id,
     on_load: function () {
         validate_contact();
         form = document.getElementById("jspsych-content");
@@ -34,18 +26,11 @@ var contact = {
 var personal = {
     type: 'survey-text-custom',
     preamble: header + "<h2>Personal Information</h2>",
-    questions: [{
-            prompt: "Age"
-        },
-        {
-            prompt: "If you have any hearing problems, please specify"
-        },
-        {
-            prompt: "If you have any language disorders, please specify"
-        },
-        {
-            prompt: "If you have any learning disorders, please specify"
-        }
+    questions: [
+        {prompt: "Age"},
+        {prompt: "If you have any hearing problems, please specify"},
+        {prompt: "If you have any language disorders, please specify"},
+        {prompt: "If you have any learning disorders, please specify"}
     ],
     on_load: function () {
         validate_personal();
@@ -59,7 +44,8 @@ var personal = {
 var gender = {
     type: 'gender-info',
     preamble: header + "<h2>Gender</h2>",
-    on_load: function (){
+    on_load: function ()
+    {
         validate_gender();
         form = document.getElementById("jspsych-content");
         toggle_listeners(form, true, validate_gender);
@@ -71,21 +57,12 @@ var gender = {
 var background = {
     type: 'survey-text-custom',
     preamble: header + "<h2>Background Information</h2>",
-    questions: [{
-            prompt: "Birth Country"
-        },
-        {
-            prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"
-        },
-        {
-            prompt: "Native Language"
-        },
-        {
-            prompt: "Parent 1's Native Language"
-        },
-        {
-            prompt: "Parent 2's Native Language"
-        }
+    questions: [
+        {prompt: "Birth Country"},
+        {prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"},
+        {prompt: "Native Language"},
+        {prompt: "Parent 1's Native Language"},
+        {prompt: "Parent 2's Native Language"}
     ],
     on_load: function () {
         validate_background();
@@ -99,21 +76,12 @@ var background = {
 var dominant_languages = {
     type: 'survey-text-custom',
     preamble: header + "<h2>Languages You Know</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
-    questions: [{
-            prompt: "Most Dominant"
-        },
-        {
-            prompt: "Second Most Dominant"
-        },
-        {
-            prompt: "Third Most Dominant"
-        },
-        {
-            prompt: "Fourth Most Dominant"
-        },
-        {
-            prompt: "Fifth Most Dominant"
-        }
+    questions: [
+        {prompt: "Most Dominant"},
+        {prompt: "Second Most Dominant"},
+        {prompt: "Third Most Dominant"},
+        {prompt: "Fourth Most Dominant"},
+        {prompt: "Fifth Most Dominant"}
     ],
     on_load: function () {
         validate_dominant_languages();
@@ -144,9 +112,9 @@ var language_details = {
 var musical = {
     type: 'survey-text-custom',
     preamble: header + "<h2>Musical Background</h2>",
-    questions: [{
-        prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"
-    }],
+    questions: [
+        {prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"}
+    ],
     on_load: function () {
         validate_musical();
         form = document.getElementById("jspsych-content");
@@ -157,12 +125,21 @@ var musical = {
         toggle_listeners(form, false, validate_musical);
     }
 };
+var musical_summary = {
+    type: 'survey-multi-choice-custom',
+    preamble: header + "<h2>Musical Experience</h2>",
+    questions: [
+        {prompt: "Have you played an instrument?", options: ["Yes", "No"], horizontal: true},
+        {prompt: "Have you sung in a group?", options: ["Yes", "No"], horizontal: true},
+        {prompt: "Have you studied music?", options: ["Yes", "No"], horizontal: true}
+    ]
+};
 jatos.onLoad(
     jsPsych.init({
         //production timeline:
-        timeline: [contact, personal, gender, background, dominant_languages, language_details, musical],
+        // timeline: [contact, personal, gender, background, dominant_languages, language_details, musical],
         //timeline for testing: 
-        // timeline: [contact],
+        timeline: [musical_summary],
         show_progress_bar: true,
         //Checks how many times user left
         on_interaction_data_update: function (data) {

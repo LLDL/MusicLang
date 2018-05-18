@@ -1,8 +1,7 @@
 /**
  * survey-text-custom
  * a jspsych plugin for free repsonse survey questions
- * originally from Josh de Leeuw but modified slightly
- * by Ankit Dassor to:
+ * originally from Josh de Leeuw but modified by Ankit Dassor to:
  *  - not stringify outputs, in order to make JSON parsing easier
  *  - use prompts in response outputs to ease data compilation
  *
