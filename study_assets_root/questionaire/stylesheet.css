@@ -18,7 +18,7 @@ p {
     background-color: #37904b;
     font-size: 0.9em;
 }
-#jspsych-language-info-next{
+#jspsych-language-info-next, #jspsych-gender-info-next{
     color: #ffffff;
     background-color: #37904b;
     font-size: 0.9em;
@@ -32,7 +32,7 @@ p {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-#jspsych-language-info-next:hover{
+#jspsych-language-info-next:hover, #jspsych-gender-info-next:hover{
     cursor: pointer;
 }
 .jspsych-language-info-header td{
@@ -44,4 +44,7 @@ p {
 .jspsych-language-info-lang-row td{
     padding: 5px 10px 5px 10px;
     text-align: center;
+}
+#gender-other-container{
+    padding-bottom: 10px;
 }

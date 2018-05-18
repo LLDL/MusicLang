@@ -1,10 +1,10 @@
 /*
- * language-info
- * A jspsych plugin which given a list of languages produces a
- * table to be filled in detailing the age learning a language 
- * began and how many years of learning have been completed.
- * Ankit Dassor
- */
+	* language-info
+	* A jspsych plugin which given a list of languages produces a
+	* table to be filled in detailing the age learning a language 
+	* began and how many years of learning have been completed.
+	* - Ankit Dassor
+*/
 
 jsPsych.plugins["language-info"] = (function () {
 	var plugin = {};

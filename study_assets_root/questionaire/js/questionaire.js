@@ -38,9 +38,6 @@ var personal = {
             prompt: "Age"
         },
         {
-            prompt: "Gender"
-        },
-        {
             prompt: "If you have any hearing problems, please specify"
         },
         {
@@ -57,6 +54,18 @@ var personal = {
     },
     on_finish: function () {
         toggle_listeners(form, false, validate_personal);
+    }
+};
+var gender = {
+    type: 'gender-info',
+    preamble: header + "<h2>Gender</h2>",
+    on_load: function (){
+        validate_gender();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_gender);
+    },
+    on_finish: function () {
+        toggle_listeners(form, false, validate_gender);
     }
 };
 var background = {
@@ -151,9 +160,9 @@ var musical = {
 jatos.onLoad(
     jsPsych.init({
         //production timeline:
-        timeline: [contact, personal, background, dominant_languages, language_details, musical],
+        timeline: [contact, personal, gender, background, dominant_languages, language_details, musical],
         //timeline for testing: 
-        // timeline: [contact],
+        //timeline: [gender],
         show_progress_bar: true,
         //Checks how many times user left
         on_interaction_data_update: function (data) {

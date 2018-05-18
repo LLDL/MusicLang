@@ -91,16 +91,12 @@ function validate_personal() {
     is_valid = true;
 
     var age = get_answer(questions, 1);
-    var gender = get_answer(questions, 2);
-    var hearing_problems = get_answer(questions, 3);
-    var language_disorders = get_answer(questions, 4);
-    var learning_disorders = get_answer(questions, 5);
+    var hearing_problems = get_answer(questions, 2);
+    var language_disorders = get_answer(questions, 3);
+    var learning_disorders = get_answer(questions, 4);
 
     if (is_valid && (isNaN(age) || age <= 0 || age > 120)) {
         allow_next(next, false, "Enter your age (0-120)");
-    }
-    if (is_valid && (gender.length == 0 || gender.length > 100)) {
-        allow_next(next, false, "Enter your gender");
     }
     if (is_valid && (hearing_problems.length > 1000)) {
         allow_next(next, false, "Describe any hearing problems in under 1000 characters");
@@ -111,6 +107,17 @@ function validate_personal() {
     if (is_valid && (learning_disorders.length > 1000)) {
         allow_next(next, false, "Describe any learning disorders in under 1000 characters");
     }
+    if (is_valid) {
+        allow_next(next, true);
+    }
+}
+
+function validate_gender() {
+    var next = document.getElementById("jspsych-gender-info-next");
+    allow_next(next, false);
+    is_valid = true;
+
+
     if (is_valid) {
         allow_next(next, true);
     }

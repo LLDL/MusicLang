@@ -1,315 +1,609 @@
-2018-05-11 10:39:29,715 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
-2018-05-11 10:39:29,775 [INFO] - application - Creating Pool for datasource 'default'
-2018-05-11 10:39:29,783 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
-2018-05-11 10:39:29,968 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
-2018-05-11 10:39:29,986 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
-2018-05-11 10:39:30,166 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
-2018-05-11 10:39:30,169 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
-2018-05-11 10:39:30,226 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
-2018-05-11 10:39:30,226 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
-2018-05-11 10:39:30,427 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+2018-05-18 09:44:09,131 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
+2018-05-18 09:44:09,177 [INFO] - application - Creating Pool for datasource 'default'
+2018-05-18 09:44:09,192 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
+2018-05-18 09:44:09,441 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
+2018-05-18 09:44:09,461 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
+2018-05-18 09:44:09,646 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2018-05-18 09:44:09,649 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
+2018-05-18 09:44:09,707 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2018-05-18 09:44:09,707 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
+2018-05-18 09:44:09,905 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
 	name: h2PersistenceUnit
 	...]
-2018-05-11 10:39:30,488 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
-2018-05-11 10:39:30,489 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
-2018-05-11 10:39:30,490 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
-2018-05-11 10:39:30,523 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
-2018-05-11 10:39:30,654 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2018-05-11 10:39:31,160 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
-2018-05-11 10:39:32,728 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLang\study_assets_root
-2018-05-11 10:39:32,728 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLang\study_logs
-2018-05-11 10:39:33,012 [INFO] - g.Initializer - JATOS initialized
-2018-05-11 10:39:33,013 [INFO] - g.OnStartStop - JATOS has started
-2018-05-11 10:39:33,158 [INFO] - p.a.Play - Application started (Prod)
-2018-05-11 10:39:33,388 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
-2018-05-11 10:39:36,904 [WARN] - c.g.a.AuthenticationAction - Authentication failed: remote address 127.0.0.1 tried to access page /
-2018-05-11 10:39:36,961 [INFO] - gui_access - GET /jatos/login (null)
-2018-05-11 10:39:39,889 [INFO] - gui_access - POST /jatos/login (null)
-2018-05-11 10:39:39,924 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
-2018-05-11 10:39:40,038 [INFO] - gui_access - GET /jatos (admin)
-2018-05-11 10:39:40,201 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:39:43,772 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 10:39:43,869 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:39:43,904 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526060383839 (admin)
-2018-05-11 10:53:21,632 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 10:53:21,816 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:53:21,850 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061201756 (admin)
-2018-05-11 10:53:22,779 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 10:53:22,790 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 10:53:22,796 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 10:53:22,800 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 10:53:22,855 [INFO] - publix_access - GET /publix/1/1/start?srid=33
-2018-05-11 10:53:22,856 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 33, logged-in user's email admin
-2018-05-11 10:53:23,015 [INFO] - publix_access - GET /publix/1/1/initData?srid=33
-2018-05-11 10:53:23,016 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 33
-2018-05-11 10:53:23,033 [INFO] - publix_access - POST /publix/1/heartbeat?srid=33
-2018-05-11 10:53:23,054 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 33
-2018-05-11 10:54:15,800 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=33
-2018-05-11 10:54:15,800 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 33
-2018-05-11 10:54:15,817 [INFO] - publix_access - POST /publix/1/studySessionData?srid=33
-2018-05-11 10:54:15,817 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 33
-2018-05-11 10:54:15,828 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=33
-2018-05-11 10:54:15,828 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 33, logged-in user's email admin
-2018-05-11 10:54:15,845 [INFO] - publix_access - GET /publix/1/end?srid=33
-2018-05-11 10:54:15,845 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 33, logged-in user email admin, successful true, errorMsg "null"
-2018-05-11 10:54:15,863 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 10:54:16,027 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:54:16,062 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061255975 (admin)
-2018-05-11 10:54:17,492 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 10:54:17,570 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:54:17,613 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061257541 (admin)
-2018-05-11 10:54:23,182 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 10:54:23,251 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:54:23,285 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061263228 (admin)
-2018-05-11 10:54:37,326 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 10:54:37,457 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:54:37,502 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061277428 (admin)
-2018-05-11 10:54:37,978 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 10:54:38,045 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:54:38,082 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061278027 (admin)
-2018-05-11 10:54:38,849 [INFO] - gui_access - GET /jatos (admin)
-2018-05-11 10:54:38,917 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:54:49,014 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
-2018-05-11 10:54:49,048 [INFO] - application - Creating Pool for datasource 'default'
-2018-05-11 10:54:49,059 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
-2018-05-11 10:54:49,442 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
-2018-05-11 10:54:49,444 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
-2018-05-11 10:54:49,513 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
-2018-05-11 10:54:49,513 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
-2018-05-11 10:54:49,547 [INFO] - application - Creating Pool for datasource 'default'
-2018-05-11 10:54:49,547 [INFO] - c.z.h.HikariDataSource - HikariPool-2 - Started.
-2018-05-11 10:54:53,709 [INFO] - gui_access - GET /jatos (admin)
-2018-05-11 10:54:53,777 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:56:39,964 [INFO] - a.e.s.Slf4jLogger - Slf4jLogger started
-2018-05-11 10:56:40,003 [INFO] - application - Creating Pool for datasource 'default'
-2018-05-11 10:56:40,013 [INFO] - c.z.h.HikariDataSource - HikariPool-1 - Started.
-2018-05-11 10:56:40,225 [INFO] - p.a.d.HikariCPConnectionPool - datasource [default] bound to JNDI as DefaultDS
-2018-05-11 10:56:40,248 [INFO] - p.a.d.DefaultDBApi - Database [default] connected at jdbc:h2:./database/jatos
-2018-05-11 10:56:40,507 [INFO] - n.s.e.p.s.f.AnnotationSizeOfFilter - Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
-2018-05-11 10:56:40,509 [INFO] - n.s.e.p.s.AgentLoader - Unavailable or unrecognised attach API : java.lang.ClassNotFoundException: com.sun.tools.attach.VirtualMachine
-2018-05-11 10:56:40,543 [INFO] - n.s.e.p.s.JvmInformation - Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
-2018-05-11 10:56:40,543 [INFO] - n.s.e.p.i.DefaultSizeOfEngine - using Unsafe sizeof engine
-2018-05-11 10:56:40,766 [INFO] - o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [
-	name: h2PersistenceUnit
-	...]
-2018-05-11 10:56:40,855 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
-2018-05-11 10:56:40,856 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
-2018-05-11 10:56:40,857 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
-2018-05-11 10:56:40,891 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
-2018-05-11 10:56:41,050 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2018-05-11 10:56:41,375 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
-2018-05-11 10:56:42,686 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLang\study_assets_root
-2018-05-11 10:56:42,686 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLang\study_logs
-2018-05-11 10:56:43,005 [INFO] - g.Initializer - JATOS initialized
-2018-05-11 10:56:43,005 [INFO] - g.OnStartStop - JATOS has started
-2018-05-11 10:56:43,139 [INFO] - p.a.Play - Application started (Prod)
-2018-05-11 10:56:43,356 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
-2018-05-11 10:56:44,753 [WARN] - c.g.a.AuthenticationAction - Invalid session: user admin tried to access page /jatos from remote address 127.0.0.1.
-2018-05-11 10:56:44,816 [INFO] - gui_access - GET /jatos/login (null)
-2018-05-11 10:56:48,780 [INFO] - gui_access - POST /jatos/login (null)
-2018-05-11 10:56:48,809 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
-2018-05-11 10:56:48,891 [INFO] - gui_access - GET /jatos (admin)
-2018-05-11 10:56:49,025 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:57:02,678 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 10:57:02,845 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:57:02,871 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061422792 (admin)
-2018-05-11 10:57:05,041 [INFO] - gui_access - GET /jatos/1/1/properties (admin)
-2018-05-11 10:57:34,775 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 10:57:34,903 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:57:34,936 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061454872 (admin)
-2018-05-11 10:57:36,469 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 10:57:36,480 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 10:57:36,483 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 10:57:36,487 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 10:57:36,526 [INFO] - publix_access - GET /publix/1/1/start?srid=65
-2018-05-11 10:57:36,526 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 65, logged-in user's email admin
-2018-05-11 10:57:36,671 [INFO] - publix_access - GET /publix/1/1/initData?srid=65
-2018-05-11 10:57:36,672 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 65
-2018-05-11 10:57:36,691 [INFO] - publix_access - POST /publix/1/heartbeat?srid=65
-2018-05-11 10:57:36,715 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 65
-2018-05-11 10:57:46,559 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=65
-2018-05-11 10:57:46,559 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 65
-2018-05-11 10:57:46,576 [INFO] - publix_access - POST /publix/1/studySessionData?srid=65
-2018-05-11 10:57:46,577 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 65
-2018-05-11 10:57:46,590 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=65
-2018-05-11 10:57:46,590 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 65, logged-in user's email admin
-2018-05-11 10:57:46,603 [INFO] - publix_access - GET /publix/1/end?srid=65
-2018-05-11 10:57:46,603 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 65, logged-in user email admin, successful true, errorMsg "null"
-2018-05-11 10:57:46,619 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 10:57:46,772 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:57:46,803 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061466736 (admin)
-2018-05-11 10:57:48,413 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 10:57:48,488 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 10:57:48,528 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061468466 (admin)
-2018-05-11 11:05:27,781 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 11:05:27,967 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:05:28,029 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061927910 (admin)
-2018-05-11 11:05:31,599 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:05:31,688 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:05:31,703 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061931652 (admin)
-2018-05-11 11:05:32,670 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:05:32,677 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:05:32,677 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:05:32,679 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:05:32,690 [INFO] - publix_access - GET /publix/1/1/start?srid=66
-2018-05-11 11:05:32,691 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 66, logged-in user's email admin
-2018-05-11 11:05:32,801 [INFO] - publix_access - GET /publix/1/1/initData?srid=66
-2018-05-11 11:05:32,802 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 66
-2018-05-11 11:05:32,822 [INFO] - publix_access - POST /publix/1/heartbeat?srid=66
-2018-05-11 11:05:32,823 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 66
-2018-05-11 11:05:42,718 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=66
-2018-05-11 11:05:42,719 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 66
-2018-05-11 11:05:42,735 [INFO] - publix_access - POST /publix/1/studySessionData?srid=66
-2018-05-11 11:05:42,736 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 66
-2018-05-11 11:05:42,745 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=66
-2018-05-11 11:05:42,746 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 66, logged-in user's email admin
-2018-05-11 11:05:42,752 [INFO] - publix_access - GET /publix/1/end?srid=66
-2018-05-11 11:05:42,753 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 66, logged-in user email admin, successful true, errorMsg "null"
-2018-05-11 11:05:42,763 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:05:42,892 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:05:42,916 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061942858 (admin)
-2018-05-11 11:05:44,207 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 11:05:44,285 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:05:44,321 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061944259 (admin)
-2018-05-11 11:06:22,618 [WARN] - c.g.a.AuthenticationAction - Authentication failed: remote address 127.0.0.1 tried to access page /
-2018-05-11 11:06:22,624 [INFO] - gui_access - GET /jatos/login (null)
-2018-05-11 11:06:27,629 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 11:06:27,759 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:06:27,805 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526061987731 (admin)
-2018-05-11 11:06:28,702 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:06:28,779 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:06:28,801 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061988751 (admin)
-2018-05-11 11:06:32,159 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:06:32,166 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:06:32,166 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:06:32,168 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:06:32,179 [INFO] - publix_access - GET /publix/1/1/start?srid=67
-2018-05-11 11:06:32,179 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 67, logged-in user's email admin
-2018-05-11 11:06:32,289 [INFO] - publix_access - GET /publix/1/1/initData?srid=67
-2018-05-11 11:06:32,289 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 67
-2018-05-11 11:06:32,307 [INFO] - publix_access - POST /publix/1/heartbeat?srid=67
-2018-05-11 11:06:32,308 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 67
-2018-05-11 11:06:34,803 [INFO] - publix_access - GET /publix/1/1/start?srid=67
-2018-05-11 11:06:34,806 [INFO] - g.ErrorHandler - PublixException during call /publix/1/1/start?srid=67: JATOS isn't allowed to run a study with the study result ID 67. Maybe it was closed automatically by JATOS because you started other studies in the same browser in the meantime.
-2018-05-11 11:06:37,838 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526061997780 (admin)
-2018-05-11 11:06:38,756 [INFO] - publix_access - GET /publix/1/1/start?srid=67
-2018-05-11 11:06:38,756 [INFO] - g.ErrorHandler - PublixException during call /publix/1/1/start?srid=67: JATOS isn't allowed to run a study with the study result ID 67. Maybe it was closed automatically by JATOS because you started other studies in the same browser in the meantime.
-2018-05-11 11:06:41,780 [INFO] - publix_access - GET /publix/1/1/start?srid=68
-2018-05-11 11:06:41,780 [INFO] - g.ErrorHandler - PublixException during call /publix/1/1/start?srid=68: JATOS isn't allowed to run a study with the study result ID 68. Maybe it was closed automatically by JATOS because you started other studies in the same browser in the meantime.
-2018-05-11 11:06:45,725 [INFO] - c.p.StudyAssets - .versioned: You tried to access the file publix/1/1 but it seems you have no access rights. Maybe this study was never started?
-2018-05-11 11:07:47,666 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:07:47,803 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:07:47,827 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062067767 (admin)
-2018-05-11 11:07:50,278 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:07:50,285 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:07:50,285 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:07:50,287 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:07:50,301 [INFO] - publix_access - GET /publix/1/1/start?srid=68
-2018-05-11 11:07:50,301 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 68, logged-in user's email admin
-2018-05-11 11:07:50,477 [INFO] - publix_access - GET /publix/1/1/initData?srid=68
-2018-05-11 11:07:50,477 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 68
-2018-05-11 11:07:50,499 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 68
-2018-05-11 11:07:50,518 [INFO] - publix_access - POST /publix/1/heartbeat?srid=68
-2018-05-11 11:07:52,106 [INFO] - publix_access - GET /publix/1/1/start?srid=68
-2018-05-11 11:07:52,106 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 68, logged-in user's email admin
-2018-05-11 11:07:52,119 [INFO] - publix_access - GET /publix/1/end?srid=68&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
-2018-05-11 11:07:52,119 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 68, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
-2018-05-11 11:07:52,136 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:07:52,225 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:07:52,248 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062072195 (admin)
-2018-05-11 11:08:53,069 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:08:53,212 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:08:53,245 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062133183 (admin)
-2018-05-11 11:08:54,229 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:08:54,235 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:08:54,235 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:08:54,236 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:08:54,247 [INFO] - publix_access - GET /publix/1/1/start?srid=69
-2018-05-11 11:08:54,248 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 69, logged-in user's email admin
-2018-05-11 11:08:54,341 [INFO] - publix_access - GET /publix/1/1/initData?srid=69
-2018-05-11 11:08:54,341 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 69
-2018-05-11 11:08:54,367 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 69
-2018-05-11 11:08:54,370 [INFO] - publix_access - POST /publix/1/heartbeat?srid=69
-2018-05-11 11:10:54,389 [INFO] - publix_access - POST /publix/1/heartbeat?srid=69
-2018-05-11 11:12:13,771 [INFO] - publix_access - GET /publix/1/1/start?srid=69
-2018-05-11 11:12:13,772 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 69, logged-in user's email admin
-2018-05-11 11:12:13,779 [INFO] - publix_access - GET /publix/1/end?srid=69&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
-2018-05-11 11:12:13,779 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 69, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
-2018-05-11 11:12:13,792 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:12:13,928 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:12:13,953 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062333892 (admin)
-2018-05-11 11:12:15,260 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:12:15,265 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:12:15,266 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:12:15,267 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:12:15,277 [INFO] - publix_access - GET /publix/1/1/start?srid=70
-2018-05-11 11:12:15,277 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 70, logged-in user's email admin
-2018-05-11 11:12:15,381 [INFO] - publix_access - GET /publix/1/1/initData?srid=70
-2018-05-11 11:12:15,382 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 70
-2018-05-11 11:12:15,399 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 70
-2018-05-11 11:12:15,420 [INFO] - publix_access - POST /publix/1/heartbeat?srid=70
-2018-05-11 11:14:15,430 [INFO] - publix_access - POST /publix/1/heartbeat?srid=70
-2018-05-11 11:15:35,084 [INFO] - publix_access - GET /publix/1/1/start?srid=70
-2018-05-11 11:15:35,084 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 70, logged-in user's email admin
-2018-05-11 11:15:35,094 [INFO] - publix_access - GET /publix/1/end?srid=70&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
-2018-05-11 11:15:35,094 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 70, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
-2018-05-11 11:15:35,109 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:15:35,278 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:15:35,307 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062535233 (admin)
-2018-05-11 11:15:36,770 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:15:36,776 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:15:36,776 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:15:36,777 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:15:36,787 [INFO] - publix_access - GET /publix/1/1/start?srid=71
-2018-05-11 11:15:36,787 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 71, logged-in user's email admin
-2018-05-11 11:15:36,886 [INFO] - publix_access - GET /publix/1/1/initData?srid=71
-2018-05-11 11:15:36,886 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 71
-2018-05-11 11:15:36,906 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 71
-2018-05-11 11:15:36,923 [INFO] - publix_access - POST /publix/1/heartbeat?srid=71
-2018-05-11 11:17:31,751 [INFO] - publix_access - GET /publix/1/1/start?srid=71
-2018-05-11 11:17:31,752 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 71, logged-in user's email admin
-2018-05-11 11:17:31,761 [INFO] - publix_access - GET /publix/1/end?srid=71&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
-2018-05-11 11:17:31,762 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 71, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
-2018-05-11 11:17:31,774 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:17:31,928 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:17:31,954 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062651890 (admin)
-2018-05-11 11:17:32,878 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:17:32,884 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:17:32,884 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:17:32,885 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:17:32,895 [INFO] - publix_access - GET /publix/1/1/start?srid=72
-2018-05-11 11:17:32,895 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 72, logged-in user's email admin
-2018-05-11 11:17:32,999 [INFO] - publix_access - GET /publix/1/1/initData?srid=72
-2018-05-11 11:17:32,999 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 72
-2018-05-11 11:17:33,015 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 72
-2018-05-11 11:17:33,027 [INFO] - publix_access - POST /publix/1/heartbeat?srid=72
-2018-05-11 11:18:12,923 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=72
-2018-05-11 11:18:12,923 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 72
-2018-05-11 11:18:12,935 [INFO] - publix_access - POST /publix/1/studySessionData?srid=72
-2018-05-11 11:18:12,935 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 72
-2018-05-11 11:18:12,944 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=72
-2018-05-11 11:18:12,944 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 72, logged-in user's email admin
-2018-05-11 11:18:12,950 [INFO] - publix_access - GET /publix/1/end?srid=72
-2018-05-11 11:18:12,950 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 72, logged-in user email admin, successful true, errorMsg "null"
-2018-05-11 11:18:12,960 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:18:13,098 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:18:13,120 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526062693063 (admin)
-2018-05-11 11:18:14,610 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 11:18:14,684 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:18:14,715 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526062694660 (admin)
-2018-05-11 11:32:33,955 [INFO] - gui_access - GET /jatos/1/1/results (admin)
-2018-05-11 11:32:34,111 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:32:34,160 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526063554062 (admin)
-2018-05-11 11:32:35,477 [INFO] - gui_access - GET /jatos/1 (admin)
-2018-05-11 11:32:35,561 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
-2018-05-11 11:32:35,578 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526063555525 (admin)
-2018-05-11 11:32:36,730 [INFO] - gui_access - GET /jatos/1/1/run (admin)
-2018-05-11 11:32:36,736 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
-2018-05-11 11:32:36,736 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
-2018-05-11 11:32:36,737 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
-2018-05-11 11:32:36,746 [INFO] - publix_access - GET /publix/1/1/start?srid=73
-2018-05-11 11:32:36,746 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 73, logged-in user's email admin
-2018-05-11 11:32:36,853 [INFO] - publix_access - GET /publix/1/1/initData?srid=73
-2018-05-11 11:32:36,853 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 73
-2018-05-11 11:32:36,867 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 73
-2018-05-11 11:32:36,872 [INFO] - publix_access - POST /publix/1/heartbeat?srid=73
+2018-05-18 09:44:09,969 [INFO] - o.h.Version - HHH000412: Hibernate Core {5.1.0.Final}
+2018-05-18 09:44:09,969 [INFO] - o.h.c.Environment - HHH000206: hibernate.properties not found
+2018-05-18 09:44:09,971 [INFO] - o.h.c.Environment - HHH000021: Bytecode provider name : javassist
+2018-05-18 09:44:10,003 [INFO] - o.h.a.c.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-18 09:44:10,139 [INFO] - o.h.d.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-18 09:44:10,406 [INFO] - o.h.v.i.u.Version - HV000001: Hibernate Validator 5.2.4.Final
+2018-05-18 09:44:11,673 [INFO] - g.c.Common - Path to study assets directory is C:\Users\adass\Desktop\Code\MusicLang\study_assets_root
+2018-05-18 09:44:11,674 [INFO] - g.c.Common - Path to study logs directory is C:\Users\adass\Desktop\Code\MusicLang\study_logs
+2018-05-18 09:44:11,913 [INFO] - g.Initializer - JATOS initialized
+2018-05-18 09:44:11,914 [INFO] - g.OnStartStop - JATOS has started
+2018-05-18 09:44:12,046 [INFO] - p.a.Play - Application started (Prod)
+2018-05-18 09:44:12,260 [INFO] - p.c.s.NettyServer - Listening for HTTP on /127.0.0.1:9000
+2018-05-18 09:44:12,569 [WARN] - c.g.a.AuthenticationAction - Authentication failed: remote address 127.0.0.1 tried to access page /
+2018-05-18 09:44:12,631 [INFO] - gui_access - GET /jatos/login (null)
+2018-05-18 09:44:15,703 [INFO] - gui_access - POST /jatos/login (null)
+2018-05-18 09:44:15,795 [INFO] - o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2018-05-18 09:44:15,934 [INFO] - gui_access - GET /jatos (admin)
+2018-05-18 09:44:16,094 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 09:44:18,276 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 09:44:18,384 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 09:44:18,412 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526661858349 (admin)
+2018-05-18 09:44:22,916 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 09:44:22,929 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 09:44:22,933 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 09:44:22,937 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 09:44:22,989 [INFO] - publix_access - GET /publix/1/1/start?srid=97
+2018-05-18 09:44:22,989 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 97, logged-in user's email admin
+2018-05-18 09:44:23,160 [INFO] - publix_access - GET /publix/1/1/initData?srid=97
+2018-05-18 09:44:23,161 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 97
+2018-05-18 09:44:23,189 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:44:23,217 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 97
+2018-05-18 09:46:23,207 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:48:23,220 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:50:23,245 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:52:23,267 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:54:23,279 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:56:23,303 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 09:58:23,346 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:00:23,368 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:02:23,380 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:04:23,413 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:06:23,437 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:08:23,458 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:10:23,475 [INFO] - publix_access - POST /publix/1/heartbeat?srid=97
+2018-05-18 10:11:16,623 [INFO] - publix_access - GET /publix/1/1/start?srid=97
+2018-05-18 10:11:16,623 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 97, logged-in user's email admin
+2018-05-18 10:11:16,648 [INFO] - publix_access - GET /publix/1/end?srid=97&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:11:16,649 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 97, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:11:16,668 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:11:16,838 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:11:16,875 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663476794 (admin)
+2018-05-18 10:11:18,611 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:11:18,617 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:11:18,617 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:11:18,619 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:11:18,634 [INFO] - publix_access - GET /publix/1/1/start?srid=98
+2018-05-18 10:11:18,634 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 98, logged-in user's email admin
+2018-05-18 10:11:18,772 [INFO] - publix_access - GET /publix/1/1/initData?srid=98
+2018-05-18 10:11:18,773 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 98
+2018-05-18 10:11:18,800 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 98
+2018-05-18 10:11:18,801 [INFO] - publix_access - POST /publix/1/heartbeat?srid=98
+2018-05-18 10:12:42,109 [INFO] - publix_access - GET /publix/1/1/start?srid=98
+2018-05-18 10:12:42,110 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 98, logged-in user's email admin
+2018-05-18 10:12:42,119 [INFO] - publix_access - GET /publix/1/end?srid=98&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:12:42,119 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 98, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:12:42,131 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:12:42,339 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:12:42,374 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663562276 (admin)
+2018-05-18 10:12:43,236 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:12:43,243 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:12:43,243 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:12:43,244 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:12:43,255 [INFO] - publix_access - GET /publix/1/1/start?srid=99
+2018-05-18 10:12:43,255 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 99, logged-in user's email admin
+2018-05-18 10:12:43,431 [INFO] - publix_access - GET /publix/1/1/initData?srid=99
+2018-05-18 10:12:43,432 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 99
+2018-05-18 10:12:43,461 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 99
+2018-05-18 10:12:43,484 [INFO] - publix_access - POST /publix/1/heartbeat?srid=99
+2018-05-18 10:12:46,389 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=99
+2018-05-18 10:12:46,389 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 99
+2018-05-18 10:12:46,405 [INFO] - publix_access - POST /publix/1/studySessionData?srid=99
+2018-05-18 10:12:46,405 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 99
+2018-05-18 10:12:46,416 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=99
+2018-05-18 10:12:46,416 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 99, logged-in user's email admin
+2018-05-18 10:12:46,422 [INFO] - publix_access - GET /publix/1/end?srid=99
+2018-05-18 10:12:46,422 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 99, logged-in user email admin, successful true, errorMsg "null"
+2018-05-18 10:12:46,439 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:12:46,622 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:12:46,664 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663566571 (admin)
+2018-05-18 10:12:47,950 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-18 10:12:48,162 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:12:48,235 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526663568110 (admin)
+2018-05-18 10:13:53,636 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-18 10:13:53,824 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:13:53,888 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526663633775 (admin)
+2018-05-18 10:13:57,433 [INFO] - gui_access - DELETE /jatos/1/1/allResults (admin)
+2018-05-18 10:13:57,465 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526663633776 (admin)
+2018-05-18 10:13:58,892 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:13:59,096 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:13:59,127 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663639033 (admin)
+2018-05-18 10:14:00,423 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:14:00,430 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:14:00,430 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:14:00,431 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:14:00,441 [INFO] - publix_access - GET /publix/1/1/start?srid=100
+2018-05-18 10:14:00,441 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 100, logged-in user's email admin
+2018-05-18 10:14:00,618 [INFO] - publix_access - GET /publix/1/1/initData?srid=100
+2018-05-18 10:14:00,618 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 100
+2018-05-18 10:14:00,638 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 100
+2018-05-18 10:14:00,660 [INFO] - publix_access - POST /publix/1/heartbeat?srid=100
+2018-05-18 10:14:03,339 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=100
+2018-05-18 10:14:03,339 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 100
+2018-05-18 10:14:03,352 [INFO] - publix_access - POST /publix/1/studySessionData?srid=100
+2018-05-18 10:14:03,352 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 100
+2018-05-18 10:14:03,360 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=100
+2018-05-18 10:14:03,360 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 100, logged-in user's email admin
+2018-05-18 10:14:03,367 [INFO] - publix_access - GET /publix/1/end?srid=100
+2018-05-18 10:14:03,367 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 100, logged-in user email admin, successful true, errorMsg "null"
+2018-05-18 10:14:03,377 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:14:03,552 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:14:03,585 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663643502 (admin)
+2018-05-18 10:14:04,819 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-18 10:14:04,984 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:14:05,042 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526663644939 (admin)
+2018-05-18 10:14:22,035 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:14:22,211 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:14:22,248 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663662160 (admin)
+2018-05-18 10:14:23,065 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:14:23,071 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:14:23,071 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:14:23,072 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:14:23,085 [INFO] - publix_access - GET /publix/1/1/start?srid=101
+2018-05-18 10:14:23,085 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 101, logged-in user's email admin
+2018-05-18 10:14:23,259 [INFO] - publix_access - GET /publix/1/1/initData?srid=101
+2018-05-18 10:14:23,259 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 101
+2018-05-18 10:14:23,279 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 101
+2018-05-18 10:14:23,295 [INFO] - publix_access - POST /publix/1/heartbeat?srid=101
+2018-05-18 10:15:10,743 [INFO] - publix_access - GET /publix/1/1/start?srid=101
+2018-05-18 10:15:10,743 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 101, logged-in user's email admin
+2018-05-18 10:15:10,752 [INFO] - publix_access - GET /publix/1/end?srid=101&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:15:10,753 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 101, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:15:10,773 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:15:10,980 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:15:11,024 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663710925 (admin)
+2018-05-18 10:15:12,290 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:15:12,296 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:15:12,296 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:15:12,297 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:15:12,307 [INFO] - publix_access - GET /publix/1/1/start?srid=102
+2018-05-18 10:15:12,307 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 102, logged-in user's email admin
+2018-05-18 10:15:12,498 [INFO] - publix_access - GET /publix/1/1/initData?srid=102
+2018-05-18 10:15:12,498 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 102
+2018-05-18 10:15:12,531 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 102
+2018-05-18 10:15:12,544 [INFO] - publix_access - POST /publix/1/heartbeat?srid=102
+2018-05-18 10:15:29,654 [INFO] - publix_access - GET /publix/1/1/start?srid=102
+2018-05-18 10:15:29,654 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 102, logged-in user's email admin
+2018-05-18 10:15:29,662 [INFO] - publix_access - GET /publix/1/end?srid=102&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:15:29,662 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 102, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:15:29,680 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:15:29,923 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:15:29,963 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663729842 (admin)
+2018-05-18 10:15:31,164 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:15:31,170 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:15:31,170 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:15:31,171 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:15:31,183 [INFO] - publix_access - GET /publix/1/1/start?srid=103
+2018-05-18 10:15:31,183 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 103, logged-in user's email admin
+2018-05-18 10:15:31,369 [INFO] - publix_access - GET /publix/1/1/initData?srid=103
+2018-05-18 10:15:31,369 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 103
+2018-05-18 10:15:31,385 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 103
+2018-05-18 10:15:31,415 [INFO] - publix_access - POST /publix/1/heartbeat?srid=103
+2018-05-18 10:15:40,102 [INFO] - publix_access - GET /publix/1/1/start?srid=103
+2018-05-18 10:15:40,103 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 103, logged-in user's email admin
+2018-05-18 10:15:40,109 [INFO] - publix_access - GET /publix/1/end?srid=103&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:15:40,109 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 103, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:15:40,121 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:15:40,297 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:15:40,345 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663740246 (admin)
+2018-05-18 10:15:41,076 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:15:41,082 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:15:41,082 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:15:41,083 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:15:41,093 [INFO] - publix_access - GET /publix/1/1/start?srid=104
+2018-05-18 10:15:41,093 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 104, logged-in user's email admin
+2018-05-18 10:15:41,262 [INFO] - publix_access - GET /publix/1/1/initData?srid=104
+2018-05-18 10:15:41,262 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 104
+2018-05-18 10:15:41,277 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 104
+2018-05-18 10:15:41,313 [INFO] - publix_access - POST /publix/1/heartbeat?srid=104
+2018-05-18 10:17:31,659 [INFO] - publix_access - GET /publix/1/1/start?srid=104
+2018-05-18 10:17:31,659 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 104, logged-in user's email admin
+2018-05-18 10:17:31,666 [INFO] - publix_access - GET /publix/1/end?srid=104&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:17:31,666 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 104, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:17:31,682 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:17:31,876 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:17:31,918 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663851825 (admin)
+2018-05-18 10:17:33,090 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:17:33,096 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:17:33,096 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:17:33,097 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:17:33,106 [INFO] - publix_access - GET /publix/1/1/start?srid=105
+2018-05-18 10:17:33,106 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 105, logged-in user's email admin
+2018-05-18 10:17:33,276 [INFO] - publix_access - GET /publix/1/1/initData?srid=105
+2018-05-18 10:17:33,276 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 105
+2018-05-18 10:17:33,291 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 105
+2018-05-18 10:17:33,315 [INFO] - publix_access - POST /publix/1/heartbeat?srid=105
+2018-05-18 10:18:04,518 [INFO] - publix_access - GET /publix/1/1/start?srid=105
+2018-05-18 10:18:04,518 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 105, logged-in user's email admin
+2018-05-18 10:18:04,525 [INFO] - publix_access - GET /publix/1/end?srid=105&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:18:04,526 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 105, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:18:04,538 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:18:04,764 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:18:04,805 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663884689 (admin)
+2018-05-18 10:18:05,667 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:18:05,672 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:18:05,672 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:18:05,673 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:18:05,682 [INFO] - publix_access - GET /publix/1/1/start?srid=106
+2018-05-18 10:18:05,682 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 106, logged-in user's email admin
+2018-05-18 10:18:05,876 [INFO] - publix_access - GET /publix/1/1/initData?srid=106
+2018-05-18 10:18:05,876 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 106
+2018-05-18 10:18:05,894 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 106
+2018-05-18 10:18:05,917 [INFO] - publix_access - POST /publix/1/heartbeat?srid=106
+2018-05-18 10:18:33,361 [INFO] - publix_access - GET /publix/1/1/start?srid=106
+2018-05-18 10:18:33,361 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 106, logged-in user's email admin
+2018-05-18 10:18:33,368 [INFO] - publix_access - GET /publix/1/end?srid=106&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:18:33,368 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 106, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:18:33,380 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:18:33,574 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:18:33,611 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663913522 (admin)
+2018-05-18 10:18:34,719 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:18:34,725 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:18:34,725 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:18:34,726 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:18:34,734 [INFO] - publix_access - GET /publix/1/1/start?srid=107
+2018-05-18 10:18:34,734 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 107, logged-in user's email admin
+2018-05-18 10:18:34,942 [INFO] - publix_access - GET /publix/1/1/initData?srid=107
+2018-05-18 10:18:34,942 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 107
+2018-05-18 10:18:34,959 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 107
+2018-05-18 10:18:34,968 [INFO] - publix_access - POST /publix/1/heartbeat?srid=107
+2018-05-18 10:18:37,896 [INFO] - publix_access - GET /publix/1/1/start?srid=107
+2018-05-18 10:18:37,896 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 107, logged-in user's email admin
+2018-05-18 10:18:37,901 [INFO] - publix_access - GET /publix/1/end?srid=107&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:18:37,901 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 107, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:18:37,914 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:18:38,137 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:18:38,181 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663918069 (admin)
+2018-05-18 10:19:07,986 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:19:07,992 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:19:07,992 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:19:07,993 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:19:08,001 [INFO] - publix_access - GET /publix/1/1/start?srid=108
+2018-05-18 10:19:08,001 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 108, logged-in user's email admin
+2018-05-18 10:19:08,181 [INFO] - publix_access - GET /publix/1/1/initData?srid=108
+2018-05-18 10:19:08,181 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 108
+2018-05-18 10:19:08,210 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 108
+2018-05-18 10:19:08,223 [INFO] - publix_access - POST /publix/1/heartbeat?srid=108
+2018-05-18 10:19:56,770 [INFO] - publix_access - GET /publix/1/1/start?srid=108
+2018-05-18 10:19:56,771 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 108, logged-in user's email admin
+2018-05-18 10:19:56,783 [INFO] - publix_access - GET /publix/1/end?srid=108&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:19:56,783 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 108, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:19:56,796 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:19:57,054 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:19:57,097 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526663996984 (admin)
+2018-05-18 10:19:58,050 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:19:58,056 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:19:58,056 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:19:58,057 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:19:58,067 [INFO] - publix_access - GET /publix/1/1/start?srid=109
+2018-05-18 10:19:58,067 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 109, logged-in user's email admin
+2018-05-18 10:19:58,259 [INFO] - publix_access - GET /publix/1/1/initData?srid=109
+2018-05-18 10:19:58,259 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 109
+2018-05-18 10:19:58,285 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 109
+2018-05-18 10:19:58,290 [INFO] - publix_access - POST /publix/1/heartbeat?srid=109
+2018-05-18 10:20:20,766 [INFO] - publix_access - GET /publix/1/1/start?srid=109
+2018-05-18 10:20:20,766 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 109, logged-in user's email admin
+2018-05-18 10:20:20,773 [INFO] - publix_access - GET /publix/1/end?srid=109&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:20:20,773 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 109, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:20:20,785 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:20:20,995 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:20:21,036 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664020928 (admin)
+2018-05-18 10:20:21,691 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:20:21,697 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:20:21,697 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:20:21,698 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:20:21,707 [INFO] - publix_access - GET /publix/1/1/start?srid=110
+2018-05-18 10:20:21,707 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 110, logged-in user's email admin
+2018-05-18 10:20:21,878 [INFO] - publix_access - GET /publix/1/1/initData?srid=110
+2018-05-18 10:20:21,878 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 110
+2018-05-18 10:20:21,893 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 110
+2018-05-18 10:20:21,921 [INFO] - publix_access - POST /publix/1/heartbeat?srid=110
+2018-05-18 10:20:28,138 [INFO] - publix_access - GET /publix/1/1/start?srid=110
+2018-05-18 10:20:28,138 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 110, logged-in user's email admin
+2018-05-18 10:20:28,147 [INFO] - publix_access - GET /publix/1/end?srid=110&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:20:28,147 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 110, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:20:28,160 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:20:28,342 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:20:28,383 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664028291 (admin)
+2018-05-18 10:20:29,358 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:20:29,364 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:20:29,364 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:20:29,365 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:20:29,376 [INFO] - publix_access - GET /publix/1/1/start?srid=111
+2018-05-18 10:20:29,376 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 111, logged-in user's email admin
+2018-05-18 10:20:29,580 [INFO] - publix_access - GET /publix/1/1/initData?srid=111
+2018-05-18 10:20:29,581 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 111
+2018-05-18 10:20:29,605 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 111
+2018-05-18 10:20:29,620 [INFO] - publix_access - POST /publix/1/heartbeat?srid=111
+2018-05-18 10:21:35,638 [INFO] - publix_access - GET /publix/1/1/start?srid=111
+2018-05-18 10:21:35,638 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 111, logged-in user's email admin
+2018-05-18 10:21:35,651 [INFO] - publix_access - GET /publix/1/end?srid=111&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:21:35,652 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 111, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:21:35,664 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:21:35,846 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:21:35,887 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664095796 (admin)
+2018-05-18 10:21:36,988 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:21:36,994 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:21:36,994 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:21:36,995 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:21:37,003 [INFO] - publix_access - GET /publix/1/1/start?srid=112
+2018-05-18 10:21:37,003 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 112, logged-in user's email admin
+2018-05-18 10:21:37,175 [INFO] - publix_access - GET /publix/1/1/initData?srid=112
+2018-05-18 10:21:37,175 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 112
+2018-05-18 10:21:37,191 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 112
+2018-05-18 10:21:37,219 [INFO] - publix_access - POST /publix/1/heartbeat?srid=112
+2018-05-18 10:21:55,463 [INFO] - publix_access - GET /publix/1/1/start?srid=112
+2018-05-18 10:21:55,463 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 112, logged-in user's email admin
+2018-05-18 10:21:55,469 [INFO] - publix_access - GET /publix/1/end?srid=112&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:21:55,469 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 112, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:21:55,478 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:21:55,663 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:21:55,702 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664115610 (admin)
+2018-05-18 10:21:56,726 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:21:56,731 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:21:56,731 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:21:56,732 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:21:56,740 [INFO] - publix_access - GET /publix/1/1/start?srid=113
+2018-05-18 10:21:56,740 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 113, logged-in user's email admin
+2018-05-18 10:21:56,911 [INFO] - publix_access - GET /publix/1/1/initData?srid=113
+2018-05-18 10:21:56,911 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 113
+2018-05-18 10:21:56,926 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 113
+2018-05-18 10:21:56,957 [INFO] - publix_access - POST /publix/1/heartbeat?srid=113
+2018-05-18 10:22:12,811 [INFO] - publix_access - GET /publix/1/1/start?srid=113
+2018-05-18 10:22:12,811 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 113, logged-in user's email admin
+2018-05-18 10:22:12,817 [INFO] - publix_access - GET /publix/1/end?srid=113&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:22:12,817 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 113, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:22:12,830 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:22:13,018 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:22:13,056 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664132966 (admin)
+2018-05-18 10:22:13,953 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:22:13,959 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:22:13,959 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:22:13,960 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:22:13,970 [INFO] - publix_access - GET /publix/1/1/start?srid=114
+2018-05-18 10:22:13,970 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 114, logged-in user's email admin
+2018-05-18 10:22:14,135 [INFO] - publix_access - GET /publix/1/1/initData?srid=114
+2018-05-18 10:22:14,135 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 114
+2018-05-18 10:22:14,152 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 114
+2018-05-18 10:22:14,179 [INFO] - publix_access - POST /publix/1/heartbeat?srid=114
+2018-05-18 10:22:30,983 [INFO] - publix_access - GET /publix/1/1/start?srid=114
+2018-05-18 10:22:30,983 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 114, logged-in user's email admin
+2018-05-18 10:22:30,989 [INFO] - publix_access - GET /publix/1/end?srid=114&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:22:30,990 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 114, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:22:31,001 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:22:31,187 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:22:31,226 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664151133 (admin)
+2018-05-18 10:22:32,212 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:22:32,217 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:22:32,217 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:22:32,218 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:22:32,225 [INFO] - publix_access - GET /publix/1/1/start?srid=115
+2018-05-18 10:22:32,225 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 115, logged-in user's email admin
+2018-05-18 10:22:32,386 [INFO] - publix_access - GET /publix/1/1/initData?srid=115
+2018-05-18 10:22:32,386 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 115
+2018-05-18 10:22:32,403 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 115
+2018-05-18 10:22:32,429 [INFO] - publix_access - POST /publix/1/heartbeat?srid=115
+2018-05-18 10:22:38,373 [INFO] - publix_access - GET /publix/1/1/start?srid=115
+2018-05-18 10:22:38,373 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 115, logged-in user's email admin
+2018-05-18 10:22:38,379 [INFO] - publix_access - GET /publix/1/end?srid=115&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:22:38,379 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 115, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:22:38,390 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:22:38,574 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:22:38,623 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664158517 (admin)
+2018-05-18 10:22:40,197 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:22:40,202 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:22:40,202 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:22:40,203 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:22:40,211 [INFO] - publix_access - GET /publix/1/1/start?srid=116
+2018-05-18 10:22:40,211 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 116, logged-in user's email admin
+2018-05-18 10:22:40,390 [INFO] - publix_access - GET /publix/1/1/initData?srid=116
+2018-05-18 10:22:40,390 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 116
+2018-05-18 10:22:40,414 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 116
+2018-05-18 10:22:40,456 [INFO] - publix_access - POST /publix/1/heartbeat?srid=116
+2018-05-18 10:23:10,530 [INFO] - publix_access - GET /publix/1/1/start?srid=116
+2018-05-18 10:23:10,530 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 116, logged-in user's email admin
+2018-05-18 10:23:10,535 [INFO] - publix_access - GET /publix/1/end?srid=116&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:23:10,536 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 116, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:23:10,551 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:23:10,749 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:23:10,785 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664190697 (admin)
+2018-05-18 10:23:11,793 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:23:11,798 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:23:11,798 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:23:11,799 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:23:11,807 [INFO] - publix_access - GET /publix/1/1/start?srid=117
+2018-05-18 10:23:11,807 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 117, logged-in user's email admin
+2018-05-18 10:23:11,971 [INFO] - publix_access - GET /publix/1/1/initData?srid=117
+2018-05-18 10:23:11,971 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 117
+2018-05-18 10:23:12,001 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 117
+2018-05-18 10:23:12,018 [INFO] - publix_access - POST /publix/1/heartbeat?srid=117
+2018-05-18 10:24:42,697 [INFO] - publix_access - GET /publix/1/1/start?srid=117
+2018-05-18 10:24:42,697 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 117, logged-in user's email admin
+2018-05-18 10:24:42,708 [INFO] - publix_access - GET /publix/1/end?srid=117&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:24:42,708 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 117, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:24:42,719 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:24:42,935 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:24:42,976 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664282865 (admin)
+2018-05-18 10:24:43,604 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:24:43,609 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:24:43,609 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:24:43,609 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:24:43,932 [INFO] - publix_access - GET /publix/1/1/start?srid=118
+2018-05-18 10:24:43,932 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 118, logged-in user's email admin
+2018-05-18 10:24:44,106 [INFO] - publix_access - GET /publix/1/1/initData?srid=118
+2018-05-18 10:24:44,106 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 118
+2018-05-18 10:24:44,121 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 118
+2018-05-18 10:24:44,140 [INFO] - publix_access - POST /publix/1/heartbeat?srid=118
+2018-05-18 10:26:44,152 [INFO] - publix_access - POST /publix/1/heartbeat?srid=118
+2018-05-18 10:27:30,235 [INFO] - publix_access - GET /publix/1/1/start?srid=118
+2018-05-18 10:27:30,235 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 118, logged-in user's email admin
+2018-05-18 10:27:30,240 [INFO] - publix_access - GET /publix/1/end?srid=118&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:27:30,240 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 118, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:27:30,250 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:27:30,442 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:27:30,482 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664450380 (admin)
+2018-05-18 10:27:31,273 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:27:31,278 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:27:31,278 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:27:31,278 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:27:31,287 [INFO] - publix_access - GET /publix/1/1/start?srid=119
+2018-05-18 10:27:31,287 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 119, logged-in user's email admin
+2018-05-18 10:27:31,496 [INFO] - publix_access - GET /publix/1/1/initData?srid=119
+2018-05-18 10:27:31,496 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 119
+2018-05-18 10:27:31,508 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 119
+2018-05-18 10:27:31,533 [INFO] - publix_access - POST /publix/1/heartbeat?srid=119
+2018-05-18 10:27:59,503 [INFO] - publix_access - GET /publix/1/1/start?srid=119
+2018-05-18 10:27:59,504 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 119, logged-in user's email admin
+2018-05-18 10:27:59,511 [INFO] - publix_access - GET /publix/1/end?srid=119&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:27:59,511 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 119, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:27:59,522 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:27:59,755 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:27:59,796 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664479663 (admin)
+2018-05-18 10:28:01,218 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:28:01,224 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:28:01,224 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:28:01,224 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:28:01,232 [INFO] - publix_access - GET /publix/1/1/start?srid=120
+2018-05-18 10:28:01,232 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 120, logged-in user's email admin
+2018-05-18 10:28:01,395 [INFO] - publix_access - GET /publix/1/1/initData?srid=120
+2018-05-18 10:28:01,395 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 120
+2018-05-18 10:28:01,416 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 120
+2018-05-18 10:28:01,444 [INFO] - publix_access - POST /publix/1/heartbeat?srid=120
+2018-05-18 10:28:23,303 [INFO] - publix_access - GET /publix/1/1/start?srid=120
+2018-05-18 10:28:23,303 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 120, logged-in user's email admin
+2018-05-18 10:28:23,309 [INFO] - publix_access - GET /publix/1/end?srid=120&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:28:23,309 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 120, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:28:23,320 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:28:23,601 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:28:23,654 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664503515 (admin)
+2018-05-18 10:28:24,469 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:28:24,474 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:28:24,474 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:28:24,475 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:28:24,484 [INFO] - publix_access - GET /publix/1/1/start?srid=121
+2018-05-18 10:28:24,484 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 121, logged-in user's email admin
+2018-05-18 10:28:24,659 [INFO] - publix_access - GET /publix/1/1/initData?srid=121
+2018-05-18 10:28:24,659 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 121
+2018-05-18 10:28:24,676 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 121
+2018-05-18 10:28:24,706 [INFO] - publix_access - POST /publix/1/heartbeat?srid=121
+2018-05-18 10:29:43,849 [INFO] - publix_access - GET /publix/1/1/start?srid=121
+2018-05-18 10:29:43,849 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 121, logged-in user's email admin
+2018-05-18 10:29:43,856 [INFO] - publix_access - GET /publix/1/end?srid=121&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:29:43,856 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 121, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:29:43,866 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:29:44,126 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:29:44,162 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664584025 (admin)
+2018-05-18 10:29:45,185 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:29:45,190 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:29:45,190 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:29:45,191 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:29:45,199 [INFO] - publix_access - GET /publix/1/1/start?srid=122
+2018-05-18 10:29:45,199 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 122, logged-in user's email admin
+2018-05-18 10:29:45,401 [INFO] - publix_access - GET /publix/1/1/initData?srid=122
+2018-05-18 10:29:45,401 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 122
+2018-05-18 10:29:45,426 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 122
+2018-05-18 10:29:45,448 [INFO] - publix_access - POST /publix/1/heartbeat?srid=122
+2018-05-18 10:30:22,335 [INFO] - publix_access - GET /publix/1/1/start?srid=122
+2018-05-18 10:30:22,336 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 122, logged-in user's email admin
+2018-05-18 10:30:22,343 [INFO] - publix_access - GET /publix/1/end?srid=122&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:30:22,343 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 122, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:30:22,353 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:30:22,547 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:30:22,582 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664622480 (admin)
+2018-05-18 10:30:23,487 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:30:23,492 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:30:23,492 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:30:23,493 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:30:23,502 [INFO] - publix_access - GET /publix/1/1/start?srid=123
+2018-05-18 10:30:23,502 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 123, logged-in user's email admin
+2018-05-18 10:30:23,672 [INFO] - publix_access - GET /publix/1/1/initData?srid=123
+2018-05-18 10:30:23,672 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 123
+2018-05-18 10:30:23,685 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 123
+2018-05-18 10:30:23,715 [INFO] - publix_access - POST /publix/1/heartbeat?srid=123
+2018-05-18 10:31:43,818 [INFO] - publix_access - GET /publix/1/1/start?srid=123
+2018-05-18 10:31:43,818 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 123, logged-in user's email admin
+2018-05-18 10:31:43,831 [INFO] - publix_access - GET /publix/1/end?srid=123&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:31:43,831 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 123, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:31:43,852 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:31:44,057 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:31:44,099 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664703988 (admin)
+2018-05-18 10:31:44,692 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:31:44,697 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:31:44,697 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:31:44,698 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:31:44,706 [INFO] - publix_access - GET /publix/1/1/start?srid=124
+2018-05-18 10:31:44,707 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 124, logged-in user's email admin
+2018-05-18 10:31:44,898 [INFO] - publix_access - GET /publix/1/1/initData?srid=124
+2018-05-18 10:31:44,899 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 124
+2018-05-18 10:31:44,923 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 124
+2018-05-18 10:31:44,945 [INFO] - publix_access - POST /publix/1/heartbeat?srid=124
+2018-05-18 10:32:00,291 [INFO] - publix_access - GET /publix/1/1/start?srid=124
+2018-05-18 10:32:00,292 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 124, logged-in user's email admin
+2018-05-18 10:32:00,298 [INFO] - publix_access - GET /publix/1/end?srid=124&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:32:00,298 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 124, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:32:00,309 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:32:00,545 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:32:00,593 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664720452 (admin)
+2018-05-18 10:32:01,541 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:32:01,548 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:32:01,548 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:32:01,549 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:32:01,558 [INFO] - publix_access - GET /publix/1/1/start?srid=125
+2018-05-18 10:32:01,558 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 125, logged-in user's email admin
+2018-05-18 10:32:01,751 [INFO] - publix_access - GET /publix/1/1/initData?srid=125
+2018-05-18 10:32:01,751 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 125
+2018-05-18 10:32:01,767 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 125
+2018-05-18 10:32:01,779 [INFO] - publix_access - POST /publix/1/heartbeat?srid=125
+2018-05-18 10:32:40,644 [INFO] - publix_access - GET /publix/1/1/start?srid=125
+2018-05-18 10:32:40,644 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 125, logged-in user's email admin
+2018-05-18 10:32:40,649 [INFO] - publix_access - GET /publix/1/end?srid=125&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:32:40,649 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 125, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:32:40,660 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:32:40,866 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:32:40,915 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664760797 (admin)
+2018-05-18 10:32:41,713 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:32:41,718 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:32:41,718 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:32:41,718 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:32:41,727 [INFO] - publix_access - GET /publix/1/1/start?srid=126
+2018-05-18 10:32:41,727 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 126, logged-in user's email admin
+2018-05-18 10:32:41,944 [INFO] - publix_access - GET /publix/1/1/initData?srid=126
+2018-05-18 10:32:41,944 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 126
+2018-05-18 10:32:41,976 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 126
+2018-05-18 10:32:41,985 [INFO] - publix_access - POST /publix/1/heartbeat?srid=126
+2018-05-18 10:33:56,276 [INFO] - publix_access - GET /publix/1/1/start?srid=126
+2018-05-18 10:33:56,276 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 126, logged-in user's email admin
+2018-05-18 10:33:56,286 [INFO] - publix_access - GET /publix/1/end?srid=126&successful=false&errorMsg=It%27s+not+allowed+to+reload+this+component+%28ID%3A+1%29.+Unfortunately+it+is+neccessary+to+finish+this+study+%28ID%3A+1%29+at+this+point.
+2018-05-18 10:33:56,286 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 126, logged-in user email admin, successful false, errorMsg "It's not allowed to reload this component (ID: 1). Unfortunately it is neccessary to finish this study (ID: 1) at this point."
+2018-05-18 10:33:56,298 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:33:56,521 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:33:56,562 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664836453 (admin)
+2018-05-18 10:33:57,687 [INFO] - gui_access - GET /jatos/1/1/run (admin)
+2018-05-18 10:33:57,692 [INFO] - publix_access - GET /publix/1/start?batchId=-1&jatosWorkerId=1
+2018-05-18 10:33:57,692 [INFO] - c.p.w.JatosPublix - .startStudy: studyId 1, batchId -1, logged-in user's email admin
+2018-05-18 10:33:57,692 [INFO] - c.p.w.JatosPublix - .startStudy: study (study ID 1, batch ID -1) assigned to worker with ID 1
+2018-05-18 10:33:57,703 [INFO] - publix_access - GET /publix/1/1/start?srid=127
+2018-05-18 10:33:57,704 [INFO] - c.p.w.JatosPublix - .startComponent: studyId 1, componentId 1, studyResultId 127, logged-in user's email admin
+2018-05-18 10:33:57,913 [INFO] - publix_access - GET /publix/1/1/initData?srid=127
+2018-05-18 10:33:57,913 [INFO] - c.p.Publix - .getInitData: studyId 1, componentId 1, studyResultId 127
+2018-05-18 10:33:57,933 [INFO] - c.p.JatosBatchChannel - .open: studyId 1, studyResultId 127
+2018-05-18 10:33:57,950 [INFO] - publix_access - POST /publix/1/heartbeat?srid=127
+2018-05-18 10:34:35,526 [INFO] - publix_access - PUT /publix/1/1/resultData?srid=127
+2018-05-18 10:34:35,526 [INFO] - c.p.Publix - .submitResultData: studyId 1, componentId 1, studyResultId 127
+2018-05-18 10:34:35,536 [INFO] - publix_access - POST /publix/1/studySessionData?srid=127
+2018-05-18 10:34:35,537 [INFO] - c.p.Publix - .setStudySessionData: studyId 1, studyResultId 127
+2018-05-18 10:34:35,544 [INFO] - publix_access - GET /publix/1/nextComponent/start?srid=127
+2018-05-18 10:34:35,544 [INFO] - c.p.w.JatosPublix - .startNextComponent: studyId 1, studyResultId 127, logged-in user's email admin
+2018-05-18 10:34:35,549 [INFO] - publix_access - GET /publix/1/end?srid=127
+2018-05-18 10:34:35,550 [INFO] - c.p.w.JatosPublix - .finishStudy: studyId 1, studyResultId 127, logged-in user email admin, successful true, errorMsg "null"
+2018-05-18 10:34:35,559 [INFO] - gui_access - GET /jatos/1 (admin)
+2018-05-18 10:34:35,756 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:34:35,797 [INFO] - gui_access - GET /jatos/1/componentsTableData?_=1526664875690 (admin)
+2018-05-18 10:34:37,031 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-18 10:34:37,242 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:34:37,302 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526664877180 (admin)
+2018-05-18 10:34:46,099 [INFO] - gui_access - GET /jatos/1/1/results (admin)
+2018-05-18 10:34:46,307 [INFO] - gui_access - GET /jatos/sidebarStudyList (admin)
+2018-05-18 10:34:46,376 [INFO] - gui_access - GET /jatos/1/1/tableData?_=1526664886240 (admin)
