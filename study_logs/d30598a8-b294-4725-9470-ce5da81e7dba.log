@@ -91,3 +91,27 @@
 {"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526664837694}
 {"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"0ae298f4a1cf2eef0486bb125057ebf8138965154e4b4b2f223c9d057c6e960b","timestamp":1526664875528}
 {"msg":"Finished study run","workerId":1,"timestamp":1526664875551}
+{"msg":"Removed component result data","componentUuids":["1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab","1117d652-1ce6-4234-b14d-f07dc54659ab"],"workerIds":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"dataHashes":["b1a0bd744c0537bce102220a3ce6b44b5069471c2a2d98fd83542c88ddaaef63","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","no data","0ae298f4a1cf2eef0486bb125057ebf8138965154e4b4b2f223c9d057c6e960b"],"timestamp":1526666173406}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526666227434}
+{"msg":"Finished study run","workerId":1,"timestamp":1526666228973}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526667254498}
+{"msg":"Finished study run","workerId":1,"timestamp":1526667462468}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526667463722}
+{"msg":"Finished study run","workerId":1,"timestamp":1526667502275}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526667503516}
+{"msg":"Finished study run","workerId":1,"timestamp":1526667549702}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526667551158}
+{"msg":"Finished study run","workerId":1,"timestamp":1526667979013}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526667981334}
+{"msg":"Finished study run","workerId":1,"timestamp":1526667998391}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526667999732}
+{"msg":"Finished study run","workerId":1,"timestamp":1526668068058}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526668069484}
+{"msg":"Finished study run","workerId":1,"timestamp":1526668083216}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526668085168}
+{"msg":"Finished study run","workerId":1,"timestamp":1526668181129}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526668183757}
+{"msg":"Finished study run","workerId":1,"timestamp":1526668263135}
+{"msg":"Started study run with Jatos worker","batchId":1,"workerId":1,"timestamp":1526668264598}
+{"msg":"Stored component result data","componentUuid":"1117d652-1ce6-4234-b14d-f07dc54659ab","workerId":1,"dataHash":"40d6254c4ceb7b40bd3afd4fec670fb2c78d0b5f8ddbc0dcf418d7445781dd6a","timestamp":1526668352460}
+{"msg":"Finished study run","workerId":1,"timestamp":1526668352480}
