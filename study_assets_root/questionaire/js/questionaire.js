@@ -126,12 +126,12 @@ var musical = {
     }
 };
 var musical_summary = {
-    type: 'survey-multi-choice-custom',
+    type: 'survey-yes-no',
     preamble: header + "<h2>Musical Experience</h2>",
     questions: [
-        {prompt: "Have you played an instrument?", options: ["Yes", "No"], horizontal: true},
-        {prompt: "Have you sung in a group?", options: ["Yes", "No"], horizontal: true},
-        {prompt: "Have you studied music?", options: ["Yes", "No"], horizontal: true}
+        {prompt: "Have you played an instrument?"},
+        {prompt: "Have you sung in a group?"},
+        {prompt: "Have you studied music?"}
     ],
     on_load: function () {
         validate_musical_summary();

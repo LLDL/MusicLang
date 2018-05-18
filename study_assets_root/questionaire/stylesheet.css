@@ -18,7 +18,7 @@ p {
     background-color: #37904b;
     font-size: 0.9em;
 }
-#jspsych-language-info-next, #jspsych-gender-info-next, #jspsych-survey-multi-choice-next{
+#jspsych-language-info-next, #jspsych-gender-info-next{
     color: #ffffff;
     background-color: #37904b;
     font-size: 0.9em;
@@ -32,7 +32,7 @@ p {
     border: 1px solid transparent;
     border-radius: 4px; 
 }
-#jspsych-language-info-next:hover, #jspsych-gender-info-next:hover, #jspsych-survey-multi-choice-next:hover{
+#jspsych-language-info-next:hover, #jspsych-gender-info-next:hover{
     cursor: pointer;
 }
 .jspsych-language-info-header td{
@@ -48,21 +48,9 @@ p {
 #gender-other-container{
     padding-bottom: 10px;
 }
-
-
-
-.jspsych-survey-multi-choice-question p{ 
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+.survey-yes-no-response{
+    margin: 0em 0.2em 0em 1em;
 }
-
-.jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-text { 
-    text-align: center;
-}
-
-.jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-option {
-    display: inline-block;  
-    margin-left: 1em;  
-    margin-right: 1em;  
-    vertical-align: top;
+.survey-yes-no-question p{
+    margin: .5em 0em 0em 0em;
 }

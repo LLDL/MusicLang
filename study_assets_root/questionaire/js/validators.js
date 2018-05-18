@@ -214,20 +214,20 @@ function validate_musical() {
 
 function validate_musical_summary() {
     console.log("in validate");
-    var next = document.getElementById("jspsych-survey-multi-choice-next");
-    allow_next(next, false, "Please answer the questions above");
+    // var next = document.getElementById("jspsych-survey-multi-choice-next");
+    // allow_next(next, false, "Please answer the questions above");
 
-    var is_valid = true;
+    // var is_valid = true;
 
-    for(var i = 0; i<3; i++){
-        var curr_yes = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-0");
-        var curr_no = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-1");
-        if(!curr_yes.checked && !curr_no.checked){
-            allow_next(next, false, "Please answer the questions above");
-            is_valid = false;
-        }
-    }
-    if (is_valid) {
-        allow_next(next, true);
-    }
+    // for(var i = 0; i<3; i++){
+    //     var curr_yes = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-0");
+    //     var curr_no = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-1");
+    //     if(!curr_yes.checked && !curr_no.checked){
+    //         allow_next(next, false, "Please answer the questions above");
+    //         is_valid = false;
+    //     }
+    // }
+    // if (is_valid) {
+    //     allow_next(next, true);
+    // }
 };
