@@ -6,7 +6,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/questionaire/img/langdev-logo
 
 
 var contact = {
-    type: 'survey-text',
+    type: 'survey-text-custom',
     preamble: header + "<h2>Contact Information</h2>",
     questions: [{
             prompt: "Surname"
@@ -32,7 +32,7 @@ var contact = {
     }
 };
 var personal = {
-    type: 'survey-text',
+    type: 'survey-text-custom',
     preamble: header + "<h2>Personal Information</h2>",
     questions: [{
             prompt: "Age"
@@ -69,7 +69,7 @@ var gender = {
     }
 };
 var background = {
-    type: 'survey-text',
+    type: 'survey-text-custom',
     preamble: header + "<h2>Background Information</h2>",
     questions: [{
             prompt: "Birth Country"
@@ -97,7 +97,7 @@ var background = {
     }
 };
 var dominant_languages = {
-    type: 'survey-text',
+    type: 'survey-text-custom',
     preamble: header + "<h2>Languages You Know</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
     questions: [{
             prompt: "Most Dominant"
@@ -142,7 +142,7 @@ var language_details = {
     }
 };
 var musical = {
-    type: 'survey-text',
+    type: 'survey-text-custom',
     preamble: header + "<h2>Musical Background</h2>",
     questions: [{
         prompt: "Have you played any musical instruments, sung in a group, or studied music? If so, please describe your musical experience:"

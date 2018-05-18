@@ -5,11 +5,11 @@ var color_disabled = "#903738";
 function toggle_listeners(form, on, validator){
     if(on){
         form.addEventListener("change", validator);
-        form.addEventListener("mousemove", validator);
+        // form.addEventListener("mousemove", validator);
         form.addEventListener("keyup", validator);
     }else{
         form.removeEventListener("change", validator);
-        form.removeEventListener("mousemove", validator);
+        // form.removeEventListener("mousemove", validator);
         form.removeEventListener("keyup", validator);
     }
 
@@ -194,7 +194,7 @@ function validate_musical() {
 
     var musical_instruments = get_answer(questions, 1);
 
-    if (is_valid && (musical_instruments.length > 1000)) {
+    if (musical_instruments.length > 1000) {
         allow_next(next, false, "Describe any musical experience in under 1000 characters");
     } else {
         allow_next(next, true);

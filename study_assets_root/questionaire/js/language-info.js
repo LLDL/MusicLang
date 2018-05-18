@@ -84,7 +84,7 @@ jsPsych.plugins["language-info"] = (function () {
 			// save data
 			var trialdata = {
 				"rt": response_time,
-				"responses": JSON.stringify(lang_data)
+				"responses": lang_data
 			};
 			display_element.innerHTML = '';
 			// next trial
