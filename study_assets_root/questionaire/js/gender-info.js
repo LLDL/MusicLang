@@ -58,10 +58,11 @@ jsPsych.plugins["gender-info"] = (function () {
             }else if(display_element.querySelector("#gender-other").checked){
                 gender = display_element.querySelector("#gender-specified").value;
             }
+            gender_data["Gender"] = gender;
             display_element.innerHTML = '';
             var trialdata = {
                 "rt": response_time,
-                "gender" : gender
+                "responses" : gender_data
             };
             jsPsych.finishTrial(trialdata);
 		});

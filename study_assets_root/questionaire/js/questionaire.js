@@ -162,7 +162,7 @@ jatos.onLoad(
         //production timeline:
         timeline: [contact, personal, gender, background, dominant_languages, language_details, musical],
         //timeline for testing: 
-        //timeline: [gender],
+        // timeline: [contact],
         show_progress_bar: true,
         //Checks how many times user left
         on_interaction_data_update: function (data) {

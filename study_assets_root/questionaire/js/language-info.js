@@ -78,7 +78,12 @@ jsPsych.plugins["language-info"] = (function () {
 				var age = ages[i].value;
 				var year = years[i].value;
 				var obje = {};
-				obje[id] = [age, year];
+				var info = {};
+				// obje[id] = ["Starting Age": age, "Years Learned": year];
+				// Object.assign(lang_data, obje);
+				info["Starting Age"] = age;
+				info["Years Learned"] = year;
+				obje[id] = info;
 				Object.assign(lang_data, obje);
 			}
 			// save data

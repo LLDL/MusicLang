@@ -2,8 +2,9 @@
  * survey-text-custom
  * a jspsych plugin for free repsonse survey questions
  * originally from Josh de Leeuw but modified slightly
- * to not stringify outputs, in order to make JSON
- * parsing easier by Ankit Dassor
+ * by Ankit Dassor to:
+ *  - not stringify outputs, in order to make JSON parsing easier
+ *  - use prompts in response outputs to ease data compilation
  *
  * documentation: docs.jspsych.org
  *
@@ -114,7 +115,7 @@ jsPsych.plugins['survey-text-custom'] = (function() {
       var question_data = {};
       var matches = display_element.querySelectorAll('div.jspsych-survey-text-question');
       for(var index=0; index<matches.length; index++){
-        var id = "Q" + index;
+        var id = trial.questions[index].prompt;
         var val = matches[index].querySelector('textarea, input').value;
         var obje = {};
         obje[id] = val;
