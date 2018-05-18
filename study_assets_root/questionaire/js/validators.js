@@ -1,4 +1,5 @@
 var known_langs;
+var musical_exp;
 var color_enabled = "#37904b";
 var color_disabled = "#903738";
 
@@ -29,11 +30,11 @@ function allow_next(next, enable, prompt) {
         next.disabled = true;
         next.style.backgroundColor = color_disabled;
     }
-}
+};
 
 function get_answer(questions, question) {
     return questions[question].children[1].value;
-}
+};
 
 function update_known_langs(questions) {
     var known = [];
@@ -45,11 +46,21 @@ function update_known_langs(questions) {
         }
     }
     known_langs = known;
-}
+};
 
-function get_known_langs() {
-    return known_langs;
-}
+// function get_known_langs() {
+//     return known_langs;
+// }
+
+
+// function update_musical_exp(){
+//     var experiences = [];
+
+//     musical_exp = experiences;
+// }
+function get_musical_exp(){
+    return musical_exp;
+};
 
 function validate_contact() {
     var questions = document.getElementById("jspsych-content").children;
@@ -76,7 +87,7 @@ function validate_contact() {
     } else {
         allow_next(next, true);
     }
-}
+};
 
 function validate_personal() {
     var questions = document.getElementById("jspsych-content").children;
@@ -100,7 +111,7 @@ function validate_personal() {
     } else {
         allow_next(next, true);
     }
-}
+};
 
 function validate_gender() {
     var next = document.getElementById("jspsych-gender-info-next");
@@ -119,7 +130,7 @@ function validate_gender() {
         gender = document.getElementById("gender-specified").value;
         allow_next(next, true);
     }
-}
+};
 
 function validate_background() {
     var questions = document.getElementById("jspsych-content").children;
@@ -146,7 +157,7 @@ function validate_background() {
     } else {
         allow_next(next, true);
     }
-}
+};
 
 function validate_dominant_languages() {
     var questions = document.getElementById("jspsych-content").children;
@@ -161,7 +172,7 @@ function validate_dominant_languages() {
         update_known_langs(questions);
         allow_next(next, true);
     }
-}
+};
 
 function validate_language_details() {
     var next = document.getElementById("jspsych-language-info-next");
@@ -185,7 +196,7 @@ function validate_language_details() {
     if (is_valid) {
         allow_next(next, true);
     }
-}
+};
 
 function validate_musical() {
     var questions = document.getElementById("jspsych-content").children;
@@ -199,4 +210,24 @@ function validate_musical() {
     } else {
         allow_next(next, true);
     }
-}
+};
+
+function validate_musical_summary() {
+    console.log("in validate");
+    var next = document.getElementById("jspsych-survey-multi-choice-next");
+    allow_next(next, false, "Please answer the questions above");
+
+    var is_valid = true;
+
+    for(var i = 0; i<3; i++){
+        var curr_yes = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-0");
+        var curr_no = document.getElementById("jspsych-survey-multi-choice-response-"+ i + "-1");
+        if(!curr_yes.checked && !curr_no.checked){
+            allow_next(next, false, "Please answer the questions above");
+            is_valid = false;
+        }
+    }
+    if (is_valid) {
+        allow_next(next, true);
+    }
+};

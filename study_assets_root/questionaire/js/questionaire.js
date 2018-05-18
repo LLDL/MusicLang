@@ -132,7 +132,15 @@ var musical_summary = {
         {prompt: "Have you played an instrument?", options: ["Yes", "No"], horizontal: true},
         {prompt: "Have you sung in a group?", options: ["Yes", "No"], horizontal: true},
         {prompt: "Have you studied music?", options: ["Yes", "No"], horizontal: true}
-    ]
+    ],
+    on_load: function () {
+        validate_musical_summary();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_musical_summary);
+    },
+    on_finish: function () {
+        toggle_listeners(form, false, validate_musical_summary);
+    }
 };
 jatos.onLoad(
     jsPsych.init({

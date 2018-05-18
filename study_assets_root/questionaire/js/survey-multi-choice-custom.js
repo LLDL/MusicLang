@@ -119,8 +119,7 @@ jsPsych.plugins['survey-multi-choice-custom'] = (function() {
     }
     // add submit button
     trial_form.innerHTML += '<input type="submit" id="'+plugin_id_name+'-next" class="'+plugin_id_name+' jspsych-btn"' + (trial.button_label ? ' value="'+trial.button_label + '"': '') + '></input>';
-    trial_form.addEventListener('submit', function(event) {
-      event.preventDefault();
+    trial_form.addEventListener('click', function(event) {
       var matches = display_element.querySelectorAll("div." + plugin_id_name + "-question");
       // measure response time
       var endTime = (new Date()).getTime();
