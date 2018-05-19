@@ -227,3 +227,7 @@ function validate_musical_summary() {
         allow_next(next, true);
     }
 };
+
+function validate_musical_detail(){
+    
+}
