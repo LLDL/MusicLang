@@ -78,7 +78,26 @@ jsPsych.plugins["music-info"] = (function () {
 			//measure response time
 			endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
-
+			var music_data = {};
+			var exp_strings = ["Instruments", "Singing in a Group", "Music Study"];
+			for(var experience = 0; experience < 3; experience++){
+				if(trial.experiences[experience]){
+					expType = {}
+					for(var inst = 0; inst < 3; inst++){
+						var row = display_element.querySelector('#music-info-row-' + experience + '-' + inst).childNodes;
+						var desc = row[0].firstChild.value;
+						var age = row[1].firstChild.value;
+						var years = row[2].firstChild.value;
+						var inst = row[3].firstChild.value;
+						var row = {};
+						row["Starting Age"] = age;
+						row["Years Learned"] = years;
+						row["Instruction Type"]= inst;
+						expType[desc] = row;
+					}
+					Object.assign(music_data, expType);
+				}
+			}
 			// // create object to hold responses
 			// var lang_data = {};
 			// var langs = display_element.querySelectorAll('.language-info-lang');
@@ -97,10 +116,9 @@ jsPsych.plugins["music-info"] = (function () {
 			// 	obje[id] = info;
 			// 	Object.assign(lang_data, obje);
 			// }
-			// save data
 			var trialdata = {
 				"rt": response_time,
-				// "responses": lang_data
+				"responses": music_data
 			};
 			display_element.innerHTML = '';
 			// next trial
