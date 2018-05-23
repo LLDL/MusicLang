@@ -78,47 +78,31 @@ jsPsych.plugins["music-info"] = (function () {
 			//measure response time
 			endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
-			var music_data = {};
-			var exp_strings = ["Instruments", "Singing in a Group", "Music Study"];
-			for(var experience = 0; experience < 3; experience++){
-				if(trial.experiences[experience]){
-					expType = {}
-					for(var inst = 0; inst < 3; inst++){
-						var row = display_element.querySelector('#music-info-row-' + experience + '-' + inst).childNodes;
+			var exps = {};
+			var exp_types = ["Instruments", "Singing in a Group", "Music Study"];
+			for(var exp_index = 0; exp_index < 3; exp_index++){
+				if(trial.experiences[exp_index]){
+					var exp = {};
+					for(var inst_index = 0; inst_index < 3; inst_index++){
+						var row = display_element.querySelector('#music-info-row-' + exp_index + '-' + inst_index).childNodes;
 						var desc = row[0].firstChild.value;
-						var age = row[1].firstChild.value;
-						var years = row[2].firstChild.value;
-						var inst = row[3].firstChild.value;
-						var row = {};
-						row["Starting Age"] = age;
-						row["Years Learned"] = years;
-						row["Instruction Type"]= inst;
-						expType[desc] = row;
+						if(desc != ''){
+							var age = row[1].firstChild.value;
+							var years = row[2].firstChild.value;
+							var inst = row[3].firstChild.value;
+							var row_obj = {};
+							row_obj["Starting Age"] = age;
+							row_obj["Years Learned"] = years;
+							row_obj["Instruction"] = inst;
+							exp[desc] = row_obj;
+						}
 					}
-					Object.assign(music_data, expType);
+					exps[exp_types[exp_index]] = exp;
 				}
 			}
-			// // create object to hold responses
-			// var lang_data = {};
-			// var langs = display_element.querySelectorAll('.language-info-lang');
-			// var ages = display_element.querySelectorAll('.language-info-age-response');
-			// var years = display_element.querySelectorAll('.language-info-year-response');
-			// for (var i = 0; i < langs.length; i++) {
-			// 	var id = langs[i].innerHTML;
-			// 	var age = ages[i].value;
-			// 	var year = years[i].value;
-			// 	var obje = {};
-			// 	var info = {};
-			// 	// obje[id] = ["Starting Age": age, "Years Learned": year];
-			// 	// Object.assign(lang_data, obje);
-			// 	info["Starting Age"] = age;
-			// 	info["Years Learned"] = year;
-			// 	obje[id] = info;
-			// 	Object.assign(lang_data, obje);
-			// }
 			var trialdata = {
 				"rt": response_time,
-				"responses": music_data
+				"responses": exps
 			};
 			display_element.innerHTML = '';
 			// next trial
