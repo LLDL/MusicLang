@@ -145,9 +145,9 @@ var musical_detail = {
 jatos.onLoad(
     jsPsych.init({
         //production timeline:
-        // timeline: [contact, personal, gender, background, dominant_languages, language_details, musical_summary],
+        timeline: [contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
-        timeline: [musical_summary, musical_detail],
+        // timeline: [musical_summary, musical_detail],
         show_progress_bar: true,
         //Checks how many times user left
         on_interaction_data_update: function (data) {
