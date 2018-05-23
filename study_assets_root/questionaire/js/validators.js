@@ -229,5 +229,43 @@ function validate_musical_summary() {
 };
 
 function validate_musical_detail(){
-    
+    var next = document.getElementById("music-info-next");
+    allow_next(next, true);
+
+    var exp_types = ["Instruments", "Singing in a Group", "Music Study"];
+    for(var table_index = 0; table_index<3; table_index++){
+        if(musical_exp[table_index]){
+           for(var row_index = 0; row_index<3; row_index++){
+                curr_row_els = document.getElementById("music-info-row-" + table_index + '-' + row_index).childNodes;
+                
+                var desc = curr_row_els[0].childNodes[0].value;
+                var age = curr_row_els[1].childNodes[0].value;
+                var years = curr_row_els[2].childNodes[0].value;
+                var inst = curr_row_els[3].childNodes[0].value;
+
+                //first row of each table must be filled in
+                if(row_index == 0 && (desc == '' || age == '' || years == '' || inst == '')){
+                    allow_next(next, false, "Please complete at least one row per section.");
+                } 
+                //if user has filled in age/years/inst without a description
+                if(desc == '' && (age != '' || years != '' || inst != '')){
+                    allow_next(next, false, "Please complete row " + (row_index + 1) + " of " + exp_types[table_index]);
+                    
+                }
+                //if user has inputted a description for the row, validate
+                if( desc != '' &&
+                    (   
+                        (desc.length > 100) || 
+                        (age.length == 0 || isNaN(age) || age < 0 || age > 120) ||
+                        (years.length == 0 || isNaN(years) || years < 0 || years > 120) ||
+                        (inst.length == 0 || inst.length > 100)
+                    )
+                ){
+                    allow_next(next, false, "Please complete row " + (row_index + 1) + " of " + exp_types[table_index]);                    
+                }
+           }
+        }
+        
+    }
+
 }
