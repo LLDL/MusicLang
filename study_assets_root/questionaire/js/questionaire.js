@@ -4,6 +4,16 @@ var form; //current jspych-content element, to enable event listeners
 var likely_invalid = false; //gets set to true if blur_count>threshold
 var header = "<img id=\"logo\" src=\"/study_assets/questionaire/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //to be prepended to preludes
 
+var info = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>Test Instruction Page</h2><p>Lorem ipsum si venit</p>',
+        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/questionaire/consent.pdf" download>this consent form</a>. By continuing, you are granting etc.</p> '
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    button_label_previous: 'Back',
+}
 
 var contact = {
     type: 'survey-text-custom',
@@ -141,7 +151,7 @@ var musical_detail = {
 jatos.onLoad(
     jsPsych.init({
         //production timeline:
-        timeline: [contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
+        timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         // timeline: [musical_summary, musical_detail],
         show_progress_bar: true,
