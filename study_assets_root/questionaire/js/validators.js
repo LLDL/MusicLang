@@ -54,18 +54,14 @@ function get_known_langs() {
 
 
 function update_musical_exp(){
-    var experiences = [];
-    for(var i = 0; i<3; i++){
-        var yes = document.getElementById("survey-yes-no-response-"+ i + "-0").checked;
-        var no = document.getElementById("survey-yes-no-response-"+ i + "-1").checked;
-        if(yes){
-            experiences[i] = true;
-        }else{
-            experiences[i] = false;
-        }
+    var yes = document.getElementById("survey-yes-no-response-0-0").checked;
+    var no = document.getElementById("survey-yes-no-response-0-1").checked;
+    if(yes){
+        musical_exp = true;
+    }else{
+        musical_exp = false;
     }
-    musical_exp = experiences;
-    console.log(musical_exp);
+    //console.log(musical_exp);
 }
 function get_musical_exp(){
     return musical_exp;
@@ -105,18 +101,12 @@ function validate_personal() {
 
 
     var age = get_answer(questions, 1);
-    var hearing_problems = get_answer(questions, 2);
-    var language_disorders = get_answer(questions, 3);
-    var learning_disorders = get_answer(questions, 4);
+    var problems = get_answer(questions, 2);
 
     if (isNaN(age) || age <= 0 || age > 120) {
         allow_next(next, false, "Enter your age (0-120)");
-    } else if (hearing_problems.length > 1000) {
-        allow_next(next, false, "Describe any hearing problems in under 1000 characters");
-    } else if (language_disorders.length > 1000) {
-        allow_next(next, false, "Describe any language disorders in under 1000 characters");
-    } else if (learning_disorders.length > 1000) {
-        allow_next(next, false, "Describe any learning disorders in under 1000 characters");
+    } else if (problems.length > 1000) {
+        allow_next(next, false, "Describe any hearing problems, learning disorders, and language disorders in under 1000 characters");
     } else {
         allow_next(next, true);
     }
@@ -210,17 +200,16 @@ function validate_language_details() {
 
 function validate_musical_summary() {
     var next = document.getElementById("survey-yes-no-next");
-    allow_next(next, false, "Please answer the questions above");
+    allow_next(next, false, "Please answer the question above");
 
     var is_valid = true;
 
-    for(var i = 0; i<3; i++){
-        var curr_yes = document.getElementById("survey-yes-no-response-"+ i + "-0");
-        var curr_no = document.getElementById("survey-yes-no-response-"+ i + "-1");
-        if(!curr_yes.checked && !curr_no.checked){
-            allow_next(next, false, "Please answer the questions above");
-            is_valid = false;
-        }
+    var yes = document.getElementById("survey-yes-no-response-0-0");
+    var no = document.getElementById("survey-yes-no-response-0-1");
+
+    if(!yes.checked && !no.checked){
+        allow_next(next, false, "Please answer the questions above");
+        is_valid = false;
     }
     if (is_valid) {
         update_musical_exp();
@@ -232,40 +221,34 @@ function validate_musical_detail(){
     var next = document.getElementById("music-info-next");
     allow_next(next, true);
 
-    var exp_types = ["Instruments", "Singing in a Group", "Music Study"];
-    for(var table_index = 0; table_index<3; table_index++){
-        if(musical_exp[table_index]){
-           for(var row_index = 0; row_index<3; row_index++){
-                curr_row_els = document.getElementById("music-info-row-" + table_index + '-' + row_index).childNodes;
+    if(musical_exp){
+        for(var row_index = 0; row_index<5; row_index++){
+            curr_row_els = document.getElementById('music-info-row-' + row_index).childNodes;
+            
+            var desc = curr_row_els[0].childNodes[0].value;
+            var age = curr_row_els[1].childNodes[0].value;
+            var years = curr_row_els[2].childNodes[0].value;
+            var inst = curr_row_els[3].childNodes[0].value;
+
+            //first row of table must be filled in
+            if(row_index == 0 && (desc == '' || age == '' || years == '' || inst == '')){
+                allow_next(next, false, "Please describe at least one musical experience.");
+            } 
+            //if user has filled in age/years/inst without a description
+            if(desc == '' && (age != '' || years != '' || inst != '')){
+                allow_next(next, false, "Please complete row " + (row_index + 1));
                 
-                var desc = curr_row_els[0].childNodes[0].value;
-                var age = curr_row_els[1].childNodes[0].value;
-                var years = curr_row_els[2].childNodes[0].value;
-                var inst = curr_row_els[3].childNodes[0].value;
-
-                //first row of each table must be filled in
-                if(row_index == 0 && (desc == '' || age == '' || years == '' || inst == '')){
-                    allow_next(next, false, "Please complete at least one row per section.");
-                } 
-                //if user has filled in age/years/inst without a description
-                if(desc == '' && (age != '' || years != '' || inst != '')){
-                    allow_next(next, false, "Please complete row " + (row_index + 1) + " of " + exp_types[table_index]);
-                    
-                }
-                //if user has inputted a description for the row, validate
-                if( desc != '' &&
-                    (   
-                        (desc.length > 100) || 
-                        (age.length == 0 || isNaN(age) || age < 0 || age > 120) ||
-                        (years.length == 0 || isNaN(years) || years < 0 || years > 120) ||
-                        (inst.length == 0 || inst.length > 100)
-                    )
-                ){
-                    allow_next(next, false, "Please complete row " + (row_index + 1) + " of " + exp_types[table_index]);                    
-                }
-           }
+            }
+            //if user has inputted a description for the row, validate
+            if( desc != '' && (   
+                    (desc.length > 100) || 
+                    (age.length == 0 || isNaN(age) || age < 0 || age > 120) ||
+                    (years.length == 0 || isNaN(years) || years < 0 || years > 120) ||
+                    (inst.length == 0 || inst.length > 100)
+                )){
+                
+                allow_next(next, false, "Please complete row " + (row_index + 1));
+            }
         }
-        
     }
-
 }

@@ -82,7 +82,7 @@ jsPsych.plugins['survey-text-custom'] = (function() {
         trial.questions[i].value = "";
       }
     }
-
+    
     var html = '';
     // show preamble text
     if(trial.preamble !== null){

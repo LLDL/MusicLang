@@ -28,9 +28,7 @@ var personal = {
     preamble: header + "<h2>Personal Information</h2>",
     questions: [
         {prompt: "Age"},
-        {prompt: "If you have any hearing problems, please specify"},
-        {prompt: "If you have any language disorders, please specify"},
-        {prompt: "If you have any learning disorders, please specify"}
+        {prompt: "If you have any hearing problems, learning disorders or language disorders, please specify.<br>For example: aphaisia, dyslexia, hearing impairment, ADHD, etc."}
     ],
     on_load: function () {
         validate_personal();
@@ -95,7 +93,7 @@ var dominant_languages = {
 };
 var language_details = {
     type: 'language-info',
-    preamble: header + "<h2>Test Language Details</h2>",
+    preamble: header + "<h2>Language Details</h2>",
     languages: [],
     on_start: function (trial) {
         trial.languages = get_known_langs();
@@ -113,9 +111,7 @@ var musical_summary = {
     type: 'survey-yes-no',
     preamble: header + "<h2>Musical Background</h2>",
     questions: [
-        {prompt: "Have you played an instrument?"},
-        {prompt: "Have you sung in a group?"},
-        {prompt: "Have you studied music?"}
+        {prompt: "Have you played an instrument, sung in a group, or studied music?"}
     ],
     on_load: function () {
         validate_musical_summary();
@@ -128,10 +124,10 @@ var musical_summary = {
 };
 var musical_detail = {
     type: 'music-info',
-    preamble: header + "<h2>Musical Experience</h2>",
+    preamble: header + '<h2>Musical Experience</h2><p>In "Description", name the instrument or type of singing.<br>In "Instruction Type", describe the enviroment you learned in, ie: private lessons, school band, band, etc.</p>',
     experiences: [],
     on_start: function(trial){
-        trial.experiences = get_musical_exp();
+        trial.experience = get_musical_exp();
     },
     on_load: function(){
         validate_musical_detail();
