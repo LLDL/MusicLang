@@ -146,6 +146,11 @@ jatos.onLoad(
         // timeline: [musical_summary, musical_detail],
         show_progress_bar: true,
         //Checks how many times user left
+        exclusions: {
+            min_width: 800,
+            min_height: 600
+        },
+
         on_interaction_data_update: function (data) {
             if (data.event == "blur") {
                 console.log(data);
