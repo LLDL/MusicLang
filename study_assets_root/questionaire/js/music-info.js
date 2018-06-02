@@ -21,7 +21,7 @@ jsPsych.plugins["music-info"] = (function () {
 				array: false,
 				pretty_name: 'musical experience',
 				description: 'The t/f for whether a participant has played instruments, sung in a group, or studied music that controls which prompts to display to user',
-				default: undefined
+				default: false
 			},
 			preamble: {
 				type: jsPsych.plugins.parameterType.STRING,
@@ -29,6 +29,10 @@ jsPsych.plugins["music-info"] = (function () {
 				default: null,
 				description: 'HTML formatted string to display at the top of the page above all the languages.'
 			},
+			json_label: {
+                type: jsPsych.plugins.parameterType.STRING,
+                default: 'response'
+            },
 			button_label: {
 				type: jsPsych.plugins.parameterType.STRING,
 				pretty_name: 'Button label',
@@ -103,7 +107,7 @@ jsPsych.plugins["music-info"] = (function () {
 				
 				var trialdata = {
 					"rt": response_time,
-					"responses": exp
+					[trial.json_label]: exp
 				};
 				display_element.innerHTML = '';
 				// next trial

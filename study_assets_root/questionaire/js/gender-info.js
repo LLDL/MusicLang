@@ -22,7 +22,11 @@ jsPsych.plugins["gender-info"] = (function () {
 				pretty_name: 'Preamble',
 				default: null,
 				description: 'HTML formatted string to display at the top of the page above all the languages.'
-			},
+            },
+            json_label: {
+                type: jsPsych.plugins.parameterType.STRING,
+                default: 'response'
+            },
 			button_label: {
 				type: jsPsych.plugins.parameterType.STRING,
 				pretty_name: 'Button label',
@@ -62,7 +66,7 @@ jsPsych.plugins["gender-info"] = (function () {
             display_element.innerHTML = '';
             var trialdata = {
                 "rt": response_time,
-                "responses" : gender_data
+                [trial.json_label] : gender_data
             };
             jsPsych.finishTrial(trialdata);
 		});
