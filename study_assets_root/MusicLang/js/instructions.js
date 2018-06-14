@@ -1,6 +1,6 @@
 /* instructions.js
  * 
- * Very lightly changed from original by Ankit Dassor to prevent stringify and remove 
+ * Changed from original by Ankit Dassor to prevent stringify and remove 
  * view_history
  * 
  * Original Author:

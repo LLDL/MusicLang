@@ -3,14 +3,14 @@ var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"/study_assets/questionaire/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"/study_assets/MusicLang/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionaire</h1>"; //to be prepended to preludes
 
 // Instruction pages that appear at the start
 var info = {
     type: 'instructions',
     pages: [
         header + '<h2>Test Instruction Page</h2><p>Lorem ipsum si venit</p>',
-        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/questionaire/consent.pdf" download>this consent form</a>. By continuing, you are granting etc.</p> '
+        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/MusicLang/consent.pdf" download>this consent form</a>. By continuing, you are granting etc.</p> '
     ],
     // data: { 
     //     section: 'Instructions'
@@ -198,7 +198,8 @@ jatos.onLoad(
         on_finish: function (data) {
             //jsPsych.data.addProperties({subject: jatos.studyResultId});
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index').ignore('rt').ignore('trial_type');
+            //var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index').ignore('rt').ignore('trial_type');
+            var results = resultsRaw.ignore('internal_node_id');
             var resultsJSON = results.json();
             //var resultsWithIdsJSON = jatos.addJatosIds(results).json();
             //resultsJSON = resultsJSON.slice(1, -1); //remove [] outside
