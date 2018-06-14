@@ -10,15 +10,31 @@ var inst = {
     pages: [
         header + '<h2>Instructions</h2><p>Please wear headphones for the duration of this experiment.<br>To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg">'
     ],
-    // data: { 
-    //     section: 'Instructions'
-    // },
     show_clickable_nav: true,
     button_label_next: 'Next',
     allow_keys: false
 }
 
-
+var met_rhythm = {
+    type: 'binary-audio',
+    json_label: 'MET-Rhythm-EngNat',
+    preamble: header + '<h2>Musical Ear Test</h2><h3>Comparison of Rhythmic Phrases</h3>',
+    example_preamble: 'Examples',
+    question_preamble: 'Questions',
+    example_count: '2',
+    question_count: '52',
+    example_num_prefix: 'Example ',
+    question_num_prefix: '',
+    example_num_suffix: '',
+    question_num_suffix: '.',
+    example_num_type: 'alphabetic',
+    question_num_type: 'numeric',
+    answer1: 'Yes',
+    answer2: 'No',
+    audio: '/study_assets/MusicLang/audio/met-rhythm-engnat.mp3',
+    allow_audio_control: false,
+    test_length: 626 //611:length+15:grace
+}
 
 jatos.onLoad(
     jsPsych.init({
@@ -27,7 +43,7 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        timeline: [inst],
+        timeline: [inst, met_rhythm],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
