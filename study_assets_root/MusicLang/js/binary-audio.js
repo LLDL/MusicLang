@@ -185,6 +185,13 @@ jsPsych.plugins['binary-audio'] = (function () {
         if (trial.preamble !== null) {
             html += '<div id="binary-audio-preamble" class="binary-audio-preamble">' + trial.preamble + '</div>';
         }
+        //Audio
+        html += '<audio preload="auto" autoplay'
+        if(trial.allow_audio_control){
+            html += ' controls';
+        }
+        html += '><source src="'+ trial.audio + '" type="audio/mpeg"></audio>';
+        
         //Example Section
         html += '<div id="binary-audio-example">'
         if (trial.example_preamble !== null) {
