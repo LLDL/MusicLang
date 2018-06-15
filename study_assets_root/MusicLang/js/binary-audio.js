@@ -180,7 +180,12 @@ jsPsych.plugins['binary-audio'] = (function () {
         }
     }
     
-    plugin.trial = function (display_element, trial){ 
+    plugin.trial = function (display_element, trial){
+         
+        var startTime = (new Date()).getTime();
+        //Every second, maybeFinish() is triggered by the below
+        var everySecond = setInterval(maybeFinish, 1000);
+
         var html = '';
         if (trial.preamble !== null) {
             html += '<div id="binary-audio-preamble" class="binary-audio-preamble">' + trial.preamble + '</div>';
@@ -210,21 +215,23 @@ jsPsych.plugins['binary-audio'] = (function () {
 
         display_element.innerHTML = html;
 
-        html += '<button id="binary-audio-next" class="binary-audio-next">' + "temporary next" + '</button>';
 
-        display_element.querySelector('#binary-audio-next').addEventListener('click', function () {
+        function maybeFinish() {
             //measure response time
             endTime = (new Date()).getTime();
+            // if test_length has been exceeded, end the test
             var response_time = endTime - startTime;
-            
-            var trialdata = {
-                "rt": response_time
-            };
-            display_element.innerHTML = '';
-            // next trial
-            jsPsych.finishTrial(trialdata);
-        });
-        var startTime = (new Date()).getTime();
+            if(response_time>trial.test_length*1000){
+                clearInterval(everySecond);
+                var trialdata = {
+                    "rt": response_time
+                };
+                display_element.innerHTML = '';
+                // next trial
+                jsPsych.finishTrial(trialdata);
+            }
+        }
+        
     }
     return plugin;
 })();

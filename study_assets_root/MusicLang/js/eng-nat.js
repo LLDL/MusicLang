@@ -19,21 +19,12 @@ var met_rhythm = {
     type: 'binary-audio',
     json_label: 'MET-Rhythm-EngNat',
     preamble: header + '<h2>Musical Ear Test</h2><h3>Comparison of Rhythmic Phrases</h3>',
-    example_preamble: 'Examples',
-    question_preamble: 'Questions',
     example_count: '2',
     question_count: '52',
     example_num_prefix: 'Example ',
-    question_num_prefix: '',
-    example_num_suffix: '',
-    question_num_suffix: '',
     example_num_type: 'alphabetic',
-    question_num_type: 'numeric',
-    answer1: 'Yes',
-    answer2: 'No',
     audio: '/study_assets/MusicLang/audio/met-rhythm-engnat.mp3',
-    allow_audio_control: false,
-    test_length: 626 //611:length+15:grace
+    test_length: 611 //611:length+15:grace
 }
 
 jatos.onLoad(
