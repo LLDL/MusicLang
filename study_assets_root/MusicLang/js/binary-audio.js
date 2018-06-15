@@ -222,9 +222,29 @@ jsPsych.plugins['binary-audio'] = (function () {
             // if test_length has been exceeded, end the test
             var response_time = endTime - startTime;
             if(response_time>trial.test_length*1000){
+                var answers = {};
+                var questions = document.querySelectorAll('.binary-audio-prompt-question');
+                for(var i=0; i<trial.question_count; i++){
+                    var disp_i;
+                    if(trial.question_num_type == 'alphabetic'){
+                        disp_i = to_letters(i+1);  
+                    }else{
+                        disp_i = i+1;
+                    }
+
+                    var opts = questions[i].getElementsByTagName("input");
+                    if(opts[0].checked){
+                        answers[disp_i] = trial.answer1;
+                    }else if(opts[1].checked){
+                        answers[disp_i] = trial.answer2;
+                    }else{
+                        answers[disp_i] = 'none';
+                    }
+                }
                 clearInterval(everySecond);
                 var trialdata = {
-                    "rt": response_time
+                    "rt": response_time,
+                    [trial.json_label]: answers
                 };
                 display_element.innerHTML = '';
                 // next trial

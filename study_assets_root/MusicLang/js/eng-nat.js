@@ -24,7 +24,19 @@ var met_rhythm = {
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
     audio: '/study_assets/MusicLang/audio/met-rhythm-engnat.mp3',
-    test_length: 611 //611:length+15:grace
+    test_length: 3 //611:length+15:grace
+}
+
+var met_melody = {
+    type: 'binary-audio',
+    json_label: 'MET-Melody-EngNat',
+    preamble: header + '<h2>Musical Ear Test</h2><h3>Comparison of Melodic Phrases</h3>',
+    example_count: '2',
+    question_count: '52',
+    example_num_prefix: 'Example ',
+    example_num_type: 'alphabetic',
+    audio: '/study_assets/MusicLang/audio/met-melody-engnat.mp3',
+    test_length: 3 //617:length+15:grace 
 }
 
 jatos.onLoad(
@@ -34,7 +46,7 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        timeline: [inst, met_rhythm],
+        timeline: [inst, met_rhythm, met_melody],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
