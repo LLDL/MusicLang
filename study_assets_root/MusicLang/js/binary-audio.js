@@ -43,26 +43,45 @@ function to_letters(number){
     return out;
 }
 function generateQuestions(section, count, prefix, suffix, iter_type, answer1, answer2){
-    var questionHTML = '';
-    // var left = '<div class="leftCol">';
-    // var right = '<div class="rightCol">';
+    var colsJoined;
+    var left = '<div class="leftCol">';
+    var right = '<div class="rightCol">';
     for(var i=1; i<=count; i++){
+        var tempHTML = '';
         var disp_i = i;
         if(iter_type == 'alphabetic'){
             disp_i = to_letters(i);  
         }
-        questionHTML += '<div class="binary-audio-prompt binary-audio-prompt-' + section + '">';
-        questionHTML += '<label>' + prefix + disp_i + suffix + '</label>';
+        tempHTML += '<div class="binary-audio-prompt binary-audio-prompt-' + section + '">';
+        tempHTML += '<label>' + prefix + disp_i + suffix + '</label>';
         
-        questionHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer1 + '">' + answer1;
+        tempHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer1 + '">' + answer1;
 
-        questionHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer2 + '">' + answer2;
+        tempHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer2 + '">' + answer2;
 
-        questionHTML += '</div>';
+        tempHTML += '</div>';
+
+        console.log(i + ' | ' + Math.ceil(count/2));
+        if (i <= Math.ceil(count/2)){
+            left += tempHTML;
+            console.log('adding to left');
+        }else{
+            right += tempHTML;
+            console.log('adding to right');
+        }
+        if (i == Math.ceil(count/2)){
+            left += '</div>';
+            console.log('terminating left');
+        }
+        if(i == count){
+            right += '</div>';
+            console.log('terminating right');
+        }
+
     }
     
-    
-    return questionHTML;
+    colsJoined = '<div class="colCont">' + left + right + '</div>';
+    return colsJoined;
 }
 
 jsPsych.plugins['binary-audio'] = (function () {

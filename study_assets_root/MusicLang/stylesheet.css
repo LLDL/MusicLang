@@ -63,3 +63,24 @@ input[type="radio"]{
 .binary-audio-prompt{
     margin: .5em 0em;
 }
+.colCont{
+    display: flex;
+    width: 70%;
+    margin: auto;
+}
+.leftCol{
+    flex: 1;
+}
+.rightCol{
+    flex: 1;
+}
+@media only screen and (max-width: 800px){
+    .colCont{
+        display: block;
+        width: 100%;
+        margin: auto;
+    }
+    .rightCol, .leftCol{
+        width: 100%;
+    }
+}
