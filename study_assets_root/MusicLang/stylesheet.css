@@ -54,3 +54,12 @@ p {
 .survey-yes-no-question p{
     margin: .5em 0em 0em 0em;
 }
+label{
+    font-weight: bold;
+}
+input[type="radio"]{
+    margin: 0em 0.25em 0em 1em;
+}
+.binary-audio-prompt{
+    margin: .5em 0em;
+}

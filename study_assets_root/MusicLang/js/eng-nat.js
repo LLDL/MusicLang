@@ -8,7 +8,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/MusicLang/img/langdev-logo.jp
 var inst = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2><p>Please wear headphones for the duration of this experiment.<br>To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg">'
+        header + '<h2>Instructions</h2><p>Please wear headphones for the duration of this experiment.<br>To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="horse.ogg" type="audio/ogg"><source src="sample.mp3" type="audio/mpeg">'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -26,7 +26,7 @@ var met_rhythm = {
     example_num_prefix: 'Example ',
     question_num_prefix: '',
     example_num_suffix: '',
-    question_num_suffix: '.',
+    question_num_suffix: '',
     example_num_type: 'alphabetic',
     question_num_type: 'numeric',
     answer1: 'Yes',

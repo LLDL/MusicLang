@@ -44,17 +44,19 @@ function to_letters(number){
 }
 function generateQuestions(section, count, prefix, suffix, iter_type, answer1, answer2){
     var questionHTML = '';
+    // var left = '<div class="leftCol">';
+    // var right = '<div class="rightCol">';
     for(var i=1; i<=count; i++){
         var disp_i = i;
         if(iter_type == 'alphabetic'){
             disp_i = to_letters(i);  
         }
-        questionHTML += '<div class="binary-audio-prompt-' + section + '">';
-        questionHTML += prefix + disp_i + suffix;
-        //Below code creates <input type="radio" class="binary-audio-radio-$prepend" id="binary-audio-radio-$prepend-$disp_i-1" name="$prepend-$disp_i" + value="$answer1">$answer1
-        questionHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + '-' + disp_i + '-' + suffix + '"' + 'value="' + answer1 + '">' + answer1;
+        questionHTML += '<div class="binary-audio-prompt binary-audio-prompt-' + section + '">';
+        questionHTML += '<label>' + prefix + disp_i + suffix + '</label>';
+        
+        questionHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer1 + '">' + answer1;
 
-        questionHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + '-' + disp_i + '-' + suffix + '"' + 'value="' + answer2 + '">' + answer2;
+        questionHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer2 + '">' + answer2;
 
         questionHTML += '</div>';
     }
@@ -165,7 +167,7 @@ jsPsych.plugins['binary-audio'] = (function () {
             html += '<div id="binary-audio-preamble" class="binary-audio-preamble">' + trial.preamble + '</div>';
         }
         //Example Section
-        html += '<div id="binary-audio-example" class="binary-audio-example">'
+        html += '<div id="binary-audio-example">'
         if (trial.example_preamble !== null) {
             html += '<h4>' + trial.example_preamble + '</h4>';
         }   
@@ -173,7 +175,7 @@ jsPsych.plugins['binary-audio'] = (function () {
         html += '</div>';
     
         //Question Section
-        html += '<div id="binary-audio-question" class="binary-audio-question">'
+        html += '<div id="binary-audio-question">'
         if (trial.question_preamble !== null) {
             html += '<h4>' + trial.question_preamble + '</h4>';
         }   
