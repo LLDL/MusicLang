@@ -5,7 +5,7 @@ var likely_invalid = false; //gets set to true if blur_count>threshold
 
 var header = "<img id=\"logo\" src=\"/study_assets/MusicLang/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab MusicLang Experiment</h1>"; //to be prepended to preludes
 
-var inst = {
+var inst_rhythm = {
     type: 'instructions',
     pages: [
         header + '<h2>Instructions</h2><p>Please wear headphones for the duration of this experiment.<br>To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
@@ -24,7 +24,17 @@ var met_rhythm = {
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
     audio: '/study_assets/MusicLang/audio/met-rhythm-engnat.mp3',
-    test_length: 3 //611:length+15:grace
+    test_length: 10 //611:length+15:grace
+}
+
+var inst_melody = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>Instructions</h2><p>Please wear headphones for the duration of this experiment.<br>To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    allow_keys: false
 }
 
 var met_melody = {
@@ -36,7 +46,22 @@ var met_melody = {
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
     audio: '/study_assets/MusicLang/audio/met-melody-engnat.mp3',
-    test_length: 3 //617:length+15:grace 
+    test_length: 10 //617:length+15:grace 
+}
+
+var rpcv={
+    type: 'passage-highlight',
+    json_label: 'RPCV_MA',
+    preamble: header + '<h2>RPCV</h2>',
+    audio:  '',
+    allow_audio_control: false,
+    test_length: 500, //617:length+15:grace
+    default_correct: true,
+    correct_color: '#00ff00',
+    incorrect_color: '#ff1900',
+    word_tag_char: '/',
+    text_file: '/study_assets/MusicLang/text/RPCV_MA.txt',
+    text_file_language: 'mandarin'
 }
 
 jatos.onLoad(
@@ -46,7 +71,7 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        timeline: [inst, met_rhythm, met_melody],
+        timeline: [inst_rhythm, met_rhythm, inst_melody, met_melody, rpcv],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
