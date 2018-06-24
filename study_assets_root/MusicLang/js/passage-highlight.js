@@ -11,17 +11,13 @@
 	* - audio:                      location of audio file to be played
 	* - allow_audio_control:        participant can play/pause themselves:  (Options: true, false)
     * - test_length:                length of audio clip + grace period before automatic skip to next section
+    * - word_tag_char:              separator that surrounds words of interest               
     * - default_correct:            true/false: Start with all words marked correct or incorrect
-    * - correct_color:              hex color to highlight correct words
-    * - incorrect_color:            hex color to highlight incorrect words
-    * - text_file:                  location of text file corresponding to the text to be displayed. 
-    *                               Format follows below
-    * - text_file_language:         english/mandarin: changes expected format:
+    * - text:                       text to be displayed. Format follows below
+    * - text_language:              english/mandarin: changes expected format:
     
     * - Ankit Dassor
 */
-
-       
 jsPsych.plugins['passage-highlight'] = (function () {
     var plugin = {};
 
@@ -55,29 +51,30 @@ jsPsych.plugins['passage-highlight'] = (function () {
                 pretty_name: 'Length of Test in Seconds',
                 default: 0
             },
+            word_tag_char1: {
+                type: jsPsych.plugins.parameterType.STRING,
+                default: '#',
+                description: 'The outer marker that surrounds words of interest ie: #@testword#'
+            },
+            word_tag_char2: {
+                type: jsPsych.plugins.parameterType.INT,
+                default: '@',
+                description: 'The inner marker that follows word_tag_char1 and precedes the word of interest ie: #@testword#'
+            },
             default_correct: {
                 type: jsPsych.plugins.parameterType.BOOL,
                 pretty_name: 'Mark as correct by default',
                 default: true
             },
-            correct_color: {
+            
+            text: {
                 type: jsPsych.plugins.parameterType.STRING,
-                pretty_name: 'Color to highlight words marked correct',
-                default: '#ff0000'
-            },
-            incorrect_color: {
-                type: jsPsych.plugins.parameterType.STRING,
-                pretty_name: 'Color to highlight words marked incorrect',
-                default: '#00ff00'
-            },
-            text_file: {
-                type: jsPsych.plugins.parameterType.STRING,
-                pretty_name: 'Text Location',
+                pretty_name: 'Text to display, formatted with html and escaped',
                 default: ''
             },
-            text_file_language: {
+            text_language: {
                 type: jsPsych.plugins.parameterType.STRING,
-                pretty_name: 'Language the text file is in (english or mandarin)',
+                pretty_name: 'Language the text is in (english or mandarin)',
                 default: 'english'
             }
         }
@@ -88,7 +85,7 @@ jsPsych.plugins['passage-highlight'] = (function () {
         var startTime = (new Date()).getTime();
         //Every second, maybeFinish() is triggered by the below
         var everySecond = setInterval(maybeFinish, 1000);
-
+        
         var html = '';
         if (trial.preamble !== null) {
             html += '<div id="passage-highlight-preamble" class="passage-highlight-preamble">' + trial.preamble + '</div>';
@@ -101,9 +98,61 @@ jsPsych.plugins['passage-highlight'] = (function () {
         html += '><source src="'+ trial.audio + '" type="audio/mpeg"></audio>';
         
         //Text Section
+        // html += trial.text;
+        if(trial.text_language == 'english'){
+            html += parseEnglish();
+        }else if(trial.text_language == 'mandarin'){
+            html += parseMandarin();
+        }else{
+            html += '<div id="error">Error: text_file_language is set incorrectly.</div>'
+        }
         
+        display_element.innerHTML = html;
+        
+        var ofInterest = display_element.getElementsByClassName('ofInterest');
+        for(var i = 0; i < ofInterest.length; i++){
+            ofInterest[i].addEventListener("click", function(){
+                if(this.classList.contains('correct')){
+                    this.classList.add('incorrect');
+                    this.classList.remove('correct');
+                }
+                else if(this.classList.contains('incorrect')){
+                    this.classList.add('correct');
+                    this.classList.remove('incorrect');
+                }else{
+                    alert('something wrong');
+                }
+            });
+        }
 
+        function parseEnglish(){
+            var wrapperSpecialSt;
+            var wrapperSpecialEnd = '</mark>';
+            var wrapperRegSt = '';
+            var wrapperRegEnd = '';
+            var retString = '<div id="passage-highlight-english">';
+            var textSplitPrimary = (trial.text).split(trial.word_tag_char1);
+            var numOfInterest = 0;
+            var correct = trial.default_correct?'correct':'incorrect';
+            for(var index = 0; index<textSplitPrimary.length; index++){
+                var currString = textSplitPrimary[index];
+                var tempSt;
+                if(currString.substring(0, 1) === trial.word_tag_char2){
+                    wrapperSpecialSt = '<mark class="ofInterest ' + correct + '" id="' + numOfInterest + '">';
+                    tempSt = wrapperSpecialSt + currString.substring(1) + wrapperSpecialEnd;
+                    numOfInterest++;
+                }else{
+                    tempSt = wrapperRegSt + currString + wrapperRegEnd;
+                }
+                retString += tempSt;
+            }
+            retString += '</div>'
+            return retString;
+        }
+        
+        function parseMandarin(){
 
+        }   
         function maybeFinish() {
             //measure response time
             endTime = (new Date()).getTime();
@@ -132,7 +181,7 @@ jsPsych.plugins['passage-highlight'] = (function () {
                 clearInterval(everySecond);
                 var trialdata = {
                     "rt": response_time,
-                    [trial.json_label]: answers
+                    // [trial.json_label]: null
                 };
                 display_element.innerHTML = '';
                 // next trial

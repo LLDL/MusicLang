@@ -74,6 +74,35 @@ input[type="radio"]{
 .rightCol{
     flex: 1;
 }
+#passage-highlight-english{
+    /* white-space: pre-wrap; */
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    /* line-height: 2; */
+    font-size: 1em;
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; */
+    user-select: none;
+
+}
+.correct{
+    background-color: #00ff00;
+    padding: .1em;
+}
+
+.incorrect{
+    background-color: #ff1900;
+    padding: .1em;
+}
+
+.correct:hover, .incorrect:hover{
+    cursor: pointer;
+}
+
+
 @media only screen and (max-width: 800px){
     .colCont{
         display: block;
@@ -82,5 +111,8 @@ input[type="radio"]{
     }
     .rightCol, .leftCol{
         width: 100%;
+    }
+    #passage-highlight-english{
+        width: 90%;
     }
 }
