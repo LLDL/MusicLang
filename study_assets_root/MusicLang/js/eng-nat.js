@@ -55,7 +55,7 @@ var rpcv={
     preamble: header + '<h2>RPCV</h2>',
     audio:  '',
     allow_audio_control: false,
-    test_length: 60, //617:length+15:grace
+    test_length: 10, //617:length+15:grace
     default_correct: true,
     word_tag_char1: '#',
     word_tag_char2: '@',

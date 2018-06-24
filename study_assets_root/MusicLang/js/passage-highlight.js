@@ -119,8 +119,6 @@ jsPsych.plugins['passage-highlight'] = (function () {
                 else if(this.classList.contains('incorrect')){
                     this.classList.add('correct');
                     this.classList.remove('incorrect');
-                }else{
-                    alert('something wrong');
                 }
             });
         }
@@ -160,28 +158,22 @@ jsPsych.plugins['passage-highlight'] = (function () {
             var response_time = endTime - startTime;
             if(response_time>trial.test_length*1000){
                 var answers = {};
-                // var questions = document.querySelectorAll('.binary-audio-prompt-question');
-                // for(var i=0; i<trial.question_count; i++){
-                //     var disp_i;
-                //     if(trial.question_num_type == 'alphabetic'){
-                //         disp_i = to_letters(i+1);  
-                //     }else{
-                //         disp_i = i+1;
-                //     }
-
-                //     var opts = questions[i].getElementsByTagName("input");
-                //     if(opts[0].checked){
-                //         answers[disp_i] = trial.answer1;
-                //     }else if(opts[1].checked){
-                //         answers[disp_i] = trial.answer2;
-                //     }else{
-                //         answers[disp_i] = 'none';
-                //     }
-                // }
+                var ofInterest = display_element.getElementsByClassName('ofInterest');
+                for(var index=0; index<ofInterest.length; index++){
+                    var answer = {};
+                    var markedCorrect = false;
+                    if(ofInterest[index].classList.contains('correct')){
+                        markedCorrect = true;
+                    }
+                    var word = ofInterest[index].innerText;
+                    
+                    answer[word] = markedCorrect;
+                    answers[index] = answer;
+                }
                 clearInterval(everySecond);
                 var trialdata = {
                     "rt": response_time,
-                    // [trial.json_label]: null
+                    [trial.json_label]: answers
                 };
                 display_element.innerHTML = '';
                 // next trial
