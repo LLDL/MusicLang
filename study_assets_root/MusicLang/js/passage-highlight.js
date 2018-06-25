@@ -84,7 +84,8 @@ jsPsych.plugins['passage-highlight'] = (function () {
             
         var startTime = (new Date()).getTime();
         //Every second, maybeFinish() is triggered by the below
-        var everySecond = setInterval(maybeFinish, 1000);
+        var everySecond =  setInterval(maybeFinish, 1000);
+        
         
         var html = '';
         if (trial.preamble !== null) {
@@ -98,18 +99,22 @@ jsPsych.plugins['passage-highlight'] = (function () {
         html += '><source src="'+ trial.audio + '" type="audio/mpeg"></audio>';
         
         //Text Section
-        // html += trial.text;
+        var ofInterest;
         if(trial.text_language == 'english'){
             html += parseEnglish();
+            ofInterest = display_element.getElementsByClassName('ofInterest');
         }else if(trial.text_language == 'mandarin'){
             html += parseMandarin();
+            ofInterest = display_element.getElementsByClassName('ofInterestMandarin');
         }else{
             html += '<div id="error">Error: text_file_language is set incorrectly.</div>'
         }
-        
+
         display_element.innerHTML = html;
         
-        var ofInterest = display_element.getElementsByClassName('ofInterest');
+        
+        
+        
         for(var i = 0; i < ofInterest.length; i++){
             ofInterest[i].addEventListener("click", function(){
                 if(this.classList.contains('correct')){
@@ -149,6 +154,18 @@ jsPsych.plugins['passage-highlight'] = (function () {
         }
         
         function parseMandarin(){
+            // var specials = new RegExp(/',。“‘’”'/, 'u', 'i');
+            var correct = trial.default_correct?'correct':'incorrect';
+            var findOfInterest = new RegExp(/#@([^\s^#^@]* [\u4E00-\u9Fcc])#/gu);
+            var pinyinUnifiedPairs = new RegExp(/([^\s^#^@^>]*) ([\u4E00-\u9Fcc])/gu);
+            var punct = new RegExp(/\s?(['，,。“‘’”'])/gu);
+            var retString = '<div id="passage-highlight-mandarin">';
+            var withPunct = (trial.text).replace(punct, '<div class="punctuation">$1</div>');
+            var withMarks = withPunct.replace(findOfInterest, '<div class="ofInterestMandarin '+ correct + '">$1</div>');
+            retString += withMarks.replace(pinyinUnifiedPairs, '<div class="mandarinPair"><div class="pinyin">$1</div><div class="unifiedUni">$2</div></div>');
+
+            retString += '</div>'
+            return retString;
 
         }   
         function maybeFinish() {
@@ -158,18 +175,34 @@ jsPsych.plugins['passage-highlight'] = (function () {
             var response_time = endTime - startTime;
             if(response_time>trial.test_length*1000){
                 var answers = {};
-                var ofInterest = display_element.getElementsByClassName('ofInterest');
-                for(var index=0; index<ofInterest.length; index++){
-                    var answer = {};
-                    var markedCorrect = false;
-                    if(ofInterest[index].classList.contains('correct')){
-                        markedCorrect = true;
+                if(trial.text_language == 'english'){
+                    var ofInterest = display_element.getElementsByClassName('ofInterest');
+                    for(var index=0; index<ofInterest.length; index++){
+                        var answer = {};
+                        var marked = 'incorrect';
+                        if(ofInterest[index].classList.contains('correct')){
+                            marked = 'correct';
+                        }
+                        var word = ofInterest[index].innerText;
+                        
+                        answer[word] = marked;
+                        answers[index] = answer;
                     }
-                    var word = ofInterest[index].innerText;
-                    
-                    answer[word] = markedCorrect;
-                    answers[index] = answer;
+                }else{
+                    var ofInterest = display_element.getElementsByClassName('ofInterestMandarin');
+                    for(var index=0; index<ofInterest.length; index++){
+                        var answer = {};
+                        var marked = 'incorrect';
+                        if(ofInterest[index].classList.contains('correct')){
+                            marked = 'correct';
+                        }
+                        var word = ofInterest[index].childNodes[0].childNodes[0].innerText;
+                        
+                        answer[word] = marked;
+                        answers[index] = answer;
+                    }
                 }
+                
                 clearInterval(everySecond);
                 var trialdata = {
                     "rt": response_time,

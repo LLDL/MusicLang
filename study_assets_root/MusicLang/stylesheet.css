@@ -75,27 +75,35 @@ input[type="radio"]{
     flex: 1;
 }
 #passage-highlight-english{
-    /* white-space: pre-wrap; */
+    
     width: 60%;
     margin: auto;
     text-align: left;
-    /* line-height: 2; */
     font-size: 1em;
-    /* -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none; */
     user-select: none;
 
 }
+#passage-highlight-mandarin{
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    font-size: 1em;
+    user-select: none;
+}
+.mandarinPair, .ofInterestMandarin, .punctuation{
+    display: inline-block;
+}
+.unifiedUni, .punctuation{
+    font-size: 2em;
+}
 .correct{
     background-color: #00ff00;
-    padding: .1em;
+    /* padding: .1em; */
 }
 
 .incorrect{
     background-color: #ff1900;
-    padding: .1em;
+    /* padding: .1em; */
 }
 
 .correct:hover, .incorrect:hover{
