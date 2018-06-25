@@ -158,9 +158,9 @@ jsPsych.plugins['passage-highlight'] = (function () {
             var correct = trial.default_correct?'correct':'incorrect';
             var findOfInterest = new RegExp(/#@([^\s^#^@]* [\u4E00-\u9Fcc])#/gu);
             var pinyinUnifiedPairs = new RegExp(/([^\s^#^@^>]*) ([\u4E00-\u9Fcc])/gu);
-            var punct = new RegExp(/\s?(['，,。“‘’”'])/gu);
+            var punct = new RegExp(/\s?(['，,。“‘’”'：！])\s?/gu);
             var retString = '<div id="passage-highlight-mandarin">';
-            var withPunct = (trial.text).replace(punct, '<div class="punctuation">$1</div>');
+            var withPunct = (trial.text).replace(punct, '<div class="punctuation">$1 </div>');
             var withMarks = withPunct.replace(findOfInterest, '<div class="ofInterestMandarin '+ correct + '">$1</div>');
             retString += withMarks.replace(pinyinUnifiedPairs, '<div class="mandarinPair"><div class="pinyin">$1</div><div class="unifiedUni">$2</div></div>');
 
