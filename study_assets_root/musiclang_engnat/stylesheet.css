@@ -110,6 +110,9 @@ input[type="radio"]{
     cursor: pointer;
 }
 
+.jspsych-survey-multi-choice-option-container{
+    margin: auto;
+}
 
 @media only screen and (max-width: 800px){
     .colCont{
