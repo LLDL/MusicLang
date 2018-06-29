@@ -113,13 +113,13 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         display_element.querySelector(question_selector).innerHTML += '<div id="'+option_id_name+'" class="'+_join(plugin_id_name, 'option')+'"></div>';
 
         // add label and question text
-        var form = document.getElementById(option_id_name)
+        var form = document.getElementById(option_id_name);
         var input_name = _join(plugin_id_name, 'response', i);
         var input_id = _join(plugin_id_name, 'response', i, j);
         var label = document.createElement('label');
         label.setAttribute('class', plugin_id_name+'-text');
         label.innerHTML = trial.questions[i].options[j];
-        label.setAttribute('for', input_id)
+        label.setAttribute('for', input_id);
 
         // create radio button
         var input = document.createElement('input');
