@@ -49,7 +49,7 @@ var met_mel_ma = {
     test_length: 10 //617:length+15:grace 
 };
 
-var rpcv_ma={
+var rpcv_ma = {
     type: 'passage-highlight',
     json_label: 'RPCV_MA',
     preamble: header + '<h2>RPCV</h2>',
@@ -63,7 +63,7 @@ var rpcv_ma={
     text_language: 'mandarin'
 };
 
-var rpst_ma={
+var rpst_ma = {
     type: 'passage-highlight',
     json_label: 'RPST_MA',
     preamble: header + '<h2>RPST</h2>',
@@ -77,53 +77,131 @@ var rpst_ma={
     text_language: 'mandarin'
 };
 
-var lk_ma={
+var lk_ma = {
     type: 'survey-multi-choice',
-    preamble:  header + '<h2>Instructions</h2>For each Mandarin word provided, select the best definition.',
+    preamble: header + '<h2>Instructions</h2>For each Mandarin word provided, select the best definition.',
     json_label: 'LK_MA',
-    questions: [
-        {prompt: "词典 cí diǎn", options: ["atlas", "encyclopedia", "dictionary", "phone book"], required: true, horizontal: true},
-        {prompt: "请假 qǐng jià", options: ["to ask for a favour", "to beg", "to clean", "to request time off"], required: true, horizontal: true},
+    questions: [{
+            prompt: "1. 词典 cí diǎn",
+            options: ["atlas", "encyclopedia", "dictionary", "phone book"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "2. 请假 qǐng jià",
+            options: ["to ask for a favour", "to beg", "to clean", "to request time off"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "3. 新鲜 xīn xiān",
+            options: ["sacred", "fresh", "unusual", "raw"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "4. 满意 mǎn yì",
+            options: ["hungry", "delighted", "frustrated", "satisfied"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "5. 重要 zhòng yào",
+            options: ["important", "medicinal", "wanted", "diverse"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "6. 故意 gù yì",
+            options: ["by coincidence", "with bad intentions", "on purpose", "in the process of"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "7. 表示 biǎo shì",
+            options: ["to indicate", "to perform", "to fill out a form", "to memorize"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "8. 礼貌 lǐ mào",
+            options: ["traditions", "helmet", "manners", "uniform"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "9. 误会 wù huì",
+            options: ["misunderstanding", "dinner party", "conference", "decision"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "10. 降低 jiàng dī",
+            options: ["to drizzle", "to melt", "to lower", "to obstruct"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "11. 除非 chú fēi",
+            options: ["therefore", "unless", "furthermore", "however"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "12. 想象 xiǎng xiàng",
+            options: ["to wonder", "to imagine", "to dream (of)", "to think alike"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "13. 资料 zī liào",
+            options: ["leisure time", "survey", "information", "office"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "14. 尽量 jǐn liàng",
+            options: ["rapidly", "exceeding expectations", "as much as possible", "more than enough"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "15. 陆续 lù xù",
+            options: ["successively", "easily", "seldom", "during"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "16. 嫉妒 jí dù",
+            options: ["to be jealous", "to argue", "to be frustrated", "to feel betrayed"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "17. 期望 qī wàng",
+            options: ["to be impatient", "to master", "to hope", "to be innocent"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "18. 欺负 īq fu",
+            options: ["to repaint", "to bully", "to be disowned", "to be playful"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "19. 搭档 ād dàng",
+            options: ["to be present", "to pretend", "to organize", "to cooperate"],
+            required: true,
+            horizontal: false
+        },
+        {
+            prompt: "20. 能力 néng lì",
+            options: ["variability", "brightness", "capability", "amount"],
+            required: true,
+            horizontal: false
+        }
     ]
-    // parameters: {
-    //     questions: {
-    //       type: jsPsych.plugins.parameterType.COMPLEX,
-    //       array: true,
-    //       pretty_name: 'Questions',
-    //       nested: {
-    //         prompt: {type: jsPsych.plugins.parameterType.STRING,
-    //                    pretty_name: 'Prompt',
-    //                    default: undefined,
-    //                    description: 'The strings that will be associated with a group of options.'},
-    //         options: {type: jsPsych.plugins.parameterType.STRING,
-    //                    pretty_name: 'Options',
-    //                    array: true,
-    //                    default: undefined,
-    //                    description: 'Displays options for an individual question.'},
-    //         required: {type: jsPsych.plugins.parameterType.BOOL,
-    //                    pretty_name: 'Required',
-    //                    default: false,
-    //                    description: 'Subject will be required to pick an option for each question.'},
-    //         horizontal: {type: jsPsych.plugins.parameterType.BOOL,
-    //                       pretty_name: 'Horizontal',
-    //                       default: false,
-    //                       description: 'If true, then questions are centered and options are displayed horizontally.'},
-    //       }
-    //     },
-    //     preamble: {
-    //       type: jsPsych.plugins.parameterType.STRING,
-    //       pretty_name: 'Preamble',
-    //       default: null,
-    //       description: 'HTML formatted string to display at the top of the page above all the questions.'
-    //     },
-    //     button_label: {
-    //       type: jsPsych.plugins.parameterType.STRING,
-    //       pretty_name: 'Button label',
-    //       default:  'Continue',
-    //       description: 'Label of the button.'
-    //     }
-    //   }
-    // }
 };
 
 jatos.onLoad(
@@ -133,8 +211,8 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        // timeline: [lk_ma, inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma],
-        timeline: [lk_ma],
+        timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma],
+        // timeline: [lk_ma],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,

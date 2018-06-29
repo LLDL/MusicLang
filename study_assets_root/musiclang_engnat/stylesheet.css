@@ -109,9 +109,8 @@ input[type="radio"]{
 .correct:hover, .incorrect:hover{
     cursor: pointer;
 }
-
-.jspsych-survey-multi-choice-option-container{
-    margin: auto;
+.jspsych-survey-multi-choice-question{
+    text-align: center !important;
 }
 
 @media only screen and (max-width: 800px){
