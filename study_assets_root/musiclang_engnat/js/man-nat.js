@@ -174,7 +174,7 @@ var lk_en = {
 var ppc_en = {
     type: 'multi-choice',
     preamble: header + '<h2>Productive Phonology Comprehension</h2><h3>Instructions</h3>每个问题只有一个正确答案请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。',
-    json_label: 'PPC_MA',
+    json_label: 'PPC_EN',
     passage: '<p>The car stopped and James opened his eyes. They were here! He had been asleep for the whole drive to the Great Lakes, where his family went every summer. He could hear his aunts, uncles, and cousins talking outside the car. James felt a thrill of excitement and shook himself awake.<p></p>He had acted like he didn’t care about the trip, but in truth it was his favourite thing of the year. James climbed out of his seat to look at the vast lake. It was even more beautiful than he thought it would be. The lake was calm and still like a mirror. He looked up and saw an eagle fly across the sky. It was going to be a good day.<p></p>James was in a great mood. Maybe he would play baseball with his cousins. He had brought his lucky bat with him. James was looking forward to showing off to his little cousin, Mikey. He also had a towel with him in case he wanted to go swimming. He could even just sit by the docks and work on his painting. When he finally unpacked all his clothes in his room, it was already lunch time.<p></p>The smell of ham cooking in the pan made him hungry. His mouth started to water, which made him realize his thirst. He went and got his cousins and took them to the kitchen to help serve lunch. The food was filling and soon they were full.</p>',
     passage_language: 'english',
     questions: [{
@@ -220,6 +220,34 @@ var ppc_en = {
     ]
 };
 
+var counterBalance1 = {
+    timeline: [inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, rpcv_en, rpst_en, lk_en, ppc_en], 
+    conditional_function: function(){
+        console.log("in counterbalance1");
+        var currID = window.location.href.split('=');
+        if(currID[currID.length-1] % 2 == 1){
+            console.log("true");
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
+
+var counterBalance2 = {
+    timeline: [inst_met_mel_en, met_mel_en, inst_met_rhy_en, met_rhy_en, rpst_en, rpcv_en, lk_en, ppc_en], 
+    conditional_function: function(){
+        console.log("in counterbalance2");
+        var currID = window.location.href.split('=');
+        if(currID[currID.length-1] % 2 == 0){
+            console.log("true"); 
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
+
 jatos.onLoad(
     jsPsych.init({
         //Questionaire:
@@ -227,7 +255,7 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        timeline: [inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, rpcv_en, rpst_en, lk_en, ppc_en],
+        timeline: [counterBalance1, counterBalance2],
         // timeline: [ppc_en, lk_en],
         show_progress_bar: true,
         exclusions: {

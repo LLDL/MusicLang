@@ -234,6 +234,34 @@ var ppc_ma = {
     ]
 };
 
+var counterBalance1 = {
+    timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma], 
+    conditional_function: function(){
+        console.log("in counterbalance1");
+        var currID = window.location.href.split('=');
+        if(currID[currID.length-1] % 2 == 1){
+            console.log("true");
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
+
+var counterBalance2 = {
+    timeline: [inst_met_mel_ma, met_mel_ma, inst_met_rhy_ma, met_rhy_ma, rpst_ma, rpcv_ma, lk_ma, ppc_ma], 
+    conditional_function: function(){
+        console.log("in counterbalance2");
+        var currID = window.location.href.split('=');
+        if(currID[currID.length-1] % 2 == 0){
+            console.log("true"); 
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
+
 jatos.onLoad(
     jsPsych.init({
         //Questionaire:
@@ -241,8 +269,8 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        // timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma],
-        timeline: [ppc_ma, lk_ma],
+        timeline: [counterBalance1, counterBalance2],
+        // timeline: [ppc_ma, lk_ma],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
