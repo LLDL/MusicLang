@@ -281,8 +281,8 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        timeline: [ppc_ma, inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma],
-        // timeline: [lk_ma],
+        // timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma],
+        timeline: [ppc_ma, lk_ma],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,

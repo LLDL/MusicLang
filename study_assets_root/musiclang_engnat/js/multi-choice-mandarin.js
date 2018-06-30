@@ -64,7 +64,7 @@ jsPsych.plugins['multi-choice-mandarin'] = (function () {
         }
     }
     plugin.trial = function(display_element, trial){
-        var html = '';
+        var html = '<form id="multi-choice">';
 
         if (trial.preamble !== null) {
             html += '<div class="multi-choice-preamble">' + trial.preamble + '</div>';
@@ -77,18 +77,21 @@ jsPsych.plugins['multi-choice-mandarin'] = (function () {
         }
         
         html += '<h3>Questions</h3><div class="multi-choice-questions">';
-        for(var currQuestion = 0; currQuestion < trial.questions.length; currQuestion++){
-            html += '<div class="multi-choice-question" id="multi-choice-question-' + (currQuestion+1) + '">';
-            html += '<label class="multi-choice-question-prompt" for="multi-choice-question-options-' + (currQuestion+1) + '">' + (currQuestion+1) + '. ' + trial.questions[currQuestion].prompt + '</label>';
-            // for(var currOption = 0; currOption < trial.questions[currQuestion].options.length; currOption++){
-
-            // }
+        for(var currQuestion = 1; currQuestion <= trial.questions.length; currQuestion++){
+            html += '<div class="multi-choice-question" id="multi-choice-question-' + currQuestion + '">';
+            html += '<p class="multi-choice-question-prompt">' + currQuestion + '. ' + trial.questions[currQuestion-1].prompt + '</p>';
+            for(var currOption = 1; currOption <= trial.questions[currQuestion-1].options.length; currOption++){
+                html += '<div class="multi-choice-question-option-container">';
+                html += '<input type="radio" class="multi-choice-question-option" id="multi-choice-question-'+currQuestion+'-option-' + currOption + '" value="'+trial.questions[currQuestion-1].options[currOption-1]+'"  name="multi-choice-question-'+currQuestion + '" required>';
+                html += '<label for="multi-choice-question-'+currQuestion+'-option-' + currOption + '">' + trial.questions[currQuestion-1].options[currOption-1]+'</label>';
+                html += '</div>';
+            }
             html += '</div>';
         }
         html += '</div>';
 
 
-        html += '<button id="multi-choice-next">' + trial.button_label + '</button>';
+        html += '</form><input type="submit" class="jspsych-btn" type="submit" form="multi-choice" id="multi-choice-next" value="' + trial.button_label + '"></input>';
 
         display_element.innerHTML = html;
         function parseMandarin(){
@@ -100,17 +103,25 @@ jsPsych.plugins['multi-choice-mandarin'] = (function () {
             return toRet;
 
         }   
-        display_element.querySelector('#multi-choice-next').addEventListener('click', function () {
+        display_element.querySelector("#multi-choice").addEventListener('submit', function (event) {
+            event.preventDefault();
 			// measure response time
 			var endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
 
 			// create object to hold responses
-           
+            var answers = {};
+            var options = document.querySelectorAll("input[type=radio]:checked");
+            for(var currAnswer = 0; currAnswer<trial.questions.length; currAnswer++){
+                var id = "Q" + currAnswer;
+                var answer = {};
+                answer[id] = options[currAnswer].value;
+                Object.assign(answers, answer);
+            }
 
             var trialdata = {
                 "rt": response_time,
-                // [trial.json_label] : answers
+                [trial.json_label] : answers
             };
             jsPsych.finishTrial(trialdata);
 		});

@@ -113,7 +113,9 @@ input[type="radio"]{
 .jspsych-survey-multi-choice-question{
     text-align: center !important;
 }
-
+#multi-choice-next{
+    margin-top: 1em;
+}
 @media only screen and (max-width: 800px){
     .colCont{
         display: block;
