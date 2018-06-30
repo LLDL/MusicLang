@@ -11,10 +11,10 @@
     * 
     * - Ankit Dassor        
 */
-jsPsych.plugins['multi-choice-mandarin'] = (function () {
+jsPsych.plugins['multi-choice'] = (function () {
 	var plugin = {};
 	plugin.info = {
-        name: 'multi-choice-mandarin',
+        name: 'multi-choice',
         description: '',
         parameters: {
             questions: {
@@ -53,7 +53,7 @@ jsPsych.plugins['multi-choice-mandarin'] = (function () {
             passage_language: {
                 type: jsPsych.plugins.parameterType.STRING,
                 pretty_name: 'Language the passage is in (english or mandarin)',
-                default: 'english'
+                default: 'null'
             },
             button_label: {
 				type: jsPsych.plugins.parameterType.STRING,
@@ -69,12 +69,14 @@ jsPsych.plugins['multi-choice-mandarin'] = (function () {
         if (trial.preamble !== null) {
             html += '<div class="multi-choice-preamble">' + trial.preamble + '</div>';
         }
-
-        if(trial.passage_language == 'mandarin'){
-            html += '<h3>Passage</h3><div id="multi-choice-passage-mandarin">' + parseMandarin() + '</div>' ;
-        }else{
-            html += '<h2>Passage</h2><div id="multi-choice-passage-english">' + trial.passage + '</div>';
+        if (trial.passage != null){
+            if(trial.passage_language == 'mandarin'){
+                html += '<h3>Passage</h3><div id="multi-choice-passage-mandarin">' + parseMandarin() + '</div>' ;
+            }else if(trial.passage_language == 'english'){
+                html += '<h2>Passage</h2><div id="multi-choice-passage-english">' + trial.passage + '</div>';
+            }
         }
+        
         
         html += '<h3>Questions</h3><div class="multi-choice-questions">';
         for(var currQuestion = 1; currQuestion <= trial.questions.length; currQuestion++){

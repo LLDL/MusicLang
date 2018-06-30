@@ -78,135 +78,95 @@ var rpst_ma = {
 };
 
 var lk_ma = {
-    type: 'survey-multi-choice',
+    type: 'multi-choice',
     preamble: header + '<h2>Lexical Knowledge</h2><h3>Instructions</h3>For each Mandarin word provided, select the best definition.',
     
     json_label: 'LK_MA',
     questions: [{
-            prompt: "1. 词典 cí diǎn",
-            options: ["atlas", "encyclopedia", "dictionary", "phone book"],
-            required: true,
-            horizontal: false
+            prompt: "词典 cí diǎn",
+            options: ["atlas", "encyclopedia", "dictionary", "phone book"]
         },
         {
-            prompt: "2. 请假 qǐng jià",
-            options: ["to ask for a favour", "to beg", "to clean", "to request time off"],
-            required: true,
-            horizontal: false
+            prompt: "请假 qǐng jià",
+            options: ["to ask for a favour", "to beg", "to clean", "to request time off"]
         },
         {
-            prompt: "3. 新鲜 xīn xiān",
-            options: ["sacred", "fresh", "unusual", "raw"],
-            required: true,
-            horizontal: false
+            prompt: "新鲜 xīn xiān",
+            options: ["sacred", "fresh", "unusual", "raw"]
         },
         {
-            prompt: "4. 满意 mǎn yì",
-            options: ["hungry", "delighted", "frustrated", "satisfied"],
-            required: true,
-            horizontal: false
+            prompt: "满意 mǎn yì",
+            options: ["hungry", "delighted", "frustrated", "satisfied"]
         },
         {
-            prompt: "5. 重要 zhòng yào",
-            options: ["important", "medicinal", "wanted", "diverse"],
-            required: true,
-            horizontal: false
+            prompt: "重要 zhòng yào",
+            options: ["important", "medicinal", "wanted", "diverse"]
         },
         {
-            prompt: "6. 故意 gù yì",
-            options: ["by coincidence", "with bad intentions", "on purpose", "in the process of"],
-            required: true,
-            horizontal: false
+            prompt: "故意 gù yì",
+            options: ["by coincidence", "with bad intentions", "on purpose", "in the process of"]
         },
         {
-            prompt: "7. 表示 biǎo shì",
-            options: ["to indicate", "to perform", "to fill out a form", "to memorize"],
-            required: true,
-            horizontal: false
+            prompt: "表示 biǎo shì",
+            options: ["to indicate", "to perform", "to fill out a form", "to memorize"]
         },
         {
-            prompt: "8. 礼貌 lǐ mào",
-            options: ["traditions", "helmet", "manners", "uniform"],
-            required: true,
-            horizontal: false
+            prompt: "礼貌 lǐ mào",
+            options: ["traditions", "helmet", "manners", "uniform"]
         },
         {
-            prompt: "9. 误会 wù huì",
-            options: ["misunderstanding", "dinner party", "conference", "decision"],
-            required: true,
-            horizontal: false
+            prompt: "误会 wù huì",
+            options: ["misunderstanding", "dinner party", "conference", "decision"]
         },
         {
-            prompt: "10. 降低 jiàng dī",
-            options: ["to drizzle", "to melt", "to lower", "to obstruct"],
-            required: true,
-            horizontal: false
+            prompt: "降低 jiàng dī",
+            options: ["to drizzle", "to melt", "to lower", "to obstruct"]
         },
         {
-            prompt: "11. 除非 chú fēi",
-            options: ["therefore", "unless", "furthermore", "however"],
-            required: true,
-            horizontal: false
+            prompt: "除非 chú fēi",
+            options: ["therefore", "unless", "furthermore", "however"]
         },
         {
-            prompt: "12. 想象 xiǎng xiàng",
-            options: ["to wonder", "to imagine", "to dream (of)", "to think alike"],
-            required: true,
-            horizontal: false
+            prompt: "想象 xiǎng xiàng",
+            options: ["to wonder", "to imagine", "to dream (of)", "to think alike"]
         },
         {
-            prompt: "13. 资料 zī liào",
-            options: ["leisure time", "survey", "information", "office"],
-            required: true,
-            horizontal: false
+            prompt: "资料 zī liào",
+            options: ["leisure time", "survey", "information", "office"]
         },
         {
-            prompt: "14. 尽量 jǐn liàng",
-            options: ["rapidly", "exceeding expectations", "as much as possible", "more than enough"],
-            required: true,
-            horizontal: false
+            prompt: "尽量 jǐn liàng",
+            options: ["rapidly", "exceeding expectations", "as much as possible", "more than enough"]
         },
         {
-            prompt: "15. 陆续 lù xù",
-            options: ["successively", "easily", "seldom", "during"],
-            required: true,
-            horizontal: false
+            prompt: "陆续 lù xù",
+            options: ["successively", "easily", "seldom", "during"]
         },
         {
-            prompt: "16. 嫉妒 jí dù",
-            options: ["to be jealous", "to argue", "to be frustrated", "to feel betrayed"],
-            required: true,
-            horizontal: false
+            prompt: "嫉妒 jí dù",
+            options: ["to be jealous", "to argue", "to be frustrated", "to feel betrayed"]
         },
         {
-            prompt: "17. 期望 qī wàng",
-            options: ["to be impatient", "to master", "to hope", "to be innocent"],
-            required: true,
-            horizontal: false
+            prompt: "期望 qī wàng",
+            options: ["to be impatient", "to master", "to hope", "to be innocent"]
         },
         {
-            prompt: "18. 欺负 īq fu",
-            options: ["to repaint", "to bully", "to be disowned", "to be playful"],
-            required: true,
-            horizontal: false
+            prompt: "欺负 īq fu",
+            options: ["to repaint", "to bully", "to be disowned", "to be playful"]
         },
         {
-            prompt: "19. 搭档 ād dàng",
-            options: ["to be present", "to pretend", "to organize", "to cooperate"],
-            required: true,
-            horizontal: false
+            prompt: "搭档 ād dàng",
+            options: ["to be present", "to pretend", "to organize", "to cooperate"]
         },
         {
-            prompt: "20. 能力 néng lì",
-            options: ["variability", "brightness", "capability", "amount"],
-            required: true,
-            horizontal: false
+            prompt: "能力 néng lì",
+            options: ["variability", "brightness", "capability", "amount"]
         }
     ]
 };
 
 var ppc_ma = {
-    type: 'multi-choice-mandarin',
+    type: 'multi-choice',
     preamble: header + '<h2>Productive Phonology Comprehension</h2><h3>Instructions</h3>Read the passage, then carefully choose the best answer for each question. You are allowed to look back at the passage while answering these questions.',
     json_label: 'PPC_MA',
     passage: '<p> yí 一 gè 个 nián 年 qīng 轻 de 的 nán 男 hái 孩 zài 在 hé 河 xī 西 de 的 dì 地 yù 域 zhōng 中 wán 玩 。zhè 这 shì 是 zài 在 qiú 求 le 了 hěn 很 duō 多 cì 次 zhī 之 hòu 后 ，tā 他 de 的 fù 父 mǔ 母 cái 才 zhōng 终 yú 于 ràng 让 tā 他 dú 独 zì 自 chū 出 qù 去 wán 玩 。 tā 他 men 们 shuō 说 tā 他 tài 太 xiǎo 小 le 了 ，bìng 并 qiě 且 tā 他 men 们 bù 不 xiǎng 想 ràng 让 tā 他 dú 独 zì 自 qù 去 wài 外 miàn 面 ， yīn 因 wèi 为 nà 那 tài 太 wēi 危 xiǎn 险 le 了 。dàn 但 shì 是 ，tā 他 men 们 cuò 错 le 了 。tā 他 yǐ 已 jīng 经 qī 七 suì 岁 le 了 ， bìng 并 qiě 且 yǒu 有 néng 能 lì 力 zhào 照 gù 顾 hǎo 好 zì 自 jǐ 己 。</p><p> tā 他 men 们 gěi 给 tā 他 yí 一 gè 个 shǒu 手 jī 机 bìng 并 qiě 且 gào 告 sù 诉 tā 他 bié 别 hé 和 mò 陌 shēng 生 rén 人 shuō 说 huà 话 。zhè 这 xiē 些 tā 他 běn 本 lái 来 jiù 就 zhī 知 dào 道 。zhēn 真 shí 实 qíng 情 kuàng 况 shì 是 fù 父 mǔ 母 yǐ 以 wéi 为 tā 他 zài 在 wài 外 miàn 面 hé 和 péng 朋 yǒu 友 wán 玩 de 的 shí 时 hòu 候 ，tā 他 dōu 都 shì 是 zì 自 jǐ 己 yí 一 gè 个 rén 人 zài 在 wán 玩 。 nán 男 hái 孩 zǒu 走 xiàng 向 tā 他 zài 在 gōng 公 yuán 园 lǐ 里 zuì 最 xǐ 喜 huān 欢 de 的 yī 一 kē 棵 shù 树 ，nà 那 lǐ 里 rén 人 hěn 很 shǎo 少 dàn 但 yǒu 有 shàng 上 qiān 千 de 的 chóng 虫 zi 子 。tā 他 ná 拿 chū 出 le 了 tā 他 de 的 fàng 放 dà 大 jìng 镜 。</p><p> bàn 半 gè 个 xiǎo 小 shí 时 guò 过 qù 去 le 了 ，tā 他 hái 还 zài 在 kuài 快 lè 乐 de 地 guān 观 chá 察 chóng 虫 zi 子 。tū 突 rán 然 jiān 间 ，tā 他 tīng 听 dào 到 yǒu 有 rén 人 hǎn 喊 jiào 叫 ，tā 他 zhuǎn 转 guò 过 tóu 头 qù 去 。yí 一 gè 个 zú 足 qiú 球 cháo 朝 tā 他 de 的 liǎn 脸 shàng 上 fēi 飞 lái 来 。tā 他 rěn 忍 shòu 受 zhe 着 liǎn 脸 shàng 上 de 的 téng 疼 tòng 痛 zǒu 走 huí 回 jiā 家 。</p>',
@@ -281,8 +241,8 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        // timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma],
-        timeline: [ppc_ma, lk_ma],
+        timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma],
+        // timeline: [ppc_ma, lk_ma],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
