@@ -65,7 +65,7 @@ input[type="radio"]{
 }
 .colCont{
     display: flex;
-    width: 70%;
+    width: 100%;
     margin: auto;
 }
 .leftCol{
@@ -74,7 +74,7 @@ input[type="radio"]{
 .rightCol{
     flex: 1;
 }
-#passage-highlight-english{
+#passage-highlight-english, #multi-choice-passage-english{
     
     width: 60%;
     margin: auto;
@@ -83,7 +83,7 @@ input[type="radio"]{
     user-select: none;
 
 }
-#passage-highlight-mandarin{
+#passage-highlight-mandarin, #multi-choice-passage-mandarin{
     width: 80%;
     margin: auto;
     text-align: left;
@@ -96,6 +96,7 @@ input[type="radio"]{
 .unifiedUni, .punctuation{
     font-size: 2em;
 }
+
 .correct{
     background-color: #00ff00;
     /* padding: .1em; */
@@ -122,7 +123,7 @@ input[type="radio"]{
     .rightCol, .leftCol{
         width: 100%;
     }
-    #passage-highlight-english{
+    #passage-highlight-english, #passage-highlight-mandarin, #multi-choice-passage-english, #multi-choice-passage-mandarin{
         width: 90%;
     }
 }

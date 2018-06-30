@@ -64,18 +64,14 @@ function generateQuestions(section, count, prefix, suffix, iter_type, answer1, a
         console.log(i + ' | ' + Math.ceil(count/2));
         if (i <= Math.ceil(count/2)){
             left += tempHTML;
-            console.log('adding to left');
         }else{
             right += tempHTML;
-            console.log('adding to right');
         }
         if (i == Math.ceil(count/2)){
             left += '</div>';
-            console.log('terminating left');
         }
         if(i == count){
             right += '</div>';
-            console.log('terminating right');
         }
 
     }

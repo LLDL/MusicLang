@@ -71,19 +71,19 @@ jsPsych.plugins['multi-choice-mandarin'] = (function () {
         }
 
         if(trial.passage_language == 'mandarin'){
-            html += parseMandarin();
+            html += '<h3>Passage</h3><div id="multi-choice-passage-mandarin">' + parseMandarin() + '</div>' ;
         }else{
-            html += '<div class="multi-choice-passage">' + trial.passage + '</div>';
+            html += '<h2>Passage</h2><div id="multi-choice-passage-english">' + trial.passage + '</div>';
         }
         
-        html += '<div class="multi-choice-questions">';
+        html += '<h3>Questions</h3><div class="multi-choice-questions">';
         for(var currQuestion = 0; currQuestion < trial.questions.length; currQuestion++){
-            html += '<div class="multi-choice-question" id="multi-choice-question-' + (currQuestion+1) + '">"';
+            html += '<div class="multi-choice-question" id="multi-choice-question-' + (currQuestion+1) + '">';
             html += '<label class="multi-choice-question-prompt" for="multi-choice-question-options-' + (currQuestion+1) + '">' + (currQuestion+1) + '. ' + trial.questions[currQuestion].prompt + '</label>';
             // for(var currOption = 0; currOption < trial.questions[currQuestion].options.length; currOption++){
 
             // }
-
+            html += '</div>';
         }
         html += '</div>';
 
