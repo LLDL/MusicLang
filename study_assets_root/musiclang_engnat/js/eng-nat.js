@@ -52,7 +52,7 @@ var met_mel_ma = {
 var rpcv_ma = {
     type: 'passage-highlight',
     json_label: 'RPCV_MA',
-    preamble: header + '<h2>RPCV</h2>',
+    preamble: header + '<h2>RPCV</h2> Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red.',
     audio: '/study_assets/musiclang_engnat/audio/rpcv-ma.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
@@ -66,7 +66,7 @@ var rpcv_ma = {
 var rpst_ma = {
     type: 'passage-highlight',
     json_label: 'RPST_MA',
-    preamble: header + '<h2>RPST</h2>',
+    preamble: header + '<h2>RPST</h2> Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red.',
     audio: '/study_assets/musiclang_engnat/audio/rpst-ma.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
@@ -241,8 +241,8 @@ jatos.onLoad(
         //timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
-        timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma],
-        // timeline: [ppc_ma, lk_ma],
+        // timeline: [inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, rpcv_ma, rpst_ma, lk_ma, ppc_ma],
+        timeline: [ppc_ma, lk_ma],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
