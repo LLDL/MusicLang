@@ -3,7 +3,7 @@ var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"/study_assets/musiclang_mannat/shared_assets/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
 
 var inst_met_rhy_en = {
     type: 'instructions',
@@ -26,7 +26,7 @@ var met_rhy_en = {
     example_num_prefix: '例子 ',
     answer1: '是',
     answer2: '否',
-    audio: '/study_assets/musiclang_engnat/audio/met-rhy-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-rhy-en.mp3',
     test_length: 20 //611:length+15:grace
 };
 
@@ -51,7 +51,7 @@ var met_mel_en = {
     example_num_prefix: '例子 ',
     answer1: '是',
     answer2: '否',
-    audio: '/study_assets/musiclang_engnat/audio/met-mel-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-mel-en.mp3',
     test_length: 20 //617:length+15:grace 
 };
 
@@ -59,7 +59,7 @@ var rpcv_en = {
     type: 'passage-highlight',
     json_label: 'RPCV_EN',
     preamble: header + '<h2>RPCV</h2> 在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。',
-    audio: '/study_assets/musiclang_engnat/audio/rpcv-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-en.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
     default_correct: true,
@@ -73,7 +73,7 @@ var rpst_en = {
     type: 'passage-highlight',
     json_label: 'RPST_EN',
     preamble: header + '<h2>RPST</h2>在听录音前请先阅读一遍文章。这篇文章需要翻页。然后听录音，并注意带有阴影 的单词。如听到错读，请圈出来。',
-    audio: '/study_assets/musiclang_engnat/audio/rpst-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-en.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
     default_correct: true,

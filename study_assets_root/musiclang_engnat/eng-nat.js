@@ -3,7 +3,7 @@ var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/shared_assets/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
 
 var inst_met_rhy_ma = {
     type: 'instructions',
@@ -23,7 +23,7 @@ var met_rhy_ma = {
     question_count: '52',
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
-    audio: '/study_assets/musiclang_engnat/audio/met-rhy-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-rhy-ma.mp3',
     test_length: 20 //611:length+15:grace
 };
 
@@ -45,7 +45,7 @@ var met_mel_ma = {
     question_count: '52',
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
-    audio: '/study_assets/musiclang_engnat/audio/met-mel-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-mel-ma.mp3',
     test_length: 20 //617:length+15:grace 
 };
 
@@ -53,7 +53,7 @@ var rpcv_ma = {
     type: 'passage-highlight',
     json_label: 'RPCV_MA',
     preamble: header + '<h2>RPCV</h2> Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red.',
-    audio: '/study_assets/musiclang_engnat/audio/rpcv-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpcv-ma.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
     default_correct: true,
@@ -67,7 +67,7 @@ var rpst_ma = {
     type: 'passage-highlight',
     json_label: 'RPST_MA',
     preamble: header + '<h2>RPST</h2> Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red.',
-    audio: '/study_assets/musiclang_engnat/audio/rpst-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpst-ma.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
     default_correct: true,
