@@ -86,8 +86,8 @@ var background = {
         {prompt: "Birth Country"},
         {prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"},
         {prompt: "Native Language"},
-        {prompt: "Parent 1's Native Language"},
-        {prompt: "Parent 2's Native Language"}
+        {prompt: "Parent/Guardian 1's Native Language"},
+        {prompt: "Parent/Guardian 2's Native Language"}
     ],
     on_load: function () {
         validate_background();

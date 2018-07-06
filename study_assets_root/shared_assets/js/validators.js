@@ -150,9 +150,7 @@ function validate_background() {
     } else if ((native_language.length < 2 || native_language.length > 50)) {
         allow_next(next, false, "Enter your native language");
     } else if ((parent_1_lang.length < 2 || parent_1_lang.length > 50)) {
-        allow_next(next, false, "Enter Parent 1's native language");
-    } else if (parent_2_lang.length < 2 || parent_2_lang.length > 50) {
-        allow_next(next, false, "Enter Parent 2's native language");
+        allow_next(next, false, "Enter Parent/Guardian 1's native language");
     } else {
         allow_next(next, true);
     }

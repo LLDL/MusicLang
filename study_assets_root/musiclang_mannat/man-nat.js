@@ -8,7 +8,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/musiclang_mannat/shared_asset
 var inst_met_rhy_en = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2> TODO: SWITCH TO MANDARIN. Please wear headphones for the duration of this experiment. When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>Instructions</h2><p>TODO: SWITCH TO MANDARIN. Please wear headphones for the duration of this experiment. When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -27,13 +27,13 @@ var met_rhy_en = {
     answer1: '是',
     answer2: '否',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-rhy-en.mp3',
-    test_length: 20 //611:length+15:grace
+    test_length: 10 //611:length+15:grace
 };
 
 var inst_met_mel_en = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2> TODO: SWITCH TO MANDARIN. Please wear headphones for the duration of this experiment.  When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>Instructions</h2> <p>TODO: SWITCH TO MANDARIN. Please wear headphones for the duration of this experiment.  When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -52,27 +52,47 @@ var met_mel_en = {
     answer1: '是',
     answer2: '否',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-mel-en.mp3',
-    test_length: 20 //617:length+15:grace 
+    test_length: 10 //617:length+15:grace 
+};
+
+var inst_rpcv_en = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>RPCV Instructions</h2> <p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    allow_keys: false
 };
 
 var rpcv_en = {
     type: 'passage-highlight',
     json_label: 'RPCV_EN',
-    preamble: header + '<h2>RPCV</h2> 在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。',
+    preamble: header + '<h2>RPCV</h2> <p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-en.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
     default_correct: true,
-    word_tag_char1: '#',
-    word_tag_char2: '@',
+    word_tag_char: '#',
     text: '<p>Mary is having a busy #week#. She is worried about her son, Andrew, who is #sick#, so it was hard for her to keep #track# of her schedule. She almost forgot about the #special# dinner tonight, even though she had #written# it down in red #pen# so she would remember. She doesn’t want to go to the dinner with Andrew at home, but she knows it is #important# because it is her friend’s birthday. The #babysitter# should arrive at their house #soon#. </p><p>Mary feels Andrew’s cheek. He must have a fever, because it felt very warm. </p><p>“Come on, Andrew. The doctor said you have to take this #pill# once a day,” she says to her son. </p><p>Before Andrew could #argue#, Mary had put the medicine in his #mouth#. Mary put a cool #towel# on Andrew’s hot #forehead# and runs her fingers through his #silky# brown hair just as the #doorbell# rings. </p><p>“Hi, Sophie, how are you?” says Mary as she #opens# the door to the babysitter. </p><p>“I’m #fine#, thanks, Mary. It’s been #raining# so I got some #mud# on my shoes though. How’s Andrew?” asks Sophie. </p><p>“He’s not #feeling# well so I’m worried about him. He’s #sleeping# right now,” says Mary. </p><p>“Don’t worry, Mary. Andrew is #safe# with me,” says Sophie. Mary #waves# goodbye to Sophie as she leaves the house. She #throws# her #leather# purse onto the front #seat# of her #car# and drives away. </p><p> Mary loves #pizza# and when she arrives at the restaurant, she is #excited# to see a large sign on the #roof# that says “Daniella’s Pizzeria.” The restaurant is beautiful, and the #first# thing Mary sees is a big #painting# on the walls. Mary enjoys a wonderful #meal# with her friends. The pizza was #delicious#, but the best part was the #spiced# apple pie. Mary could still #taste# the #cinnamon# and #cloves# on her tongue as she #drove# home to her son.</p>',
     text_language: 'english'
 };
 
+var inst_rpst_en = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>RPST Instructions</h2><p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    allow_keys: false
+};
+
+
 var rpst_en = {
     type: 'passage-highlight',
     json_label: 'RPST_EN',
-    preamble: header + '<h2>RPST</h2>在听录音前请先阅读一遍文章。这篇文章需要翻页。然后听录音，并注意带有阴影 的单词。如听到错读，请圈出来。',
+    preamble: header + '<h2>RPST</h2><p>在听录音前请先阅读一遍文章。这篇文章需要翻页。然后听录音，并注意带有阴影 的单词。如听到错读，请圈出来。</p>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-en.mp3',
     allow_audio_control: false,
     test_length: 10, //617:length+15:grace
@@ -84,7 +104,7 @@ var rpst_en = {
 
 var lk_en = {
     type: 'multi-choice',
-    preamble: header + '<h2>Lexical Knowledge</h2><h3>Instructions</h3>请圈出下列最符合英文的一个定义。',
+    preamble: header + '<h2>Lexical Knowledge</h2><h3>Instructions</h3><p>请圈出下列最符合英文的一个定义。</p>',
 
     json_label: 'LK_EN',
     questions: [{
@@ -172,7 +192,7 @@ var lk_en = {
 
 var ppc_en = {
     type: 'multi-choice',
-    preamble: header + '<h2>Productive Phonology Comprehension</h2><h3>Instructions</h3>每个问题只有一个正确答案请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。',
+    preamble: header + '<h2>Productive Phonology Comprehension</h2><h3>Instructions</h3><p>每个问题只有一个正确答案请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。</p>',
     json_label: 'PPC_EN',
     passage: '<p>The car stopped and James opened his eyes. They were here! He had been asleep for the whole drive to the Great Lakes, where his family went every summer. He could hear his aunts, uncles, and cousins talking outside the car. James felt a thrill of excitement and shook himself awake.<p></p>He had acted like he didn’t care about the trip, but in truth it was his favourite thing of the year. James climbed out of his seat to look at the vast lake. It was even more beautiful than he thought it would be. The lake was calm and still like a mirror. He looked up and saw an eagle fly across the sky. It was going to be a good day.<p></p>James was in a great mood. Maybe he would play baseball with his cousins. He had brought his lucky bat with him. James was looking forward to showing off to his little cousin, Mikey. He also had a towel with him in case he wanted to go swimming. He could even just sit by the docks and work on his painting. When he finally unpacked all his clothes in his room, it was already lunch time.<p></p>The smell of ham cooking in the pan made him hungry. His mouth started to water, which made him realize his thirst. He went and got his cousins and took them to the kitchen to help serve lunch. The food was filling and soon they were full.</p>',
     passage_language: 'english',
@@ -220,7 +240,7 @@ var ppc_en = {
 };
 
 var counterBalance1 = {
-    timeline: [inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, rpcv_en, rpst_en, lk_en, ppc_en], 
+    timeline: [inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, inst_rpcv_en, rpcv_en,inst_rpst_en, rpst_en, lk_en, ppc_en], 
     conditional_function: function(){
         console.log("in counterbalance1");
         var currID = window.location.href.split('=');
@@ -234,7 +254,7 @@ var counterBalance1 = {
 };
 
 var counterBalance2 = {
-    timeline: [inst_met_mel_en, met_mel_en, inst_met_rhy_en, met_rhy_en, rpst_en, rpcv_en, lk_en, ppc_en], 
+    timeline: [inst_met_mel_en, met_mel_en, inst_met_rhy_en, met_rhy_en, inst_rpst_en, rpst_en,inst_rpst_en, rpcv_en, lk_en, ppc_en], 
     conditional_function: function(){
         console.log("in counterbalance2");
         var currID = window.location.href.split('=');
@@ -251,9 +271,9 @@ jatos.onLoad(
     jsPsych.init({
         //Questionaire:
         //production timeline:
-        // timeline: [counterBalance1, counterBalance2],
+        timeline: [counterBalance1, counterBalance2],
         //test timeline:
-        timeline: [rpcv_en, rpst_en],
+        // timeline: [rpcv_en, rpst_en],
         show_progress_bar: true,
         exclusions: {
             min_width: 800,
@@ -273,7 +293,11 @@ jatos.onLoad(
             var resultsRaw = jsPsych.data.get();
             var results = resultsRaw.ignore('internal_node_id');
             var resultsJSON = results.json();
-            resultsJSON = '"' + jatos.studyResultId + '": ' + resultsJSON;
+            var studyID = jatos.studyResultId;
+            if(likely_invalid){
+                studyID += ' - invalid result'
+            }
+            resultsJSON = '"' + studyID + '": ' + resultsJSON;
             jatos.submitResultData(resultsJSON, jatos.startNextComponent);
         }
     })

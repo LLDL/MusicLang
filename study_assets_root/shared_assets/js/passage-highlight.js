@@ -125,7 +125,7 @@ jsPsych.plugins['passage-highlight'] = (function () {
 
         function parseEnglish(){
             var correct = trial.default_correct?'correct':'incorrect';
-            var findOfInterest = new RegExp(trial.word_tag_char1  +"([^" + trial.word_tag_char1 +"]*)"+ trial.word_tag_char1, 'gu');
+            var findOfInterest = new RegExp(trial.word_tag_char  +"([^" + trial.word_tag_char +"]*)"+ trial.word_tag_char, 'gu');
             var retString = '<div id="passage-highlight-english">';
             retString += (trial.text).replace(findOfInterest, '<mark class="ofInterest ' + correct + '">$1</mark>');           
             retString += '</div>'
@@ -135,8 +135,8 @@ jsPsych.plugins['passage-highlight'] = (function () {
         function parseMandarin(){
             // var specials = new RegExp(/',。“‘’”'/, 'u', 'i');
             var correct = trial.default_correct?'correct':'incorrect';
-            var findOfInterest = new RegExp(trial.word_tag_char1 +"([^\\s^" + trial.word_tag_char1 +"]* [\u4E00-\u9Fcc])"+ trial.word_tag_char1, 'gu');
-            var pinyinUnifiedPairs = new RegExp("([^\\s^" + trial.word_tag_char1 +"^>]*) ([\u4E00-\u9Fcc])", 'gu');
+            var findOfInterest = new RegExp(trial.word_tag_char +"([^\\s^" + trial.word_tag_char +"]* [\u4E00-\u9Fcc])"+ trial.word_tag_char, 'gu');
+            var pinyinUnifiedPairs = new RegExp("([^\\s^" + trial.word_tag_char +"^>]*) ([\u4E00-\u9Fcc])", 'gu');
             var punct = new RegExp("\s?(['，,。“‘’”'：！])\s?", 'gu');
             var retString = '<div id="passage-highlight-mandarin">';
             var withPunct = (trial.text).replace(punct, '<div class="punctuation">$1 </div>');

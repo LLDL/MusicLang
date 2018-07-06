@@ -61,7 +61,6 @@ function generateQuestions(section, count, prefix, suffix, iter_type, answer1, a
 
         tempHTML += '</div>';
 
-        console.log(i + ' | ' + Math.ceil(count/2));
         if (i <= Math.ceil(count/2)){
             left += tempHTML;
         }else{
