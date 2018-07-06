@@ -55,7 +55,7 @@ var rpcv_ma = {
     preamble: header + '<h2>RPCV</h2> Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red.',
     audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpcv-ma.mp3',
     allow_audio_control: false,
-    test_length: 20, //617:length+15:grace
+    test_length: 30, //617:length+15:grace
     default_correct: true,
     word_tag_char1: '#',
     word_tag_char2: '@',
@@ -69,7 +69,7 @@ var rpst_ma = {
     preamble: header + '<h2>RPST</h2> Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red.',
     audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpst-ma.mp3',
     allow_audio_control: false,
-    test_length: 20, //617:length+15:grace
+    test_length: 30, //617:length+15:grace
     default_correct: true,
     word_tag_char1: '#',
     word_tag_char2: '@',
