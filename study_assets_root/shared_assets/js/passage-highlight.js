@@ -156,7 +156,7 @@ jsPsych.plugins['passage-highlight'] = (function () {
         function parseMandarin(){
             // var specials = new RegExp(/',。“‘’”'/, 'u', 'i');
             var correct = trial.default_correct?'correct':'incorrect';
-            var findOfInterest = new RegExp(/#@([^\s^#^@]* [\u4E00-\u9Fcc])#/gu);
+            var findOfInterest = new RegExp(trial.word_tag_char1 + trial.word_tag_char2 +"([^\s^" + trial.word_tag_char1 +"^" + trial.word_tag_char1 +"]* [\u4E00-\u9Fcc])"+ trial.word_tag_char1, 'gu');
             var pinyinUnifiedPairs = new RegExp(/([^\s^#^@^>]*) ([\u4E00-\u9Fcc])/gu);
             var punct = new RegExp(/\s?(['，,。“‘’”'：！])\s?/gu);
             var retString = '<div id="passage-highlight-mandarin">';
