@@ -27,7 +27,7 @@ var met_rhy_en = {
     answer1: '是',
     answer2: '否',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-rhy-en.mp3',
-    test_length: 10 //611:length+15:grace
+    test_length: 15 //611:length+15:grace
 };
 
 var inst_met_mel_en = {
@@ -52,7 +52,7 @@ var met_mel_en = {
     answer1: '是',
     answer2: '否',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-mel-en.mp3',
-    test_length: 10 //617:length+15:grace 
+    test_length: 15 //617:length+15:grace 
 };
 
 var inst_rpcv_en = {
@@ -71,7 +71,7 @@ var rpcv_en = {
     preamble: header + '<h2>RPCV</h2> <p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-en.mp3',
     allow_audio_control: false,
-    test_length: 10, //617:length+15:grace
+    test_length: 15, //617:length+15:grace
     default_correct: true,
     word_tag_char: '#',
     text: '<p>Mary is having a busy #week#. She is worried about her son, Andrew, who is #sick#, so it was hard for her to keep #track# of her schedule. She almost forgot about the #special# dinner tonight, even though she had #written# it down in red #pen# so she would remember. She doesn’t want to go to the dinner with Andrew at home, but she knows it is #important# because it is her friend’s birthday. The #babysitter# should arrive at their house #soon#. </p><p>Mary feels Andrew’s cheek. He must have a fever, because it felt very warm. </p><p>“Come on, Andrew. The doctor said you have to take this #pill# once a day,” she says to her son. </p><p>Before Andrew could #argue#, Mary had put the medicine in his #mouth#. Mary put a cool #towel# on Andrew’s hot #forehead# and runs her fingers through his #silky# brown hair just as the #doorbell# rings. </p><p>“Hi, Sophie, how are you?” says Mary as she #opens# the door to the babysitter. </p><p>“I’m #fine#, thanks, Mary. It’s been #raining# so I got some #mud# on my shoes though. How’s Andrew?” asks Sophie. </p><p>“He’s not #feeling# well so I’m worried about him. He’s #sleeping# right now,” says Mary. </p><p>“Don’t worry, Mary. Andrew is #safe# with me,” says Sophie. Mary #waves# goodbye to Sophie as she leaves the house. She #throws# her #leather# purse onto the front #seat# of her #car# and drives away. </p><p> Mary loves #pizza# and when she arrives at the restaurant, she is #excited# to see a large sign on the #roof# that says “Daniella’s Pizzeria.” The restaurant is beautiful, and the #first# thing Mary sees is a big #painting# on the walls. Mary enjoys a wonderful #meal# with her friends. The pizza was #delicious#, but the best part was the #spiced# apple pie. Mary could still #taste# the #cinnamon# and #cloves# on her tongue as she #drove# home to her son.</p>',
@@ -95,7 +95,7 @@ var rpst_en = {
     preamble: header + '<h2>RPST</h2><p>在听录音前请先阅读一遍文章。这篇文章需要翻页。然后听录音，并注意带有阴影 的单词。如听到错读，请圈出来。</p>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-en.mp3',
     allow_audio_control: false,
-    test_length: 10, //617:length+15:grace
+    test_length: 15, //617:length+15:grace
     default_correct: true,
     word_tag_char: '#',
     text: "<p>Amy was excited to finally visit her friend. They have both been very busy from the #increase# in their work hours, and there was a scheduling #conflict# the last time they tried to meet. John had needed more time to #perfect# his presentation for work, and Amy had a #deadline# to meet for her #project# as well. John was her oldest friend but it seems they live #separate# lives now. Amy could #recall# when she first met him. She was 8 years old, and her parents did not #permit# her to have candy at the class Christmas party. John, the new student in class, #secretly# offered to share his candy, and #together# they vowed to #rebel# against their parents and be friends forever.</p><p>Amy turned the corner and arrived at her friend’s apartment #complex#. As she neared the lobby doors, she heard a voice shout her name from above. She glanced up and there was John #waving# at her, looking as #excited# as she felt. Seconds later they were laughing and hugging in the building lobby, their time apart did not #affect# the strength of their friendship.</p><p>They finally settled down on John's couch with cups of tea in hand.</p></p>“So tell me about your new job!” said Amy, unable to #contain# her curiosity. To her, the fantastical world of #fashion# was filled with glamour and intrigue. Aware of Amy’s #romanticized# view, John rolled his eyes.</p><p>“I’m only the junior #manager#, so not much usually goes on. Although,” he paused dramatically for Amy’s #benefit#, “the #senior# manager was sick last week and the team wanted me to #present# the summer #proposal# in her place!”“That’s amazing! How did it go?” prompted Amy.</p><p>“Well it was great until this guy named Frank showed up.” John frowned. “ He walked in five #minutes# late, and from then on seemed to #object# to every proposal I made.</p><p>“For the #record#, he knew I worked with a team, but still talked as if I was the sole #creator# of the whole #presentation#, and responsible for all the ideas. As if I could #produce# that much #content# myself! What an #insult#, the way he would #address# me. Called me ‘Junior’. A co-worker on my team even came to my #defense#, ” said John.</p><p>“Frank doesn’t know what he’s talking about, you’re great at your job,” said Amy, in an effort to #console# her friend. “You’ve been promoted twice in less than two years!”“Frank’s been with the company for years though,” sighed John. “The board can’t just #discount# what a senior #member# has to say.”</p><p>“Maybe Frank’s just #jealous# of you. Maybe he’s #intimidated# by your great hair. Maybe,” Amy #wiggled# her eyebrows, “Frank has a crush on you.”</p><p>The two friends laughed until they were #gasping# for breath.</p>",
