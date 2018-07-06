@@ -51,15 +51,10 @@ jsPsych.plugins['passage-highlight'] = (function () {
                 pretty_name: 'Length of Test in Seconds',
                 default: 0
             },
-            word_tag_char1: {
+            word_tag_char: {
                 type: jsPsych.plugins.parameterType.STRING,
                 default: '#',
-                description: 'The outer marker that surrounds words of interest ie: #@testword#'
-            },
-            word_tag_char2: {
-                type: jsPsych.plugins.parameterType.INT,
-                default: '@',
-                description: 'The inner marker that follows word_tag_char1 and precedes the word of interest ie: #@testword#'
+                description: 'The marker that surrounds words of interest ie: #testword#'
             },
             default_correct: {
                 type: jsPsych.plugins.parameterType.BOOL,
@@ -130,7 +125,7 @@ jsPsych.plugins['passage-highlight'] = (function () {
 
         function parseEnglish(){
             var correct = trial.default_correct?'correct':'incorrect';
-            var findOfInterest = new RegExp(trial.word_tag_char1 + trial.word_tag_char2 +"([^" + trial.word_tag_char1 +"^" + trial.word_tag_char2 +"]*)"+ trial.word_tag_char1, 'gu');
+            var findOfInterest = new RegExp(trial.word_tag_char1  +"([^" + trial.word_tag_char1 +"]*)"+ trial.word_tag_char1, 'gu');
             var retString = '<div id="passage-highlight-english">';
             retString += (trial.text).replace(findOfInterest, '<mark class="ofInterest ' + correct + '">$1</mark>');           
             retString += '</div>'
@@ -140,8 +135,8 @@ jsPsych.plugins['passage-highlight'] = (function () {
         function parseMandarin(){
             // var specials = new RegExp(/',。“‘’”'/, 'u', 'i');
             var correct = trial.default_correct?'correct':'incorrect';
-            var findOfInterest = new RegExp(trial.word_tag_char1 + trial.word_tag_char2 +"([^" + trial.word_tag_char1 +"^" + trial.word_tag_char2 +"]* [\u4E00-\u9Fcc])"+ trial.word_tag_char1, 'gu');
-            var pinyinUnifiedPairs = new RegExp("([^\\s^" + trial.word_tag_char1 +"^" + trial.word_tag_char2 +"^>]*) ([\u4E00-\u9Fcc])", 'gu');
+            var findOfInterest = new RegExp(trial.word_tag_char1 +"([^\\s^" + trial.word_tag_char1 +"]* [\u4E00-\u9Fcc])"+ trial.word_tag_char1, 'gu');
+            var pinyinUnifiedPairs = new RegExp("([^\\s^" + trial.word_tag_char1 +"^>]*) ([\u4E00-\u9Fcc])", 'gu');
             var punct = new RegExp("\s?(['，,。“‘’”'：！])\s?", 'gu');
             var retString = '<div id="passage-highlight-mandarin">';
             var withPunct = (trial.text).replace(punct, '<div class="punctuation">$1 </div>');
