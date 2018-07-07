@@ -22,13 +22,9 @@
 	* - test_length:                length of audio clip + grace period before automatic skip to next section
 	* - Ankit Dassor
 */
-        //for (var i = 0; i < trial.questions.length; i++) {
-		// 	html += '<div class="survey-yes-no-question" id="survey-yes-no-question-' + i + '">';
-		// 	html += '<p>' + trial.questions[i].prompt + '</p>';
-		// 	html += '<input type="radio" class="survey-yes-no-response" id="survey-yes-no-response-' + i + '-' + 0 + '" name="' + i + '" value="true">Yes';
-		// 	html += '<input type="radio" class="survey-yes-no-response" id="survey-yes-no-response-' + i + '-' + 1 + '" name="' + i + '" value="false">No';
-		// 	html += '</div>';
-        // }
+
+//to_letters, when given a number, generates the alphabetic equivalent
+//for example, 1=A, 26=Z, 27=AA, etc
 function to_letters(number){
     var mod = number % 26;
     var pow = (number / 26) | 0;
@@ -42,6 +38,7 @@ function to_letters(number){
     }
     return out;
 }
+//generateQuestions creates two columns of equal height or near-equal height containing $count of yes/no question divs
 function generateQuestions(section, count, prefix, suffix, iter_type, answer1, answer2){
     var colsJoined;
     var left = '<div class="leftCol">';
@@ -111,11 +108,13 @@ jsPsych.plugins['binary-audio'] = (function () {
             },
             example_count: {
                 type: jsPsych.plugins.parameterType.INT,
-                pretty_name: 'Number of Examples'
+                pretty_name: 'Number of Examples',
+                default: 0
             },
             question_count: {
                 type: jsPsych.plugins.parameterType.INT,
-                pretty_name: 'Number of Questions'
+                pretty_name: 'Number of Questions',
+                default: 0
             },
             example_num_prefix: {
                 type: jsPsych.plugins.parameterType.STRING,
@@ -179,13 +178,14 @@ jsPsych.plugins['binary-audio'] = (function () {
          
         var startTime = (new Date()).getTime();
         //Every second, maybeFinish() is triggered by the below
+        //Will finish within ~1 second of actual test_length in worst case
         var everySecond = setInterval(maybeFinish, 1000);
 
         var html = '';
         if (trial.preamble !== null) {
             html += '<div id="binary-audio-preamble" class="binary-audio-preamble">' + trial.preamble + '</div>';
         }
-        //Audio
+        //Audio that by default autoplays and does not allow user to control it
         html += '<audio preload="auto" autoplay'
         if(trial.allow_audio_control){
             html += ' controls';

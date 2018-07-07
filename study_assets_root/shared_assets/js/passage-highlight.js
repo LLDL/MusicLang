@@ -125,22 +125,29 @@ jsPsych.plugins['passage-highlight'] = (function () {
 
         function parseEnglish(){
             var correct = trial.default_correct?'correct':'incorrect';
+            //find anything enclosed in the word_tag_char to mark it
             var findOfInterest = new RegExp(trial.word_tag_char  +"([^" + trial.word_tag_char +"]*)"+ trial.word_tag_char, 'gu');
             var retString = '<div id="passage-highlight-english">';
+            //mark the words of interest
             retString += (trial.text).replace(findOfInterest, '<mark class="ofInterest ' + correct + '">$1</mark>');           
             retString += '</div>'
             return retString;
         }
         
         function parseMandarin(){
-            // var specials = new RegExp(/',。“‘’”'/, 'u', 'i');
             var correct = trial.default_correct?'correct':'incorrect';
+            //regex to find anything enclosed in the word_tag_char to mark it
             var findOfInterest = new RegExp(trial.word_tag_char +"([^\\s^" + trial.word_tag_char +"]* [\u4E00-\u9Fcc])"+ trial.word_tag_char, 'gu');
+            //regex to find any instances of pinyin followed by a chinese character
             var pinyinUnifiedPairs = new RegExp("([^\\s^" + trial.word_tag_char +"^>]*) ([\u4E00-\u9Fcc])", 'gu');
+            //regex to find any punctuation
             var punct = new RegExp("\s?(['，,。“‘’”'：！])\s?", 'gu');
             var retString = '<div id="passage-highlight-mandarin">';
+            //surround punctuation with a div
             var withPunct = (trial.text).replace(punct, '<div class="punctuation">$1 </div>');
+            //surround words we are interested in with a div
             var withMarks = withPunct.replace(findOfInterest, '<div class="ofInterestMandarin '+ correct + '">$1</div>');
+            //surround pinyin followed by a chinese character with formatting to make it appear correctly
             retString += withMarks.replace(pinyinUnifiedPairs, '<div class="mandarinPair"><div class="pinyin">$1</div><div class="unifiedUni">$2</div></div>');
 
             retString += '</div>'

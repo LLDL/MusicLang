@@ -2,10 +2,10 @@
     * multi-choice.js
     * A jspsych plugin for multiple choice survey questions that follows a
     * preamble and section (text) capable of displaying Mandarin & Pinyin together, for example:
-    * péng 朋 you 友 
+    * péng 朋 you 友. 
     * will display as:
     * péng  you
-    * 朋    友
+    * 朋    友  .
     * If this is not desired, entering "english" into the text_language will
     * make this behave very similarly to survey-multi-choice
     * 
@@ -115,9 +115,9 @@ jsPsych.plugins['multi-choice'] = (function () {
             var answers = {};
             var options = document.querySelectorAll("input[type=radio]:checked");
             for(var currAnswer = 0; currAnswer<trial.questions.length; currAnswer++){
-                var id = "Q" + currAnswer;
+                // var id = "Q" + currAnswer;
                 var answer = {};
-                answer[id] = options[currAnswer].value;
+                answer[trial.questions[currAnswer].prompt] = options[currAnswer].value;
                 Object.assign(answers, answer);
             }
 
