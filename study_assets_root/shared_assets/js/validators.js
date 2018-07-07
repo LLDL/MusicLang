@@ -94,6 +94,15 @@ function validate_contact() {
     }
 };
 
+function validate_future() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+}
 function validate_personal() {
     var questions = document.getElementById("jspsych-content").children;
     var next = document.getElementById("jspsych-survey-text-next");

@@ -10,7 +10,7 @@ var info = {
     type: 'instructions',
     pages: [
         header + '<h2>Test Instruction Page</h2><p>Lorem ipsum si venit</p>',
-        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/musiclang_engnat/shared_assets/consent.pdf" download>this consent form</a>. By continuing, you are granting etc.</p> '
+        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/musiclang_engnat/shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are granting etc.</p> '
     ],
     // data: { 
     //     section: 'Instructions'
@@ -19,6 +19,22 @@ var info = {
     button_label_next: 'Next',
     button_label_previous: 'Back',
     allow_keys: false
+}
+var future = {
+    type: 'survey-yes-no',
+    questions: [
+        {prompt: "Can we contact you for future studies?"}
+    ],
+    preamble: header + "<h2>Participation in Future Experiments</h2>",
+    json_label: 'interested_in_future_exps',
+    on_load: function(){
+        validate_future();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_future);
+    },
+    on_finish: function(){
+        toggle_listeners(form, true, validate_future);
+    }
 }
 /*
     General Form of a Trial's nontrivial sections:
@@ -84,7 +100,7 @@ var background = {
     json_label: 'Background',
     questions: [
         {prompt: "Birth Country"},
-        {prompt: "Age of Arrival in Canada (Enter 0 if you were born in Canada)"},
+        {prompt: "Age of Arrival in Current Country (Enter 0 if you were born in your current country)"},
         {prompt: "Native Language"},
         {prompt: "Parent/Guardian 1's Native Language"},
         {prompt: "Parent/Guardian 2's Native Language"}
@@ -177,7 +193,7 @@ var musical_detail = {
 jatos.onLoad(
     jsPsych.init({
         //production timeline:
-        timeline: [info, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
+        timeline: [info, future, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
         //timeline for testing: 
         //timeline: [contact, personal, musical_summary, musical_detail],
         show_progress_bar: true,
