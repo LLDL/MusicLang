@@ -1,14 +1,32 @@
-//var subject_id = jsPsych.randomization.randomID(15); //random id assigned to each subject
 var blur_count = 0; //number of times subject's focus leaves tab
-var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
 var header = "<img id=\"logo\" src=\"/study_assets/musiclang_mannat/shared_assets/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
 
+var gen_inst = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>指导语</h2><p>本项实验会持续40-60分钟的时间，其中包含不同的任务，许多任务包含有一段音频，请戴上耳机完成本实验。不同任务之间可以休息。</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    allow_keys: false
+};
+
+var autoplay_inst = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>Audio Check</h2><p>If you can currently hear an audio clip, scroll to the bottom of the page and press Next. If you cannot currently hear an audio clip, your web browser may be blocking auto-playing audio. Please see the instructions below to enable auto-playing audio and do not press Next until you can hear the audio clip.</p> <h3>Google Chrome, Mozille Firefox, or Microsoft Edge</h3><p>Right click the current tab (LangDev MusicLang at the top of your browser) and press "Unmute Site". You should now hear audio and continue.</p><h3>Safari</h3><p>On the current tab (LangDev MusicLang at the top of your browser), there will be a sound icon to its right. Press the sound icon to unmute. You should now hear audio and continue.</p><audio preload="auto" autoplay loop><source src="sample.mp3" type="audio/mpeg"></audio>'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    allow_keys: false
+};
+
 var inst_met_rhy_en = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2><p>TODO: SWITCH TO MANDARIN. Please wear headphones for the duration of this experiment. When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>任务：节奏比较</h2><p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频,请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -18,7 +36,7 @@ var inst_met_rhy_en = {
 var met_rhy_en = {
     type: 'binary-audio',
     json_label: 'MET_RHY_EN',
-    preamble: header + '<h2>音乐之耳测试: 节奏顺序比较</h2>',
+    preamble: header + '<h2>任务：节奏比较</h2>',
     example_preamble: '例子',
     question_preamble: '测试',
     example_count: '2',
@@ -33,7 +51,7 @@ var met_rhy_en = {
 var inst_met_mel_en = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2> <p>TODO: SWITCH TO MANDARIN. Please wear headphones for the duration of this experiment.  When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>任务：旋律比较</h2> <p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频, 请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -43,7 +61,7 @@ var inst_met_mel_en = {
 var met_mel_en = {
     type: 'binary-audio',
     json_label: 'MET_MEL_EN',
-    preamble: header + '<h2>音乐之耳测试: 旋律顺序比较</h2>',
+    preamble: header + '<h2>任务：旋律比较</h2>',
     example_preamble: '例子',
     question_preamble: '测试',
     example_count: '2',
@@ -58,7 +76,7 @@ var met_mel_en = {
 var inst_rpcv_en = {
     type: 'instructions',
     pages: [
-        header + '<h2>RPCV Instructions</h2> <p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>任务：判断错误发音</h2> <p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。本测试中的短文会以下面例子的形式呈现。你可以尝试点击被绿色标注的单词，它会变成红色。当你准备好之后，请点击“Next”开始正式的测试。'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -68,7 +86,7 @@ var inst_rpcv_en = {
 var rpcv_en = {
     type: 'passage-highlight',
     json_label: 'RPCV_EN',
-    preamble: header + '<h2>RPCV</h2> <p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p>',
+    preamble: header + '<h2>任务：判断错误发音</h2>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-en.mp3',
     allow_audio_control: false,
     test_length: 15, //617:length+15:grace
@@ -81,7 +99,7 @@ var rpcv_en = {
 var inst_rpst_en = {
     type: 'instructions',
     pages: [
-        header + '<h2>RPST Instructions</h2><p>在听录音之前请先阅读一遍文章。然后听录音并注意带有阴影的单词。如听到错读请圈出来。</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>任务：判断错误发音</h2><p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。本测试中的短文会以下面例子的形式呈现。你可以尝试点击被绿色标注的单词，它会变成红色。当你准备好之后，请点击“Next”开始正式的测试。'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -92,19 +110,19 @@ var inst_rpst_en = {
 var rpst_en = {
     type: 'passage-highlight',
     json_label: 'RPST_EN',
-    preamble: header + '<h2>RPST</h2><p>在听录音前请先阅读一遍文章。这篇文章需要翻页。然后听录音，并注意带有阴影 的单词。如听到错读，请圈出来。</p>',
+    preamble: header + '<h2>任务：判断错误发音</h2>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-en.mp3',
     allow_audio_control: false,
     test_length: 15, //617:length+15:grace
     default_correct: true,
     word_tag_char: '#',
-    text: "<p>Amy was excited to finally visit her friend. They have both been very busy from the #increase# in their work hours, and there was a scheduling #conflict# the last time they tried to meet. John had needed more time to #perfect# his presentation for work, and Amy had a #deadline# to meet for her #project# as well. John was her oldest friend but it seems they live #separate# lives now. Amy could #recall# when she first met him. She was 8 years old, and her parents did not #permit# her to have candy at the class Christmas party. John, the new student in class, #secretly# offered to share his candy, and #together# they vowed to #rebel# against their parents and be friends forever.</p><p>Amy turned the corner and arrived at her friend’s apartment #complex#. As she neared the lobby doors, she heard a voice shout her name from above. She glanced up and there was John #waving# at her, looking as #excited# as she felt. Seconds later they were laughing and hugging in the building lobby, their time apart did not #affect# the strength of their friendship.</p><p>They finally settled down on John's couch with cups of tea in hand.</p></p>“So tell me about your new job!” said Amy, unable to #contain# her curiosity. To her, the fantastical world of #fashion# was filled with glamour and intrigue. Aware of Amy’s #romanticized# view, John rolled his eyes.</p><p>“I’m only the junior #manager#, so not much usually goes on. Although,” he paused dramatically for Amy’s #benefit#, “the #senior# manager was sick last week and the team wanted me to #present# the summer #proposal# in her place!”“That’s amazing! How did it go?” prompted Amy.</p><p>“Well it was great until this guy named Frank showed up.” John frowned. “ He walked in five #minutes# late, and from then on seemed to #object# to every proposal I made.</p><p>“For the #record#, he knew I worked with a team, but still talked as if I was the sole #creator# of the whole #presentation#, and responsible for all the ideas. As if I could #produce# that much #content# myself! What an #insult#, the way he would #address# me. Called me ‘Junior’. A co-worker on my team even came to my #defense#, ” said John.</p><p>“Frank doesn’t know what he’s talking about, you’re great at your job,” said Amy, in an effort to #console# her friend. “You’ve been promoted twice in less than two years!”“Frank’s been with the company for years though,” sighed John. “The board can’t just #discount# what a senior #member# has to say.”</p><p>“Maybe Frank’s just #jealous# of you. Maybe he’s #intimidated# by your great hair. Maybe,” Amy #wiggled# her eyebrows, “Frank has a crush on you.”</p><p>The two friends laughed until they were #gasping# for breath.</p>",
+    text: "<p>Amy was excited to finally visit her friend. They have both been very busy from the #increase# in their work hours, and there was a scheduling #conflict# the last time they tried to meet. John had needed more time to #perfect# his presentation for work, and Amy had a #deadline# to meet for her #project# as well. John was her oldest friend but it seems they live #separate# lives now. Amy could #recall# when she first met him. She was 8 years old, and her parents did not #permit# her to have candy at the class Christmas party. John, the new student in class, #secretly# offered to share his candy, and #together# they vowed to #rebel# against their parents and be friends forever.</p><p>Amy turned the corner and arrived at her friend’s apartment #complex#. As she neared the lobby doors, she heard a voice shout her name from above. She glanced up and there was John #waving# at her, looking as #excited# as she felt. Seconds later they were laughing and hugging in the building lobby, their time apart did not #affect# the strength of their friendship.</p><p>They finally settled down on John's couch with cups of tea in hand.</p></p>“So tell me about your new job!” said Amy, unable to #contain# her curiosity. To her, the fantastical world of #fashion# was filled with glamour and intrigue. Aware of Amy’s #romanticized# view, John rolled his eyes.</p><p>“I’m only the junior #manager#, so not much usually goes on. Although,” he paused dramatically for Amy’s #benefit#, “the #senior# manager was sick last week and the team wanted me to #present# the summer #proposal# in her place!”“That’s amazing! How did it go?” prompted Amy.</p><p>“Well it was great until this guy named Frank showed up.” John frowned. “ He walked in five #minutes# late, and from then on seemed to #object# to every proposal I made.</p><p>“For the #record#, he knew I worked with a team, but still talked as if I was the sole #creator# of the whole #presentation#, and responsible for all the ideas. As if I could #produce# that much #content# myself! What an #insult#, the way he would #address# me. Called me ‘Junior’. A co-worker on my team even came to my #defense#, ” said John.</p><p>“Frank doesn’t know what he’s talking about, you’re great at your job,” said Amy, in an effort to #console# her friend. “You’ve been promoted twice in less than two years!”</p><p>“Frank’s been with the company for years though,” sighed John. “The board can’t just #discount# what a senior #member# has to say.”</p><p>“Maybe Frank’s just #jealous# of you. Maybe he’s #intimidated# by your great hair. Maybe,” Amy #wiggled# her eyebrows, “Frank has a crush on you.”</p><p>The two friends laughed until they were #gasping# for breath.</p>",
     text_language: 'english'
 };
 
 var lk_en = {
     type: 'multi-choice',
-    preamble: header + '<h2>Lexical Knowledge</h2><h3>Instructions</h3><p>请圈出下列最符合英文的一个定义。</p>',
+    preamble: header + '<h2>任务5:词汇知识测试</h2><p>请圈出下列最符合英文的一个定义。</p>',
 
     json_label: 'LK_EN',
     questions: [{
@@ -192,7 +210,7 @@ var lk_en = {
 
 var ppc_en = {
     type: 'multi-choice',
-    preamble: header + '<h2>Productive Phonology Comprehension</h2><h3>Instructions</h3><p>每个问题只有一个正确答案请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。</p>',
+    preamble: header + '<h2>任务6:阅读测试</h2><h3>Instructions</h3><p>请仔细阅读以下短文，然后回答相应问题。每个问题只有一个正确答案，请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。</p>',
     json_label: 'PPC_EN',
     passage: '<p>The car stopped and James opened his eyes. They were here! He had been asleep for the whole drive to the Great Lakes, where his family went every summer. He could hear his aunts, uncles, and cousins talking outside the car. James felt a thrill of excitement and shook himself awake.<p></p>He had acted like he didn’t care about the trip, but in truth it was his favourite thing of the year. James climbed out of his seat to look at the vast lake. It was even more beautiful than he thought it would be. The lake was calm and still like a mirror. He looked up and saw an eagle fly across the sky. It was going to be a good day.<p></p>James was in a great mood. Maybe he would play baseball with his cousins. He had brought his lucky bat with him. James was looking forward to showing off to his little cousin, Mikey. He also had a towel with him in case he wanted to go swimming. He could even just sit by the docks and work on his painting. When he finally unpacked all his clothes in his room, it was already lunch time.<p></p>The smell of ham cooking in the pan made him hungry. His mouth started to water, which made him realize his thirst. He went and got his cousins and took them to the kitchen to help serve lunch. The food was filling and soon they were full.</p>',
     passage_language: 'english',
@@ -240,12 +258,12 @@ var ppc_en = {
 };
 
 var counterBalance1 = {
-    timeline: [inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, inst_rpcv_en, rpcv_en,inst_rpst_en, rpst_en, lk_en, ppc_en], 
+    timeline: [gen_inst, autoplay_inst, inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, inst_rpcv_en, rpcv_en,inst_rpst_en, rpst_en, lk_en, ppc_en],
     conditional_function: function(){
-        console.log("in counterbalance1");
+        // console.log("in counterbalance1");
         var currID = window.location.href.split('=');
         if(currID[currID.length-1] % 2 == 1){
-            console.log("true");
+            // console.log("true");
             return true;
         }else{
             return false;
@@ -254,12 +272,12 @@ var counterBalance1 = {
 };
 
 var counterBalance2 = {
-    timeline: [inst_met_mel_en, met_mel_en, inst_met_rhy_en, met_rhy_en, inst_rpst_en, rpst_en,inst_rpst_en, rpcv_en, lk_en, ppc_en], 
+    timeline: [gen_inst, autoplay_inst,inst_met_mel_en, met_mel_en, inst_met_rhy_en, met_rhy_en, inst_rpst_en, rpst_en,inst_rpst_en, rpcv_en, lk_en, ppc_en], 
     conditional_function: function(){
-        console.log("in counterbalance2");
+        // console.log("in counterbalance2");
         var currID = window.location.href.split('=');
         if(currID[currID.length-1] % 2 == 0){
-            console.log("true"); 
+            // console.log("true"); 
             return true;
         }else{
             return false;
@@ -269,12 +287,7 @@ var counterBalance2 = {
 
 jatos.onLoad(
     jsPsych.init({
-        //Questionaire:
-        //production timeline:
         timeline: [counterBalance1, counterBalance2],
-        //test timeline:
-        // timeline: [rpcv_en, rpst_en],
-        show_progress_bar: true,
         exclusions: {
             min_width: 800,
             min_height: 600

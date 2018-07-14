@@ -1,4 +1,3 @@
-//var subject_id = jsPsych.randomization.randomID(15); //random id assigned to each subject
 var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
@@ -12,9 +11,6 @@ var info = {
         header + '<h2>Test Instruction Page</h2><p>Lorem ipsum si venit</p>',
         header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/musiclang_engnat/shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are granting etc.</p> '
     ],
-    // data: { 
-    //     section: 'Instructions'
-    // },
     show_clickable_nav: true,
     button_label_next: 'Next',
     button_label_previous: 'Back',
@@ -173,12 +169,8 @@ var musical_summary = {
 var musical_detail = {
     type: 'music-info',
     preamble: header + '<h2>Musical Experience</h2><p>In "Description", name the instrument or type of singing.<br>In "Instruction Type", describe the enviroment you learned in, ie: private lessons, school band, band, etc.</p>',
-    // data: { 
-    //     section: 'Musical Detail'
-    // },
     json_label: 'Musical Detail',
     on_start: function(trial){
-        // trial.experience = 
         trial.experience = get_musical_exp();
     },
     on_load: function(){
@@ -192,11 +184,7 @@ var musical_detail = {
 };
 jatos.onLoad(
     jsPsych.init({
-        //production timeline:
         timeline: [info, future, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
-        //timeline for testing: 
-        //timeline: [contact, personal, musical_summary, musical_detail],
-        show_progress_bar: true,
         exclusions: {
             min_width: 800,
             min_height: 600
@@ -212,13 +200,10 @@ jatos.onLoad(
             };
         },
         on_finish: function (data) {
-            //jsPsych.data.addProperties({subject: jatos.studyResultId});
             var resultsRaw = jsPsych.data.get();
             //var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index').ignore('rt').ignore('trial_type');
             var results = resultsRaw.ignore('internal_node_id');
             var resultsJSON = results.json();
-            //var resultsWithIdsJSON = jatos.addJatosIds(results).json();
-            //resultsJSON = resultsJSON.slice(1, -1); //remove [] outside
             resultsJSON = '"' + jatos.studyResultId + '": ' + resultsJSON;
             jatos.submitResultData(resultsJSON, jatos.startNextComponent);
         }
