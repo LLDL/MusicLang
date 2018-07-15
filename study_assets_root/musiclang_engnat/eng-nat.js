@@ -13,15 +13,15 @@ var gen_inst = {
     allow_keys: false
 };
 
-var autoplay_inst = {
-    type: 'instructions',
-    pages: [
-        header + '<h2>Audio Check</h2><p>If you can currently hear an audio clip, scroll to the bottom of the page and press Next. If you cannot currently hear an audio clip, your web browser may be blocking auto-playing audio. Please see the instructions below to enable auto-playing audio and do not press Next until you can hear the audio clip.</p> <h3>Google Chrome, Mozille Firefox, or Microsoft Edge</h3><p>Right click the current tab (LangDev MusicLang at the top of your browser) and press "Unmute Site". You should now hear audio and continue.</p><h3>Safari</h3><p>On the current tab (LangDev MusicLang at the top of your browser), there will be a sound icon to its right. Press the sound icon to unmute. You should now hear audio and continue.</p><audio preload="auto" autoplay loop><source src="sample.mp3" type="audio/mpeg"></audio>'
-    ],
-    show_clickable_nav: true,
-    button_label_next: 'Next',
-    allow_keys: false
-};
+// var autoplay_inst = {
+//     type: 'instructions',
+//     pages: [
+//         header + '<h2>Audio Check</h2><p>If you can currently hear an audio clip, scroll to the bottom of the page and press Next. If you cannot currently hear an audio clip, your web browser may be blocking auto-playing audio. Please see the instructions below to enable auto-playing audio and do not press Next until you can hear the audio clip.</p> <h3>Google Chrome, Mozille Firefox, or Microsoft Edge</h3><p>Right click the current tab (LangDev MusicLang at the top of your browser) and press "Unmute Site". You should now hear audio and continue.</p><h3>Safari</h3><p>On the current tab (LangDev MusicLang at the top of your browser), there will be a sound icon to its right. Press the sound icon to unmute. You should now hear audio and continue.</p><audio preload="auto" autoplay loop><source src="sample.mp3" type="audio/mpeg"></audio>'
+//     ],
+//     show_clickable_nav: true,
+//     button_label_next: 'Next',
+//     allow_keys: false
+// };
 
 var inst_met_rhy_ma = {
     type: 'instructions',
@@ -272,7 +272,7 @@ var ppc_ma = {
 };
 
 var counterBalance1 = {
-    timeline: [gen_inst, autoplay_inst, inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, inst_rpcv_ma, rpcv_ma, inst_rpst_ma, rpst_ma, lk_ma, ppc_ma],
+    timeline: [gen_inst, inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, inst_rpcv_ma, rpcv_ma, inst_rpst_ma, rpst_ma, lk_ma, ppc_ma],
     conditional_function: function(){
         var currID = window.location.href.split('=');
         if(currID[currID.length-1] % 2 == 1){
@@ -285,7 +285,7 @@ var counterBalance1 = {
 };
 
 var counterBalance2 = {
-    timeline: [gen_inst, autoplay_inst, inst_met_mel_ma, met_mel_ma, inst_met_rhy_ma, met_rhy_ma, inst_rpst_ma, rpst_ma, inst_rpcv_ma, rpcv_ma, lk_ma, ppc_ma], 
+    timeline: [gen_inst, inst_met_mel_ma, met_mel_ma, inst_met_rhy_ma, met_rhy_ma, inst_rpst_ma, rpst_ma, inst_rpcv_ma, rpcv_ma, lk_ma, ppc_ma], 
     conditional_function: function(){
         var currID = window.location.href.split('=');
         if(currID[currID.length-1] % 2 == 0){

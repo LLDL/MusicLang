@@ -775,7 +775,6 @@ window.jsPsych = (function() {
     }
 
     global_trial_index++;
-    current_trial_finished = false;
 
     // advance timeline
     timeline.markCurrentTrialComplete();
@@ -798,6 +797,7 @@ window.jsPsych = (function() {
   function doTrial(trial) {
 
     current_trial = trial;
+    current_trial_finished = false;
 
     // process all timeline variables for this trial
     evaluateTimelineVariables(trial);
@@ -815,6 +815,9 @@ window.jsPsych = (function() {
     if(typeof trial.on_start == 'function'){
       trial.on_start(trial);
     }
+
+    // apply the focus to the DOM (for keyboard events)
+    DOM_target.focus();
 
     // execute trial method
     jsPsych.plugins[trial.type].trial(DOM_target, trial);
@@ -2121,6 +2124,11 @@ jsPsych.pluginAPI = (function() {
   }
 
   module.audioContext = function(){
+    if(context !== null){
+      if(context.state !== 'running'){
+        context.resume();
+      }
+    }
     return context;
   }
 
