@@ -32,7 +32,7 @@ var met_rhy_ma = {
     question_count: '52',
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-rhy-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-r-for-eng.mp3',
     test_length: 15 //611:length+15:grace
 };
 
@@ -54,7 +54,7 @@ var met_mel_ma = {
     question_count: '52',
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-mel-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-m-for-eng.mp3',
     test_length: 15 //617:length+15:grace 
 };
 
@@ -72,7 +72,7 @@ var rpcv_ma = {
     type: 'passage-highlight',
     json_label: 'RPCV_MA',
     preamble: header + '<h2>Task: Mispronunciation</h2>',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpcv-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpcv-for-eng.mp3',
     allow_audio_control: false,
     test_length: 15, //617:length+15:grace
     default_correct: true,
@@ -96,7 +96,7 @@ var rpst_ma = {
     type: 'passage-highlight',
     json_label: 'RPST_MA',
     preamble: header + '<h2>Task: Mispronunciation</h2>',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpst-ma.mp3',
+    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpst-for-eng.mp3',
     allow_audio_control: false,
     test_length: 15, //617:length+15:grace
     default_correct: true,

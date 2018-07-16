@@ -35,7 +35,7 @@ var met_rhy_en = {
     example_num_prefix: '例子 ',
     answer1: '是',
     answer2: '否',
-    audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-rhy-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-r-for-mand.mp3',
     test_length: 15 //611:length+15:grace
 };
 
@@ -60,7 +60,7 @@ var met_mel_en = {
     example_num_prefix: '例子 ',
     answer1: '是',
     answer2: '否',
-    audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-mel-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-m-for-mand.mp3',
     test_length: 15 //617:length+15:grace 
 };
 
@@ -78,7 +78,7 @@ var rpcv_en = {
     type: 'passage-highlight',
     json_label: 'RPCV_EN',
     preamble: header + '<h2>任务：判断错误发音</h2>',
-    audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-for-mand.mp3',
     allow_audio_control: false,
     test_length: 15, //617:length+15:grace
     default_correct: true,
@@ -102,7 +102,7 @@ var rpst_en = {
     type: 'passage-highlight',
     json_label: 'RPST_EN',
     preamble: header + '<h2>任务：判断错误发音</h2>',
-    audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-en.mp3',
+    audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-for-mand.mp3',
     allow_audio_control: false,
     test_length: 15, //617:length+15:grace
     default_correct: true,
