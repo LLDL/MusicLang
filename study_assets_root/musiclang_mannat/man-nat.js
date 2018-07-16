@@ -14,7 +14,7 @@ var gen_inst = {
 };
 
 
-var inst_met_rhy_en = {
+var inst_met_rhy_for_mand = {
     type: 'instructions',
     pages: [
         header + '<h2>任务：节奏比较</h2><p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频,请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。'
@@ -24,9 +24,9 @@ var inst_met_rhy_en = {
     allow_keys: false
 };
 
-var met_rhy_en = {
+var met_rhy_for_mand = {
     type: 'binary-audio',
-    json_label: 'MET_RHY_EN',
+    json_label: 'MET_RHY_FOR_MAND',
     preamble: header + '<h2>任务：节奏比较</h2>',
     example_preamble: '例子',
     question_preamble: '测试',
@@ -39,7 +39,7 @@ var met_rhy_en = {
     test_length: 15 //611:length+15:grace
 };
 
-var inst_met_mel_en = {
+var inst_met_mel_for_mand = {
     type: 'instructions',
     pages: [
         header + '<h2>任务：旋律比较</h2> <p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频, 请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。</p>'
@@ -49,9 +49,9 @@ var inst_met_mel_en = {
     allow_keys: false
 };
 
-var met_mel_en = {
+var met_mel_for_mand = {
     type: 'binary-audio',
-    json_label: 'MET_MEL_EN',
+    json_label: 'MET_MEL_FOR_MAND',
     preamble: header + '<h2>任务：旋律比较</h2>',
     example_preamble: '例子',
     question_preamble: '测试',
@@ -64,7 +64,7 @@ var met_mel_en = {
     test_length: 15 //617:length+15:grace 
 };
 
-var inst_rpcv_en = {
+var inst_rpcv_for_mand = {
     type: 'instructions',
     pages: [
         header + '<h2>任务：判断错误发音</h2> <p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。本测试中的短文会以下面例子的形式呈现。你可以尝试点击被绿色标注的单词，它会变成红色。当你准备好之后，请点击“Next”开始正式的测试。'
@@ -74,9 +74,9 @@ var inst_rpcv_en = {
     allow_keys: false
 };
 
-var rpcv_en = {
+var rpcv_for_mand = {
     type: 'passage-highlight',
-    json_label: 'RPCV_EN',
+    json_label: 'RPCV_FOR_MAND',
     preamble: header + '<h2>任务：判断错误发音</h2>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-for-mand.mp3',
     allow_audio_control: false,
@@ -87,7 +87,7 @@ var rpcv_en = {
     text_language: 'english'
 };
 
-var inst_rpst_en = {
+var inst_rpst_for_mand = {
     type: 'instructions',
     pages: [
         header + '<h2>任务：判断错误发音</h2><p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。本测试中的短文会以下面例子的形式呈现。你可以尝试点击被绿色标注的单词，它会变成红色。当你准备好之后，请点击“Next”开始正式的测试。'
@@ -98,9 +98,9 @@ var inst_rpst_en = {
 };
 
 
-var rpst_en = {
+var rpst_for_mand = {
     type: 'passage-highlight',
-    json_label: 'RPST_EN',
+    json_label: 'RPST_FOR_MAND',
     preamble: header + '<h2>任务：判断错误发音</h2>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-for-mand.mp3',
     allow_audio_control: false,
@@ -111,11 +111,11 @@ var rpst_en = {
     text_language: 'english'
 };
 
-var lk_en = {
+var lk_for_mand = {
     type: 'multi-choice',
     preamble: header + '<h2>任务5:词汇知识测试</h2><p>请圈出下列最符合英文的一个定义。</p>',
 
-    json_label: 'LK_EN',
+    json_label: 'LK_FOR_MAND',
     questions: [{
             prompt: "fundamental",
             options: ["负责的", "基础的", "金融的", "虚拟的"]
@@ -199,10 +199,10 @@ var lk_en = {
     ]
 };
 
-var ppc_en = {
+var ppc_for_mand = {
     type: 'multi-choice',
     preamble: header + '<h2>任务6:阅读测试</h2><h3>Instructions</h3><p>请仔细阅读以下短文，然后回答相应问题。每个问题只有一个正确答案，请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。</p>',
-    json_label: 'PPC_EN',
+    json_label: 'PPC_FOR_MAND',
     passage: '<p>The car stopped and James opened his eyes. They were here! He had been asleep for the whole drive to the Great Lakes, where his family went every summer. He could hear his aunts, uncles, and cousins talking outside the car. James felt a thrill of excitement and shook himself awake.<p></p>He had acted like he didn’t care about the trip, but in truth it was his favourite thing of the year. James climbed out of his seat to look at the vast lake. It was even more beautiful than he thought it would be. The lake was calm and still like a mirror. He looked up and saw an eagle fly across the sky. It was going to be a good day.<p></p>James was in a great mood. Maybe he would play baseball with his cousins. He had brought his lucky bat with him. James was looking forward to showing off to his little cousin, Mikey. He also had a towel with him in case he wanted to go swimming. He could even just sit by the docks and work on his painting. When he finally unpacked all his clothes in his room, it was already lunch time.<p></p>The smell of ham cooking in the pan made him hungry. His mouth started to water, which made him realize his thirst. He went and got his cousins and took them to the kitchen to help serve lunch. The food was filling and soon they were full.</p>',
     passage_language: 'english',
     questions: [{
@@ -249,7 +249,7 @@ var ppc_en = {
 };
 
 var counterBalance1 = {
-    timeline: [gen_inst, inst_met_rhy_en, met_rhy_en, inst_met_mel_en, met_mel_en, inst_rpcv_en, rpcv_en,inst_rpst_en, rpst_en, lk_en, ppc_en],
+    timeline: [gen_inst, inst_met_rhy_for_mand, met_rhy_for_mand, inst_met_mel_for_mand, met_mel_for_mand, inst_rpcv_for_mand, rpcv_for_mand,inst_rpst_for_mand, rpst_for_mand, lk_for_mand, ppc_for_mand],
     conditional_function: function(){
         // console.log("in counterbalance1");
         var currID = window.location.href.split('=');
@@ -263,7 +263,7 @@ var counterBalance1 = {
 };
 
 var counterBalance2 = {
-    timeline: [gen_inst,inst_met_mel_en, met_mel_en, inst_met_rhy_en, met_rhy_en, inst_rpst_en, rpst_en,inst_rpst_en, rpcv_en, lk_en, ppc_en], 
+    timeline: [gen_inst,inst_met_mel_for_mand, met_mel_for_mand, inst_met_rhy_for_mand, met_rhy_for_mand, inst_rpst_for_mand, rpst_for_mand,inst_rpst_for_mand, rpcv_for_mand, lk_for_mand, ppc_for_mand], 
     conditional_function: function(){
         // console.log("in counterbalance2");
         var currID = window.location.href.split('=');

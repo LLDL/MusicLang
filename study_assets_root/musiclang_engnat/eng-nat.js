@@ -14,7 +14,7 @@ var gen_inst = {
 };
 
 
-var inst_met_rhy_ma = {
+var inst_met_rhy_for_eng = {
     type: 'instructions',
     pages: [
         header + '<h2>Task: Rhythm</h2><p>This task will take about 10 minutes. When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip.</p>'
@@ -24,9 +24,9 @@ var inst_met_rhy_ma = {
     allow_keys: false
 };
 
-var met_rhy_ma = {
+var met_rhy_for_eng = {
     type: 'binary-audio',
-    json_label: 'MET_RHY_MA',
+    json_label: 'MET_RHY_FOR_ENG',
     preamble: header + '<h2>Task: Rhythm</h2>',
     example_count: '2',
     question_count: '52',
@@ -36,7 +36,7 @@ var met_rhy_ma = {
     test_length: 15 //611:length+15:grace
 };
 
-var inst_met_mel_ma = {
+var inst_met_mel_for_eng = {
     type: 'instructions',
     pages: [
         header + '<h2>Task: Melody</h2><p>This task will take about 10 minutes. When you are ready, press Next and the test will immediately start. You will not be able to pause the test, and the test will end immediately at the end of the audio clip.</p>'
@@ -46,9 +46,9 @@ var inst_met_mel_ma = {
     allow_keys: false
 };
 
-var met_mel_ma = {
+var met_mel_for_eng = {
     type: 'binary-audio',
-    json_label: 'MET_MEL_MA',
+    json_label: 'MET_MEL_FOR_ENG',
     preamble: header + '<h2>Task: Melody</h2>',
     example_count: '2',
     question_count: '52',
@@ -58,7 +58,7 @@ var met_mel_ma = {
     test_length: 15 //617:length+15:grace 
 };
 
-var inst_rpcv_ma = {
+var inst_rpcv_for_eng = {
     type: 'instructions',
     pages: [
         header + '<h2>Task: Mispronunciation</h2> <p>This task will take about 2 minutes. Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red. When you are ready for the test, press Next.'
@@ -68,9 +68,9 @@ var inst_rpcv_ma = {
     allow_keys: false
 };
 
-var rpcv_ma = {
+var rpcv_for_eng = {
     type: 'passage-highlight',
-    json_label: 'RPCV_MA',
+    json_label: 'RPCV_FOR_ENG',
     preamble: header + '<h2>Task: Mispronunciation</h2>',
     audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpcv-for-eng.mp3',
     allow_audio_control: false,
@@ -81,7 +81,7 @@ var rpcv_ma = {
     text_language: 'mandarin'
 };
 
-var inst_rpst_ma = {
+var inst_rpst_for_eng = {
     type: 'instructions',
     pages: [
         header + '<h2>Task: Mispronunciation</h2> <p>This task will take about 2 minutes. Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red. When you are ready for the test, press Next.'
@@ -92,9 +92,9 @@ var inst_rpst_ma = {
 };
 
 
-var rpst_ma = {
+var rpst_for_eng = {
     type: 'passage-highlight',
-    json_label: 'RPST_MA',
+    json_label: 'RPST_FOR_ENG',
     preamble: header + '<h2>Task: Mispronunciation</h2>',
     audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpst-for-eng.mp3',
     allow_audio_control: false,
@@ -105,11 +105,11 @@ var rpst_ma = {
     text_language: 'mandarin'
 };
 
-var lk_ma = {
+var lk_for_eng = {
     type: 'multi-choice',
     preamble: header + '<h2>Task: Lexical Knowledge</h2><h3>Instructions</h3><p>For each Mandarin word provided, select the best definition.</p>',
     
-    json_label: 'LK_MA',
+    json_label: 'LK_FOR_ENG',
     questions: [{
             prompt: "词典 cí diǎn",
             options: ["atlas", "encyclopedia", "dictionary", "phone book"]
@@ -193,10 +193,10 @@ var lk_ma = {
     ]
 };
 
-var ppc_ma = {
+var ppc_for_eng = {
     type: 'multi-choice',
     preamble: header + '<h2>TASK: Reading Comprehension</h2><h3>Instructions</h3><p>Read the passage, then carefully choose the best answer for each question. You are allowed to look back at the passage while answering these questions.</p>',
-    json_label: 'PPC_MA',
+    json_label: 'PPC_FOR_ENG',
     passage: '<p> yí 一 gè 个 nián 年 qīng 轻 de 的 nán 男 hái 孩 zài 在 hé 河 xī 西 de 的 dì 地 yù 域 zhōng 中 wán 玩 。zhè 这 shì 是 zài 在 qiú 求 le 了 hěn 很 duō 多 cì 次 zhī 之 hòu 后 ，tā 他 de 的 fù 父 mǔ 母 cái 才 zhōng 终 yú 于 ràng 让 tā 他 dú 独 zì 自 chū 出 qù 去 wán 玩 。 tā 他 men 们 shuō 说 tā 他 tài 太 xiǎo 小 le 了 ，bìng 并 qiě 且 tā 他 men 们 bù 不 xiǎng 想 ràng 让 tā 他 dú 独 zì 自 qù 去 wài 外 miàn 面 ， yīn 因 wèi 为 nà 那 tài 太 wēi 危 xiǎn 险 le 了 。dàn 但 shì 是 ，tā 他 men 们 cuò 错 le 了 。tā 他 yǐ 已 jīng 经 qī 七 suì 岁 le 了 ， bìng 并 qiě 且 yǒu 有 néng 能 lì 力 zhào 照 gù 顾 hǎo 好 zì 自 jǐ 己 。</p><p> tā 他 men 们 gěi 给 tā 他 yí 一 gè 个 shǒu 手 jī 机 bìng 并 qiě 且 gào 告 sù 诉 tā 他 bié 别 hé 和 mò 陌 shēng 生 rén 人 shuō 说 huà 话 。zhè 这 xiē 些 tā 他 běn 本 lái 来 jiù 就 zhī 知 dào 道 。zhēn 真 shí 实 qíng 情 kuàng 况 shì 是 fù 父 mǔ 母 yǐ 以 wéi 为 tā 他 zài 在 wài 外 miàn 面 hé 和 péng 朋 yǒu 友 wán 玩 de 的 shí 时 hòu 候 ，tā 他 dōu 都 shì 是 zì 自 jǐ 己 yí 一 gè 个 rén 人 zài 在 wán 玩 。 nán 男 hái 孩 zǒu 走 xiàng 向 tā 他 zài 在 gōng 公 yuán 园 lǐ 里 zuì 最 xǐ 喜 huān 欢 de 的 yī 一 kē 棵 shù 树 ，nà 那 lǐ 里 rén 人 hěn 很 shǎo 少 dàn 但 yǒu 有 shàng 上 qiān 千 de 的 chóng 虫 zi 子 。tā 他 ná 拿 chū 出 le 了 tā 他 de 的 fàng 放 dà 大 jìng 镜 。</p><p> bàn 半 gè 个 xiǎo 小 shí 时 guò 过 qù 去 le 了 ，tā 他 hái 还 zài 在 kuài 快 lè 乐 de 地 guān 观 chá 察 chóng 虫 zi 子 。tū 突 rán 然 jiān 间 ，tā 他 tīng 听 dào 到 yǒu 有 rén 人 hǎn 喊 jiào 叫 ，tā 他 zhuǎn 转 guò 过 tóu 头 qù 去 。yí 一 gè 个 zú 足 qiú 球 cháo 朝 tā 他 de 的 liǎn 脸 shàng 上 fēi 飞 lái 来 。tā 他 rěn 忍 shòu 受 zhe 着 liǎn 脸 shàng 上 de 的 téng 疼 tòng 痛 zǒu 走 huí 回 jiā 家 。</p>',
     passage_language: 'mandarin',
     questions: [{
@@ -263,7 +263,7 @@ var ppc_ma = {
 };
 
 var counterBalance1 = {
-    timeline: [gen_inst, inst_met_rhy_ma, met_rhy_ma, inst_met_mel_ma, met_mel_ma, inst_rpcv_ma, rpcv_ma, inst_rpst_ma, rpst_ma, lk_ma, ppc_ma],
+    timeline: [gen_inst, inst_met_rhy_for_eng, met_rhy_for_eng, inst_met_mel_for_eng, met_mel_for_eng, inst_rpcv_for_eng, rpcv_for_eng, inst_rpst_for_eng, rpst_for_eng, lk_for_eng, ppc_for_eng],
     conditional_function: function(){
         var currID = window.location.href.split('=');
         if(currID[currID.length-1] % 2 == 1){
@@ -276,7 +276,7 @@ var counterBalance1 = {
 };
 
 var counterBalance2 = {
-    timeline: [gen_inst, inst_met_mel_ma, met_mel_ma, inst_met_rhy_ma, met_rhy_ma, inst_rpst_ma, rpst_ma, inst_rpcv_ma, rpcv_ma, lk_ma, ppc_ma], 
+    timeline: [gen_inst, inst_met_mel_for_eng, met_mel_for_eng, inst_met_rhy_for_eng, met_rhy_for_eng, inst_rpst_for_eng, rpst_for_eng, inst_rpcv_for_eng, rpcv_for_eng, lk_for_eng, ppc_for_eng], 
     conditional_function: function(){
         var currID = window.location.href.split('=');
         if(currID[currID.length-1] % 2 == 0){
@@ -291,9 +291,7 @@ var counterBalance2 = {
 jatos.onLoad(
     jsPsych.init({
         //Questionaire:
-         timeline: [counterBalance1, counterBalance2],
-        //test timeline:
-        // timeline: [rpcv_ma, rpst_ma],
+        timeline: [counterBalance1, counterBalance2],
         
         exclusions: {
             min_width: 800,
