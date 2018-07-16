@@ -6,7 +6,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/musiclang_mannat/shared_asset
 var gen_inst = {
     type: 'instructions',
     pages: [
-        header + '<h2>指导语</h2><p>本项实验会持续40-60分钟的时间，其中包含不同的任务，许多任务包含有一段音频，请戴上耳机完成本实验。不同任务之间可以休息。</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>指导语</h2><p>本项实验会持续40-60分钟的时间，其中包含不同的任务，许多任务包含有一段音频，请戴上耳机完成本实验。不同任务之间可以休息。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。</p><audio controls><source src="sample.mp3" type="audio/mpeg"><p>当你调试好音量并准备好进行测试之后，请点击“Next”开始测试。</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -17,7 +17,7 @@ var gen_inst = {
 var inst_met_rhy_for_mand = {
     type: 'instructions',
     pages: [
-        header + '<h2>任务：节奏比较</h2><p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频,请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。'
+        header + '<h2>任务：节奏比较</h2><p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频,请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -43,7 +43,7 @@ var met_rhy_for_mand = {
 var inst_met_mel_for_mand = {
     type: 'instructions',
     pages: [
-        header + '<h2>任务：旋律比较</h2> <p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频, 请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。</p>'
+        header + '<h2>任务：旋律比较</h2> <p>这项任务会持续10分钟左右。当你准备好之后，请点击“Next”,你会立即听到一段音频, 请不要暂停或重复播放音频，本项任务会在音频播放完毕之后立即结束。</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -69,7 +69,7 @@ var met_mel_for_mand = {
 var inst_rpcv_for_mand = {
     type: 'instructions',
     pages: [
-        header + '<h2>任务：判断错误发音</h2> <p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。本测试中的短文会以下面例子的形式呈现。你可以尝试点击被绿色标注的单词，它会变成红色。当你准备好之后，请点击“Next”开始正式的测试。'
+        header + '<h2>任务：判断错误发音</h2> <p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。当你准备好之后，请点击“Next”开始正式的测试。</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -93,7 +93,7 @@ var rpcv_for_mand = {
 var inst_rpst_for_mand = {
     type: 'instructions',
     pages: [
-        header + '<h2>任务：判断错误发音</h2><p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。本测试中的短文会以下面例子的形式呈现。你可以尝试点击被绿色标注的单词，它会变成红色。当你准备好之后，请点击“Next”开始正式的测试。'
+        header + '<h2>任务：判断错误发音</h2><p>这项任务会持续约2分钟。你将听到一段短文的录音，请仔细听，并尤其注意被绿色标注的单词，如果有单词错读，请点击该单词，该单词会变成红色，以此标记错读。当你准备好之后，请点击“Next”开始正式的测试。</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -117,7 +117,7 @@ var rpst_for_mand = {
 
 var lk_for_mand = {
     type: 'multi-choice',
-    preamble: header + '<h2>任务5:词汇知识测试</h2><p>请圈出下列最符合英文的一个定义。</p>',
+    preamble: header + '<h2>任务5:词汇知识测试</h2><p>请选择下列最符合英文的一个定义。</p>',
 
     json_label: 'LK_FOR_MAND',
     questions: [{

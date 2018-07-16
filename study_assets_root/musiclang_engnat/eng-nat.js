@@ -6,7 +6,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/shared_asset
 var gen_inst = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2><p>This study will take 40-60 minutes and involves several different tasks. Many of the tasks will have an audio clip. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly. When you have adjusted your headphones and are ready to begin, press Next to begin the study.</p><audio controls><source src="sample.mp3" type="audio/mpeg">'
+        header + '<h2>Instructions</h2><p>This study will take 40-60 minutes and involves several different tasks. Many of the tasks will have an audio clip. Please put on your headphones and take breaks between tasks when necessary. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg"><p>When you have adjusted your headphones and are ready to begin, press Next to begin the study</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -63,7 +63,7 @@ var met_mel_for_eng = {
 var inst_rpcv_for_eng = {
     type: 'instructions',
     pages: [
-        header + '<h2>Task: Mispronunciation</h2> <p>This task will take about 2 minutes. Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red. When you are ready for the test, press Next.'
+        header + '<h2>Task: Mispronunciation</h2> <p>This task will take about 2 minutes. Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red. When you are ready for the test, press Next.</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -87,7 +87,7 @@ var rpcv_for_eng = {
 var inst_rpst_for_eng = {
     type: 'instructions',
     pages: [
-        header + '<h2>Task: Mispronunciation</h2> <p>This task will take about 2 minutes. Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red. When you are ready for the test, press Next.'
+        header + '<h2>Task: Mispronunciation</h2><p>This task will take about 2 minutes. Listen to the recording and pay attention to the highlighted words. Some of the highlighted words will be mispronounced. Green denotes correct pronunciation. If a highlighted word is mispronounced, press it to mark it incorrect, denoted by red. When you are ready for the test, press Next.</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
