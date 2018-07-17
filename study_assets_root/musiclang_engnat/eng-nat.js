@@ -6,7 +6,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/shared_asset
 var gen_inst = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2><p>This study will take 40-60 minutes and involves several different tasks. Many of the tasks will have an audio clip. Please put on your headphones and take breaks between tasks when necessary. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio controls><source src="sample.mp3" type="audio/mpeg"><p>When you have adjusted your headphones and are ready to begin, press Next to begin the study</p>'
+        header + '<h2>Instructions</h2><p>This study will take 40-60 minutes and involves several different tasks. Many of the tasks will have an audio clip. Please put on your headphones and take breaks between tasks when necessary. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="/study_assets/musiclang_engnat/shared_assets/audio/sample.mp3" type="audio/mpeg"></audio><p>When you have adjusted your headphones and are ready to begin, press Next to begin the study</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',

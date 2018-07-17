@@ -6,7 +6,7 @@ var header = "<img id=\"logo\" src=\"/study_assets/musiclang_mannat/shared_asset
 var gen_inst = {
     type: 'instructions',
     pages: [
-        header + '<h2>指导语</h2><p>本项实验会持续40-60分钟的时间，其中包含不同的任务，许多任务包含有一段音频，请戴上耳机完成本实验。不同任务之间可以休息。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。</p><audio controls><source src="sample.mp3" type="audio/mpeg"><p>当你调试好音量并准备好进行测试之后，请点击“Next”开始测试。</p>'
+        header + '<h2>指导语</h2><p>本项实验会持续40-60分钟的时间，其中包含不同的任务，许多任务包含有一段音频，请戴上耳机完成本实验。不同任务之间可以休息。为确保耳机播放音量大小合适的声音，请播放以下音频，并对耳机音量做相应调试。</p><audio preload="auto" controls><source src="/study_assets/musiclang_mannat/shared_assets/audio/sample.mp3" type="audio/mpeg">M</audio><p>当你调试好音量并准备好进行测试之后，请点击“Next”开始测试。</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
