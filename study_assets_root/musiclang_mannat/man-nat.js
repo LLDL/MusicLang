@@ -36,8 +36,8 @@ var met_rhy_for_mand = {
     answer1: '是',
     answer2: '否',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-r-for-mand.mp3',
-    // test_length: 15
-    test_length: 604//599 + 5sec grace
+    test_length: 15
+    // test_length: 604//599 + 5sec grace
 };
 
 var inst_met_mel_for_mand = {
@@ -62,8 +62,8 @@ var met_mel_for_mand = {
     answer1: '是',
     answer2: '否',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/met-m-for-mand.mp3',
-    // test_length: 15
-    test_length: 602 //597 + 5sec grace
+    test_length: 15
+    // test_length: 602 //597 + 5sec grace
 };
 
 var inst_rpcv_for_mand = {
@@ -82,8 +82,8 @@ var rpcv_for_mand = {
     preamble: header + '<h2>任务：判断错误发音</h2>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpcv-for-mand.mp3',
     allow_audio_control: false,
-    // test_length: 15, 
-    test_length: 109 , //104 + 5sec grace
+    test_length: 15, 
+    // test_length: 109 , //104 + 5sec grace
     default_correct: true,
     word_tag_char: '#',
     text: '<p>Mary is having a busy #week#. She is worried about her son, Andrew, who is #sick#, so it was hard for her to keep #track# of her schedule. She almost forgot about the #special# dinner tonight, even though she had #written# it down in red #pen# so she would remember. She doesn’t want to go to the dinner with Andrew at home, but she knows it is #important# because it is her friend’s birthday. The #babysitter# should arrive at their house #soon#. </p><p>Mary feels Andrew’s cheek. He must have a fever, because it felt very warm. </p><p>“Come on, Andrew. The doctor said you have to take this #pill# once a day,” she says to her son. </p><p>Before Andrew could #argue#, Mary had put the medicine in his #mouth#. Mary put a cool #towel# on Andrew’s hot #forehead# and runs her fingers through his #silky# brown hair just as the #doorbell# rings. </p><p>“Hi, Sophie, how are you?” says Mary as she #opens# the door to the babysitter. </p><p>“I’m #fine#, thanks, Mary. It’s been #raining# so I got some #mud# on my shoes though. How’s Andrew?” asks Sophie. </p><p>“He’s not #feeling# well so I’m worried about him. He’s #sleeping# right now,” says Mary. </p><p>“Don’t worry, Mary. Andrew is #safe# with me,” says Sophie. Mary #waves# goodbye to Sophie as she leaves the house. She #throws# her #leather# purse onto the front #seat# of her #car# and drives away. </p><p> Mary loves #pizza# and when she arrives at the restaurant, she is #excited# to see a large sign on the #roof# that says “Daniella’s Pizzeria.” The restaurant is beautiful, and the #first# thing Mary sees is a big #painting# on the walls. Mary enjoys a wonderful #meal# with her friends. The pizza was #delicious#, but the best part was the #spiced# apple pie. Mary could still #taste# the #cinnamon# and #cloves# on her tongue as she #drove# home to her son.</p>',
@@ -107,8 +107,8 @@ var rpst_for_mand = {
     preamble: header + '<h2>任务：判断错误发音</h2>',
     audio: '/study_assets/musiclang_mannat/shared_assets/audio/rpst-for-mand.mp3',
     allow_audio_control: false,
-    // test_length: 15, 
-    test_length: 156 , //151 + 5sec grace
+    test_length: 15, 
+    // test_length: 156 , //151 + 5sec grace
     default_correct: true,
     word_tag_char: '#',
     text: "<p>Amy was excited to finally visit her friend. They have both been very busy from the #increase# in their work hours, and there was a scheduling #conflict# the last time they tried to meet. John had needed more time to #perfect# his presentation for work, and Amy had a #deadline# to meet for her #project# as well. John was her oldest friend but it seems they live #separate# lives now. Amy could #recall# when she first met him. She was 8 years old, and her parents did not #permit# her to have candy at the class Christmas party. John, the new student in class, #secretly# offered to share his candy, and #together# they vowed to #rebel# against their parents and be friends forever.</p><p>Amy turned the corner and arrived at her friend’s apartment #complex#. As she neared the lobby doors, she heard a voice shout her name from above. She glanced up and there was John #waving# at her, looking as #excited# as she felt. Seconds later they were laughing and hugging in the building lobby, their time apart did not #affect# the strength of their friendship.</p><p>They finally settled down on John's couch with cups of tea in hand.</p></p>“So tell me about your new job!” said Amy, unable to #contain# her curiosity. To her, the fantastical world of #fashion# was filled with glamour and intrigue. Aware of Amy’s #romanticized# view, John rolled his eyes.</p><p>“I’m only the junior #manager#, so not much usually goes on. Although,” he paused dramatically for Amy’s #benefit#, “the #senior# manager was sick last week and the team wanted me to #present# the summer #proposal# in her place!”“That’s amazing! How did it go?” prompted Amy.</p><p>“Well it was great until this guy named Frank showed up.” John frowned. “ He walked in five #minutes# late, and from then on seemed to #object# to every proposal I made.</p><p>“For the #record#, he knew I worked with a team, but still talked as if I was the sole #creator# of the whole #presentation#, and responsible for all the ideas. As if I could #produce# that much #content# myself! What an #insult#, the way he would #address# me. Called me ‘Junior’. A co-worker on my team even came to my #defense#, ” said John.</p><p>“Frank doesn’t know what he’s talking about, you’re great at your job,” said Amy, in an effort to #console# her friend. “You’ve been promoted twice in less than two years!”</p><p>“Frank’s been with the company for years though,” sighed John. “The board can’t just #discount# what a senior #member# has to say.”</p><p>“Maybe Frank’s just #jealous# of you. Maybe he’s #intimidated# by your great hair. Maybe,” Amy #wiggled# her eyebrows, “Frank has a crush on you.”</p><p>The two friends laughed until they were #gasping# for breath.</p>",
@@ -117,7 +117,7 @@ var rpst_for_mand = {
 
 var lk_for_mand = {
     type: 'multi-choice',
-    preamble: header + '<h2>任务5:词汇知识测试</h2><p>请选择下列最符合英文的一个定义。</p>',
+    preamble: header + '<h2>词汇知识测试</h2><p>请选择下列最符合英文的一个定义。</p>',
 
     json_label: 'LK_FOR_MAND',
     questions: [{
@@ -205,7 +205,7 @@ var lk_for_mand = {
 
 var ppc_for_mand = {
     type: 'multi-choice',
-    preamble: header + '<h2>任务6:阅读测试</h2><h3>Instructions</h3><p>请仔细阅读以下短文，然后回答相应问题。每个问题只有一个正确答案，请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。</p>',
+    preamble: header + '<h2>阅读测试</h2><h3>Instructions</h3><p>请仔细阅读以下短文，然后回答相应问题。每个问题只有一个正确答案，请选择最恰当的选项。答题过程中你可以回过头去重新阅读那篇文章。</p>',
     json_label: 'PPC_FOR_MAND',
     passage: '<p>The car stopped and James opened his eyes. They were here! He had been asleep for the whole drive to the Great Lakes, where his family went every summer. He could hear his aunts, uncles, and cousins talking outside the car. James felt a thrill of excitement and shook himself awake.<p></p>He had acted like he didn’t care about the trip, but in truth it was his favourite thing of the year. James climbed out of his seat to look at the vast lake. It was even more beautiful than he thought it would be. The lake was calm and still like a mirror. He looked up and saw an eagle fly across the sky. It was going to be a good day.<p></p>James was in a great mood. Maybe he would play baseball with his cousins. He had brought his lucky bat with him. James was looking forward to showing off to his little cousin, Mikey. He also had a towel with him in case he wanted to go swimming. He could even just sit by the docks and work on his painting. When he finally unpacked all his clothes in his room, it was already lunch time.<p></p>The smell of ham cooking in the pan made him hungry. His mouth started to water, which made him realize his thirst. He went and got his cousins and took them to the kitchen to help serve lunch. The food was filling and soon they were full.</p>',
     passage_language: 'english',
