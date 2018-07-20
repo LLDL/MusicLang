@@ -106,8 +106,8 @@ jsPsych.plugins["music-info"] = (function () {
 					}
 				
 				var trialdata = {
-					"rt": response_time,
-					[trial.json_label]: exp
+					[trial.json_label]: exp,
+					"rt": response_time
 				};
 				display_element.innerHTML = '';
 				// next trial

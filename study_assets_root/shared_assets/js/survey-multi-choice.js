@@ -165,8 +165,8 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
       }
       // save data
       var trial_data = {
-        "rt": response_time,
-        [trial.json_label]: question_data
+        [trial.json_label]: question_data,
+        "rt": response_time
       };
       display_element.innerHTML = '';
 

@@ -79,8 +79,8 @@ jsPsych.plugins['survey-yes-no'] = (function () {
 			}
 			// save data
 			var trialdata = {
-				"rt": response_time,
-				[trial.json_label]: question_data
+				[trial.json_label]: question_data,
+				"rt": response_time
 			};
 
 			display_element.innerHTML = '';

@@ -92,8 +92,8 @@ jsPsych.plugins["language-info"] = (function () {
 			}
 			// save data
 			var trialdata = {
-				"rt": response_time,
-				[trial.json_label]: lang_data
+				[trial.json_label]: lang_data,
+				"rt": response_time
 			};
 			display_element.innerHTML = '';
 			// next trial

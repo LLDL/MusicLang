@@ -127,10 +127,10 @@ jsPsych.plugins['survey-text-custom'] = (function() {
 			}
 			// save data
 			var trialdata = {
-				"rt": response_time,
 				//Changes below: prevented stringify of data, will appear as unquoted JSON
-				[trial.json_label]: question_data
 				// "responses": JSON.stringify(question_data)
+				[trial.json_label]: question_data,
+				"rt": response_time
 			};
 			
 			display_element.innerHTML = '';

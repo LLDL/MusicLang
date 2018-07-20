@@ -164,35 +164,30 @@ jsPsych.plugins['passage-highlight'] = (function () {
                 if(trial.text_language == 'english'){
                     var ofInterest = display_element.getElementsByClassName('ofInterest');
                     for(var index=0; index<ofInterest.length; index++){
-                        var answer = {};
                         var marked = 'incorrect';
                         if(ofInterest[index].classList.contains('correct')){
                             marked = 'correct';
                         }
                         var word = ofInterest[index].innerText;
                         
-                        answer[word] = marked;
-                        answers[index] = answer;
+                        answers[word] = marked;
                     }
                 }else{
                     var ofInterest = display_element.getElementsByClassName('ofInterestMandarin');
                     for(var index=0; index<ofInterest.length; index++){
-                        var answer = {};
                         var marked = 'incorrect';
                         if(ofInterest[index].classList.contains('correct')){
                             marked = 'correct';
                         }
                         var word = ofInterest[index].childNodes[0].childNodes[0].innerText;
-                        
-                        answer[word] = marked;
-                        answers[index] = answer;
+                        answers[word] = marked;
                     }
                 }
                 
                 clearInterval(everySecond);
                 var trialdata = {
-                    "rt": response_time,
-                    [trial.json_label]: answers
+                    [trial.json_label]: answers,
+                    "rt": response_time
                 };
                 display_element.innerHTML = '';
                 // next trial

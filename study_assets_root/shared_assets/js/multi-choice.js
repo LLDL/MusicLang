@@ -122,8 +122,8 @@ jsPsych.plugins['multi-choice'] = (function () {
             }
 
             var trialdata = {
-                "rt": response_time,
-                [trial.json_label] : answers
+                [trial.json_label] : answers,
+                "rt": response_time
             };
             jsPsych.finishTrial(trialdata);
 		});

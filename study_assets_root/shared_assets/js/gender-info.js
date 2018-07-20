@@ -65,8 +65,8 @@ jsPsych.plugins["gender-info"] = (function () {
             gender_data["Gender"] = gender;
             display_element.innerHTML = '';
             var trialdata = {
-                "rt": response_time,
-                [trial.json_label] : gender_data
+                [trial.json_label] : gender_data,
+                "rt": response_time
             };
             jsPsych.finishTrial(trialdata);
 		});

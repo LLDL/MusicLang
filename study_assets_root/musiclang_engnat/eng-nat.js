@@ -313,7 +313,8 @@ jatos.onLoad(
         },
         on_finish: function (data) {
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id');
+            // var results = resultsRaw.ignore('internal_node_id');
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index');
             var resultsJSON = results.json();
             var studyID = jatos.studyResultId;
             if(likely_invalid){
