@@ -201,7 +201,7 @@ jatos.onLoad(
         },
         on_finish: function (data) {
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_type').ignore('trial_index');
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index');
             // var results = resultsRaw.ignore('internal_node_id');
             var resultsJSON = results.json();
             resultsJSON = '"' + jatos.studyResultId + '": ' + resultsJSON;
