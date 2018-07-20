@@ -14,6 +14,8 @@ rm ~/MusicLang/study_assets_root/musiclang_engnat/shared_assets
 ln -s ~/MusicLang/study_assets_root/shared_assets ~/MusicLang/study_assets_root/musiclang_engnat/shared_assets
 rm ~/MusicLang/study_assets_root/musiclang_mannat/shared_assets
 ln -s ~/MusicLang/study_assets_root/shared_assets ~/MusicLang/study_assets_root/musiclang_mannat/shared_assets
+rm ~/MusicLang/study_assets_root/questionnaire/shared_assets
+ln -s ~/MusicLang/study_assets_root/shared_assets ~/MusicLang/study_assets_root/questionnaire/shared_assets
 
 '
 
