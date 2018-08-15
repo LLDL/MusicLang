@@ -72,35 +72,24 @@ jsPsych.plugins["language-info"] = (function () {
 			var endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
 
-			// create object to hold responses
-			var lang_data = {};
-			var langs = display_element.querySelectorAll('.jspsych-language-info-lang');
-			var ages = display_element.querySelectorAll('.jspsych-language-info-age-response');
-			var years = display_element.querySelectorAll('.jspsych-language-info-year-response');
-			for (var i = 0; i < langs.length; i++) {
-				var id = langs[i].innerHTML;
-				var age = ages[i].value;
-				var year = years[i].value;
-				var obje = {};
-				var info = {};
-				// obje[id] = ["Starting Age": age, "Years Learned": year];
-				// Object.assign(lang_data, obje);
-				info["Starting Age"] = age;
-				info["Years Learned"] = year;
-				obje[id] = info;
-				Object.assign(lang_data, obje);
-			}
-			// save data
 			var trialdata = {
-				[trial.json_label]: lang_data,
-				// [trial.json_label]: JSON.stringify(lang_data),
-				// "response": lang_data,
-				"response": JSON.stringify(lang_data),
 				"trial_name": trial.json_label,
 				"rt": response_time
 			};
+			var langs = display_element.querySelectorAll('.jspsych-language-info-lang');
+			var ages = display_element.querySelectorAll('.jspsych-language-info-age-response');
+			var years = display_element.querySelectorAll('.jspsych-language-info-year-response');
+			trialdata['question_count'] = langs.length * 3; 
+			
+			for (var i = 0; i < langs.length; i++) {
+				var langinfo = [langs[i].innerHTML, ages[i].value, years[i].value];
+				for (var j = 0; j<3; j++){
+					var currQ = 3*i + j + 1;
+					trialdata['q' + currQ] = langinfo[j];
+				}
+			}
+			
 			display_element.innerHTML = '';
-			// next trial
 			jsPsych.finishTrial(trialdata);
 		});
 		var startTime = (new Date()).getTime();
