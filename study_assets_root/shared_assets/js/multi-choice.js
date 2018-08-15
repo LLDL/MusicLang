@@ -122,7 +122,11 @@ jsPsych.plugins['multi-choice'] = (function () {
             }
 
             var trialdata = {
-                [trial.json_label] : answers,
+                // [trial.json_label] : answers,
+                // [trial.json_label]: JSON.stringify(answers),
+                // "response": answers,
+                "response": JSON.stringify(answers),
+				"trial_name": trial.json_label,
                 "rt": response_time
             };
             jsPsych.finishTrial(trialdata);

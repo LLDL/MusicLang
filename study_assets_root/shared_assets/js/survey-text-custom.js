@@ -128,8 +128,10 @@ jsPsych.plugins['survey-text-custom'] = (function() {
 			// save data
 			var trialdata = {
 				//Changes below: prevented stringify of data, will appear as unquoted JSON
-				// "responses": JSON.stringify(question_data)
-				[trial.json_label]: question_data,
+				"response": JSON.stringify(question_data),
+				// "response": question_data,
+				"trial_name": trial.json_label,
+				// [trial.json_label]: question_data,
 				"rt": response_time
 			};
 			

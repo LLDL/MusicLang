@@ -79,7 +79,11 @@ jsPsych.plugins['survey-yes-no'] = (function () {
 			}
 			// save data
 			var trialdata = {
-				[trial.json_label]: question_data,
+				// [trial.json_label]: question_data,
+				// [trial.json_label]: JSON.stringify(question_data),
+				// "response": question_data,
+				"response": JSON.stringify(question_data),
+				"trial_name": trial.json_label,
 				"rt": response_time
 			};
 

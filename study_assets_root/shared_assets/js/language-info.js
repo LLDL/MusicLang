@@ -93,6 +93,10 @@ jsPsych.plugins["language-info"] = (function () {
 			// save data
 			var trialdata = {
 				[trial.json_label]: lang_data,
+				// [trial.json_label]: JSON.stringify(lang_data),
+				// "response": lang_data,
+				"response": JSON.stringify(lang_data),
+				"trial_name": trial.json_label,
 				"rt": response_time
 			};
 			display_element.innerHTML = '';

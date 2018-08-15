@@ -107,6 +107,10 @@ jsPsych.plugins["music-info"] = (function () {
 				
 				var trialdata = {
 					[trial.json_label]: exp,
+					// [trial.json_label]: JSON.stringify(exp),
+					// "response": exp,
+					"response": JSON.stringify(exp),
+					"trial_name": trial.json_label,
 					"rt": response_time
 				};
 				display_element.innerHTML = '';
