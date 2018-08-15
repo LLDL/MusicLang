@@ -298,15 +298,15 @@ jatos.onLoad(
             };
         },
         on_finish: function (data) {
-            var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id');
-            var resultsJSON = results.json();
             var studyID = jatos.studyResultId;
             if(likely_invalid){
                 studyID += ' - invalid result'
             }
-            resultsJSON = '"' + studyID + '": ' + resultsJSON;
-            jatos.submitResultData(resultsJSON, jatos.startNextComponent);
+            jsPsych.data.addProperties({subject : studyID});
+            var resultsRaw = jsPsych.data.get();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore();
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
         }
     })
 );

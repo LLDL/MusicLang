@@ -51,9 +51,13 @@ jsPsych.plugins["gender-info"] = (function () {
 			// measure response time
 			var endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
-
+            
+            var trialdata = {
+                "rt": response_time,
+                "trial_name": trial.json_label,
+                "question_count": 1
+            };
 			// create object to hold responses
-            var gender_data = {};
             var gender = '';
             if(display_element.querySelector("#gender-female").checked){
                 gender = "female";
@@ -62,16 +66,9 @@ jsPsych.plugins["gender-info"] = (function () {
             }else if(display_element.querySelector("#gender-other").checked){
                 gender = display_element.querySelector("#gender-specified").value;
             }
-            gender_data["Gender"] = gender;
+            trialdata["q1"] = gender;
+
             display_element.innerHTML = '';
-            var trialdata = {
-                // [trial.json_label]: JSON.stringify(gender_data),
-                // [trial.json_label] : gender_data,
-                // "response": gender,
-                "response": JSON.stringify(gender),
-				"trial_name": trial.json_label,
-                "rt": response_time
-            };
             jsPsych.finishTrial(trialdata);
 		});
 		var startTime = (new Date()).getTime();

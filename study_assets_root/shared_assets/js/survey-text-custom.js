@@ -112,30 +112,19 @@ jsPsych.plugins['survey-text-custom'] = (function() {
 			// measure response time
 			var endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
-			
-			// create object to hold responses
-			var question_data = {};
-			var matches = display_element.querySelectorAll('div.jspsych-survey-text-question');
-			for(var index=0; index<matches.length; index++){
-				var id = trial.questions[index].prompt;
-				var val = matches[index].querySelector('textarea, input').value;
-				var obje = {};
-				obje[id] = val;
-				Object.assign(question_data, obje);
-			}
-			// save data
 			var trialdata = {
-				//Changes below: prevented stringify of data, will appear as unquoted JSON
-				"response": JSON.stringify(question_data),
-				// "response": question_data,
+				
 				"trial_name": trial.json_label,
-				// [trial.json_label]: question_data,
-				"rt": response_time
+				"rt": response_time,
+				"question_count": trial.questions.length
 			};
+
+			var matches = display_element.querySelectorAll('div.jspsych-survey-text-question');
+			for(var i=0; i<matches.length; i++){
+				trialdata['q' + (i + 1)] = matches[i].querySelector('textarea, input').value;
+			}
 			
 			display_element.innerHTML = '';
-			
-			// next trial
 			jsPsych.finishTrial(trialdata);
 		});
 		

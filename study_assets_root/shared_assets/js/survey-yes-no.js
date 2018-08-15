@@ -64,32 +64,22 @@ jsPsych.plugins['survey-yes-no'] = (function () {
 			var endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
 
-			// create object to hold responses
-			var question_data = {};
-			for (var index = 0; index < trial.questions.length; index++) {
-				var id = trial.questions[index].prompt;
-				var curr_yes = document.getElementById("survey-yes-no-response-" + index + "-0").checked;
-				var obje = {};
-				if (curr_yes == true) {
-					obje[id] = true;
-				} else {
-					obje[id] = false;
-				}
-				Object.assign(question_data, obje);
-			}
-			// save data
 			var trialdata = {
-				// [trial.json_label]: question_data,
-				// [trial.json_label]: JSON.stringify(question_data),
-				// "response": question_data,
-				"response": JSON.stringify(question_data),
 				"trial_name": trial.json_label,
-				"rt": response_time
+				"rt": response_time,
+				"question_count": trial.questions.length
 			};
 
-			display_element.innerHTML = '';
+			for (var i = 0; i < trial.questions.length; i++) {
+				var curr_yes = document.getElementById("survey-yes-no-response-" + i + "-0").checked;
+				if (curr_yes == true) {
+					trialdata['q' + (i + 1)] = true;
+				} else {
+					trialdata['q' + (i + 1)] = false;
+				}
+			}
 
-			// next trial
+			display_element.innerHTML = '';
 			jsPsych.finishTrial(trialdata);
 		});
 

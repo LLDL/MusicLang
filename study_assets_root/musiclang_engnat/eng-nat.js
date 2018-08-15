@@ -319,12 +319,7 @@ jatos.onLoad(
             jsPsych.data.addProperties({subject : studyID});
             var resultsRaw = jsPsych.data.get();
             var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore();
-            // var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index');
-            // var results = resultsRaw;
-            // var resultsJSON = results.json();
             var resultsCSV = results.csv();
-            // resultsJSON = 'JSON: "' + studyID + '": ' + resultsJSON;
-            // resultsJSON = 'CSV: ' + resultsCSV + resultsJSON;
             jatos.submitResultData(resultsCSV, jatos.startNextComponent);
         }
     })

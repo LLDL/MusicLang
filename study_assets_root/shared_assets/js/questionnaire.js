@@ -200,12 +200,15 @@ jatos.onLoad(
             };
         },
         on_finish: function (data) {
+            var studyID = jatos.studyResultId;
+            if(likely_invalid){
+                studyID += ' - invalid result'
+            }
+            jsPsych.data.addProperties({subject : studyID});
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_index');
-            // var results = resultsRaw.ignore('internal_node_id');
-            var resultsJSON = results.json();
-            resultsJSON = '"' + jatos.studyResultId + '": ' + resultsJSON;
-            jatos.submitResultData(resultsJSON, jatos.startNextComponent);
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore();
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
         }
     })
 );
