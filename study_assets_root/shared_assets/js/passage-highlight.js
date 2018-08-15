@@ -160,7 +160,11 @@ jsPsych.plugins['passage-highlight'] = (function () {
             // if test_length has been exceeded, end the test
             var response_time = endTime - startTime;
             if(response_time>trial.test_length*1000){
-                var answers = {};
+                var trialdata = {
+                    // "response": JSON.stringify(answers),
+                    "rt": response_time,
+				    "trial_name": trial.json_label,
+                };
                 if(trial.text_language == 'english'){
                     var ofInterest = display_element.getElementsByClassName('ofInterest');
                     for(var index=0; index<ofInterest.length; index++){
@@ -168,10 +172,9 @@ jsPsych.plugins['passage-highlight'] = (function () {
                         if(ofInterest[index].classList.contains('correct')){
                             marked = 'correct';
                         }
-                        var word = ofInterest[index].innerText;
-                        
-                        answers[word] = marked;
+                        trialdata['q' + (index + 1)] = marked;
                     }
+                    trialdata["question_count"] = ofInterest.length;
                 }else{
                     var ofInterest = display_element.getElementsByClassName('ofInterestMandarin');
                     for(var index=0; index<ofInterest.length; index++){
@@ -179,22 +182,13 @@ jsPsych.plugins['passage-highlight'] = (function () {
                         if(ofInterest[index].classList.contains('correct')){
                             marked = 'correct';
                         }
-                        var word = ofInterest[index].childNodes[0].childNodes[0].innerText;
-                        answers[word] = marked;
+                        trialdata['q' + (index + 1)] = marked;
                     }
+                    trialdata["question_count"] = ofInterest.length;
                 }
                 
                 clearInterval(everySecond);
-                var trialdata = {
-                    // [trial.json_label]: answers,
-                    // [trial.json_label]: JSON.stringify(answers),
-                    // "response": answers,
-                    "response": JSON.stringify(answers),
-				    "trial_name": trial.json_label,
-                    "rt": response_time
-                };
                 display_element.innerHTML = '';
-                // next trial
                 jsPsych.finishTrial(trialdata);
             }
         }

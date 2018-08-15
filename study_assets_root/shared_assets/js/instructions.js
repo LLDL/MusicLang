@@ -70,7 +70,11 @@ jsPsych.plugins.instructions = (function() {
         pretty_name: 'Button label next',
         default: 'Next',
         description: 'The text that appears on the button to go forwards.'
-      }
+      },
+      json_label: {
+				type: jsPsych.plugins.parameterType.STRING,
+				default: 'INSTRUCTIONS'
+			},
     }
   }
 
@@ -145,7 +149,9 @@ jsPsych.plugins.instructions = (function() {
       display_element.innerHTML = '';
 
       var trial_data = {
-        "rt": (new Date()).getTime() - start_time
+        "rt": (new Date()).getTime() - start_time,
+        "trial_name": trial.json_label,
+        "question_count": 0
       };
 
       jsPsych.finishTrial(trial_data);
