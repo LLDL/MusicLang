@@ -110,25 +110,15 @@ jsPsych.plugins['multi-choice'] = (function () {
 			// measure response time
 			var endTime = (new Date()).getTime();
 			var response_time = endTime - startTime;
-
-			// create object to hold responses
-            var answers = {};
-            var options = document.querySelectorAll("input[type=radio]:checked");
-            for(var currAnswer = 0; currAnswer<trial.questions.length; currAnswer++){
-                // var id = "Q" + currAnswer;
-                var answer = {};
-                answer[trial.questions[currAnswer].prompt] = options[currAnswer].value;
-                Object.assign(answers, answer);
-            }
-
             var trialdata = {
-                // [trial.json_label] : answers,
-                // [trial.json_label]: JSON.stringify(answers),
-                // "response": answers,
-                "response": JSON.stringify(answers),
 				"trial_name": trial.json_label,
                 "rt": response_time
             };
+            var options = document.querySelectorAll("input[type=radio]:checked");
+            for(var currAnswer = 0; currAnswer<trial.questions.length; currAnswer++){
+                trialdata['q' + (currAnswer + 1)] = options[currAnswer].value
+            }
+            trialdata["question_count"] = trial.questions.length;
             jsPsych.finishTrial(trialdata);
 		});
 		var startTime = (new Date()).getTime();
