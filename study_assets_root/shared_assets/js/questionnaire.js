@@ -29,7 +29,7 @@ var future = {
         toggle_listeners(form, true, validate_future);
     },
     on_finish: function(){
-        toggle_listeners(form, true, validate_future);
+        toggle_listeners(form, false, validate_future);
     }
 }
 /*
@@ -65,7 +65,7 @@ var personal = {
     json_label: 'Personal',
     questions: [
         {prompt: "Age"},
-        {prompt: "If you have any hearing problems, learning disorders or language disorders, please specify.<br>For example: aphaisia, dyslexia, hearing impairment, ADHD, etc."}
+        {prompt: "If you have any hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc."}
     ],
     on_load: function () {
         validate_personal();
@@ -135,7 +135,7 @@ var language_details = {
     type: 'language-info',
     preamble: header + "<h2>Language Details</h2>",
     data: { 
-        languages: []
+        languages: ["loading"]
     },
     json_label: 'Language Details',
     on_start: function (trial) {

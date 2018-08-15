@@ -80,44 +80,42 @@ jsPsych.plugins["music-info"] = (function () {
 			display_element.innerHTML = html;
 
 			
+			var startTime = (new Date()).getTime();
 			display_element.querySelector('#music-info-next').addEventListener('click', function () {
 				//measure response time
 				endTime = (new Date()).getTime();
 				var response_time = endTime - startTime;
-				var exps = {};
-				var exp_types = ["Instruments", "Singing in a Group", "Music Study"];
-
-					if(trial.experience){
-						var exp = {};
-						for(var inst_index = 0; inst_index < 5; inst_index++){
-							var row = display_element.querySelector('#music-info-row-' + inst_index).childNodes;
-							var desc = row[0].firstChild.value;
-							if(desc != ''){
-								var age = row[1].firstChild.value;
-								var years = row[2].firstChild.value;
-								var inst = row[3].firstChild.value;
-								var row_obj = {};
-								row_obj["Starting Age"] = age;
-								row_obj["Years Learned"] = years;
-								row_obj["Instruction"] = inst;
-								exp[desc] = row_obj;
-							}
-						};
-					}
-				
 				var trialdata = {
-					[trial.json_label]: exp,
-					// [trial.json_label]: JSON.stringify(exp),
-					// "response": exp,
-					"response": JSON.stringify(exp),
 					"trial_name": trial.json_label,
 					"rt": response_time
 				};
+				if(trial.experience){
+					var inst_index;
+					for(inst_index = 0; inst_index < 5; inst_index++){
+						var row = display_element.querySelector('#music-info-row-' + inst_index).childNodes;
+						var desc = row[0].firstChild.value;
+						if(desc != ''){
+							var age = row[1].firstChild.value;
+							var years = row[2].firstChild.value;
+							var inst = row[3].firstChild.value;
+
+							var currQBase = 4 * inst_index + 1;
+							trialdata['q' + currQBase] = desc;
+							trialdata['q' + (currQBase + 1)] = age;
+							trialdata['q' + (currQBase + 2)] = years;
+							trialdata['q' + (currQBase + 3)] = inst;
+							
+						}
+					};
+					trialdata['question_count'] = inst_index * 4;
+				}
+				
+				
 				display_element.innerHTML = '';
 				// next trial
 				jsPsych.finishTrial(trialdata);
 			});
-			var startTime = (new Date()).getTime();
+			
 		};
 	}
 	return plugin;
