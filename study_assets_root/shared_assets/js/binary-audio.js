@@ -52,10 +52,10 @@ function generateQuestions(section, count, prefix, suffix, iter_type, answer1, a
         tempHTML += '<div class="binary-audio-prompt binary-audio-prompt-' + section + '">';
         tempHTML += '<label>' + prefix + disp_i + suffix + '</label>';
         
-        tempHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer1 + '">' + answer1;
-
-        tempHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"' + 'value="' + answer2 + '">' + answer2;
-
+        tempHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"id="' + prefix + disp_i + suffix + '1" value="' + answer1 + '"/>';
+        tempHTML += '<label for="' + prefix + disp_i + suffix + '1">'  + answer1 + '</label>' ;
+        tempHTML += '<input type="radio" class="binary-audio-radio-'+ section + '" name="'+ prefix + disp_i + suffix + '"id="' + prefix + disp_i + suffix + '2" value="' + answer2 + '"/>';
+        tempHTML += '<label for="' + prefix + disp_i + suffix + '2">'  + answer2 + '</label>' ;
         tempHTML += '</div>';
 
         if (i <= Math.ceil(count/2)){
@@ -217,34 +217,54 @@ jsPsych.plugins['binary-audio'] = (function () {
             // if test_length has been exceeded, end the test
             var response_time = endTime - startTime;
             if(response_time>trial.test_length*1000){
-                var answers = {};
-                var questions = document.querySelectorAll('.binary-audio-prompt-question');
-                for(var i=0; i<trial.question_count; i++){
-                    var disp_i;
-                    if(trial.question_num_type == 'alphabetic'){
-                        disp_i = to_letters(i+1);  
-                    }else{
-                        disp_i = i+1;
-                    }
-
-                    var opts = questions[i].getElementsByTagName("input");
-                    if(opts[0].checked){
-                        answers[disp_i] = trial.answer1;
-                    }else if(opts[1].checked){
-                        answers[disp_i] = trial.answer2;
-                    }else{
-                        answers[disp_i] = 'none';
-                    }
-                }
-                clearInterval(everySecond);
+                // var answers = {};
                 var trialdata = {
                     // [trial.json_label]: answers,
                     // [trial.json_label]: JSON.stringify(answers),
-                    // "response": answers,
-                    "response": JSON.stringify(answers),
-				    "trial_name": trial.json_label,
-                    "rt": response_time
+                    "rt": response_time,
+                    "trial_name": trial.json_label,
+                    "question_count": trial.question_count,
+                    // "response": JSON.stringify(answers),
                 };
+                var questions = document.querySelectorAll('.binary-audio-prompt-question');
+                for(var i=0; i < trial.question_count; i++){
+                    var response = '';
+                    var opts = questions[i].getElementsByTagName("input");
+                    if(opts[0].checked){
+                        response = trial.answer1;
+                    }else if(opts[1].checked){
+                        response = trial.answer2;
+                    }else{
+                        response = 'None';
+                    }
+                    trialdata['q' + (i + 1)] = response;
+                }
+                // answers = indexes + '\n' + responses;
+                // for(var i=0; i<trial.question_count; i++){
+                //     var disp_i;
+                //     if(trial.question_num_type == 'alphabetic'){
+                //         disp_i = to_letters(i+1);  
+                //     }else{
+                //         disp_i = i+1;
+                //     }
+
+                //     var opts = questions[i].getElementsByTagName("input");
+                //     if(opts[0].checked){
+                //         answers[disp_i] = trial.answer1;
+                //     }else if(opts[1].checked){
+                //         answers[disp_i] = trial.answer2;
+                //     }else{
+                //         answers[disp_i] = 'none';
+                //     }
+                // }
+                clearInterval(everySecond);
+                // var trialdata = {
+                //     // [trial.json_label]: answers,
+                //     // [trial.json_label]: JSON.stringify(answers),
+                //     "rt": response_time,
+				//     "trial_name": trial.json_label,
+                //     // "response": JSON.stringify(answers),
+                // };
                 display_element.innerHTML = '';
                 // next trial
                 jsPsych.finishTrial(trialdata);
