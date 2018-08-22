@@ -2,14 +2,14 @@ var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionnaire</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Questionnaire</h1>"; //to be prepended to preludes
 
 // Instruction pages that appear at the start
 var info = {
     type: 'instructions',
     pages: [
         header + '<h2>Test Instruction Page</h2><p>Lorem ipsum si venit</p>',
-        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="/study_assets/musiclang_engnat/shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are granting etc.</p> '
+        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are granting etc.</p> '
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',

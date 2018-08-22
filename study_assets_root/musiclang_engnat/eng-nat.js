@@ -1,12 +1,12 @@
 var blur_count = 0; //number of times subject's focus leaves tab
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"/study_assets/musiclang_engnat/shared_assets/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>MusicLang Experiment</h1>"; //to be prepended to preludes
 
 var gen_inst = {
     type: 'instructions',
     pages: [
-        header + '<h2>Instructions</h2><p>This study will take 40-60 minutes and involves several different tasks. Many of the tasks will have an audio clip. Please put on your headphones and take breaks between tasks when necessary. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="/study_assets/musiclang_engnat/shared_assets/audio/sample.mp3" type="audio/mpeg"></audio><p>When you have adjusted your headphones and are ready to begin, press Next to begin the study</p>'
+        header + '<h2>Instructions</h2><p>This study will take 40-60 minutes and involves several different tasks. Many of the tasks will have an audio clip. Please put on your headphones and take breaks between tasks when necessary. To make sure your headphones are set to a comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="shared_assets/audio/sample.mp3" type="audio/mpeg"></audio><p>When you have adjusted your headphones and are ready to begin, press Next to begin the study</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -32,7 +32,7 @@ var met_rhy_for_eng = {
     question_count: '52',
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-r-for-eng.mp3',
+    audio: 'shared_assets/audio/met-r-for-eng.mp3',
     test_length: 15
     // test_length: 611 //606 + 5 sec grace 
 };
@@ -55,7 +55,7 @@ var met_mel_for_eng = {
     question_count: '52',
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/met-m-for-eng.mp3',
+    audio: 'shared_assets/audio/met-m-for-eng.mp3',
     test_length: 15 
     // test_length: 617 //612 + 5 sec grace 
 };
@@ -74,7 +74,7 @@ var rpcv_for_eng = {
     type: 'passage-highlight',
     json_label: 'RPCV_FOR_ENG',
     preamble: header + '<h2>Task: Mispronunciation</h2>',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpcv-for-eng.mp3',
+    audio: 'shared_assets/audio/rpcv-for-eng.mp3',
     allow_audio_control: false,
     test_length: 15, 
     // test_length: 103, //98 + 5 sec grace
@@ -99,7 +99,7 @@ var rpst_for_eng = {
     type: 'passage-highlight',
     json_label: 'RPST_FOR_ENG',
     preamble: header + '<h2>Task: Mispronunciation</h2>',
-    audio: '/study_assets/musiclang_engnat/shared_assets/audio/rpst-for-eng.mp3',
+    audio: 'shared_assets/audio/rpst-for-eng.mp3',
     allow_audio_control: false,
     test_length: 15, 
     // test_length: 87, //82sec + 5sec grace
