@@ -33,8 +33,8 @@ var met_rhy_for_eng = {
     example_num_prefix: 'Example ',
     example_num_type: 'alphabetic',
     audio: 'shared_assets/audio/met-r-for-eng.mp3',
-    test_length: 15
-    // test_length: 611 //606 + 5 sec grace 
+    // test_length: 15
+    test_length: 611 //606 + 5 sec grace 
 };
 
 var inst_met_mel_for_eng = {
