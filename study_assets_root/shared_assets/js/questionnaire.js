@@ -8,7 +8,6 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 var info = {
     type: 'instructions',
     pages: [
-        header + '<h2>Test Instruction Page</h2><p>Lorem ipsum si venit</p>',
         header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are granting etc.</p> '
     ],
     show_clickable_nav: true,
