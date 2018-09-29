@@ -60,7 +60,13 @@ jsPsych.plugins['multi-choice'] = (function () {
 				pretty_name: 'Button label',
 				default: 'Continue',
 				description: 'The text that appears on the button to finish the trial.'
-			}
+            },
+            horizontal: {
+                type: jsPsych.plugins.parameterType.STRING,
+                pretty_name: 'Horizontal Options',
+                default: false,
+                description: 'Whether to display options horizontally or vertically'
+            }
         }
     }
     plugin.trial = function(display_element, trial){
@@ -83,7 +89,11 @@ jsPsych.plugins['multi-choice'] = (function () {
             html += '<div class="multi-choice-question" id="multi-choice-question-' + currQuestion + '">';
             html += '<p class="multi-choice-question-prompt">' + currQuestion + '. ' + trial.questions[currQuestion-1].prompt + '</p>';
             for(var currOption = 1; currOption <= trial.questions[currQuestion-1].options.length; currOption++){
-                html += '<div class="multi-choice-question-option-container">';
+                html += '<div class="multi-choice-question-option-container';
+                if(trial.horizontal){
+                    html += ' horizontal';
+                }
+                html += '">';
                 html += '<input type="radio" class="multi-choice-question-option" id="multi-choice-question-'+currQuestion+'-option-' + currOption + '" value="'+trial.questions[currQuestion-1].options[currOption-1]+'"  name="multi-choice-question-'+currQuestion + '" required>';
                 html += '<label for="multi-choice-question-'+currQuestion+'-option-' + currOption + '">' + trial.questions[currQuestion-1].options[currOption-1]+'</label>';
                 html += '</div>';

@@ -74,6 +74,9 @@ input[type="radio"]{
 .rightCol{
     flex: 1;
 }
+.horizontal{
+    display: inline-block !important;
+}
 #passage-highlight-english, #multi-choice-passage-english{
     
     width: 60%;
