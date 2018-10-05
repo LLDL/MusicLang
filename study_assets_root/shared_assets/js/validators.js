@@ -20,12 +20,12 @@ function allow_next(next, enable, prompt) {
     if (prompt == null) {
         prompt = "Please answer the questions above";
     }
-    if (enable) {
+    if (enable && next !== null) {
         next.innerText = "Continue";
         next.disabled = false;
         next.style.backgroundColor = color_enabled;
     }
-    if (!enable) {
+    if (!enable && next !== null) {
         next.innerText = prompt;
         next.disabled = true;
         next.style.backgroundColor = color_disabled;
