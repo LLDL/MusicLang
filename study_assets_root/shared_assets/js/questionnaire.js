@@ -8,7 +8,7 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 var info = {
     type: 'instructions',
     pages: [
-        header + '<h2>Participant Consent</h2><p>Consent form will go here, can say something along lines of: Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are granting etc.</p> '
+        header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -111,7 +111,7 @@ var background = {
 };
 var dominant_languages = {
     type: 'survey-text-custom',
-    preamble: header + "<h2>Languages You Know</h2><p>Please list the lanuages you speak (including your native tongue), by most to least dominant.</p>",
+    preamble: header + "<h2>Languages You Know</h2><p>Please list the languages you speak (including your native tongue), by most to least dominant.</p>",
     json_label: 'Language Dominance',
     questions: [
         {prompt: "Most Dominant"},
@@ -133,9 +133,7 @@ var dominant_languages = {
 var language_details = {
     type: 'language-info',
     preamble: header + "<h2>Language Details</h2>",
-    data: { 
-        languages: ["loading"]
-    },
+    languages: ['temp'],
     json_label: 'Language Details',
     on_start: function (trial) {
         trial.languages = get_known_langs();
