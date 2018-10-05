@@ -203,9 +203,9 @@ jatos.onLoad(
             }
             jsPsych.data.addProperties({subject : studyID});
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed');
             var resultsCSV = results.csv();
-            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
+            jatos.startNextComponent(resultsCSV);
         }
     })
 );
