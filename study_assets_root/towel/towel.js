@@ -102,7 +102,7 @@ var familiarity_rating_page_2 = {
             prompt: "一群",
             options: ["1", "2", "3", "4", "5"]
         },
-    ]
+    ],
 };
 
 var familiarity_rating_page_3 = {
@@ -156,58 +156,121 @@ var familiarity_rating_page_3 = {
     ]
 };
 
-
-var counterBalance1 = {
-    timeline: [familiarity_rating_page_1, familiarity_rating_page_2, familiarity_rating_page_3],
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        return currID[currID.length-1] % 6 == 0;
-    }
+var noun_classifier_grammaticality = {
+    type: 'list-of-answers',
+    preamble: header + '<h2>任务2: 数量 结构合法 性测试</h2><p>请思考以下量 词后面通常可以接哪些名 后面通常可以接哪些名 词，例如量 词“扇”后可接 “门”,“窗”（“一扇 门”，“一扇窗 ”）。 请输 入你 脑海里面想到的第 一个名 词，第二个名 词，第三个名 词…. <b>直</b>到你不能再想出任何可 到你不能再想出任何可 到你不能再想出任何可 以接在 该量词后面的名 词为 止。所填名 词应 越短好 越短好 ，例如 ，一 座<b>“山”</b>。</p>',
+    json_label: 'noun_classifier_grammaticality',
+    button_label: 'Continue',
+    max_response_count: 7,
+    min_response_count: 1,
+    prompt_label: '量词',
+    answer_label: '名词',
+    response_preambles: [
+        "第一个出现在脑海中的名词",
+        "第二个出现在脑海中的名词",
+        "第三个出现在脑海中的名词",
+        "第四个出现在脑海中的名词",
+        "第五个出现在脑海中的名词",
+        "第六个出现在脑海中的名词",
+        "第七个出现在脑海中的名词",
+    ],
+    prompts: [
+        "一盏",
+        "一个",
+        "一堂",
+        "一杯",
+        "一堵",
+        "一瓶",
+        "一束",
+        "一条",
+        "一封",
+        "一张",
+        "一幅",
+        "一包",
+        "一滴",
+        "一双",
+        "一朵",
+        "一头",
+        "一页",
+        "一些",
+        "一站",
+        "一群",
+        "一盅",
+        "一件",
+        "一缕",
+        "一粒",
+        "一杆",
+        "一把",
+        "一匹",
+        "一场",
+        "一桶",
+        "一口",
+    ]
 };
 
-var counterBalance2 = {
-    timeline: [familiarity_rating_page_1, familiarity_rating_page_3, familiarity_rating_page_2], 
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        return currID[currID.length-1] % 6 == 1;
-    }
-};
+// prompts: {
+//     type: jsPsych.plugins.parameterType.STRING,
+//     pretty_name: 'Prompts',
+//     default: undefined,
+//     array: true,
+//     description: 'The prompts that will be associated with a group of responses.'
+// },
 
-var counterBalance3 = {
-    timeline: [familiarity_rating_page_2, familiarity_rating_page_1, familiarity_rating_page_3], 
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        return currID[currID.length-1] % 6 == 2;
-    }
-};
 
-var counterBalance4 = {
-    timeline: [familiarity_rating_page_2, familiarity_rating_page_3, familiarity_rating_page_1],
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        return currID[currID.length-1] % 6 == 3;
-    }
-};
 
-var counterBalance5 = {
-    timeline: [familiarity_rating_page_3, familiarity_rating_page_2, familiarity_rating_page_1], 
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        return currID[currID.length-1] % 6 == 4;
-    }
-};
+// var counterBalance1 = {
+//     timeline: [familiarity_rating_page_1, familiarity_rating_page_2, familiarity_rating_page_3],
+//     conditional_function: function(){
+//         var currID = window.location.href.split('=');
+//         return currID[currID.length-1] % 6 == 0;
+//     }
+// };
 
-var counterBalance6 = {
-    timeline: [familiarity_rating_page_3, familiarity_rating_page_1, familiarity_rating_page_2], 
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        return currID[currID.length-1] % 6 == 5;
-    }
-};
+// var counterBalance2 = {
+//     timeline: [familiarity_rating_page_1, familiarity_rating_page_3, familiarity_rating_page_2], 
+//     conditional_function: function(){
+//         var currID = window.location.href.split('=');
+//         return currID[currID.length-1] % 6 == 1;
+//     }
+// };
+
+// var counterBalance3 = {
+//     timeline: [familiarity_rating_page_2, familiarity_rating_page_1, familiarity_rating_page_3], 
+//     conditional_function: function(){
+//         var currID = window.location.href.split('=');
+//         return currID[currID.length-1] % 6 == 2;
+//     }
+// };
+
+// var counterBalance4 = {
+//     timeline: [familiarity_rating_page_2, familiarity_rating_page_3, familiarity_rating_page_1],
+//     conditional_function: function(){
+//         var currID = window.location.href.split('=');
+//         return currID[currID.length-1] % 6 == 3;
+//     }
+// };
+
+// var counterBalance5 = {
+//     timeline: [familiarity_rating_page_3, familiarity_rating_page_2, familiarity_rating_page_1], 
+//     conditional_function: function(){
+//         var currID = window.location.href.split('=');
+//         return currID[currID.length-1] % 6 == 4;
+//     }
+// };
+
+// var counterBalance6 = {
+//     timeline: [familiarity_rating_page_3, familiarity_rating_page_1, familiarity_rating_page_2], 
+//     conditional_function: function(){
+//         var currID = window.location.href.split('=');
+//         return currID[currID.length-1] % 6 == 5;
+//     }
+// };
 
 jatos.onLoad(
     jsPsych.init({
-        timeline: [counterBalance1, counterBalance2, counterBalance3, counterBalance4, counterBalance5, counterBalance6],
+        // timeline: [counterBalance1, counterBalance2, counterBalance3, counterBalance4, counterBalance5, counterBalance6],
+        // timeline: [familiarity_rating_page_1, familiarity_rating_page_2, familiarity_rating_page_3, noun_classifier_grammaticality],
+        timeline: [noun_classifier_grammaticality],
         exclusions: {
             min_width: 800,
             min_height: 600
@@ -229,7 +292,7 @@ jatos.onLoad(
             }
             jsPsych.data.addProperties({subject : studyID});
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_type').ignore('trial_index');
             var resultsCSV = results.csv();
             jatos.submitResultData(resultsCSV, jatos.startNextComponent);
         }
