@@ -208,7 +208,15 @@ var noun_classifier_grammaticality = {
     ]
 };
 
-
+var ending = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>Study Complete</h2><p>Thank you for your participation! Your results have been submitted.</p>'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Close',
+    allow_keys: false
+};
 
 // var counterBalance1 = {
 //     timeline: [familiarity_rating_page_1, familiarity_rating_page_2, familiarity_rating_page_3],
@@ -261,8 +269,8 @@ var noun_classifier_grammaticality = {
 jatos.onLoad(
     jsPsych.init({
         // timeline: [counterBalance1, counterBalance2, counterBalance3, counterBalance4, counterBalance5, counterBalance6],
-        // timeline: [familiarity_rating_page_1, familiarity_rating_page_2, familiarity_rating_page_3, noun_classifier_grammaticality],
-        timeline: [noun_classifier_grammaticality],
+        timeline: [familiarity_rating_page_1, familiarity_rating_page_2, familiarity_rating_page_3, noun_classifier_grammaticality, ending],
+        // timeline: [ending],
         exclusions: {
             min_width: 800,
             min_height: 600
