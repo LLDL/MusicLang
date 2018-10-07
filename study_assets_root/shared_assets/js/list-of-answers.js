@@ -91,7 +91,7 @@ jsPsych.plugins['list-of-answers'] = (function (){
             html += '<input type="button" class="list-of-answers-button" name="list-of-answers-button-' + index + '" id="list-of-answers-button-' + index + '" value="' + trial.button_label + '">';
             return html;
         }
-        function appendAnswers(display_element, index, trial){
+        function appendAnswers(){
             promptAnswers = [];
             var answerQuery = display_element.getElementsByClassName("list-of-answers-answer");
             for (var answer of answerQuery){
@@ -100,24 +100,50 @@ jsPsych.plugins['list-of-answers'] = (function (){
             answers.push(promptAnswers);
 
         }
-        function onContinue(){
-            appendAnswers(display_element, currQuestion, trial);
-            if(currQuestion < trial.prompts.length-1){
-                currQuestion++;
-                display_element.innerHTML = outerHTML + promptHTMLs[currQuestion];
-            }else{
-                var endTime = (new Date()).getTime();
-                var response_time = endTime - startTime;
-                var trialdata = {
-                    "trial_name": trial.json_label,
-                    "rt": response_time
-                };
-                for(var i = 0; i<trial.prompts.length; i++){
-                    trialdata[trial.prompts[i]] = answers[i]
+        function checkAnswers(){
+            var answerQuery = display_element.getElementsByClassName("list-of-answers-answer");
+            console.log(answerQuery)
+            validFlag = true;
+            for (var index = 0; index<trial.min_response_count; index++){
+                if(!answerQuery[index].value){
+                    validFlag = false;
+                    console.log(answerQuery[index].value);
                 }
-                trialdata["prompt_count"] = trial.prompts.length;
-                jsPsych.finishTrial(trialdata);
             }
+            return validFlag;
+        }
+        function onContinue(){
+            if(checkAnswers()){
+                appendAnswers();
+                if(currQuestion < trial.prompts.length-1){
+                    currQuestion++;
+                    display_element.getElementsByClassName('list-of-answers-button')[0].removeEventListener('click', onContinue, false);
+                    display_element.innerHTML = outerHTML + promptHTMLs[currQuestion];
+                    display_element.getElementsByClassName('list-of-answers-button')[0].addEventListener('click', onContinue, false);
+                }else{
+                    var endTime = (new Date()).getTime();
+                    var response_time = endTime - startTime;
+                    var trialdata = {
+                        "trial_name": trial.json_label,
+                        "rt": response_time
+                    };
+                    for(var i = 0; i<trial.prompts.length; i++){
+                        trialdata[trial.prompts[i]] = answers[i]
+                    }
+                    trialdata["prompt_count"] = trial.prompts.length;
+                    jsPsych.finishTrial(trialdata);
+                }
+            }else{
+                plural_resp = trial.min_response_count > 1;
+                if(plural_resp){
+                    display_element.innerHTML+= '<p class="error"> Please input at least ' + trial.min_response_count  + ' valid answers' + '</p>';
+                }else{
+                    display_element.innerHTML+= '<p class="error"> Please input at least ' + trial.min_response_count  + ' valid answer' + '</p>';
+                    display_element.getElementsByClassName('list-of-answers-button')[0].addEventListener('click', onContinue, false);
+                }
+                
+            }
+            
         }
         var outerHTML = '';
         if (trial.preamble !== null) {
@@ -129,7 +155,7 @@ jsPsych.plugins['list-of-answers'] = (function (){
         }
         currQuestion = 0;
         display_element.innerHTML = outerHTML + promptHTMLs[currQuestion];
-        display_element.addEventListener('click', onContinue, false);
+        display_element.getElementsByClassName('list-of-answers-button')[0].addEventListener('click', onContinue, false);
     }
     return plugin;
 })();

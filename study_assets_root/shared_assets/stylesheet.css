@@ -109,6 +109,9 @@ input[type="radio"]{
     background-color: #ff1900;
     /* padding: .1em; */
 }
+.error{
+    color: #ff1900;
+}
 
 .correct:hover, .incorrect:hover{
     cursor: pointer;
