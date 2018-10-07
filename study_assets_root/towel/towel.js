@@ -208,14 +208,6 @@ var noun_classifier_grammaticality = {
     ]
 };
 
-// prompts: {
-//     type: jsPsych.plugins.parameterType.STRING,
-//     pretty_name: 'Prompts',
-//     default: undefined,
-//     array: true,
-//     description: 'The prompts that will be associated with a group of responses.'
-// },
-
 
 
 // var counterBalance1 = {

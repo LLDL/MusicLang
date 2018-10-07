@@ -77,9 +77,10 @@ jsPsych.plugins['list-of-answers'] = (function (){
     plugin.trial = function(display_element, trial){
         function makePrompt(index, trial){
             var html = '<form class="list-of-answers-prompt" id="list-of-answers-prompt-' + index + '">';
-            html += '<h3>' + trial.prompt_label + ': ' + trial.prompts[index] +' </h3>';
             qnum = index + 1;
-            html += '<h3>' + qnum + '. ' + trial.answer_label + '</h3>';
+            html += '<h3>' + trial.prompt_label + ' '+ qnum +'. ' + trial.prompts[index] +' </h3>';
+            
+            html += '<h3>' + trial.answer_label + '</h3>';
             for(var currAnswer = 0; currAnswer<trial.max_response_count; currAnswer++){
                 html += trial.response_preambles[currAnswer] + '<input type="text" class="list-of-answers-answer" id="list-of-answers-prompt-' + trial.prompts[index] + '-answer-' + currAnswer + '" name="list-of-answers-prompt-' + trial.prompts[index] + '-answer-' + currAnswer + '"';
                 if(currAnswer<trial.min_response_count){
@@ -95,7 +96,11 @@ jsPsych.plugins['list-of-answers'] = (function (){
             promptAnswers = [];
             var answerQuery = display_element.getElementsByClassName("list-of-answers-answer");
             for (var answer of answerQuery){
-                promptAnswers.push(answer.value);
+                if(answer == ''){
+                    promptAnswer.push('null');
+                }else{
+                    promptAnswers.push(answer.value);
+                }
             }
             answers.push(promptAnswers);
 
