@@ -266,33 +266,42 @@ var ppc_for_eng = {
     ]
 };
 
-var counterBalance1 = {
-    timeline: [gen_inst, inst_met_rhy_for_eng, met_rhy_for_eng, inst_met_mel_for_eng, met_mel_for_eng, inst_rpcv_for_eng, rpcv_for_eng, inst_rpst_for_eng, rpst_for_eng, lk_for_eng, ppc_for_eng],
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        if(currID[currID.length-1] % 2 == 1){
-            // console.log("true");
-            return true;
-        }else{
-            return false;
-        }
-    }
-};
-
-var counterBalance2 = {
-    timeline: [gen_inst, inst_met_mel_for_eng, met_mel_for_eng, inst_met_rhy_for_eng, met_rhy_for_eng, inst_rpst_for_eng, rpst_for_eng, inst_rpcv_for_eng, rpcv_for_eng, lk_for_eng, ppc_for_eng], 
-    conditional_function: function(){
-        var currID = window.location.href.split('=');
-        if(currID[currID.length-1] % 2 == 0){
-            // console.log("true"); 
-            return true;
-        }else{
-            return false;
-        }
-    }
-};
-
 jatos.onLoad(function() {
+    var finish_conf = {
+        type: 'instructions',
+        pages: [
+            header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>E' + jatos.studyResultId + '</b>. To arrange payment, please email <a href="mailto:langdev@sfu.ca?Subject=MusicLang%20Participant%20E' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>MusicLang Participant E' + jatos.studyResultId + '</b></p>'
+        ],
+        show_clickable_nav: true,
+        button_label_next: 'Close',
+        allow_keys: false
+    };
+
+
+    var counterBalance1 = {
+        timeline: [gen_inst, inst_met_rhy_for_eng, met_rhy_for_eng, inst_met_mel_for_eng, met_mel_for_eng, inst_rpcv_for_eng, rpcv_for_eng, inst_rpst_for_eng, rpst_for_eng, lk_for_eng, ppc_for_eng, finish_conf],
+        conditional_function: function(){
+            if(jatos.studyResultId % 2 == 1){
+                // console.log("odd");
+                return true;
+            }else{
+                return false;
+            }
+        }
+    };
+    
+    var counterBalance2 = {
+        timeline: [gen_inst, inst_met_mel_for_eng, met_mel_for_eng, inst_met_rhy_for_eng, met_rhy_for_eng, inst_rpst_for_eng, rpst_for_eng, inst_rpcv_for_eng, rpcv_for_eng, lk_for_eng, ppc_for_eng, finish_conf], 
+        conditional_function: function(){
+            if(jatos.studyResultId % 2 == 0){
+                // console.log("even"); 
+                return true;
+            }else{
+                return false;
+            }
+        }
+    };
+
     jsPsych.init({
         //Questionaire:
         timeline: [counterBalance1, counterBalance2],
