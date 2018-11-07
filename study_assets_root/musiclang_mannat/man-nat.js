@@ -254,17 +254,8 @@ var ppc_for_mand = {
 
 
 jatos.onLoad(function() {
-    var finish_conf = {
-        type: 'instructions',
-        pages: [
-            header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>M' + jatos.studyResultId + '</b>. To arrange payment, please email <a href="mailto:langdev@sfu.ca?Subject=MusicLang%20Participant%20M' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>MusicLang Participant M' + jatos.studyResultId + '</b></p>'
-        ],
-        show_clickable_nav: true,
-        button_label_next: 'Close',
-        allow_keys: false
-    };
     var counterBalance1 = {
-        timeline: [gen_inst, inst_met_rhy_for_mand, met_rhy_for_mand, inst_met_mel_for_mand, met_mel_for_mand, inst_rpcv_for_mand, rpcv_for_mand,inst_rpst_for_mand, rpst_for_mand, lk_for_mand, ppc_for_mand, finish_conf],
+        timeline: [gen_inst, inst_met_rhy_for_mand, met_rhy_for_mand, inst_met_mel_for_mand, met_mel_for_mand, inst_rpcv_for_mand, rpcv_for_mand,inst_rpst_for_mand, rpst_for_mand, lk_for_mand, ppc_for_mand],
         conditional_function: function(){
             if(jatos.studyResultId % 2 == 1){
                 // console.log("odd");
@@ -276,7 +267,7 @@ jatos.onLoad(function() {
     };
     
     var counterBalance2 = {
-        timeline: [gen_inst,inst_met_mel_for_mand, met_mel_for_mand, inst_met_rhy_for_mand, met_rhy_for_mand, inst_rpst_for_mand, rpst_for_mand,inst_rpst_for_mand, rpcv_for_mand, lk_for_mand, ppc_for_mand, finish_conf], 
+        timeline: [gen_inst,inst_met_mel_for_mand, met_mel_for_mand, inst_met_rhy_for_mand, met_rhy_for_mand, inst_rpst_for_mand, rpst_for_mand,inst_rpst_for_mand, rpcv_for_mand, lk_for_mand, ppc_for_mand], 
         conditional_function: function(){
             if(jatos.studyResultId % 2 == 0){
                 // console.log("odd");
