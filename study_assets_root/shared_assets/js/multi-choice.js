@@ -66,6 +66,11 @@ jsPsych.plugins['multi-choice'] = (function () {
                 pretty_name: 'Horizontal Options',
                 default: false,
                 description: 'Whether to display options horizontally or vertically'
+            },
+            starting_question_number: {
+                type: jsPsych.plugins.parameterType.INT,
+                pretty_name: 'Where to start numbering the questions',
+                default: 1
             }
         }
     }
@@ -85,17 +90,17 @@ jsPsych.plugins['multi-choice'] = (function () {
         
         
         html += '<h3>Questions</h3><div class="multi-choice-questions">';
-        for(var currQuestion = 1; currQuestion <= trial.questions.length; currQuestion++){
+        for(var currQuestion = trial.starting_question_number; currQuestion < trial.questions.length+trial.starting_question_number; currQuestion++){
             html += '<div class="multi-choice-question" id="multi-choice-question-' + currQuestion + '">';
-            html += '<p class="multi-choice-question-prompt">' + currQuestion + '. ' + trial.questions[currQuestion-1].prompt + '</p>';
-            for(var currOption = 1; currOption <= trial.questions[currQuestion-1].options.length; currOption++){
+            html += '<p class="multi-choice-question-prompt">' + currQuestion + '. ' + trial.questions[currQuestion-trial.starting_question_number].prompt + '</p>';
+            for(var currOption = 1; currOption <= trial.questions[currQuestion-trial.starting_question_number].options.length; currOption++){
                 html += '<div class="multi-choice-question-option-container';
                 if(trial.horizontal){
                     html += ' horizontal';
                 }
                 html += '">';
-                html += '<input type="radio" class="multi-choice-question-option" id="multi-choice-question-'+currQuestion+'-option-' + currOption + '" value="'+trial.questions[currQuestion-1].options[currOption-1]+'"  name="multi-choice-question-'+currQuestion + '" required>';
-                html += '<label for="multi-choice-question-'+currQuestion+'-option-' + currOption + '">' + trial.questions[currQuestion-1].options[currOption-1]+'</label>';
+                html += '<input type="radio" class="multi-choice-question-option" id="multi-choice-question-'+currQuestion+'-option-' + currOption + '" value="'+trial.questions[currQuestion-trial.starting_question_number].options[currOption-1]+'"  name="multi-choice-question-'+currQuestion + '" required>';
+                html += '<label for="multi-choice-question-'+currQuestion+'-option-' + currOption + '">' + trial.questions[currQuestion-trial.starting_question_number].options[currOption-1]+'</label>';
                 html += '</div>';
             }
             html += '</div>';
@@ -126,7 +131,7 @@ jsPsych.plugins['multi-choice'] = (function () {
             };
             var options = document.querySelectorAll("input[type=radio]:checked");
             for(var currAnswer = 0; currAnswer<trial.questions.length; currAnswer++){
-                trialdata['q' + (currAnswer + 1)] = options[currAnswer].value
+                trialdata['q' + (currAnswer + trial.starting_question_number)] = options[currAnswer].value
             }
             trialdata["question_count"] = trial.questions.length;
             jsPsych.finishTrial(trialdata);

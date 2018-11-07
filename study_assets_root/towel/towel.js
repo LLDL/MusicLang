@@ -1,15 +1,16 @@
 var blur_count = 0; //number of times subject's focus leaves tab
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Towel Experiment</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img>"; //to be prepended to preludes
 
 var familiarity_rating_page_1 = {
     type: 'multi-choice',
-    preamble: header + '<h2>任务1: 量词熟悉度 评分</h2>',
+    preamble: header + '<h1>任务1: 量词熟悉度评分</h1>',
     json_label: 'familiarity_rating-1',
-    passage: '<p>请想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 经常听到或者使用以下的 常听到或者使用以下的 常听到或者使用以下的 汉语 量词。 请根据你 对以下量 词的熟悉程度 对其从 1-5进行评分：1代表 “我从 来没有听 过或使用 过这 个量 词”，2代表 “我很少听到或使用 我很少听到或使用 这个量 词”，3代表我有些 时候会听到或使用 这个量 词，4代表我 经常听到 常听到 或使用 这个量 词，5代表我每天都会听到或使用 代表我每天都会听到或使用 这个量 词</p>',
+    passage: '<p>请想一想在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 经常听到或者使用以下的 常听到或者使用以下的 常听到或者使用以下的 汉语 量词。 请根据你 对以下量 词的熟悉程度 对其从 1-5进行评分：1代表 “我从 来没有听 过或使用 过这 个量 词”，2代表 “我很少听到或使用 我很少听到或使用 这个量 词”，3代表我有些 时候会听到或使用 这个量 词，4代表我 经常听到 常听到 或使用 这个量 词，5代表我每天都会听到或使用 代表我每天都会听到或使用 这个量 词</p>',
     passage_language: 'english',
     horizontal: true,
+    starting_question_number: 1,
     questions: [
         {
             prompt: "一盏",
@@ -56,11 +57,12 @@ var familiarity_rating_page_1 = {
 
 var familiarity_rating_page_2 = {
     type: 'multi-choice',
-    preamble: header + '<h2>任务1: 量词熟悉度 评分</h2>',
+    preamble: header + '<h1>任务1: 量词熟悉度评分</h1>',
     json_label: 'familiarity_rating-2',
-    passage: '<p>请想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 经常听到或者使用以下的 常听到或者使用以下的 常听到或者使用以下的 汉语 量词。 请根据你 对以下量 词的熟悉程度 对其从 1-5进行评分：1代表 “我从 来没有听 过或使用 过这 个量 词”，2代表 “我很少听到或使用 我很少听到或使用 这个量 词”，3代表我有些 时候会听到或使用 这个量 词，4代表我 经常听到 常听到 或使用 这个量 词，5代表我每天都会听到或使用 代表我每天都会听到或使用 这个量 词</p>',
+    passage: '<p>请想一想在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 经常听到或者使用以下的 常听到或者使用以下的 常听到或者使用以下的 汉语 量词。 请根据你 对以下量 词的熟悉程度 对其从 1-5进行评分：1代表 “我从 来没有听 过或使用 过这 个量 词”，2代表 “我很少听到或使用 我很少听到或使用 这个量 词”，3代表我有些 时候会听到或使用 这个量 词，4代表我 经常听到 常听到 或使用 这个量 词，5代表我每天都会听到或使用 代表我每天都会听到或使用 这个量 词</p>',
     passage_language: 'english',
     horizontal: true,
+    starting_question_number: 11,
     questions: [
         {
             prompt: "一幅",
@@ -107,11 +109,12 @@ var familiarity_rating_page_2 = {
 
 var familiarity_rating_page_3 = {
     type: 'multi-choice',
-    preamble: header + '<h2>任务1: 量词熟悉度 评分</h2>',
+    preamble: header + '<h1>任务1: 量词熟悉度评分</h1>',
     json_label: 'familiarity_rating-3',
-    passage: '<p>请想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 经常听到或者使用以下的 常听到或者使用以下的 常听到或者使用以下的 汉语 量词。 请根据你 对以下量 词的熟悉程度 对其从 1-5进行评分：1代表 “我从 来没有听 过或使用 过这 个量 词”，2代表 “我很少听到或使用 我很少听到或使用 这个量 词”，3代表我有些 时候会听到或使用 这个量 词，4代表我 经常听到 常听到 或使用 这个量 词，5代表我每天都会听到或使用 代表我每天都会听到或使用 这个量 词</p>',
+    passage: '<p>请想一想在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 想一在日常生活中你有多 经常听到或者使用以下的 常听到或者使用以下的 常听到或者使用以下的 汉语 量词。 请根据你 对以下量 词的熟悉程度 对其从 1-5进行评分：1代表 “我从 来没有听 过或使用 过这 个量 词”，2代表 “我很少听到或使用 我很少听到或使用 这个量 词”，3代表我有些 时候会听到或使用 这个量 词，4代表我 经常听到 常听到 或使用 这个量 词，5代表我每天都会听到或使用 代表我每天都会听到或使用 这个量 词</p>',
     passage_language: 'english',
     horizontal: true,
+    starting_question_number: 21,
     questions: [
         {
             prompt: "一盅",
@@ -158,7 +161,9 @@ var familiarity_rating_page_3 = {
 
 var noun_classifier_grammaticality = {
     type: 'list-of-answers',
-    preamble: header + '<h2>任务2: 数量 结构合法 性测试</h2><p>请思考以下量 词后面通常可以接哪些名 后面通常可以接哪些名 词，例如量 词“扇”后可接 “门”,“窗”（“一扇 门”，“一扇窗 ”）。 请输 入你 脑海里面想到的第 一个名 词，第二个名 词，第三个名 词…. <b>直</b>到你不能再想出任何可 到你不能再想出任何可 到你不能再想出任何可 以接在 该量词后面的名 词为 止。所填名 词应 越短好 越短好 ，例如 ，一 座<b>“山”</b>。</p>',
+    preamble: header + '<h1>任务2: 数量结构合法性测试</h1><p>请思考以下量词后面通常可以接哪些名词，例如量词“扇”后可接“门”,“窗”（“一扇门”，“一扇窗”）。请输入你脑海里面想到的第一个名词，第二个名词，第三个名词….直到你不能再想出任何可以接在该量词后面的名词为止。所填名词应越短越好，例如，一座“山”。</p>',
+
+
     json_label: 'noun_classifier_grammaticality',
     button_label: 'Continue',
     max_response_count: 7,
