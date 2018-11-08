@@ -71,7 +71,12 @@ jsPsych.plugins['multi-choice'] = (function () {
                 type: jsPsych.plugins.parameterType.INT,
                 pretty_name: 'Where to start numbering the questions',
                 default: 1
-            }
+            },
+            use_passage_header: {
+                type: jsPsych.plugins.parameterType.BOOL,
+                pretty_name: 'Create a "Passage" Header',
+                default: true
+            },
         }
     }
     plugin.trial = function(display_element, trial){
@@ -82,9 +87,15 @@ jsPsych.plugins['multi-choice'] = (function () {
         }
         if (trial.passage != null){
             if(trial.passage_language == 'mandarin'){
-                html += '<h3>Passage</h3><div id="multi-choice-passage-mandarin">' + parseMandarin() + '</div>' ;
+                if(trial.use_passage_header){
+                    html += '<h3>Passage</h3>';
+                }
+                html += '<div id="multi-choice-passage-mandarin">' + parseMandarin() + '</div>' ;
             }else if(trial.passage_language == 'english'){
-                html += '<h2>Passage</h2><div id="multi-choice-passage-english">' + trial.passage + '</div>';
+                if(trial.use_passage_header){
+                    html += '<h2>Passage</h2>';
+                }
+                html += '<div id="multi-choice-passage-english">' + trial.passage + '</div>';
             }
         }
         
