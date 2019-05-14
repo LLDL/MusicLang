@@ -205,7 +205,7 @@ jatos.onLoad(
             var resultsRaw = jsPsych.data.get();
             var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed');
             var resultsCSV = results.csv();
-            jatos.startNextComponent(resultsCSV);
+            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
         }
     })
 );
