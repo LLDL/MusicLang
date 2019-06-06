@@ -91,7 +91,7 @@ var rpcv_for_mand = {
 	'but she knows it is important because it is her #friend’s# birthday. She put the gift #bag# for her friend by the door so she would remember to bring it when she #leaves#. ' + 
 	'The babysitter should arrive at their house #soon#. </p><p>Mary feels Andrew’s #cheek#. He must have a #fever#, because it #felt# very warm. </p><p>“Come on, Andrew. #Sit# on this chair. ' + 
 	'The doctor said you have to take this #pill# once a day,” she says to her son. Before Andrew could #refuse#, Mary had put the medicine in his #mouth#. ' + 
-	'Mary went to get a cloth from the #messy# drawer under the #sink#. She #wet# the cloth in cold water before putting it on Andrew's hot forehead and ran her fingers through his brown hair just as the doorbell rings. ' + 	
+	'Mary went to get a cloth from the #messy# drawer under the #sink#. She #wet# the cloth in cold water before putting it on Andrew\'s hot forehead and ran her fingers through his brown hair just as the doorbell rings. ' + 	
 	'</p><p>“Hi, Sophie, how are you?” says Mary as she opens the door to the babysitter. </p><p>“I’m good, thanks, Mary. It’s been #raining# so I got some water and #dirt# on my shoes though. How’s Andrew?” asks Sophie. ' + 
 	'</p><p>“He’s not #feeling# well so I’m worried about him. He’s #sleeping# right now in his #bed#,” says Mary. </p><p>“Don’t worry, Mary. Andrew will be taken care of. He just needs some #rest#. ' + 
 	'I will make him #soup# when he wakes up,” says Sophie. </p><p> Mary #throws# the car keys into her purse and then #waves# goodbye to Sophie as she leaves the house. She puts her #leather# purse into the trunk of her car. ' + 
