@@ -4,7 +4,7 @@ jatos.onLoad(function() {
     var finish_conf = {
         type: 'instructions',
         pages: [
-            header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>MLM' + jatos.studyResultId + '</b>. To arrange payment, please email <a href="mailto:langdev@sfu.ca?Subject=Participant%20MLM' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Participant MLM' + jatos.studyResultId + '</b></p>'
+            header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>MLF' + jatos.studyResultId + '</b>. To arrange payment, please email <a href="mailto:langdev@sfu.ca?Subject=Participant%20MLF' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Participant MLF' + jatos.studyResultId + '</b></p>'
         ],
         show_clickable_nav: true,
         button_label_next: 'Close',
