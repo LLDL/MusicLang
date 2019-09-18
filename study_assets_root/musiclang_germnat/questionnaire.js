@@ -9,6 +9,7 @@ var info = {
     type: 'instructions',
     pages: [
         //header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent-mannat.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
+        //TODO: Change reference to German consent form when we find it
         '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent-mannat.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
     ],
     show_clickable_nav: true,
