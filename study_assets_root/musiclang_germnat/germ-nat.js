@@ -7,7 +7,7 @@ var gen_inst = {
     type: 'instructions',
     pages: [
         header + '<h2>Dieses Experiment dauert 40 bis 60 Minuten und besteht aus verschiedenen Aufgaben. Viele Aufgaben beinhalten einen Audioteil. Um diese Aufgaben bearbeiten zu können, tragen Sie bitte ein Headset. Sie können zwischen den verschiedenen Aufgaben eine Pause machen. Um sicherzustellen, dass die Kopfhörer die Töne mit einer angenehmen Lautstärke wiedergeben, spielen Sie den nächsten Ton ab und korrigieren Sie die Kopfhörerlautstärke wenn nötig.</p><audio preload="auto" controls><source src="shared_assets/audio/sample.mp3" type="audio/mpeg">M</audio><p> ' +
-		'Nachdem Sie dies getan haben und bereit sind, klicken Sie auf „Next“, um den Test zu starten.</p>'
+		'Nachdem Sie dies getan haben und bereit sind, klicken Sie auf "Next“, um den Test zu starten.</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -268,7 +268,7 @@ var ppc_for_germ = {
 
 jatos.onLoad(function() {
     var counterBalance1 = {
-        timeline: [gen_inst, inst_met_rhy_for_fren, met_rhy_for_fren, inst_met_mel_for_fren, met_mel_for_fren, inst_rpcv_for_fren, rpcv_for_fren,inst_rpst_for_fren, rpst_for_fren, lk_for_fren, ppc_for_fren],
+        timeline: [gen_inst, inst_met_rhy_for_germ, met_rhy_for_germ, inst_met_mel_for_germ, met_mel_for_germ, inst_rpcv_for_germ, rpcv_for_germ, inst_rpst_for_germ, rpst_for_germ, lk_for_germ, ppc_for_germ],
         conditional_function: function(){
             if(jatos.studyResultId % 2 == 1){
                 // console.log("odd");
@@ -280,7 +280,7 @@ jatos.onLoad(function() {
     };
 
     var counterBalance2 = {
-        timeline: [gen_inst,inst_met_mel_for_fren, met_mel_for_fren, inst_met_rhy_for_fren, met_rhy_for_fren, inst_rpst_for_fren, rpst_for_fren,inst_rpst_for_fren, rpcv_for_fren, lk_for_fren, ppc_for_fren],
+        timeline: [gen_inst,inst_met_mel_for_germ, met_mel_for_germ, inst_met_rhy_for_germ, met_rhy_for_germ, inst_rpst_for_germ, rpst_for_germ,inst_rpst_for_germ, rpcv_for_germ, lk_for_germ, ppc_for_germ],
         conditional_function: function(){
             if(jatos.studyResultId % 2 == 0){
                 // console.log("odd");
