@@ -125,7 +125,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var nose_instr = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'instructions', blocktype: 'nose'},
-		stimulus: 'img/nose.jpeg',
+		stimulus: 'shared_assets/img/nose.jpeg',
 		prompt: '<p>For this upcoming block, <b>breathe only through your nose.</b></p>',
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 2000
@@ -134,7 +134,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var mouth_instr = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'instructions', blocktype: 'mouth'},
-		stimulus: 'img/mouth.png',
+		stimulus: 'shared_assets/img/mouth.png',
 		prompt: '<p>For this upcoming block, <b>breathe only through your mouth.</b></p>',
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 2000
@@ -168,7 +168,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var fixation_nose = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'fixation', blocktype: 'nose'},
-		stimulus: 'img/nose-small.jpeg',
+		stimulus: 'shared_assets/img/nose-small.jpeg',
 		prompt: '',
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 500
@@ -177,7 +177,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var fixation_mouth = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'fixation', blocktype: 'mouth'},
-		stimulus: 'img/mouth-small.png',
+		stimulus: 'shared_assets/img/mouth-small.png',
 		prompt: '',
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 500
@@ -213,7 +213,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var nose_rest = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'fixation', blocktype: 'nose'},
-  		stimulus: 'img/nose.jpeg',
+  		stimulus: 'shared_assets/img/nose.jpeg',
   		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p>Remember to return to <b>nose-breathing</b> at the end of the break!</p><p> Press the <i>spacebar</i> to continue when you are ready.</p>',
   		choices: [32],
 	};
@@ -221,7 +221,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var mouth_rest = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'fixation', blocktype: 'mouth'},
-  		stimulus: 'img/mouth.png',
+  		stimulus: 'shared_assets/img/mouth.png',
   		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p>Remember to return to <b>mouth-breathing</b> at the end of the break!</p><p> Press the <i>spacebar</i> to continue when you are ready.</p>',
   		choices: [32],
   	};
