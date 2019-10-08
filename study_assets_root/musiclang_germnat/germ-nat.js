@@ -232,7 +232,7 @@ var ppc_for_germ = {
         },
         {
             prompt: "Wie steht Jamens zu den großen Seen?",
-            options: ["Er mag es nicht dorthin zu fahren, aber er ist trotzdem sehr glücklich", "B.	Er mag es nicht dorthin zu fahren und es interessiert ihn nicht wirklich", "Er mag es dorthin zu fahren, aber er tut so, als würde er es nicht wollen", "Er fährt gern dorthin und ist sehr glücklich"]
+            options: ["Er mag es nicht dorthin zu fahren, aber er ist trotzdem sehr glücklich", "Er mag es nicht dorthin zu fahren und es interessiert ihn nicht wirklich", "Er mag es dorthin zu fahren, aber er tut so, als würde er es nicht wollen", "Er fährt gern dorthin und ist sehr glücklich"]
         },
         {
             prompt: "Was ist James erster Eindruck vom See, nachdem er aus dem Auto ausgestiegen ist?",
