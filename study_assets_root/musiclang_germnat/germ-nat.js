@@ -236,7 +236,7 @@ var ppc_for_germ = {
         },
         {
             prompt: "Was ist James erster Eindruck vom See, nachdem er aus dem Auto ausgestiegen ist?",
-            options: ["Der See ist schön, aber nicht so schön, wie er sich ihn vorgestellt hat", "Der See ist wunderschön, jenseits seiner ursprünglichen Vorstellungskraft", "Der See ist nicht schön. Den See, den er sich vorgestellt hat, war viel schöner", "Der See ist nicht schön und glatt wie ein Spiegel"]
+            options: ["Der See ist schön, aber nicht so schön, wie er sich ihn vorgestellt hat", "Der See ist wunderschön, jenseits seiner ursprünglichen Vorstellungskraft", "Der See ist nicht schön. Der See, den er sich vorgestellt hat, war viel schöner", "Der See ist nicht schön und glatt wie ein Spiegel"]
         },
         {
             prompt: "Was möchte James Mikey zeigen?",
@@ -248,11 +248,11 @@ var ppc_for_germ = {
         },
         {
             prompt: "Was hat James vor dem Mittagessen gemacht?",
-            options: ["Er ist schwimmen gegangen", "Mikey und James sind Basketball spielen gegangen", "Er hat am See gemalt", "Er hat seine Kleidung ausgepackt"]
+            options: ["Er ist schwimmen gegangen", "Mikey und James sind Baseball spielen gegangen", "Er hat am See gemalt", "Er hat seine Kleidung ausgepackt"]
         },
         {
             prompt: "Welche der folgenden Aussagen ist korrekt?",
-            options: ["Als James an den Großen Seen ankam und hörte, wie seine Verwandten vor dem Auto redeten, war er verärgert", "Als er im Auto saß, sah er einen Adler am Himmel und dachte, dass es ein guter Tag werden würde", "Durch den Geruch des Essens fühlte er sich hungrig und sein Mund begann zu wässern, was ihn durstig machte", "Sie halfen nach dem Mittagessen, das Geschirr abzuwaschen"]
+            options: ["Als James an den Großen Seen ankam und hörte, wie seine Verwandten vor dem Auto redeten, war er verärgert", "Als er im Auto saß, sah er einen Adler am Himmel und dachte, dass es ein guter Tag werden würde", "Durch den Geruch des Essens fühlte er sich hungrig und sein Mund begann zu wässern, was ihn durstig machte", "Sie halfen nach dem Mittagessen das Geschirr abzuwaschen"]
         },
         {
             prompt: "Welche der folgenden Aussagen kann nicht direkt aus der Textpassage erschlossen werden?",
