@@ -38,7 +38,7 @@ var met_rhy_for_germ = {
     answer2: 'Nein',
     audio: 'shared_assets/audio/met-r-for-germ.mp3',
     // test_length: 15
-    test_length: 608//603 + 5sec grace
+    test_length: 626//621 + 5sec grace
 };
 
 var inst_met_mel_for_germ = {
@@ -64,7 +64,7 @@ var met_mel_for_germ = {
     answer2: 'Nein',
     audio: 'shared_assets/audio/met-m-for-germ.mp3',
     // test_length: 15
-    test_length: 617 //612 + 5sec grace
+    test_length: 634 //629 + 5sec grace
 };
 
 var inst_rpcv_for_germ = {
