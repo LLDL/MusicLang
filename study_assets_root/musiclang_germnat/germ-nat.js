@@ -224,7 +224,7 @@ var ppc_for_germ = {
     passage_language: 'english',
     questions: [{
             prompt: "Was macht James auf dem Weg zu den großen Seen?",
-            options: ["Er ist sehr aufgeregt mit seinen Verwandten auf dem Weg zu plaudern", "Er ist sehr aufgeregt, hört aber nur zu, wie seine Verwandten plauder", "Er schläft", "Er schaut aus dem Fenster"]
+            options: ["Er ist sehr aufgeregt mit seinen Verwandten auf dem Weg zu plaudern", "Er ist sehr aufgeregt, hört aber nur zu, wie seine Verwandten plaudern", "Er schläft", "Er schaut aus dem Fenster"]
         },
         {
             prompt: "Wie oft besucht James die großen Seen?",
