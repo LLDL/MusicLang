@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="google" content="notranslate" />
+        <title>LangDev Recal</title>
+        <script src="jatos.js"></script>
+        <script src="jspsych-6.1/jspsych.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-audio-keyboard-response.js"></script>
+        <script src="shared_assets/js/instructions.js"></script>
+
+        <link href="shared_assets/stylesheet.css" rel="stylesheet" />
+        <link href="jspsych-6.1/css/jspsych.css" rel="stylesheet" />
+
+    </head>
+    <body></body>
+    <script>
+    var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img>";
+
+    jatos.onLoad(function() {
+        var finish_conf = {
+            type: 'instructions',
+            pages: [
+                header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>' + jatos.studyResultId + '</b>. To arrange payment, please email <a href="mailto:langdev@sfu.ca ' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Recal: ' + jatos.studyResultId + '</b></p>'
+            ],
+            show_clickable_nav: true,
+            button_label_next: 'Close',
+            allow_keys: false
+        };
+        jsPsych.init({
+            //Questionaire:
+            timeline: [finish_conf],
+
+            exclusions: {
+                min_width: 800,
+                min_height: 600
+            },
+            on_finish: function (data) {
+                var studyID = jatos.studyResultId;
+                jsPsych.data.addProperties({subject : studyID});
+                var resultsRaw = jsPsych.data.get();
+                var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed');
+                var resultsCSV = results.csv();
+                jatos.submitResultData(resultsCSV, jatos.startNextComponent);
+            }
+        })
+    });
+    </script>
+</html>
