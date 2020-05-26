@@ -36,6 +36,79 @@ function get_answer(questions, question) {
     return questions[question].children[1].value;
 };
 
+// MODIFIED FOR RPS //
+
+function validate_rps() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    //start with next disabled
+    allow_next(next, false);
+
+    var lname = get_answer(questions, 1);
+    var snum = get_answer(questions, 2);
+    var course = get_answer(questions, 3);
+    var semyear = get_answer(questions, 4);
+    var instructor = get_answer(questions, 5);
+    var notes = get_answer(questions, 6);
+
+    //regex from: https://cs.chromium.org/chromium/src/third_party/WebKit/LayoutTests/fast/forms/resources/ValidityState-typeMismatch-email.js?sq=package:chromium&type=cs
+    var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if ((lname.length == 0 || lname.length > 100)) {
+        allow_next(next, false, "Enter your full name");
+    } else if (snum.length < 9 || snum.length > 100) {
+        allow_next(next, false, "Enter your student number");
+    } else if (course.length == 0 || course.length > 100) {
+        allow_next(next, false, "Enter the course name and number");
+    } else if (semyear.length == 0 || semyear.length > 100) {
+        allow_next(next, false, "Enter the semester and year");
+    } else if (instructor.length == 0 || instructor.length > 100) {
+          allow_next(next, false, "Enter the instructor name");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+// MODIFIED FOR RPS //
+
+function validate_confirmation() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
+
+function validate_contact() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    //start with next disabled
+    allow_next(next, false);
+
+    var lname = get_answer(questions, 1);
+    var fname = get_answer(questions, 2);
+    var phone = get_answer(questions, 3);
+    var email = get_answer(questions, 4);
+
+    //regex from: https://cs.chromium.org/chromium/src/third_party/WebKit/LayoutTests/fast/forms/resources/ValidityState-typeMismatch-email.js?sq=package:chromium&type=cs
+    var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if ((lname.length == 0 || lname.length > 100)) {
+        allow_next(next, false, "Enter your surname");
+    } else if (fname.length == 0 || lname.length > 100) {
+        allow_next(next, false, "Enter your first name");
+    } else if (phone.length < 5 || phone.length > 100) {
+        allow_next(next, false, "Enter a valid phone number");
+    } else if (!email_regex.test(String(email).toLowerCase())) {
+        allow_next(next, false, "Enter a valid email address");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+
 function update_known_langs(questions) {
     var known = [];
     for (var i = 0; i < 5; i++) {
@@ -231,7 +304,7 @@ function validate_musical_detail(){
     if(musical_exp){
         for(var row_index = 0; row_index<5; row_index++){
             curr_row_els = document.getElementById('music-info-row-' + row_index).childNodes;
-            
+
             var desc = curr_row_els[0].childNodes[0].value;
             var age = curr_row_els[1].childNodes[0].value;
             var years = curr_row_els[2].childNodes[0].value;
@@ -240,20 +313,20 @@ function validate_musical_detail(){
             //first row of table must be filled in
             if(row_index == 0 && (desc == '' || age == '' || years == '' || inst == '')){
                 allow_next(next, false, "Please describe at least one musical experience.");
-            } 
+            }
             //if user has filled in age/years/inst without a description
             if(desc == '' && (age != '' || years != '' || inst != '')){
                 allow_next(next, false, "Please complete row " + (row_index + 1));
-                
+
             }
             //if user has inputted a description for the row, validate
-            if( desc != '' && (   
-                    (desc.length > 100) || 
+            if( desc != '' && (
+                    (desc.length > 100) ||
                     (age.length == 0 || isNaN(age) || age < 0 || age > 120) ||
                     (years.length == 0 || isNaN(years) || years < 0 || years > 120) ||
                     (inst.length == 0 || inst.length > 100)
                 )){
-                
+
                 allow_next(next, false, "Please complete row " + (row_index + 1));
             }
         }
