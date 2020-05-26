@@ -46,14 +46,17 @@
     "<p> In this phase, you will be asked to articulate a sound in sync with the audiovisual face in the videos. </p>" +
     "<p> The sound that you're told to articulate will sometimes not match with the face in the videos. </p>" +
     "<p> You will also hear static noise during some videos, this is normal, continue watching the videos. </p>" +
-    "<p> Following all of the video clips, you will be asked to answer what sound you heard most overall by dragging a slider for your response. </p>" +
+    "<p> Following all of the video clips, you will be asked what sound you heard most overall." +
+    " For your response, drag the slider to the preferred position. </p>" +
     "<p> Answer as quickly and accurately as you can. </p>" +
     "<p> <h2>Series of sound clips</h2></p>" +
     "<p> In this phase, you will be asked to decide what sound you heard after each sound clip.</p>" +
     "<p> Press the left arrow key for <b>/ABA/</b> or right arrow key for <b>/ADA/</b>.</p>" +
     "<p> Answer as quickly and accurately as you can. </p>" +
     "<p> Please use your dominant hand (right if righthanded, left if lefthanded) to press the arrow keys and your non-dominant hand to press the spacebar or enter key. </p>" +
-    "<p> You will be given a practice trial. Click <i>next</i> to begin the practice trial.</p>"],
+    "<p> <h2> Practice Trial </h2>" +
+    "<p> A trial consists of both the series of video clips and series of sound clips. <p>" +
+    "<p> You will be given two practice trials before starting the test. Click <i>next</i> to begin the practice trials.</p>"],
           show_clickable_nav: true,
           allow_keys: false
         }
@@ -99,10 +102,10 @@ var say_ADA = {
 var video_response = {
   type: 'html-slider-response',
   stimulus: "<p>What sound did you hear the most?</p>",
-  labels: ['100% ABA', '83% ABA', '67% ABA',  '50% ABA/ABA', '67% ADA', '83% ADA', '100% ADA'],
+  labels: ['100% ABA', '50% ABA/50% ADA', '100% ADA'],
   min: 1,
   max: 7,
-  slider_width: 1000,
+  slider_width: 750,
   response_ends_trial: true
 }
 
@@ -120,7 +123,8 @@ var prac_con4ABA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -153,7 +157,8 @@ var prac_con5ABA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -187,7 +192,8 @@ var prac_con6ABA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -220,7 +226,8 @@ timeline: [
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
         data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
-        trial_duration: 2000
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
     },
 
 ],
@@ -253,7 +260,8 @@ timeline: [
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
         data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
-        trial_duration: 2000
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
     },
 
 ],
@@ -285,7 +293,8 @@ timeline: [
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
         data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
-        trial_duration: 2000
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
     },
 
 ],
@@ -319,7 +328,8 @@ var prac_incon4ABA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -352,7 +362,8 @@ var prac_incon5ABA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -386,7 +397,8 @@ var prac_incon6ABA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -419,7 +431,8 @@ timeline: [
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
         data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
-        trial_duration: 2000
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
     },
 
 ],
@@ -452,7 +465,8 @@ timeline: [
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
         data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
-        trial_duration: 2000
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
     },
 
 ],
@@ -485,7 +499,8 @@ timeline: [
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
         data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
-        trial_duration: 2000
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
     },
 
 ],
@@ -520,7 +535,8 @@ timeline_variables: [
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
                 data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                trial_duration: 2000
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
             },
 
         ],
@@ -553,7 +569,8 @@ timeline_variables: [
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
                 data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                trial_duration: 2000
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
             },
 
         ],
@@ -587,7 +604,8 @@ timeline_variables: [
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
                 data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                trial_duration: 2000
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
             },
 
         ],
@@ -620,7 +638,8 @@ var con4ADA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -653,7 +672,8 @@ var con5ADA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -685,7 +705,8 @@ var con6ADA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -719,7 +740,8 @@ var con6ADA = {
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
                 data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                trial_duration: 2000
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
             },
 
         ],
@@ -752,7 +774,8 @@ var con6ADA = {
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
                 data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                trial_duration: 2000
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
             },
 
         ],
@@ -786,7 +809,8 @@ var con6ADA = {
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
                 data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                trial_duration: 2000
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
             },
 
         ],
@@ -819,7 +843,8 @@ var incon4ADA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -852,7 +877,8 @@ var incon5ADA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -885,7 +911,8 @@ var incon6ADA = {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
             data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            trial_duration: 2000
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
         },
 
     ],
@@ -1234,7 +1261,6 @@ if(randomint > 175){
 
 timeline.push(begintest);
 
-/*
 // MAIN TRIALS //
 // RANDOMIZER, CREATES RANDOM INTEGER FROM 0-100 TO DECIDE WHICH PLAYLIST TO PLAY //
 // CONDITION 4 //
@@ -3908,14 +3934,15 @@ if(randomint > 115){
 );
 }
 }
-*/
 
-var debrief = {
+var end = {
     type: 'instructions',
     pages: [ '<h2>Study Complete</h2>' +
       '<p>Thank you for participating!</p>' +
       '<p>This study aimed to investigate audiovisual processing in combination with motor information.' +
-      ' In particular, we are interested in how an ambiguous auditory stimulus can be recalibrated by a non-ambiguous visual stimulus in conjunction with motor processing.' +
+      ' In particular, we are interested in how an ambiguous auditory stimulus can be recalibrated by a non-ambiguous visual stimulus in conjunction with motor processing. ' +
+      ' For example, if you are presented with an ambiguous sound between /ABA/ and /ADA/ paired with a face saying /ABA/, you may perceive that sound as /ABA/. Later, during the auditory-only trials, you may tend to respond that you heard this ambiguous sound as /ABA/.' +
+      ' In this study, we sometimes put the articulation in opposition to the face. For example, we had you articulate /ABA/ paired with a face saying /ADA/. We are interested to see how auditory-only responses would change.' +
       ' This research will help us clarify the link between audition and vision and the motor system in speech processing. </p>' +
     '<b>Click <i>next</i> for instructions on arranging compensation or to fill out the RPS form.</b>'],
     data: {test_part: 'instructions'},
@@ -3923,7 +3950,7 @@ var debrief = {
     button_label_next: "Next",
     allow_keys: false
 }
-timeline.push(debrief);
+timeline.push(end);
 
 //IN TERMINAL: open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 

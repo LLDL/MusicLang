@@ -50,7 +50,9 @@
     "<p> Press the left arrow key for <b>/ABA/</b> or right arrow key for <b>/ADA/</b>.</p>" +
     "<p> Answer as quickly and accurately as you can. </p>" +
     "<p> Please use your dominant hand (right if righthanded, left if lefthanded) to press the arrow keys and your non-dominant hand to press the spacebar or enter key. </p>" +
-    "<p> You will be given a practice trial. Click <i>next</i> to begin the practice trial.</p>"],
+    "<p> <h2> Practice Trial </h2>" +
+    "<p> A trial consists of both the series of video clips and series of sound clips phases. <p>"
+    "<p> You will be given two practice trials before starting the test. Click <i>next</i> to begin the practice trials.</p>"],
           show_clickable_nav: true,
           allow_keys: false
         }
@@ -3924,11 +3926,13 @@ if(randomint > 115){
 var end = {
     type: 'instructions',
     pages: [ '<h2>Study Complete</h2>' +
-      '<p>Thank you for participating!</p>' +
-      '<p>This study aimed to investigate audiovisual processing in combination with motor information.' +
-      ' In particular, we are interested in how an ambiguous auditory stimulus can be recalibrated by a non-ambiguous visual stimulus in conjunction with motor processing.' +
-      ' This research will help us clarify the link between audition and vision and the motor system in speech processing. </p>' +
-    '<b>Click <i>next</i> for instructions on arranging compensation or to fill out the RPS form.</b>'],
+    '<p>Thank you for participating!</p>' +
+    '<p>This study aimed to investigate audiovisual processing in combination with motor information.' +
+    ' In particular, we are interested in how an ambiguous auditory stimulus can be recalibrated by a non-ambiguous visual stimulus in conjunction with motor processing. ' +
+    ' For example, if you are presented with an ambiguous sound between /ABA/ and /ADA/ paired with a face saying /ABA/, you may perceive that sound as /ABA/. Later, during the auditory-only trials, you may tend to respond that you heard this ambiguous sound as /ABA/.' +
+    ' In this study, we sometimes put the articulation in opposition to the face. For example, we had you articulate /ABA/ paired with a face saying /ADA/. We are interested to see how auditory-only responses would change.' +
+    ' This research will help us clarify the link between audition and vision and the motor system in speech processing. </p>' +
+  '<b>Click <i>next</i> for instructions on arranging compensation or to fill out the RPS form.</b>'],
     data: {test_part: 'instructions'},
     show_clickable_nav: true,
     button_label_next: "Next",
