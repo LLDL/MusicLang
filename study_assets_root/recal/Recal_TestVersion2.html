@@ -62,7 +62,7 @@
         }
     timeline.push(practiceinstructions);
 
-    /* begin test trials screen */
+    // begin test trials screen //
     var begintest = {
         type: 'instructions',
         pages: ['The test trials will now begin. Click <i>next</i> to continue.'],
@@ -314,7 +314,7 @@ timeline_variables: [
 ]
 }
 
-/* LIST OF INCONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" */
+// LIST OF INCONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" //
 // condition 4: block "ABA" //
 var prac_incon4ABA = {
     timeline: [
@@ -726,7 +726,7 @@ var con6ADA = {
     ]
 }
 
-/* LIST OF INCONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" */
+// LIST OF INCONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" //
 // condition 4: block "ABA" //
     var incon4ABA = {
         timeline: [
@@ -933,7 +933,7 @@ var incon6ADA = {
 }
 
 
-/* AUDIO TRIALS FOR EACH CONDITION */
+// AUDIO TRIALS FOR EACH CONDITION //
 // CONDITION 4 AUDIO //
 var audio_stimuli4 = [
   {stimulus: 'audio/bd04_minus.wav', data: {level: '4m'}},
@@ -951,7 +951,7 @@ var audioDR = {
       trial_ends_after_audio: true
     }
 
-/* after audio finishes completely, participant can make a response & "level" data is logged to the response trial */
+// after audio finishes completely, participant can make a response & "level" data is logged to the response trial //
     var responseDR = {
           type: "html-keyboard-response",
           stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ABA</b></div>" +
@@ -1099,13 +1099,13 @@ if(randomint > 175){
   timeline.push(
     // condition 4: practice playlist #1
     say_ABA, prac_con4ABA, video_response, audioDR4,
-    say_ABA, prac_INcon4ADA, video_response, audioDR4
+    say_ABA, prac_incon4ADA, video_response, audioDR4
   );
 } else if(randomint > 150){
   timeline.push(
     // condition 4: practice playlist #2
     say_ADA, prac_con4ADA, video_response, audioDR4,
-    say_ABA, prac_INcon4ADA, video_response, audioDR4
+    say_ABA, prac_incon4ADA, video_response, audioDR4
   );
 } else if(randomint > 125){
   timeline.push(
@@ -1123,7 +1123,7 @@ if(randomint > 175){
   timeline.push(
     // condition 4 playlist #5
     say_ADA, prac_incon4ABA, video_response, audioDR4,
-    say_ABA, prac_con4ABA, video_response, audioDR4
+    say_ADA, prac_con4ADA, video_response, audioDR4
 );
 } else if(randomint > 50){
   timeline.push(
@@ -1134,13 +1134,13 @@ if(randomint > 175){
 } else if(randomint > 25){
   timeline.push(
     // condition 4 playlist #7
-    say_ADA, prac_incon4ABA, video_response, audioDR4,
-    say_ABA, prac_con4ABA, video_response, audioDR4
+    say_ABA, prac_incon4ADA, video_response, audioDR4,
+    say_ADA, prac_con4ADA, video_response, audioDR4
 );
 } else if(randomint > 0){
   timeline.push(
     // condition 4 playlist #8
-    say_ADA, prac_incon4ABA, video_response, audioDR4,
+    say_ABA, prac_incon4ADA, video_response, audioDR4,
     say_ABA, prac_con4ABA, video_response, audioDR4
 );
 }
@@ -1179,7 +1179,7 @@ if(randomint > 175){
   timeline.push(
     // condition 5 playlist #5
     say_ADA, prac_incon5ABA, video_response, audioDR5,
-    say_ABA, prac_con5ABA, video_response, audioDR5
+    say_ADA, prac_con5ADA, video_response, audioDR5
 );
 } else if(randomint > 50){
   timeline.push(
@@ -1190,13 +1190,13 @@ if(randomint > 175){
 } else if(randomint > 25){
   timeline.push(
     // condition 5 playlist #7
-    say_ADA, prac_incon5ABA, video_response, audioDR5,
-    say_ABA, prac_con5ABA, video_response, audioDR5
+    say_ABA, prac_incon5ADA, video_response, audioDR5,
+    say_ADA, prac_con5ADA, video_response, audioDR5
 );
 } else if(randomint > 0){
   timeline.push(
     // condition 5 playlist #8
-    say_ADA, prac_incon5ABA, video_response, audioDR5,
+    say_ABA, prac_incon5ADA, video_response, audioDR5,
     say_ABA, prac_con5ABA, video_response, audioDR5
 );
 }
@@ -1234,25 +1234,25 @@ if(randomint > 175){
 } else if(randomint > 75){
   timeline.push(
     // condition 6 playlist #5
-    say_ADA, prac_incon6ABA, video_response, audioDR6,
+    say_ABA, prac_incon6ADA, video_response, audioDR6,
     say_ADA, prac_con6ADA, video_response, audioDR6
 );
 } else if(randomint > 50){
   timeline.push(
     // condition 6 playlist #6
-    say_ADA, prac_incon6ABA, video_response, audioDR6,
+    say_ABA, prac_incon6ADA, video_response, audioDR6,
     say_ABA, prac_con6ABA, video_response, audioDR6
 );
 } else if(randomint > 25){
   timeline.push(
     // condition 6 playlist #7
-    say_ABA, prac_incon6ADA, video_response, audioDR6,
+    say_ADA, prac_incon6ABA, video_response, audioDR6,
     say_ADA, prac_con6ADA, video_response, audioDR6
 );
 } else if(randomint > 0){
   timeline.push(
     // condition 6 playlist #8
-    say_ABA, prac_incon6ADA, video_response, audioDR6,
+    say_ADA, prac_incon6ABA, video_response, audioDR6,
     say_ABA, prac_con6ABA, video_response, audioDR6
 );
 }
@@ -1621,7 +1621,14 @@ if(randomint > 115){
     say_ABA, incon4ADA, video_response, audioDR4,
     say_ABA, incon4ADA, video_response, audioDR4,
     halfway,
-
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
+    say_ABA, con4ABA, video_response, audioDR4,
     say_ADA, incon4ABA, video_response, audioDR4,
     say_ADA, incon4ABA, video_response, audioDR4,
     say_ADA, incon4ABA, video_response, audioDR4,
@@ -2162,22 +2169,22 @@ randomint = Math.floor(Math.random()*120);
 if(randomint > 115){
   timeline.push(
     // PLAYLIST # 1
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     halfway,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2199,22 +2206,22 @@ if(randomint > 115){
 } else if(randomint > 110){
     timeline.push(
       // PLAYLIST # 2
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ABA, incon5ABA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
-      say_ADA, incon5ADA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ABA, con5ABA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
+      say_ADA, con5ADA, video_response, audioDR5,
       halfway,
       say_ADA, incon5ABA, video_response, audioDR5,
       say_ADA, incon5ABA, video_response, audioDR5,
@@ -2236,14 +2243,14 @@ if(randomint > 115){
   } else if(randomint > 105){
       timeline.push(
         // PLAYLIST # 3
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
-        say_ABA, incon5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
+        say_ABA, con5ABA, video_response, audioDR5,
         say_ADA, incon5ABA, video_response, audioDR5,
         say_ADA, incon5ABA, video_response, audioDR5,
         say_ADA, incon5ABA, video_response, audioDR5,
@@ -2253,14 +2260,14 @@ if(randomint > 115){
         say_ADA, incon5ABA, video_response, audioDR5,
         say_ADA, incon5ABA, video_response, audioDR5,
         halfway,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
-        say_ADA, incon5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
+        say_ADA, con5ADA, video_response, audioDR5,
         say_ABA, incon5ADA, video_response, audioDR5,
         say_ABA, incon5ADA, video_response, audioDR5,
         say_ABA, incon5ADA, video_response, audioDR5,
@@ -2273,14 +2280,14 @@ if(randomint > 115){
     } else if(randomint > 100){
         timeline.push(
           // PLAYLIST # 4
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
-          say_ABA, incon5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
+          say_ABA, con5ABA, video_response, audioDR5,
           say_ADA, incon5ABA, video_response, audioDR5,
           say_ADA, incon5ABA, video_response, audioDR5,
           say_ADA, incon5ABA, video_response, audioDR5,
@@ -2298,26 +2305,26 @@ if(randomint > 115){
           say_ABA, incon5ADA, video_response, audioDR5,
           say_ABA, incon5ADA, video_response, audioDR5,
           say_ABA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5,
-          say_ADA, incon5ADA, video_response, audioDR5
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5,
+          say_ADA, con5ADA, video_response, audioDR5
         );
 } else if(randomint > 95){
   timeline.push(
     // PLAYLIST # 5
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2335,26 +2342,26 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5
   );
 } else if(randomint > 90){
   timeline.push(
     // PLAYLIST # 6
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2364,14 +2371,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     halfway,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2384,22 +2391,22 @@ if(randomint > 115){
 } else if(randomint > 85){
   timeline.push(
     // PLAYLIST # 7
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     halfway,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2421,22 +2428,22 @@ if(randomint > 115){
 } else if(randomint > 80){
   timeline.push(
     // PLAYLIST # 8
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     halfway,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2458,14 +2465,14 @@ if(randomint > 115){
 } else if(randomint > 75){
   timeline.push(
     // PLAYLIST # 9
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2475,14 +2482,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     halfway,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2495,14 +2502,14 @@ if(randomint > 115){
 } else if(randomint > 70){
   timeline.push(
     // PLAYLIST # 10
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2512,7 +2519,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     halfway,
-
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2525,14 +2539,14 @@ if(randomint > 115){
 } else if(randomint > 65){
   timeline.push(
     // PLAYLIST # 11
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2542,14 +2556,14 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     halfway,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2562,14 +2576,14 @@ if(randomint > 115){
 } else if(randomint > 60){
   timeline.push(
     // PLAYLIST # 12
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2587,14 +2601,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5
   );
 
 } else if(randomint > 55){
@@ -2617,22 +2631,22 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     halfway,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5
   );
 } else if(randomint > 50){
   timeline.push(
@@ -2654,22 +2668,22 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     halfway,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5
   );
 } else if(randomint > 45){
   timeline.push(
@@ -2682,14 +2696,14 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     halfway,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2699,14 +2713,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
   );
 } else if(randomint > 40){
   timeline.push(
@@ -2719,23 +2733,23 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     halfway,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2756,14 +2770,14 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     halfway,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2773,14 +2787,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5
   );
 } else if(randomint > 30){
   timeline.push(
@@ -2793,23 +2807,23 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     halfway,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
@@ -2830,23 +2844,23 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     halfway,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2867,14 +2881,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     halfway,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2884,14 +2898,14 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5
 );
 } else if(randomint > 15){
   timeline.push(
@@ -2904,14 +2918,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     halfway,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2921,14 +2935,14 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5
 );
 } else if(randomint > 10){
   timeline.push(
@@ -2941,23 +2955,23 @@ if(randomint > 115){
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
     say_ABA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
     halfway,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
@@ -2987,22 +3001,22 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     halfway,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5
   );
 } else if(randomint > 0){
   timeline.push(
@@ -3024,22 +3038,22 @@ if(randomint > 115){
     say_ADA, incon5ABA, video_response, audioDR5,
     say_ADA, incon5ABA, video_response, audioDR5,
     halfway,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ABA, incon5ABA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5,
-    say_ADA, incon5ADA, video_response, audioDR5
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ABA, con5ABA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5,
+    say_ADA, con5ADA, video_response, audioDR5
 );
 }
 }
@@ -3403,7 +3417,14 @@ if(randomint > 115){
     say_ABA, incon6ADA, video_response, audioDR6,
     say_ABA, incon6ADA, video_response, audioDR6,
     halfway,
-
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
+    say_ABA, con6ABA, video_response, audioDR6,
     say_ADA, incon6ABA, video_response, audioDR6,
     say_ADA, incon6ABA, video_response, audioDR6,
     say_ADA, incon6ABA, video_response, audioDR6,
@@ -3949,12 +3970,12 @@ var end = {
     button_label_next: "Next",
     allow_keys: false
 }
-timeline.push(end);   
-    
-    
+timeline.push(end);
+
+
 //IN TERMINAL: open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 
-      /* start the experiment */
+      // start the experiment
     jsPsych.init({
         timeline: timeline, // plays timeline "trial"
         use_webaudio: false, // allows audio to play in browser
