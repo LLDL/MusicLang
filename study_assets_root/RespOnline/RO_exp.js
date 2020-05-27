@@ -61,7 +61,7 @@ from the lab.
    		pages: [
         '<h2>Instructions</h2><p>This study involves tasks that involve listening to audio clips. ' +
 			'Please <b>put on your headphones</b>.</p><p> To make sure your headphones are set to a ' +
-			'comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="audio/sample.mp3" type="audio/mpeg"></audio>' + 
+			'comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="shared_assets/audio/sample.mp3" type="audio/mpeg"></audio>' + 
 			'<p>This study also requires you to breathe through your nose.</p><p> *NOTE: If you are congested ' + 
 			'or are unable to breathe through your nose due to other reasons, you are <b>not</b> eligible for the study. ' + 
 			'If you are congested, please consider doing this study another day.</p>' + 
