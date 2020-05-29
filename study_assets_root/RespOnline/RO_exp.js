@@ -3,44 +3,44 @@
 		the value between the <title> tags is what shows up as the title of the webpage.
 		the next 3 lines, both <script> tags, tell it to use certain modules of jspsych.
 		after that, we add a reference to JATOS so that we'll be able to use that, too!
-			<script src="/assets/javascripts/jatos.js"><\/script> 
+			<script src="/assets/javascripts/jatos.js"><\/script>
 			\\delete the other \
 		then the <link> tags part controls the aesthetic look of the study.
 		I don't know what the <body> tags do, but I assume it's important :)
 		then we get into the body of the experiment.
 
 Description
-In RespOnline, participants listen to sounds along three continua (d-b, d-n, m-n), 
-while breathing through either their nose or their mouth, and identify the sounds. 
+In RespOnline, participants listen to sounds along three continua (d-b, d-n, m-n),
+while breathing through either their nose or their mouth, and identify the sounds.
 Participants first complete the online consent form and questionnaire. Afterwards, participants
 receive instructions on-screen which allows them to adjust the volume to a comfortable level.
 On this instructions page, participants are also told that the study requires them to breathe
 through their nose and that if they are unable to do so, that they are not eligible for the study.
 The text also advises that the participant considers completing the study another day if they
 are currently experiencing a cold. After they have read the instructions and have adjusted
-their volume, participants are randomly assigned to be instructed either to breathe through 
-their nose first then breathe through their mouth, or vice versa. Stimuli will be presented the 
-following order: 1) a small drawing of a nose or mouth is quickly shown on the screen, 2) audio is played on 
+their volume, participants are randomly assigned to be instructed either to breathe through
+their nose first then breathe through their mouth, or vice versa. Stimuli will be presented the
+following order: 1) a small drawing of a nose or mouth is quickly shown on the screen, 2) audio is played on
 a blank screen, 3) one of the following is displayed on the screen: "ADA or ABA?","ADA or ANA?", "AMA or ANA?". Participants will
-identify which sound they heard by pressing the left or right arrow key (e.g. "ADA or ABA?", D = left, 
-B = right). Within each condition (nose, mouth), participants will be given 7 (3 within each block, 1 between) 
-breaks. After completing all trials, participants will be thanked for their participation and given a participant 
-ID (so we can identify people) which they will need to provide when they claim their RPS credits 
+identify which sound they heard by pressing the left or right arrow key (e.g. "ADA or ABA?", D = left,
+B = right). Within each condition (nose, mouth), participants will be given 7 (3 within each block, 1 between)
+breaks. After completing all trials, participants will be thanked for their participation and given a participant
+ID (so we can identify people) which they will need to provide when they claim their RPS credits
 from the lab.
 	*/
-	
+
 	//blur count; counts how many times a subject changes out of the experiment tab --
 	// too many will result in participant being flagged "-likely-invalid"
 	var blur_count = 0; //number of times subject's focus leaves tab
 	var likely_invalid = false; //gets set to true if blur_count>threshold
-	
+
 	//create a variable called "timeline"; this is what we'll add our trials to
 	var timeline = [];
-		
+
 	//initiate data object, so we can get a subject number from JATOS and show it in debrief
 	var resultData = {};
 
-	//for the RespOnSite version, participants read this after completing the questionnaire... 
+	//for the RespOnSite version, participants read this after completing the questionnaire...
 	/* Remove /* if running RespOnSite...
 		var after_q = {
 		type: "instructions",
@@ -53,7 +53,7 @@ from the lab.
 		timing_post_trial: 8000
 	};
 
-	timeline.push(after_q);*/ 
+	timeline.push(after_q);*/
 
 	//now let's welcome people to the study
 	var welcome = {
@@ -61,18 +61,18 @@ from the lab.
    		pages: [
         '<h2>Instructions</h2><p>This study involves tasks that involve listening to audio clips. ' +
 			'Please <b>put on your headphones</b>.</p><p> To make sure your headphones are set to a ' +
-			'comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="shared_assets/audio/sample.mp3" type="audio/mpeg"></audio>' + 
-			'<p>This study also requires you to breathe through your nose.</p><p> *NOTE: If you are congested ' + 
-			'or are unable to breathe through your nose due to other reasons, you are <b>not</b> eligible for the study. ' + 
-			'If you are congested, please consider doing this study another day.</p>' + 
-			'<p>This study takes about 25 minutes. You will be given 7 breaks throughout the study.</p>' + 
+			'comfortable volume, play the following audio clip and adjust accordingly.</p><audio preload="auto" controls><source src="shared_assets/audio/sample.mp3" type="audio/mpeg"></audio>' +
+			'<p>This study also requires you to breathe through your nose.</p><p> *NOTE: If you are congested ' +
+			'or are unable to breathe through your nose due to other reasons, you are <b>not</b> eligible for the study. ' +
+			'If you are congested, please consider doing this study another day.</p>' +
+			'<p>This study takes about 25 minutes. You will be given 7 breaks throughout the study.</p>' +
 			'<p>Click <i>Next</i> to continue.</p>',
     ],
     	show_clickable_nav: true,
     	button_label_next: 'Next',
     	allow_keys: false
 };
-	
+
 	//and add this to the timeline
 	timeline.push(welcome);
 
@@ -97,30 +97,30 @@ from the lab.
    	 	allow_keys: false,
 		timing_post_trial: 8000
 	};
-	
+
 	//and add this to the instructions as well!
 	timeline.push(instructions);
 
 /*These are the instructions from the BreathSpeech ethics approval:
 In this study we will ask you to breathe in a certain way for short periods while identifying auditory sounds.
 
-Please put on headphones for this task, and adjust sound levels to a comfortable volume. 
-In a single experimental trial, you will hear one of two sounds over the headphones, 
-and please identify these sounds as being [Sound A response, like “ada” or “flute”] or 
+Please put on headphones for this task, and adjust sound levels to a comfortable volume.
+In a single experimental trial, you will hear one of two sounds over the headphones,
+and please identify these sounds as being [Sound A response, like “ada” or “flute”] or
 [Sound B response, like “ana” or “bassoon”] by pressing the indicated keys on the keyboard.
- Your responses should be made as quickly but also as accurately as possible. 
+ Your responses should be made as quickly but also as accurately as possible.
  Your responses and reaction times will be recorded.
 
-You will complete several blocks of trials, each of which will last a few minutes. 
-In total, this study will last 5-10 minutes. In some blocks of trials, 
-you will be asked to breathe through your mouth (and not through your nose) 
-while doing this auditory perception task. In other blocks of trials, 
-you will be asked to breathe through your nose (and not through your mouth) 
+You will complete several blocks of trials, each of which will last a few minutes.
+In total, this study will last 5-10 minutes. In some blocks of trials,
+you will be asked to breathe through your mouth (and not through your nose)
+while doing this auditory perception task. In other blocks of trials,
+you will be asked to breathe through your nose (and not through your mouth)
 while doing the task. Please follow the text prompts given to you before each block.
 
 There is a brief practice phase before the actual study begins. Press any key to continue.
 */
-	
+
 	// Here are the instructions for the FIRST of the two blocks, nose or mouth depending on the random integer they get.
 	var nose_instr = {
 		type: 'image-keyboard-response',
@@ -130,7 +130,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 2000
 	};
-	
+
 	var mouth_instr = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'instructions', blocktype: 'mouth'},
@@ -139,8 +139,8 @@ There is a brief practice phase before the actual study begins. Press any key to
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 2000
 	};
-	
-	//get an integer between 0-479 
+
+	//get an integer between 0-479
 	randomint = Math.floor(Math.random()*480);
 
 	//random choice between mouth block and nose block, dleft and dright
@@ -173,7 +173,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 500
 	};
-	
+
 	var fixation_mouth = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'fixation', blocktype: 'mouth'},
@@ -182,7 +182,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 500
 	};
-	
+
 	var audiopresentation = {
 		type: 'audio-keyboard-response',
 		data: {test_part: 'test'},
@@ -191,7 +191,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		choices: jsPsych.NO_KEYS,
 		trial_duration: 1100
 	};
-	
+
 	var responselog = {
 		type: 'html-keyboard-response',
 		stimulus: "",
@@ -208,7 +208,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		},
 		trial_duration: 15000
 	};
-	
+
 	// Participants get breaks every 60 trials; they need to click Next to continue.
 	var nose_rest = {
 		type: 'image-keyboard-response',
@@ -217,7 +217,7 @@ There is a brief practice phase before the actual study begins. Press any key to
   		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p>Remember to return to <b>nose-breathing</b> at the end of the break!</p><p> Press the <i>spacebar</i> to continue when you are ready.</p>',
   		choices: [32],
 	};
-	
+
 	var mouth_rest = {
 		type: 'image-keyboard-response',
 		data: {test_part: 'fixation', blocktype: 'mouth'},
@@ -225,7 +225,7 @@ There is a brief practice phase before the actual study begins. Press any key to
   		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p>Remember to return to <b>mouth-breathing</b> at the end of the break!</p><p> Press the <i>spacebar</i> to continue when you are ready.</p>',
   		choices: [32],
   	};
-	
+
 	// Here are instructions between nose and mouth block or vice versa; they will also need to click Next to continue.
 	var instr_btwn = {
 		type: "instructions",
@@ -236,1077 +236,1077 @@ There is a brief practice phase before the actual study begins. Press any key to
     	button_label_next: 'Next',
     	allow_keys: false
 	};
-		
-// Below is the test stimuli bank with all the shared_assets/audio stimuli organized in 8 different playlists (4 each block type) with versions in each dleft and dright. Participants will get all 4 in random order, depending on their random integer.
-	// DLEFT
-	// nose blocktype
-	// nose playlist 1
-	var test_stimuli_dleft_nose1 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus065.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/018.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/022.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/026.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/075.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			];
-	
-	// nose playlist 2		
-	var test_stimuli_dleft_nose2 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus067.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/020.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/024.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/077.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			];
-				
-		// nose playlist 3
-		var test_stimuli_dleft_nose3 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus066.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/019.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/023.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/076.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			];
-			
-		// nose playlist 4
-		var test_stimuli_dleft_nose4 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus068.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/021.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/025.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/078.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}}
-			];
-		
-	// mouth blocktype
-	// mouth playlist 1
-	var test_stimuli_dleft_mouth1 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus065.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/018.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/022.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/026.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/075.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			];
-	
-	// mouth playlist 2		
-	var test_stimuli_dleft_mouth2 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus067.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/020.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/024.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/077.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			];
-				
-		// mouth playlist 3
-		var test_stimuli_dleft_mouth3 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus066.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/019.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/023.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/076.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			];
-			
-		// mouth playlist 4
-		var test_stimuli_dleft_mouth4 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus068.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/021.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/025.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
-			{stimulus: 'shared_assets/audio/mn/078.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}}
-			];
-		
-	// DRIGHT
-	//nose blocktype
-	// nose playlist 1
-	var test_stimuli_dright_nose1 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus065.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/018.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/022.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/026.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/075.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			];
-	
-	// nose playlist 2		
-	var test_stimuli_dright_nose2 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus067.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/020.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/024.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/077.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			];
-				
-		// nose playlist 3
-		var test_stimuli_dright_nose3 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus066.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/019.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/023.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/076.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			];
-			
-		// nose playlist 4
-		var test_stimuli_dright_nose4 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus068.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/021.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/025.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/078.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}}
-			];
-		
-	// mouth blocktype
-	// mouth playlist 1
-	var test_stimuli_dright_mouth1 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus065.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/018.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/022.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/026.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/075.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			];
-	
-	// mouth playlist 2		
-	var test_stimuli_dright_mouth2 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus067.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/020.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/024.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/077.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			];
-				
-		// mouth playlist 3
-		var test_stimuli_dright_mouth3 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus066.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/019.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/023.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/076.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			];
-			
-		// mouth playlist 4
-		var test_stimuli_dright_mouth4 = [
-			{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			{stimulus: 'shared_assets/audio/bd/stimulus068.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
-			//dn bracket now
-			{stimulus: 'shared_assets/audio/dn/021.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/025.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
-			//mn block
-			{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
-			{stimulus: 'shared_assets/audio/mn/078.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}}
-			];
-	// test stimuli bank ends here.	
-	
+
+	// Below is the test stimuli bank with all the audio stimuli organized in 8 different playlists (4 each block type) with versions in each dleft and dright. Participants will get all 4 in random order, depending on their random integer.
+		// DLEFT
+		// nose blocktype
+		// nose playlist 1
+		var test_stimuli_dleft_nose1 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus015.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/069.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/073.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/025.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				];
+
+		// nose playlist 2
+		var test_stimuli_dleft_nose2 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus017.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/071.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/075.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/027.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				];
+
+			// nose playlist 3
+			var test_stimuli_dleft_nose3 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus016.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/070.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/074.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/026.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				];
+
+			// nose playlist 4
+			var test_stimuli_dleft_nose4 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus018.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/068.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/072.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/076.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/028.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}}
+				];
+
+		// mouth blocktype
+		// mouth playlist 1
+		var test_stimuli_dleft_mouth1 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus015.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/069.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/073.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/025.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				];
+
+		// mouth playlist 2
+		var test_stimuli_dleft_mouth2 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus017.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/071.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/075.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/027.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				];
+
+			// mouth playlist 3
+			var test_stimuli_dleft_mouth3 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus016.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/070.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/074.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/026.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				];
+
+			// mouth playlist 4
+			var test_stimuli_dleft_mouth4 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus018.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ADA</b> (left) or <b>ABA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'db'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/068.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/072.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				{stimulus: 'shared_assets/audio/dn/076.wav', segments: "<b>ADA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'dn'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/028.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}},
+				{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>AMA</b> (left) or <b>ANA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'mn'}}
+				];
+
+		// DRIGHT
+		//nose blocktype
+		// nose playlist 1
+		var test_stimuli_dright_nose1 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus015.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/069.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/073.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/025.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				];
+
+		// nose playlist 2
+		var test_stimuli_dright_nose2 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus017.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/071.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/075.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/027.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				];
+
+			// nose playlist 3
+			var test_stimuli_dright_nose3 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus016.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/070.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/074.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/026.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				];
+
+			// nose playlist 4
+			var test_stimuli_dright_nose4 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus018.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/068.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/072.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/076.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/028.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "nose", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}}
+				];
+
+		// mouth blocktype
+		// mouth playlist 1
+		var test_stimuli_dright_mouth1 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus015.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus019.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus023.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus057.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus061.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/027.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/031.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/035.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/069.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/073.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/025.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/029.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/033.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/067.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/071.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				];
+
+		// mouth playlist 2
+		var test_stimuli_dright_mouth2 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus017.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus021.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus025.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus029.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus033.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus037.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus041.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus045.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus049.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus053.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus027.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus031.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus035.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus039.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus043.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus047.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus051.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus055.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus059.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus063.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/029.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/033.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/037.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/041.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/045.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/049.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/053.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/057.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/061.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/065.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/039.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/043.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/047.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/051.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/055.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/059.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/063.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/067.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/071.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/075.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/027.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/031.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/035.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/039.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/043.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/047.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/051.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/055.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/059.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/063.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/037.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/041.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/045.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/049.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/053.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/057.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/061.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/065.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/069.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/073.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				];
+
+			// mouth playlist 3
+			var test_stimuli_dright_mouth3 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus016.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus020.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus024.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus058.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus062.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/028.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/032.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/036.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/070.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/074.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/026.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/030.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/034.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/068.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/072.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				];
+
+			// mouth playlist 4
+			var test_stimuli_dright_mouth4 = [
+				{stimulus: 'shared_assets/audio/bd/stimulus018.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus022.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus026.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus030.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus034.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus038.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus042.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus046.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus050.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus054.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus028.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus032.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus036.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus040.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus044.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus048.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus052.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus056.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus060.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				{stimulus: 'shared_assets/audio/bd/stimulus064.wav', segments: "<b>ABA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'bd'}},
+				//dn bracket now
+				{stimulus: 'shared_assets/audio/dn/030.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/034.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/038.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/042.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/046.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/050.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/054.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/058.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/062.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/066.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/040.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/044.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/048.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/052.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/056.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/060.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/064.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/068.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/072.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				{stimulus: 'shared_assets/audio/dn/076.wav', segments: "<b>ANA</b> (left) or <b>ADA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nd'}},
+				//mn block
+				{stimulus: 'shared_assets/audio/mn/028.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/032.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/036.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/040.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/044.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/048.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/052.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/056.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/060.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/064.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/038.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/042.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/046.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/050.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/054.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/058.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/062.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/066.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/070.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}},
+				{stimulus: 'shared_assets/audio/mn/074.wav', segments: "<b>ANA</b> (left) or <b>AMA</b> (right)", choices: ['leftarrow','rightarrow'], data: {blocktype: "mouth", dvalue: dvalue, nvalue: nvalue, test_part: 'test', stimtype: 'nm'}}
+				];
+		// test stimuli bank ends here.
+
 	// size variable: x number of trials
 	var blocksize;
 		blocksize = 60;
-				
-	/* Here are the main procedures. There are 32 in total, 4 each (as per the playlist number) for dleft/dright, nose/mouth. 
-	Each number at the end of 'main_procedure_...1' corresponds to the playlist that will be used 
+
+	/* Here are the main procedures. There are 32 in total, 4 each (as per the playlist number) for dleft/dright, nose/mouth.
+	Each number at the end of 'main_procedure_...1' corresponds to the playlist that will be used
 	for each main procedure block. */
 	//dleft_nose
 	var main_procedure_dleft_nose1 = {
@@ -1322,7 +1322,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dleft_nose2 = {
 		timeline: [
 			fixation_nose,
@@ -1336,35 +1336,35 @@ There is a brief practice phase before the actual study begins. Press any key to
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dleft_nose3 = {
 		timeline: [
 			fixation_nose,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables: test_stimuli_dleft_nose3,  
+		timeline_variables: test_stimuli_dleft_nose3,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dleft_nose4 = {
 		timeline: [
 			fixation_nose,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables: test_stimuli_dleft_nose4,  
+		timeline_variables: test_stimuli_dleft_nose4,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	//dleft_mouth
 	var main_procedure_dleft_mouth1 = {
 		timeline: [
@@ -1379,49 +1379,49 @@ There is a brief practice phase before the actual study begins. Press any key to
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dleft_mouth2 = {
 		timeline: [
 			fixation_mouth,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables:  test_stimuli_dleft_mouth2,  
+		timeline_variables:  test_stimuli_dleft_mouth2,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dleft_mouth3 = {
 		timeline: [
 			fixation_mouth,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables:  test_stimuli_dleft_mouth3, 
+		timeline_variables:  test_stimuli_dleft_mouth3,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dleft_mouth4 = {
 		timeline: [
 			fixation_mouth,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables:  test_stimuli_dleft_mouth4, 
+		timeline_variables:  test_stimuli_dleft_mouth4,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	//dright_nose
 	var main_procedure_dright_nose1 = {
 		timeline: [
@@ -1429,56 +1429,56 @@ There is a brief practice phase before the actual study begins. Press any key to
 			audiopresentation,
 			responselog
 		],
-		timeline_variables:  test_stimuli_dright_nose1,  
+		timeline_variables:  test_stimuli_dright_nose1,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dright_nose2 = {
 		timeline: [
 			fixation_nose,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables: test_stimuli_dright_nose2, 
+		timeline_variables: test_stimuli_dright_nose2,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dright_nose3 = {
 		timeline: [
 			fixation_nose,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables:  test_stimuli_dright_nose3, 
+		timeline_variables:  test_stimuli_dright_nose3,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dright_nose4 = {
 		timeline: [
 			fixation_nose,
 			audiopresentation,
 			responselog
 		],
-		timeline_variables:  test_stimuli_dright_nose4, 
+		timeline_variables:  test_stimuli_dright_nose4,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	//dright_mouth
 	var main_procedure_dright_mouth1 = {
 		timeline: [
@@ -1486,14 +1486,14 @@ There is a brief practice phase before the actual study begins. Press any key to
 			audiopresentation,
 			responselog
 		],
-		timeline_variables: test_stimuli_dright_mouth1, 
+		timeline_variables: test_stimuli_dright_mouth1,
 		randomize_order: true,
 		sample : {
 			type: 'without-replacement',
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dright_mouth2 = {
 		timeline: [
 			fixation_mouth,
@@ -1507,7 +1507,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 			size: blocksize
 		}
 	};
-	
+
 	var main_procedure_dright_mouth3 = {
 		timeline: [
 			fixation_mouth,
@@ -1521,7 +1521,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 			size: blocksize
 		}
 	};
-	
+
 		var main_procedure_dright_mouth4 = {
 		timeline: [
 			fixation_mouth,
@@ -1535,16 +1535,16 @@ There is a brief practice phase before the actual study begins. Press any key to
 			size: blocksize
 		}
 	};
-	
-	/* There are 96 order possibilities; each considers nose/mouth and playlist order. 
+
+	/* There are 96 order possibilities; each considers nose/mouth and playlist order.
 		The random integer will determine which one a participant gets.
-		Playlist orders are: A = 1, 2, 3, 4; B = 1, 2, 4, 3; C = 1, 3, 2, 4; D = 1, 3, 4, 2; E = 1, 4, 2, 3; F = 1, 4, 3, 2; 
-		G = 2, 1, 3, 4; H = 2, 1, 4, 3; I = 2, 3, 1, 4; J = 2, 3, 4, 1; K= 2, 4, 3, 1; L= 2, 4, 1, 3; 
-		M = 3, 1, 2, 4; N = 3, 1, 4, 2; O = 3, 2, 1, 4; P = 3, 2, 4, 1; Q = 3, 4, 1, 2; R = 3, 4, 2, 1; 
+		Playlist orders are: A = 1, 2, 3, 4; B = 1, 2, 4, 3; C = 1, 3, 2, 4; D = 1, 3, 4, 2; E = 1, 4, 2, 3; F = 1, 4, 3, 2;
+		G = 2, 1, 3, 4; H = 2, 1, 4, 3; I = 2, 3, 1, 4; J = 2, 3, 4, 1; K= 2, 4, 3, 1; L= 2, 4, 1, 3;
+		M = 3, 1, 2, 4; N = 3, 1, 4, 2; O = 3, 2, 1, 4; P = 3, 2, 4, 1; Q = 3, 4, 1, 2; R = 3, 4, 2, 1;
 		S = 4, 1, 2, 3; T = 4, 1, 3, 2; U = 4, 2, 1, 3; V = 4, 2, 3, 1; W = 4, 3, 1, 2; X = 4, 3, 2, 1 */
 	//DLEFT NOSE
 	//dleft nose A
-	if(randomint > 474){ 
+	if(randomint > 474){
 		timeline.push(main_procedure_dleft_nose1);
 		timeline.push(nose_rest);
 		timeline.push(main_procedure_dleft_nose2);
@@ -1993,7 +1993,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		timeline.push(nose_rest);
 		timeline.push(main_procedure_dleft_nose3);
 		timeline.push(nose_rest);
-		timeline.push(main_procedure_dleft_nose4);	
+		timeline.push(main_procedure_dleft_nose4);
 	//dleft mouth B
 	} else if(randomint > 349){
 		timeline.push(main_procedure_dleft_mouth1);
@@ -2047,7 +2047,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		timeline.push(nose_rest);
 		timeline.push(main_procedure_dleft_nose4);
 		timeline.push(nose_rest);
-		timeline.push(main_procedure_dleft_nose2);	
+		timeline.push(main_procedure_dleft_nose2);
 	//dleft mouth E
 	} else if(randomint > 334){
 		timeline.push(main_procedure_dleft_mouth1);
@@ -3281,8 +3281,8 @@ There is a brief practice phase before the actual study begins. Press any key to
 			pages: [ '<h2>Study Complete</h2>' +
 				'<p>Thank you for participating!</p>' +
 				'<p>This study is meant to further clarify the nature of articulator-level sensorimotor information in adult speech processing, examining how breathing is related to auditory perception.' +
-				' In particular, this study investigates how breathing through the nose or mouth affects the perception of speech sounds and certain non-speech sounds. ' +
-				' Specifically, we are looking to see whether breathing in a certain way affects the perception of sounds that have certain acoustic characteristics that are related to the production of nasal vocalizations (like /n/ or /m/) or oral vocalizations (like /d/ or /b/), and even musical notes that have ‘nasal-sounding’ acoustic characteristics. ' +
+				' In particular, this study investigates how breathing through the nose or mouth affects the perception of speech sounds and certain non-speech sounds.' +
+				' Specifically, we are looking to see whether breathing in a certain way affects the perception of sounds that have certain acoustic characteristics that are related to the production of nasal vocalizations (like /n/ or /m/) or oral vocalizations (like /d/ or /b/), and even musical notes that have ‘nasal-sounding’ acoustic characteristics.' +
 				' This research will then help us clarify the link between neural systems for motor control and neural systems for perception. </p>' +
 			'<b>Click <i>next</i> for instructions on arranging compensation or to fill out the RPS form.</b>'],
 			show_clickable_nav: true,
@@ -3310,7 +3310,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 		}
 	};
 	timeline.push(debrief_block);*/
-	
+
 	var audio = ['shared_assets/audio/bd/stimulus001.wav', 'shared_assets/audio/bd/stimulus002.wav', 'shared_assets/audio/bd/stimulus003.wav', 'shared_assets/audio/bd/stimulus004.wav', 'shared_assets/audio/bd/stimulus005.wav', 'shared_assets/audio/bd/stimulus006.wav', 'shared_assets/audio/bd/stimulus007.wav', 'shared_assets/audio/bd/stimulus008.wav', 'shared_assets/audio/bd/stimulus009.wav', 'shared_assets/audio/bd/stimulus010.wav', 'shared_assets/audio/bd/stimulus011.wav', 'shared_assets/audio/bd/stimulus012.wav', 'shared_assets/audio/bd/stimulus013.wav', 'shared_assets/audio/bd/stimulus014.wav', 'shared_assets/audio/bd/stimulus015.wav', 'shared_assets/audio/bd/stimulus016.wav', 'shared_assets/audio/bd/stimulus017.wav', 'shared_assets/audio/bd/stimulus018.wav', 'shared_assets/audio/bd/stimulus019.wav', 'shared_assets/audio/bd/stimulus020.wav', 'shared_assets/audio/bd/stimulus021.wav', 'shared_assets/audio/bd/stimulus022.wav', 'shared_assets/audio/bd/stimulus023.wav', 'shared_assets/audio/bd/stimulus024.wav', 'shared_assets/audio/bd/stimulus025.wav', 'shared_assets/audio/bd/stimulus026.wav', 'shared_assets/audio/bd/stimulus027.wav', 'shared_assets/audio/bd/stimulus028.wav', 'shared_assets/audio/bd/stimulus029.wav', 'shared_assets/audio/bd/stimulus030.wav', 'shared_assets/audio/bd/stimulus031.wav', 'shared_assets/audio/bd/stimulus032.wav', 'shared_assets/audio/bd/stimulus033.wav', 'shared_assets/audio/bd/stimulus034.wav', 'shared_assets/audio/bd/stimulus035.wav', 'shared_assets/audio/bd/stimulus036.wav', 'shared_assets/audio/bd/stimulus037.wav', 'shared_assets/audio/bd/stimulus038.wav', 'shared_assets/audio/bd/stimulus039.wav', 'shared_assets/audio/bd/stimulus040.wav', 'shared_assets/audio/bd/stimulus041.wav', 'shared_assets/audio/bd/stimulus042.wav', 'shared_assets/audio/bd/stimulus043.wav', 'shared_assets/audio/bd/stimulus044.wav', 'shared_assets/audio/bd/stimulus045.wav', 'shared_assets/audio/bd/stimulus046.wav', 'shared_assets/audio/bd/stimulus047.wav', 'shared_assets/audio/bd/stimulus048.wav', 'shared_assets/audio/bd/stimulus049.wav', 'shared_assets/audio/bd/stimulus050.wav', 'shared_assets/audio/bd/stimulus051.wav', 'shared_assets/audio/bd/stimulus052.wav', 'shared_assets/audio/bd/stimulus053.wav', 'shared_assets/audio/bd/stimulus054.wav', 'shared_assets/audio/bd/stimulus055.wav', 'shared_assets/audio/bd/stimulus056.wav', 'shared_assets/audio/bd/stimulus057.wav', 'shared_assets/audio/bd/stimulus058.wav', 'shared_assets/audio/bd/stimulus059.wav', 'shared_assets/audio/bd/stimulus060.wav', 'shared_assets/audio/bd/stimulus061.wav', 'shared_assets/audio/bd/stimulus062.wav', 'shared_assets/audio/bd/stimulus063.wav', 'shared_assets/audio/bd/stimulus064.wav', 'shared_assets/audio/bd/stimulus065.wav', 'shared_assets/audio/bd/stimulus066.wav', 'shared_assets/audio/bd/stimulus067.wav', 'shared_assets/audio/bd/stimulus068.wav', 'shared_assets/audio/bd/stimulus069.wav', 'shared_assets/audio/bd/stimulus070.wav', 'shared_assets/audio/bd/stimulus071.wav', 'shared_assets/audio/bd/stimulus072.wav', 'shared_assets/audio/bd/stimulus073.wav', 'shared_assets/audio/bd/stimulus074.wav', 'shared_assets/audio/bd/stimulus075.wav', 'shared_assets/audio/bd/stimulus076.wav', 'shared_assets/audio/bd/stimulus077.wav', 'shared_assets/audio/bd/stimulus078.wav', 'shared_assets/audio/bd/stimulus079.wav', 'shared_assets/audio/bd/stimulus080.wav', 'shared_assets/audio/bd/stimulus081.wav', 'shared_assets/audio/bd/stimulus082.wav', 'shared_assets/audio/bd/stimulus083.wav', 'shared_assets/audio/bd/stimulus084.wav', 'shared_assets/audio/bd/stimulus085.wav', 'shared_assets/audio/bd/stimulus086.wav', 'shared_assets/audio/bd/stimulus087.wav', 'shared_assets/audio/bd/stimulus088.wav', 'shared_assets/audio/bd/stimulus089.wav', 'shared_assets/audio/bd/stimulus090.wav', 'shared_assets/audio/bd/stimulus091.wav', 'shared_assets/audio/bd/stimulus092.wav', 'shared_assets/audio/bd/stimulus093.wav', 'shared_assets/audio/bd/stimulus094.wav', 'shared_assets/audio/bd/stimulus095.wav', 'shared_assets/audio/bd/stimulus096.wav', 'shared_assets/audio/bd/stimulus097.wav', 'shared_assets/audio/bd/stimulus098.wav', 'shared_assets/audio/bd/stimulus099.wav', 'shared_assets/audio/bd/stimulus100.wav',
 	'shared_assets/audio/dn/001.wav', 'shared_assets/audio/dn/002.wav', 'shared_assets/audio/dn/003.wav', 'shared_assets/audio/dn/004.wav', 'shared_assets/audio/dn/005.wav', 'shared_assets/audio/dn/006.wav', 'shared_assets/audio/dn/007.wav', 'shared_assets/audio/dn/008.wav', 'shared_assets/audio/dn/009.wav', 'shared_assets/audio/dn/010.wav', 'shared_assets/audio/dn/011.wav', 'shared_assets/audio/dn/012.wav', 'shared_assets/audio/dn/013.wav', 'shared_assets/audio/dn/014.wav', 'shared_assets/audio/dn/015.wav', 'shared_assets/audio/dn/016.wav', 'shared_assets/audio/dn/017.wav', 'shared_assets/audio/dn/018.wav', 'shared_assets/audio/dn/019.wav', 'shared_assets/audio/dn/020.wav', 'shared_assets/audio/dn/021.wav', 'shared_assets/audio/dn/022.wav', 'shared_assets/audio/dn/023.wav', 'shared_assets/audio/dn/024.wav', 'shared_assets/audio/dn/025.wav', 'shared_assets/audio/dn/026.wav', 'shared_assets/audio/dn/027.wav', 'shared_assets/audio/dn/028.wav', 'shared_assets/audio/dn/029.wav', 'shared_assets/audio/dn/030.wav', 'shared_assets/audio/dn/031.wav', 'shared_assets/audio/dn/032.wav', 'shared_assets/audio/dn/033.wav', 'shared_assets/audio/dn/034.wav', 'shared_assets/audio/dn/035.wav', 'shared_assets/audio/dn/036.wav', 'shared_assets/audio/dn/037.wav', 'shared_assets/audio/dn/038.wav', 'shared_assets/audio/dn/039.wav', 'shared_assets/audio/dn/040.wav', 'shared_assets/audio/dn/041.wav', 'shared_assets/audio/dn/042.wav', 'shared_assets/audio/dn/043.wav', 'shared_assets/audio/dn/044.wav', 'shared_assets/audio/dn/045.wav', 'shared_assets/audio/dn/046.wav', 'shared_assets/audio/dn/047.wav', 'shared_assets/audio/dn/048.wav', 'shared_assets/audio/dn/049.wav', 'shared_assets/audio/dn/050.wav', 'shared_assets/audio/dn/051.wav', 'shared_assets/audio/dn/052.wav', 'shared_assets/audio/dn/053.wav', 'shared_assets/audio/dn/054.wav', 'shared_assets/audio/dn/055.wav', 'shared_assets/audio/dn/056.wav', 'shared_assets/audio/dn/057.wav', 'shared_assets/audio/dn/058.wav', 'shared_assets/audio/dn/059.wav', 'shared_assets/audio/dn/060.wav', 'shared_assets/audio/dn/061.wav', 'shared_assets/audio/dn/062.wav', 'shared_assets/audio/dn/063.wav', 'shared_assets/audio/dn/064.wav', 'shared_assets/audio/dn/065.wav', 'shared_assets/audio/dn/066.wav', 'shared_assets/audio/dn/067.wav', 'shared_assets/audio/dn/068.wav', 'shared_assets/audio/dn/069.wav', 'shared_assets/audio/dn/070.wav', 'shared_assets/audio/dn/071.wav', 'shared_assets/audio/dn/072.wav', 'shared_assets/audio/dn/073.wav', 'shared_assets/audio/dn/074.wav', 'shared_assets/audio/dn/075.wav', 'shared_assets/audio/dn/076.wav', 'shared_assets/audio/dn/077.wav', 'shared_assets/audio/dn/078.wav', 'shared_assets/audio/dn/079.wav', 'shared_assets/audio/dn/080.wav', 'shared_assets/audio/dn/081.wav', 'shared_assets/audio/dn/082.wav', 'shared_assets/audio/dn/083.wav', 'shared_assets/audio/dn/084.wav', 'shared_assets/audio/dn/085.wav', 'shared_assets/audio/dn/086.wav', 'shared_assets/audio/dn/087.wav', 'shared_assets/audio/dn/088.wav', 'shared_assets/audio/dn/089.wav', 'shared_assets/audio/dn/090.wav', 'shared_assets/audio/dn/091.wav', 'shared_assets/audio/dn/092.wav', 'shared_assets/audio/dn/093.wav', 'shared_assets/audio/dn/094.wav', 'shared_assets/audio/dn/095.wav', 'shared_assets/audio/dn/096.wav', 'shared_assets/audio/dn/097.wav', 'shared_assets/audio/dn/098.wav', 'shared_assets/audio/dn/099.wav', 'shared_assets/audio/dn/100.wav',
 	'shared_assets/audio/mn/001.wav', 'shared_assets/audio/mn/002.wav', 'shared_assets/audio/mn/003.wav', 'shared_assets/audio/mn/004.wav', 'shared_assets/audio/mn/005.wav', 'shared_assets/audio/mn/006.wav', 'shared_assets/audio/mn/007.wav', 'shared_assets/audio/mn/008.wav', 'shared_assets/audio/mn/009.wav', 'shared_assets/audio/mn/010.wav', 'shared_assets/audio/mn/011.wav', 'shared_assets/audio/mn/012.wav', 'shared_assets/audio/mn/013.wav', 'shared_assets/audio/mn/014.wav', 'shared_assets/audio/mn/015.wav', 'shared_assets/audio/mn/016.wav', 'shared_assets/audio/mn/017.wav', 'shared_assets/audio/mn/018.wav', 'shared_assets/audio/mn/019.wav', 'shared_assets/audio/mn/020.wav', 'shared_assets/audio/mn/021.wav', 'shared_assets/audio/mn/022.wav', 'shared_assets/audio/mn/023.wav', 'shared_assets/audio/mn/024.wav', 'shared_assets/audio/mn/025.wav', 'shared_assets/audio/mn/026.wav', 'shared_assets/audio/mn/027.wav', 'shared_assets/audio/mn/028.wav', 'shared_assets/audio/mn/029.wav', 'shared_assets/audio/mn/030.wav', 'shared_assets/audio/mn/031.wav', 'shared_assets/audio/mn/032.wav', 'shared_assets/audio/mn/033.wav', 'shared_assets/audio/mn/034.wav', 'shared_assets/audio/mn/035.wav', 'shared_assets/audio/mn/036.wav', 'shared_assets/audio/mn/037.wav', 'shared_assets/audio/mn/038.wav', 'shared_assets/audio/mn/039.wav', 'shared_assets/audio/mn/040.wav', 'shared_assets/audio/mn/041.wav', 'shared_assets/audio/mn/042.wav', 'shared_assets/audio/mn/043.wav', 'shared_assets/audio/mn/044.wav', 'shared_assets/audio/mn/045.wav', 'shared_assets/audio/mn/046.wav', 'shared_assets/audio/mn/047.wav', 'shared_assets/audio/mn/048.wav', 'shared_assets/audio/mn/049.wav', 'shared_assets/audio/mn/050.wav', 'shared_assets/audio/mn/051.wav', 'shared_assets/audio/mn/052.wav', 'shared_assets/audio/mn/053.wav', 'shared_assets/audio/mn/054.wav', 'shared_assets/audio/mn/055.wav', 'shared_assets/audio/mn/056.wav', 'shared_assets/audio/mn/057.wav', 'shared_assets/audio/mn/058.wav', 'shared_assets/audio/mn/059.wav', 'shared_assets/audio/mn/060.wav', 'shared_assets/audio/mn/061.wav', 'shared_assets/audio/mn/062.wav', 'shared_assets/audio/mn/063.wav', 'shared_assets/audio/mn/064.wav', 'shared_assets/audio/mn/065.wav', 'shared_assets/audio/mn/066.wav', 'shared_assets/audio/mn/067.wav', 'shared_assets/audio/mn/068.wav', 'shared_assets/audio/mn/069.wav', 'shared_assets/audio/mn/070.wav', 'shared_assets/audio/mn/071.wav', 'shared_assets/audio/mn/072.wav', 'shared_assets/audio/mn/073.wav', 'shared_assets/audio/mn/074.wav', 'shared_assets/audio/mn/075.wav', 'shared_assets/audio/mn/076.wav', 'shared_assets/audio/mn/077.wav', 'shared_assets/audio/mn/078.wav', 'shared_assets/audio/mn/079.wav', 'shared_assets/audio/mn/080.wav', 'shared_assets/audio/mn/081.wav', 'shared_assets/audio/mn/082.wav', 'shared_assets/audio/mn/083.wav', 'shared_assets/audio/mn/084.wav', 'shared_assets/audio/mn/085.wav', 'shared_assets/audio/mn/086.wav', 'shared_assets/audio/mn/087.wav', 'shared_assets/audio/mn/088.wav', 'shared_assets/audio/mn/089.wav', 'shared_assets/audio/mn/090.wav', 'shared_assets/audio/mn/091.wav', 'shared_assets/audio/mn/092.wav', 'shared_assets/audio/mn/093.wav', 'shared_assets/audio/mn/094.wav', 'shared_assets/audio/mn/095.wav', 'shared_assets/audio/mn/096.wav', 'shared_assets/audio/mn/097.wav', 'shared_assets/audio/mn/098.wav', 'shared_assets/audio/mn/099.wav', 'shared_assets/audio/mn/100.wav'
@@ -3318,13 +3318,13 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	//now that we have complete timeline, we tell jsPsych to run it.
 	//We will eventually need a JATOS wrapper
-	
+
 	jatos.onLoad(
 		jatos.addJatosIds(resultData),
-		
+
 		jsPsych.init({
 			timeline: timeline,
-			
+
 			exclusions: {
           	  min_width: 800,
           	  min_height: 600
@@ -3338,10 +3338,10 @@ There is a brief practice phase before the actual study begins. Press any key to
                 }
             };
         },
-        
+
 			use_webaudio: false,
 			preload_audio: audio,
-			
+
 			//to display data and add subject number:
 			on_finish: function() {
 				var studyID = jatos.studyResultID;
