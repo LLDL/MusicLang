@@ -102,32 +102,31 @@ var prac_con4ABA = {
         {
             type: 'html-keyboard-response',
             stimulus: '',
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
             trial_duration: 1
         },
         {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
+            data: jsPsych.timelineVariable('data'),
             choices: jsPsych.NO_KEYS,
             trial_ends_after_video: true
         },
     ],
 
     timeline_variables: [
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA4.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA4.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA4.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA4.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA4.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA4.mp4']},
-    ],
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+    ]
 }
 
 // condition 5: block "ABA" //
@@ -136,31 +135,31 @@ var prac_con5ABA = {
         {
             type: 'html-keyboard-response',
             stimulus: '',
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
+
             trial_duration: 1
         },
         {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
+            data: jsPsych.timelineVariable('data'),
             choices: jsPsych.NO_KEYS,
             trial_ends_after_video: true
         },
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA5.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA5.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA5.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA5.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA5.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA5.mp4']},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
     ]
 }
 
@@ -171,31 +170,31 @@ var prac_con6ABA = {
         {
             type: 'html-keyboard-response',
             stimulus: '',
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
+
             trial_duration: 1
         },
         {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'congruent'},
+            data: jsPsych.timelineVariable('data'),
             choices: jsPsych.NO_KEYS,
             trial_ends_after_video: true
         },
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA6.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA6.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA6.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA6.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA6.mp4']},
-      { sources: ['video/VbA0.mp4']},
-      { sources: ['video/VbA6.mp4']},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
     ]
 }
 
@@ -205,31 +204,30 @@ timeline: [
     {
         type: 'html-keyboard-response',
         stimulus: '',
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
         trial_duration: 1
     },
     {
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
+        data: jsPsych.timelineVariable('data'),
         choices: jsPsych.NO_KEYS,
         trial_ends_after_video: true
     },
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA4.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA4.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA4.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA4.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA4.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA4.mp4']},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
 ]
 }
 
@@ -239,31 +237,30 @@ timeline: [
     {
         type: 'html-keyboard-response',
         stimulus: '',
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
         trial_duration: 1
     },
     {
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
+        data: jsPsych.timelineVariable('data'),
         choices: jsPsych.NO_KEYS,
         trial_ends_after_video: true
     },
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA5.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA5.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA5.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA5.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA5.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA5.mp4']},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
 ]
 }
 // condition 6: block "ADA" //
@@ -272,31 +269,30 @@ timeline: [
     {
         type: 'html-keyboard-response',
         stimulus: '',
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
         trial_duration: 1
     },
     {
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'congruent'},
+        data: jsPsych.timelineVariable('data'),
         choices: jsPsych.NO_KEYS,
         trial_ends_after_video: true
     },
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA6.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA6.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA6.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA6.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA6.mp4']},
-  { sources: ['video/VdA0.mp4']},
-  { sources: ['video/VdA6.mp4']},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
 ]
 }
 
@@ -307,32 +303,31 @@ var prac_incon4ABA = {
         {
             type: 'html-keyboard-response',
             stimulus: '',
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
             trial_duration: 1
         },
         {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
+            data: jsPsych.timelineVariable('data'),
             choices: jsPsych.NO_KEYS,
             trial_ends_after_video: true
         },
 
     ],
     timeline_variables: [
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA4.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA4.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA4.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA4.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA4.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA4.mp4']},
-    ],
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+    ]
 }
 
 // condition 5: block "ABA" //
@@ -341,31 +336,30 @@ var prac_incon5ABA = {
         {
             type: 'html-keyboard-response',
             stimulus: '',
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
             trial_duration: 1
         },
         {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
+            data: jsPsych.timelineVariable('data'),
             choices: jsPsych.NO_KEYS,
             trial_ends_after_video: true
         },
 
     ],
     timeline_variables: [
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA5.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA5.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA5.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA5.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA5.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA5.mp4']},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
     ]
 }
 
@@ -376,31 +370,30 @@ var prac_incon6ABA = {
         {
             type: 'html-keyboard-response',
             stimulus: '',
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
             trial_duration: 1
         },
         {
             type: 'video-keyboard-response',
             sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'practice', blocktype: 'ABA', congruency: 'incongruent'},
+            data: jsPsych.timelineVariable('data'),
             choices: jsPsych.NO_KEYS,
             trial_ends_after_video: true
         },
 
     ],
     timeline_variables: [
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA6.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA6.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA6.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA6.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA6.mp4']},
-        { sources: ['video/VbA0.mp4']},
-        { sources: ['video/VbA6.mp4']},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
     ]
 }
 
@@ -410,31 +403,30 @@ timeline: [
     {
         type: 'html-keyboard-response',
         stimulus: '',
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
         trial_duration: 1
     },
     {
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
+        data: jsPsych.timelineVariable('data'),
         choices: jsPsych.NO_KEYS,
         trial_ends_after_video: true
     },
 
 ],
 timeline_variables: [
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA4.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA4.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA4.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA4.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA4.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA4.mp4']},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
 ]
 }
 
@@ -444,31 +436,31 @@ timeline: [
     {
         type: 'html-keyboard-response',
         stimulus: '',
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
+
         trial_duration: 1
     },
     {
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
+        data: jsPsych.timelineVariable('data'),
         choices: jsPsych.NO_KEYS,
         trial_ends_after_video: true
     },
 
 ],
 timeline_variables: [
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA5.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA5.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA5.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA5.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA5.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA5.mp4']},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
 ]
 }
 
@@ -478,31 +470,30 @@ timeline: [
     {
         type: 'html-keyboard-response',
         stimulus: '',
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
         trial_duration: 1
     },
     {
         type: 'video-keyboard-response',
         sources: jsPsych.timelineVariable('sources'),
-        data: {test_part: 'practice', blocktype: 'ADA', congruency: 'incongruent'},
+        data: jsPsych.timelineVariable('data'),
         choices: jsPsych.NO_KEYS,
         trial_ends_after_video: true
     },
 
 ],
 timeline_variables: [
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA6.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA6.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA6.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA6.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA6.mp4']},
-    { sources: ['video/VdA0.mp4']},
-    { sources: ['video/VdA6.mp4']},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
 ]
 }
 
@@ -514,65 +505,63 @@ timeline_variables: [
             {
                 type: 'html-keyboard-response',
                 stimulus: '',
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
                 trial_duration: 1
             },
             {
                 type: 'video-keyboard-response',
                 sources: jsPsych.timelineVariable('sources'),
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
+                data: jsPsych.timelineVariable('data'),
                 choices: jsPsych.NO_KEYS,
                 trial_ends_after_video: true
             },
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA4.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA4.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA4.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA4.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA4.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA4.mp4']},
-        ],
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+        ]
     }
 
 // condition 5: block "ABA" //
     var con5ABA = {
         timeline: [
-            {
-                type: 'html-keyboard-response',
-                stimulus: '',
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                trial_duration: 1
-            },
-            {
-                type: 'video-keyboard-response',
-                sources: jsPsych.timelineVariable('sources'),
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                choices: jsPsych.NO_KEYS,
-                trial_ends_after_video: true
-            },
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA5.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA5.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA5.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA5.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA5.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA5.mp4']},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
         ]
     }
 
@@ -580,135 +569,131 @@ timeline_variables: [
 // condition 6: block ABA //
     var con6ABA = {
         timeline: [
-            {
-                type: 'html-keyboard-response',
-                stimulus: '',
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                trial_duration: 1
-            },
-            {
-                type: 'video-keyboard-response',
-                sources: jsPsych.timelineVariable('sources'),
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'congruent'},
-                choices: jsPsych.NO_KEYS,
-                trial_ends_after_video: true
-            },
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA6.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA6.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA6.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA6.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA6.mp4']},
-          { sources: ['video/VbA0.mp4']},
-          { sources: ['video/VbA6.mp4']},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
         ]
     }
 
 // condition 4: block "ADA" //
 var con4ADA = {
     timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '',
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            trial_duration: 1
-        },
-        {
-            type: 'video-keyboard-response',
-            sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            choices: jsPsych.NO_KEYS,
-            trial_ends_after_video: true
-        },
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA4.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA4.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA4.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA4.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA4.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA4.mp4']},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
     ]
 }
 
 // condition 5: block "ADA" //
 var con5ADA = {
     timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '',
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            trial_duration: 1
-        },
-        {
-            type: 'video-keyboard-response',
-            sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            choices: jsPsych.NO_KEYS,
-            trial_ends_after_video: true
-        },
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA5.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA5.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA5.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA5.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA5.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA5.mp4']},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
     ]
 }
 // condition 6: block "ADA" //
 var con6ADA = {
     timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '',
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            trial_duration: 1
-        },
-        {
-            type: 'video-keyboard-response',
-            sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'congruent'},
-            choices: jsPsych.NO_KEYS,
-            trial_ends_after_video: true
-        },
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA6.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA6.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA6.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA6.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA6.mp4']},
-      { sources: ['video/VdA0.mp4']},
-      { sources: ['video/VdA6.mp4']},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
     ]
 }
 
@@ -716,68 +701,66 @@ var con6ADA = {
 // condition 4: block "ABA" //
     var incon4ABA = {
         timeline: [
-            {
-                type: 'html-keyboard-response',
-                stimulus: '',
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                trial_duration: 1
-            },
-            {
-                type: 'video-keyboard-response',
-                sources: jsPsych.timelineVariable('sources'),
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                choices: jsPsych.NO_KEYS,
-                trial_ends_after_video: true
-            },
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
 
         ],
         timeline_variables: [
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA4.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA4.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA4.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA4.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA4.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA4.mp4']},
-        ],
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+        ]
     }
 
 // condition 5: block "ABA" //
     var incon5ABA = {
         timeline: [
-            {
-                type: 'html-keyboard-response',
-                stimulus: '',
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                trial_duration: 1
-            },
-            {
-                type: 'video-keyboard-response',
-                sources: jsPsych.timelineVariable('sources'),
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                choices: jsPsych.NO_KEYS,
-                trial_ends_after_video: true
-            },
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
 
         ],
         timeline_variables: [
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA5.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA5.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA5.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA5.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA5.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA5.mp4']},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
         ]
     }
 
@@ -785,136 +768,132 @@ var con6ADA = {
 // condition 6: block ABA //
     var incon6ABA = {
         timeline: [
-            {
-                type: 'html-keyboard-response',
-                stimulus: '',
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                trial_duration: 1
-            },
-            {
-                type: 'video-keyboard-response',
-                sources: jsPsych.timelineVariable('sources'),
-                data: {test_part: 'test', blocktype: 'ABA', congruency: 'incongruent'},
-                choices: jsPsych.NO_KEYS,
-                trial_ends_after_video: true
-            },
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
 
         ],
         timeline_variables: [
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA6.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA6.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA6.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA6.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA6.mp4']},
-            { sources: ['video/VbA0.mp4']},
-            { sources: ['video/VbA6.mp4']},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
         ]
     }
 
 // condition 4: block "ADA" //
 var incon4ADA = {
     timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '',
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            trial_duration: 1
-        },
-        {
-            type: 'video-keyboard-response',
-            sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            choices: jsPsych.NO_KEYS,
-            trial_ends_after_video: true
-        },
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
 
     ],
     timeline_variables: [
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA4.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA4.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA4.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA4.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA4.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA4.mp4']},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
     ]
 }
 
 // condition 5: block "ADA" //
 var incon5ADA = {
     timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '',
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            trial_duration: 1
-        },
-        {
-            type: 'video-keyboard-response',
-            sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            choices: jsPsych.NO_KEYS,
-            trial_ends_after_video: true
-        },
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
 
     ],
     timeline_variables: [
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA5.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA5.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA5.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA5.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA5.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA5.mp4']},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
     ]
 }
 
 // condition 6: block "ADA" //
 var incon6ADA = {
     timeline: [
-        {
-            type: 'html-keyboard-response',
-            stimulus: '',
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            trial_duration: 1
-        },
-        {
-            type: 'video-keyboard-response',
-            sources: jsPsych.timelineVariable('sources'),
-            data: {test_part: 'test', blocktype: 'ADA', congruency: 'incongruent'},
-            choices: jsPsych.NO_KEYS,
-            trial_ends_after_video: true
-        },
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
 
     ],
     timeline_variables: [
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA6.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA6.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA6.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA6.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA6.mp4']},
-        { sources: ['video/VdA0.mp4']},
-        { sources: ['video/VdA6.mp4']},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
     ]
 }
 
@@ -922,12 +901,12 @@ var incon6ADA = {
 /* AUDIO TRIALS FOR EACH CONDITION */
 // CONDITION 4 AUDIO //
 var audio_stimuli4 = [
-  {stimulus: 'audio/bd04_minus.wav', data: {level: '4m'}},
-  {stimulus: 'audio/bd04.wav', data: {level: '4'}},
-  {stimulus: 'audio/bd04_plus.wav', data: {level: '4p'}},
-  {stimulus: 'audio/bd04_minus.wav', data: {level: '4m'}},
-  {stimulus: 'audio/bd04.wav', data: {level: '4'}},
-  {stimulus: 'audio/bd04_plus.wav', data: {level: '4p'}},
+  {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4m'}},
+  {stimulus: 'audio/bd04.wav', data: {test_part: 'test', dresponse: 'DL', level: '4'}},
+  {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4p'}},
+  {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4m'}},
+  {stimulus: 'audio/bd04.wav', data: {test_part: 'test', dresponse: 'DL', level: '4'}},
+  {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4p'}},
 ];
 
 var audioDL = {
@@ -961,14 +940,57 @@ var audioDL = {
               randomize_order: true // randomize order of trials
             }
 
+  // condition 4 practice audio //
+            var prac_audio_stimuli4 = [
+              {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4m'}},
+              {stimulus: 'audio/bd04.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4'}},
+              {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4p'}},
+              {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4m'}},
+              {stimulus: 'audio/bd04.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4'}},
+              {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4p'}},
+            ];
+
+            var prac_audioDL = {
+                  type: "audio-keyboard-response",
+                  stimulus: jsPsych.timelineVariable('stimulus'),
+                  choices: jsPsych.NO_KEYS,
+                  trial_ends_after_audio: true
+                }
+
+                var prac_responseDL = {
+                      type: "html-keyboard-response",
+                      stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+                      "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+                      choices: ['leftarrow', 'rightarrow'],
+                      response_ends_trial: true,
+                      trial_duration: null,
+                      data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+                      on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                        if (data.key_press == 37) {
+                          data.resp = 1;
+                        } else if (data.key_press == 39) {
+                          data.resp = 0;
+                        }
+                      }
+                    }
+
+                    var prac_audioDL4 = {
+                          timeline: [prac_audioDL, prac_responseDL], // alternates the audio trial and response trial
+                          timeline_variables: prac_audio_stimuli4, // takes stimuli from "audio_stimuli"
+                          randomize_order: true // randomize order of trials
+                        }
+
+
+
+
 // CONDITION 5 AUDIO //
 var audio_stimuli5 = [
-  {stimulus: 'audio/bd05_minus.wav', data: {level: '5m'}},
-  {stimulus: 'audio/bd05.wav', data: {level: '5'}},
-  {stimulus: 'audio/bd05_plus.wav', data: {level: '5p'}},
-  {stimulus: 'audio/bd05_minus.wav', data: {level: '5m'}},
-  {stimulus: 'audio/bd05.wav', data: {level: '5'}},
-  {stimulus: 'audio/bd05_plus.wav', data: {level: '5p'}},
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'test', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5p'}},
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'test', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5p'}},
 ];
 
 var audioDL = {
@@ -1001,14 +1023,57 @@ var audioDL = {
               randomize_order: true // randomize order of trials
             }
 
+
+
+// condition 5 practice audio //
+var prac_audio_stimuli5 = [
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5p'}},
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5p'}},
+];
+
+var prac_audioDL = {
+      type: "audio-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: true
+    }
+
+    var prac_responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var prac_audioDL5 = {
+              timeline: [prac_audioDL, prac_responseDL], // alternates the audio trial and response trial
+              timeline_variables: prac_audio_stimuli5, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+
 // CONDITION 6 AUDIO //
 var audio_stimuli6 = [
-  {stimulus: 'audio/bd06_minus.wav', data: {level: '6m'}},
-  {stimulus: 'audio/bd06.wav', data: {level: '6'}},
-  {stimulus: 'audio/bd06_plus.wav', data: {level: '6p'}},
-  {stimulus: 'audio/bd06_minus.wav', data: {level: '6m'}},
-  {stimulus: 'audio/bd06.wav', data: {level: '6'}},
-  {stimulus: 'audio/bd06_plus.wav', data: {level: '6p'}},
+  {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6m'}},
+  {stimulus: 'audio/bd06.wav', data: {test_part: 'test', dresponse: 'DL', level: '6'}},
+  {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6p'}},
+  {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6m'}},
+  {stimulus: 'audio/bd06.wav', data: {test_part: 'test', dresponse: 'DL', level: '6'}},
+  {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6p'}},
 ];
 
 var audioDL = {
@@ -1040,6 +1105,47 @@ var audioDL = {
               timeline_variables: audio_stimuli6, // takes stimuli from "audio_stimuli"
               randomize_order: true // randomize order of trials
             }
+
+
+// condition 6 practice audio //
+            var prac_audio_stimuli6 = [
+              {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6m'}},
+              {stimulus: 'audio/bd06.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6'}},
+              {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6p'}},
+              {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6m'}},
+              {stimulus: 'audio/bd06.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6'}},
+              {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6p'}},
+            ];
+
+            var prac_audioDL = {
+                  type: "audio-keyboard-response",
+                  stimulus: jsPsych.timelineVariable('stimulus'),
+                  choices: jsPsych.NO_KEYS,
+                  trial_ends_after_audio: true
+                }
+
+                var prac_responseDL = {
+                      type: "html-keyboard-response",
+                      stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+                      "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+                      choices: ['leftarrow', 'rightarrow'],
+                      response_ends_trial: true,
+                      trial_duration: null,
+                      data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+                      on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                        if (data.key_press == 37) {
+                          data.resp = 1;
+                        } else if (data.key_press == 39) {
+                          data.resp = 0;
+                        }
+                      }
+                    }
+
+            var prac_audioDL6 = {
+                  timeline: [prac_audioDL, prac_responseDL], // alternates the audio trial and response trial
+                  timeline_variables: prac_audio_stimuli6, // takes stimuli from "audio_stimuli"
+                  randomize_order: true // randomize order of trials
+                }
 
   // instructions for breaks: rest //
   var rest = {
@@ -1084,50 +1190,50 @@ randomint = Math.floor(Math.random()*200);
 if(randomint > 175){
   timeline.push(
     // condition 4: practice playlist #1
-    say_ABA, prac_con4ABA, audioDL4,
-    say_ABA, prac_incon4ADA, audioDL4
+    say_ABA, prac_con4ABA, prac_audioDL4,
+    say_ABA, prac_incon4ADA, prac_audioDL4
   );
 } else if(randomint > 150){
   timeline.push(
     // condition 4: practice playlist #2
-    say_ADA, prac_con4ADA, audioDL4,
-    say_ABA, prac_incon4ADA, audioDL4
+    say_ADA, prac_con4ADA, prac_audioDL4,
+    say_ABA, prac_incon4ADA, prac_audioDL4
   );
 } else if(randomint > 125){
   timeline.push(
     // condition 4: practice playlist #3
-    say_ADA, prac_con4ADA, audioDL4,
-    say_ADA, prac_incon4ABA, audioDL4
+    say_ADA, prac_con4ADA, prac_audioDL4,
+    say_ADA, prac_incon4ABA, prac_audioDL4
   );
 } else if(randomint > 100){
   timeline.push(
     // condition 4 playlist #4
-    say_ABA, prac_con4ABA, audioDL4,
-    say_ADA, prac_incon4ABA, audioDL4
+    say_ABA, prac_con4ABA, prac_audioDL4,
+    say_ADA, prac_incon4ABA, prac_audioDL4
 );
 } else if(randomint > 75){
   timeline.push(
     // condition 4 playlist #5
-    say_ADA, prac_incon4ABA, audioDL4,
-    say_ADA, prac_con4ADA, audioDL4
+    say_ADA, prac_incon4ABA, prac_audioDL4,
+    say_ADA, prac_con4ADA, prac_audioDL4
 );
 } else if(randomint > 50){
   timeline.push(
     // condition 4 playlist #6
-    say_ADA, prac_incon4ABA, audioDL4,
-    say_ABA, prac_con4ABA, audioDL4
+    say_ADA, prac_incon4ABA, prac_audioDL4,
+    say_ABA, prac_con4ABA, prac_audioDL4
 );
 } else if(randomint > 25){
   timeline.push(
     // condition 4 playlist #7
-    say_ABA, prac_incon4ADA, audioDL4,
-    say_ADA, prac_con4ADA, audioDL4
+    say_ABA, prac_incon4ADA, prac_audioDL4,
+    say_ADA, prac_con4ADA, prac_audioDL4
 );
 } else if(randomint > 0){
   timeline.push(
     // condition 4 playlist #8
-    say_ABA, prac_incon4ADA, audioDL4,
-    say_ABA, prac_con4ABA, audioDL4
+    say_ABA, prac_incon4ADA, prac_audioDL4,
+    say_ABA, prac_con4ABA, prac_audioDL4
 );
 }
 }
@@ -1140,50 +1246,50 @@ randomint = Math.floor(Math.random()*200);
 if(randomint > 175){
   timeline.push(
     // condition 5: practice playlist #1
-    say_ABA, prac_con5ABA, audioDL5,
-    say_ABA, prac_incon5ADA, audioDL5
+    say_ABA, prac_con5ABA, prac_audioDL5,
+    say_ABA, prac_incon5ADA, prac_audioDL5
   );
 } else if(randomint > 150){
   timeline.push(
     // condition 5: practice playlist #2
-    say_ADA, prac_con5ADA, audioDL5,
-    say_ABA, prac_incon5ADA, audioDL5
+    say_ADA, prac_con5ADA, prac_audioDL5,
+    say_ABA, prac_incon5ADA, prac_audioDL5
   );
 } else if(randomint > 125){
   timeline.push(
     // condition 5: practice playlist #3
-    say_ADA, prac_con5ADA, audioDL5,
-    say_ADA, prac_incon5ABA, audioDL5
+    say_ADA, prac_con5ADA, prac_audioDL5,
+    say_ADA, prac_incon5ABA, prac_audioDL5
   );
 } else if(randomint > 100){
   timeline.push(
     // condition 5 playlist #4
-    say_ABA, prac_con5ABA, audioDL5,
-    say_ADA, prac_incon5ABA, audioDL5
+    say_ABA, prac_con5ABA, prac_audioDL5,
+    say_ADA, prac_incon5ABA, prac_audioDL5
 );
 } else if(randomint > 75){
   timeline.push(
     // condition 5 playlist #5
-    say_ADA, prac_incon5ABA, audioDL5,
-    say_ADA, prac_con5ADA, audioDL5
+    say_ADA, prac_incon5ABA, prac_audioDL5,
+    say_ADA, prac_con5ADA, prac_audioDL5
 );
 } else if(randomint > 50){
   timeline.push(
     // condition 5 playlist #6
-    say_ADA, prac_incon5ABA, audioDL5,
-    say_ABA, prac_con5ABA, audioDL5
+    say_ADA, prac_incon5ABA, prac_audioDL5,
+    say_ABA, prac_con5ABA, prac_audioDL5
 );
 } else if(randomint > 25){
   timeline.push(
     // condition 5 playlist #7
-    say_ABA, prac_incon5ADA, audioDL5,
-    say_ADA, prac_con5ADA, audioDL5
+    say_ABA, prac_incon5ADA, prac_audioDL5,
+    say_ADA, prac_con5ADA, prac_audioDL5
 );
 } else if(randomint > 0){
   timeline.push(
     // condition 5 playlist #8
-    say_ABA, prac_incon5ADA, audioDL5,
-    say_ABA, prac_con5ABA, audioDL5
+    say_ABA, prac_incon5ADA, prac_audioDL5,
+    say_ABA, prac_con5ABA, prac_audioDL5
 );
 }
 }
@@ -1196,50 +1302,50 @@ randomint = Math.floor(Math.random()*200);
 if(randomint > 175){
   timeline.push(
     // condition 6: practice playlist #1
-    say_ABA, prac_con6ABA, audioDL6,
-    say_ABA, prac_incon6ADA, audioDL6
+    say_ABA, prac_con6ABA, prac_audioDL6,
+    say_ABA, prac_incon6ADA, prac_audioDL6
   );
 } else if(randomint > 150){
   timeline.push(
     // condition 6: practice playlist #2
-    say_ADA, prac_con6ADA, audioDL6,
-    say_ABA, prac_incon6ADA, audioDL6
+    say_ADA, prac_con6ADA, prac_audioDL6,
+    say_ABA, prac_incon6ADA, prac_audioDL6
   );
 } else if(randomint > 125){
   timeline.push(
     // condition 6: practice playlist #3
-    say_ADA, prac_con6ADA, audioDL6,
-    say_ADA, prac_incon6ABA, audioDL6
+    say_ADA, prac_con6ADA, prac_audioDL6,
+    say_ADA, prac_incon6ABA, prac_audioDL6
   );
 } else if(randomint > 100){
   timeline.push(
     // condition 6 playlist #4
-    say_ABA, prac_con6ABA, audioDL6,
-    say_ADA, prac_incon6ABA, audioDL6
+    say_ABA, prac_con6ABA, prac_audioDL6,
+    say_ADA, prac_incon6ABA, prac_audioDL6
 );
 } else if(randomint > 75){
   timeline.push(
     // condition 6 playlist #5
-    say_ABA, prac_incon6ADA, audioDL6,
-    say_ADA, prac_con6ADA, audioDL6
+    say_ABA, prac_incon6ADA, prac_audioDL6,
+    say_ADA, prac_con6ADA, prac_audioDL6
 );
 } else if(randomint > 50){
   timeline.push(
     // condition 6 playlist #6
-    say_ABA, prac_incon6ADA, audioDL6,
-    say_ABA, prac_con6ABA, audioDL6
+    say_ABA, prac_incon6ADA, prac_audioDL6,
+    say_ABA, prac_con6ABA, prac_audioDL6
 );
 } else if(randomint > 25){
   timeline.push(
     // condition 6 playlist #7
-    say_ADA, prac_incon6ABA, audioDL6,
-    say_ADA, prac_con6ADA, audioDL6
+    say_ADA, prac_incon6ABA, prac_audioDL6,
+    say_ADA, prac_con6ADA, prac_audioDL6
 );
 } else if(randomint > 0){
   timeline.push(
     // condition 6 playlist #8
-    say_ADA, prac_incon6ABA, audioDL6,
-    say_ABA, prac_con6ABA, audioDL6
+    say_ADA, prac_incon6ABA, prac_audioDL6,
+    say_ABA, prac_con6ABA, prac_audioDL6
 );
 }
 }
@@ -2506,7 +2612,14 @@ if(randomint > 115){
     say_ABA, incon5ADA, audioDL5,
     say_ABA, incon5ADA, audioDL5,
     halfway,
-
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
     say_ADA, incon5ABA, audioDL5,
     say_ADA, incon5ABA, audioDL5,
     say_ADA, incon5ABA, audioDL5,
@@ -3397,7 +3510,14 @@ if(randomint > 115){
     say_ABA, incon6ADA, audioDL6,
     say_ABA, incon6ADA, audioDL6,
     halfway,
-
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
     say_ADA, incon6ABA, audioDL6,
     say_ADA, incon6ABA, audioDL6,
     say_ADA, incon6ABA, audioDL6,
