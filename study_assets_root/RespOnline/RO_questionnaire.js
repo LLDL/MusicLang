@@ -179,9 +179,21 @@ var musical_detail = {
         toggle_listeners(form, false, validate_musical_detail);
     }
 };
+
+var end = {
+    type: 'instructions',
+    pages: [
+        header + 'Click <i>next</i> for instructions for cash compensation or to fill out the RPS form.'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    button_label_previous: 'Back',
+    allow_keys: false
+};
+
 jatos.onLoad(
     jsPsych.init({
-        timeline: [info, future, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail],
+        timeline: [info, future, contact, personal, gender, background, dominant_languages, language_details, musical_summary, musical_detail, end],
         exclusions: {
             min_width: 800,
             min_height: 600
