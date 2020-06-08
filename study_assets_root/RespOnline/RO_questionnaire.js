@@ -183,7 +183,7 @@ var musical_detail = {
 var end = {
     type: 'instructions',
     pages: [
-        header + 'Click <i>next</i> for instructions for cash compensation or to fill out the RPS form.'
+        header + 'Click <i>next</i> to begin the experiment.'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
