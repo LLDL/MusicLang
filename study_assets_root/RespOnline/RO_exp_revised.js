@@ -3284,7 +3284,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 				' In particular, this study investigates how breathing through the nose or mouth affects the perception of speech sounds and certain non-speech sounds.' +
 				' Specifically, we are looking to see whether breathing in a certain way affects the perception of sounds that have certain acoustic characteristics that are related to the production of nasal vocalizations (like /n/ or /m/) or oral vocalizations (like /d/ or /b/), and even musical notes that have ‘nasal-sounding’ acoustic characteristics.' +
 				' This research will then help us clarify the link between neural systems for motor control and neural systems for perception. </p>' +
-			'<b>Click <i>next</i> to complete the questionnaire.</b>'],
+			'<b>Click <i>next</i> for instructions for cash compensation or to complete the RPS form.</b>'],
 			show_clickable_nav: true,
 			button_label_next: "Next",
 			allow_keys: false
