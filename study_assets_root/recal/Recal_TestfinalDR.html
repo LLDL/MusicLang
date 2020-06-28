@@ -29,6 +29,7 @@
     '<p><div style="font-size:20px;test-align: center;">This is a video and audio listening task.</div></p>' +
     '<p><div style="font-size:20px;text-align: center;">Please put on your headphones now. Make sure your headphones are set to a comfortable volume by playing the following audio clip and adjusting accordingly.</div></p>' +
     '<div style="font-size:20px;text-align: center;"><audio preload="auto" controls><source src="audio/sample.mp3" type="audio/mpeg"></audio></div>' +
+          '<p> The second part of the experiment will take 25-30 minutes. You will get one break halfway through. </p>' +
     '<p><div style="font-size:20px;text-align: center;">Click <i>next</i> to begin the experiment.</div></p>'],
     data: {test_part: 'instructions'},
       show_clickable_nav: true,
@@ -42,8 +43,8 @@
     pages: ["<h2> Instructions </h2>" +
     "<p> There are two phases for each trial, you will be presented with a series of videos immediately followed by a series of sound clips. </p>" +
     "<p> <h2>Series of video clips</h2></p>" +
-    "<p> In this phase, you will be asked to articulate a sound in sync with the audiovisual face in the videos. </p>" +
-    "<p> The sound that you're told to articulate will sometimes not match with the face in the videos. </p>" +
+    "<p> In this phase, you will be asked to silently articulate a sound in sync with the audiovisual face in the videos. </p>" +
+    "<p> The sound that you're told to silently articulate will sometimes not match with the face in the videos. </p>" +
     "<p> You will also hear static noise during some videos, this is normal, continue watching the videos. </p>" +
     "<p> <h2>Series of sound clips</h2></p>" +
     "<p> In this phase, you will be asked to decide what sound you heard after each sound clip.</p>" +
@@ -81,7 +82,7 @@
 var say_ABA = {
         type: 'html-keyboard-response',
         data: {test_part: 'instructions', blocktype: 'ABA'},
-        stimulus: '<p>Please mouth <b>ABA</b> in sync with the following videos.</p>' +
+        stimulus: '<p>Please silently mouth <b>ABA</b> in sync with the following videos.</p>' +
         '<p>Press the spacebar or enter key to begin.</p>',
         choices: ['spacebar', 'enter']
     }
@@ -90,7 +91,7 @@ var say_ABA = {
 var say_ADA = {
     type: 'html-keyboard-response',
     data: {test_part: 'instructions', blocktype: 'ADA'},
-    stimulus: '<p>Please mouth <b>ADA</b> in sync with the following videos.</p>' +
+    stimulus: '<p>Please silently mouth <b>ADA</b> in sync with the following videos.</p>' +
     '<p>Press the spacebar or enter key to begin.</p>',
     choices: ['spacebar', 'enter']
   }
