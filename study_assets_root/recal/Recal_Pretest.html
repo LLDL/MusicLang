@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="google" content="notranslate" />
+        <title>LangDev Recal</title>
+        <script src="jatos.js"></script>
+        <script src="jspsych-6.1/jspsych.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-audio-keyboard-response.js"></script>
+        <script src="shared_assets/js/instructions.js"></script>
+
+        <link href="shared_assets/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <link href="jspsych-6.1/css/jspsych.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body></body>
+    <script>
+    var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img>";
+
+    // create timeline */
+    var timeline = [];
+
+    var generalinstructionsclick = {
+      type: 'instructions',
+      pages: [
+        header +
+      '<p><div style="font-size:20px;text-align: center;"><h1>Language Learning & Development Lab: Recal</h1></p></div>' +
+      '<p><div style="font-size:20px;text-align: center;">Welcome to the first part of the experiment.</div></p>' +
+    '<p><div style="font-size:20px;text-align: center;">This is an audio listening task. You will be hearing sounds and you will be asked to decide what sound you heard.</div></p>' +
+ '<p><div style="font-size:20px;text-align: center;">Please put on your headphones now. Make sure your headphones are set to a comfortable volume by playing the following audio clip and adjusting accordingly.</div></p>' +
+'<div style="font-size:20px;text-align: center;"><audio preload="auto" controls><source src="audio/sample.mp3" type="audio/mpeg"></audio></div>' +
+          '<p> The first part of the study will take 5 minutes. </p>' +
+'<p><div style="font-size:20px;text-align: center;">Click <i>next</i> to begin the experiment.</div></p>'],
+      show_clickable_nav: true,
+      button_label_next: 'Next',
+      allow_keys: false
+    }
+
+timeline.push(generalinstructionsclick);
+
+var practicetrialinstructionsDL = {
+    type: 'instructions',
+    pages: ["<p>Press the <i>left arrow key</i> for <b>/ADA/</b> and <i>right arrow key</i> for <b>/ABA/</b>.</p>" +
+    "<p> Answer as quickly and accurate as you can. If you do not know, you may guess. </p>" +
+    "<p> Please use your dominant hand (right if you are righthanded, left if you are lefthanded) to press the arrow keys.</p>" +
+    "<p> You will be given a practice trial. Click <i>next</i> to begin the practice trial.</p>"],
+          show_clickable_nav: true,
+          allow_keys: false
+        }
+
+var practicetrialinstructionsDR = {
+            type: 'instructions',
+            pages: ["<p>Press the <i>left arrow key</i> for <b>/ABA/</b> and <i>right arrow key</i> for <b>/ADA/</b>.</p>" +
+            "<p> Answer as quickly and accurate as you can. If you do not know, you may guess. </p>" +
+            "<p> Please use your dominant hand (right hand if you are righthanded, left if you are lefthanded) to press the arrow keys.</p>" +
+            "<p> You will be given a practice trial. Click <i>next</i> to begin the practice trial.</p>"],
+                  show_clickable_nav: true,
+                  allow_keys: false
+                }
+
+    // list of practice stimli */
+    var practice_stimuliDL = [
+      {stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DL', test: 'practice'}}, // 'data' creates a tag for stimuli, {level : '1'} creates a column called "level" with value '1' for audio/bd01.wav
+      {stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DL', test: 'practice'}},
+  ];
+  var practice_stimuliDR = [
+    {stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DR', test: 'practice'}}, // 'data' creates a tag for stimuli, {level : '1'} creates a column called "level" with value '1' for audio/bd01.wav
+    {stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DR', test: 'practice'}},
+];
+
+// practice paired trials */
+// DL TRIALS //
+          // allows audio to play completely through */
+            var practice_audioDL = {
+                  type: "audio-keyboard-response",
+                  stimulus: jsPsych.timelineVariable('stimulus'),
+                  choices: jsPsych.NO_KEYS,
+                  trial_ends_after_audio: true
+                }
+
+            // after audio finishes completely, participant can make a response & "level" data is logged to the response trial */
+            var practice_responseDL = {
+                  type: "html-keyboard-response",
+                  stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+                  "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+                  choices: ['leftarrow', 'rightarrow'],
+                  response_ends_trial: true,
+                  trial_duration: null,
+                  data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+                  on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                    if (data.key_press == 37) {
+                      data.resp = 0;
+                    } else if (data.key_press == 39) {
+                      data.resp = 1;
+                    }
+                  }
+                }
+
+            // practice trial procedure */
+            var practice_procedureDL = {
+                  timeline: [practice_audioDL , practice_responseDL],
+                  timeline_variables: practice_stimuliDL,
+                  randomize_order: true
+                }
+
+
+// DR TRIALS //
+                // allows audio to play completely through */
+                  var practice_audioDR = {
+                        type: "audio-keyboard-response",
+                        stimulus: jsPsych.timelineVariable('stimulus'),
+                        choices: jsPsych.NO_KEYS,
+                        trial_ends_after_audio: true
+                      }
+
+                  // after audio finishes completely, participant can make a response & "level" data is logged to the response trial */
+                  var practice_responseDR = {
+                        type: "html-keyboard-response",
+                        stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ABA</b></div>" +
+                        "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ADA</b></div>",
+                        choices: ['leftarrow', 'rightarrow'],
+                        response_ends_trial: true,
+                        trial_duration: null,
+                        data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+                        on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                          if (data.key_press == 37) {
+                            data.resp = 1;
+                          } else if (data.key_press == 39) {
+                            data.resp = 0;
+                          }
+                        }
+                      }
+
+                  // practice trial procedure */
+                  var practice_procedureDR = {
+                        timeline: [practice_audioDR , practice_responseDR],
+                        timeline_variables: practice_stimuliDR,
+                        randomize_order: true
+                      }
+
+
+              // begin test trials screen */
+              var testclick = {
+                  type: 'instructions',
+                  pages: ['The test trials will now begin. Click <i>next</i> to continue.'],
+                  show_clickable_nav: true,
+                  allow_keys: false
+              }
+
+    // list of test stimli */
+    var audio_stimuliDR = [
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '2', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DR', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DR', test: 'test'}},
+    ];
+
+
+    var audio_stimuliDL = [
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd01.wav", data: {level: '1', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd02.wav", data: {level: '2', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd03.wav", data: {level: '3', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd04.wav", data: {level: '4', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd05.wav", data: {level: '5', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd06.wav", data: {level: '6', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd07.wav", data: {level: '7', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd08.wav", data: {level: '8', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DL', test: 'test'}},
+      { stimulus: "audio/bd09.wav", data: {level: '9', dresponse: 'DL', test: 'test'}},
+    ];
+
+    /* format of test trials: paired trials
+    1. an audio test trial [audio stimuli is specified through timeline variable]
+    this allows audio to play completely throughout
+    2. html response trial [participant can make a response] */
+
+// DL TEST TRIALS //
+    var audioDL = {
+          type: "audio-keyboard-response",
+          stimulus: jsPsych.timelineVariable('stimulus'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_audio: true
+        }
+
+    // after audio finishes completely, participant can make a response & "level" data is logged to the response trial */
+        var responseDL = {
+              type: "html-keyboard-response",
+              stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+              "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+              choices: ['leftarrow', 'rightarrow'],
+              response_ends_trial: true,
+              trial_duration: null,
+              data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+              on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                if (data.key_press == 37) {
+                  data.resp = 1;
+                } else if (data.key_press == 39) {
+                  data.resp = 0;
+                }
+              }
+            }
+
+    // audio test trial procedure */
+    var audio_procedureDL = {
+          timeline: [audioDL, responseDL], // alternates the audio trial and response trial
+          timeline_variables: audio_stimuliDL, // takes stimuli from "audio_stimuli"
+          randomize_order: true // randomize order of trials
+        }
+
+
+// DR TEST TRIALS //
+
+var audioDR = {
+      type: "audio-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: true
+    }
+
+// after audio finishes completely, participant can make a response & "level" data is logged to the response trial */
+    var responseDR = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ABA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ADA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 0;
+            } else if (data.key_press == 39) {
+              data.resp = 1;
+            }
+          }
+        }
+
+// audio test trial procedure */
+var audio_procedureDR = {
+      timeline: [audioDR, responseDR], // alternates the audio trial and response trial
+      timeline_variables: audio_stimuliDR, // takes stimuli from "audio_stimuli"
+      randomize_order: true // randomize order of trials
+    }
+
+        // get random integer //
+        randomint = Math.floor(Math.random()*480);
+
+        if(randomint > 239){
+          timeline.push(practicetrialinstructionsDL, practice_procedureDL, testclick, audio_procedureDL);
+        } else if(randomint < 239){
+          timeline.push(practicetrialinstructionsDR, practice_procedureDR, testclick, audio_procedureDR);
+        }
+
+      // start the experiment */
+jatos.onLoad(function() {
+  //  message indicating the end of the experiment
+    var end = {
+        type: 'instructions',
+        pages: ['<p> Thank you for participating! </p>' +
+        '<p> Please email <a href="mailto:langdev@sfu.ca"> langdev@sfu.ca</a> with your confirmation ID: <b>' + jatos.studyResultId + '</b> to let them know you have completed the first part of the experiment. </p>' +
+        '<p> DO NOT CLICK CLOSE UNTIL YOU HAVE SENT THIS EMAIL. </p>' +
+        '<p> Click <i>close</i> when you have finished. </p>'],
+        show_clickable_nav: true,
+        button_label_next: "Close",
+        allow_keys: false
+    }
+    timeline.push(end);
+    jsPsych.init({
+        timeline: timeline, // initate timeline
+        preload_audio: ["audio/bd01.wav", "audio/bd02.wav", "audio/bd03.wav", "audio/bd04.wav", "audio/bd05.wav", "audio/bd06.wav", "audio/bd07.wav", "audio/bd08.wav", "audio/bd09.wav" ], //preload audio
+        use_webaudio: false, //allow audio play in browser
+        show_preload_progress_bar: false, // hide preload progress bar,
+        exclusions: {
+            min_width: 800,
+            min_height: 600
+        },
+        on_finish: function (data) {
+            var studyID = jatos.studyResultId;
+            jsPsych.data.addProperties({subject : studyID});
+          // only retrieve data from this trial type and ignore these columns when generating results
+          // data should be displayed in csv format
+          var resultJson = jsPsych.data.get().filter({trial_type:'html-keyboard-response'}).ignore('internal_node_id').ignore('time_elapsed').ignore('view_history').ignore('rt').ignore('trial_type').ignore('trial_index').ignore('completed').ignore('stimulus').ignore('key_press');
+          jatos.submitResultData(resultJson.csv(), jatos.startNextComponent); // ignore these columns when generating results
+        },
+        default_iti: 250
+      });
+    });
+    </script>
+</html>
