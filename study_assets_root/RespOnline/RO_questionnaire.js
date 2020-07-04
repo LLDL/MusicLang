@@ -8,7 +8,8 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 var info = {
     type: 'instructions',
     pages: [
-        header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
+        header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> ' +
+        '<p> Note: This study must be completed on a desktop computer or laptop. Please make sure you are using one of the following browsers, Google Chrome or FireFox, to complete the study.</p>'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
