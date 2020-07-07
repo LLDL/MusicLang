@@ -10,7 +10,7 @@ jatos.onLoad(function() {
 
 var cash_rps = {
 type: 'html-keyboard-response',
-stimulus: header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>RO' + jatos.studyResultId + '</b>. <p> If you have completed this study for cash, please email <a href="mailto:langdev@sfu.ca?Subject=Participant%20MLE' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Participant RO' + jatos.studyResultId + '</b> to arrange payment.' +
+stimulus: header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>RO' + jatos.studyResultId + '</b>. <p> If you have completed this study for cash, please email <a href="mailto:langdev@sfu.ca?Subject=Participant%20RO' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Participant RO' + jatos.studyResultId + '</b> to arrange payment.' +
 ' After you have emailed us your confirmation ID, you may press <b> N </b> to end the experiment.</p>' +
 '<p>If you have completed this study for RPS credits, press <b> Y </b> to complete the online RPS form. </p>',
 choices: [89,78], // Y or N
