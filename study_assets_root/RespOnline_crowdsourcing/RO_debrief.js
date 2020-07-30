@@ -4,7 +4,7 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 
 jatos.onLoad(function(data) {
   var studyID = {subject: jatos.studyResultId};
-  jatos.endStudyAndRedirect("https://app.prolific.co/submissions/complete?cc=1234ABCD", studyID);
+  jatos.endStudyAndRedirect("https://app.prolific.co/submissions/complete?cc=87517F62", studyID);
 
     jsPsych.init({
         //Questionaire:
