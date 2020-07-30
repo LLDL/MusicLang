@@ -36,6 +36,24 @@ function get_answer(questions, question) {
     return questions[question].children[1].value;
 };
 
+
+// MODIFIED FOR crowdsourcing
+
+function validate_idnumber() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+
+    var idnumber = get_answer(questions, 1);
+
+    if (idnumber.length > 1000) {
+        allow_next(next, false, "Please enter your Prolific ID here.");
+    } else {
+        allow_next(next, true);
+    }
+};
+
 // MODIFIED FOR RPS //
 
 function validate_rps() {
