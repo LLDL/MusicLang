@@ -3,9 +3,14 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 
 
 jatos.onLoad(function(data) {
-  var studyID = {subject: jatos.studyResultId};
-  jatos.endStudyAndRedirect("https://app.prolific.co/submissions/complete?cc=87517F62", studyID);
-
+  var result = {subject: jatos.studyResultId};
+jatos.submitResultData(result)
+  .then(jatos.endStudyAjax)
+  .then(() => {
+    window.location.href = 'https://app.prolific.co/submissions/complete?cc=87517F62'
+});
+  
+  
     jsPsych.init({
         //Questionaire:
 
