@@ -3347,7 +3347,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 
 			//to display data and add subject number:
-			on_finish: function() {
+			on_finish: function(data) {
 				var studyID = jatos.studyResultID;
 				 if(likely_invalid){
                 	studyID += ' - invalid result'
