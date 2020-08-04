@@ -177,4 +177,5 @@ jsPsych.data.addProperties({condition : prolificID});   // adds prolific ID to r
             jatos.submitResultData(resultsCSV, jatos.startNextComponent);
         }
     })
+    }
 );
