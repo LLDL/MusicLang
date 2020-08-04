@@ -3341,7 +3341,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 			use_webaudio: false,
 			preload_audio: audio,
-			max_load_time: 12000,
+			max_load_time: 18000,
 			max_preload_attempts: 10,
 
 
