@@ -147,7 +147,7 @@ var end = {
 var prolificID = jatos.urlQueryParameters.PROLIFIC_PID;   // accesses prolific ID from the URL
 var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
 jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
-jsPsych.data.addProperties({condition : prolificID});   // adds prolific ID to results data
+jsPsych.data.addProperties({prolificID : prolificID});   // adds prolific ID to results data
 
     jsPsych.init({
         timeline: [info, idnumber, personal, gender, background, dominant_languages, language_details, end],
