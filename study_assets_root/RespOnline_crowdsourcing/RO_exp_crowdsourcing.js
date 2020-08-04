@@ -3319,8 +3319,11 @@ There is a brief practice phase before the actual study begins. Press any key to
 	//now that we have complete timeline, we tell jsPsych to run it.
 	//We will eventually need a JATOS wrapper
 
-	jatos.onLoad(
-		jatos.addJatosIds(resultData),
+	jatos.onLoad(function() {
+var prolificID = jatos.urlQueryParameters.PROLIFIC_PID;   // accesses prolific ID from the URL
+var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
+jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
+jsPsych.data.addProperties({prolificID : prolificID});   // adds prolific ID to results data
 
 		jsPsych.init({
 			timeline: timeline,
@@ -3360,4 +3363,5 @@ There is a brief practice phase before the actual study begins. Press any key to
             	jatos.submitResultData(results.csv(), jatos.startNextComponent);
 			}
 		})
+	}
 	);
