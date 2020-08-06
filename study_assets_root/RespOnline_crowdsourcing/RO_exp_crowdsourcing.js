@@ -1305,12 +1305,25 @@ There is a brief practice phase before the actual study begins. Press any key to
 	var blocksize;
 		blocksize = 60;
 
+
+		var preload = {
+		        type: "call-function",
+		        async: true,
+		        func: function (done) {
+		            jsPsych.pluginAPI.preloadAudioFiles([jsPsych.timelineVariable('stimulus', true)], function () {
+		                done({ preload: "success" });
+		            })
+		        }
+		    };
+
+
 	/* Here are the main procedures. There are 32 in total, 4 each (as per the playlist number) for dleft/dright, nose/mouth.
 	Each number at the end of 'main_procedure_...1' corresponds to the playlist that will be used
 	for each main procedure block. */
 	//dleft_nose
 	var main_procedure_dleft_nose1 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1325,6 +1338,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dleft_nose2 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1339,6 +1353,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dleft_nose3 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1353,6 +1368,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dleft_nose4 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1368,6 +1384,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	//dleft_mouth
 	var main_procedure_dleft_mouth1 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1382,6 +1399,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dleft_mouth2 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1396,6 +1414,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dleft_mouth3 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1410,6 +1429,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dleft_mouth4 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1425,6 +1445,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	//dright_nose
 	var main_procedure_dright_nose1 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1439,6 +1460,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dright_nose2 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1453,6 +1475,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dright_nose3 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1467,6 +1490,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dright_nose4 = {
 		timeline: [
+			preload,
 			fixation_nose,
 			audiopresentation,
 			responselog
@@ -1482,6 +1506,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 	//dright_mouth
 	var main_procedure_dright_mouth1 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1496,6 +1521,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dright_mouth2 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1510,6 +1536,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	var main_procedure_dright_mouth3 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -1524,6 +1551,7 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 		var main_procedure_dright_mouth4 = {
 		timeline: [
+			preload,
 			fixation_mouth,
 			audiopresentation,
 			responselog
@@ -3343,19 +3371,10 @@ jsPsych.data.addProperties({prolificID : prolificID});   // adds prolific ID to 
         },
 
 			use_webaudio: false,
-			preload_audio: audio,
-			max_load_time: 18000,
-			max_preload_attempts: 10,
-
 
 
 			//to display data and add subject number:
-			on_finish: function() {
-				var studyID = jatos.studyResultID;
-				 if(likely_invalid){
-                	studyID += ' - invalid result'
-            }
-				jsPsych.data.addProperties({subject : studyID});
+			on_finish: function(data) {
 				// jsPsych.data.displayData("CSV");
 				//to submit the results to JATOS...
         	    var all_data = jsPsych.data.get();
