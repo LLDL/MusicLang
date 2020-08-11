@@ -3320,8 +3320,6 @@ There is a brief practice phase before the actual study begins. Press any key to
 	//We will eventually need a JATOS wrapper
 
 	jatos.onLoad(
-		jatos.addJatosIds(resultData),
-
 		jsPsych.init({
 			timeline: timeline,
 
@@ -3349,9 +3347,6 @@ There is a brief practice phase before the actual study begins. Press any key to
 			//to display data and add subject number:
 			on_finish: function() {
 				var studyID = jatos.studyResultID;
-				 if(likely_invalid){
-                	studyID += ' - invalid result'
-            }
 				jsPsych.data.addProperties({subject : studyID});
 				// jsPsych.data.displayData("CSV");
 				//to submit the results to JATOS...
