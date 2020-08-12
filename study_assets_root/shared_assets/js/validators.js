@@ -350,3 +350,121 @@ function validate_musical_detail(){
         }
     }
 }
+
+//Functions for questionnaire to reflect on LangDev's parent registration questions
+//include: parentinfo, childinfo, born_before_due, gestation_period, gender, language_exposure, problems
+
+function validate_parentinfo() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    //start with next disabled
+    allow_next(next, false);
+
+    var parentnames = get_answer(questions, 1);
+    var address = get_answer(questions, 2);
+    var phone = get_answer(questions, 3);
+    var email = get_answer(questions, 4);
+    var addcontact = get_answer(questions, 5);
+    var preference = get_answer(questions, 6);
+
+    //regex from: https://cs.chromium.org/chromium/src/third_party/WebKit/LayoutTests/fast/forms/resources/ValidityState-typeMismatch-email.js?sq=package:chromium&type=cs
+    var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if ((parentnames.length == 0 || parentnames.length > 100)) {
+        allow_next(next, false, "Enter parent names");
+    }
+    else if (address.length == 0 || address.length > 100) {
+        allow_next(next, false, "Enter your mailing address");
+    }
+    else if (phone.length < 5 || phone.length > 100) {
+        allow_next(next, false, "Enter a valid phone number");
+    }
+    else if (!email_regex.test(String(email).toLowerCase())) {
+        allow_next(next, false, "Enter a valid email address");
+    }
+    else if (addcontact.length == 0 || addcontact.length > 100) {
+        allow_next(next, false, "Enter your additional contact information");
+    }
+    else if (preference.length == 0 || preference.length > 100) {
+        allow_next(next, false, "Enter your preferred communication");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
+
+function validate_childinfo() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var childname = get_answer(questions, 1);
+    var childbirthdate = get_answer(questions, 2);
+    var problems = get_answer(questions, 3);
+
+    if ((childname.length == 0 || childname.length > 100)) {
+        allow_next(next, false, "Enter your child's name");
+    }
+    else if (childbirthdate.length == 0 || childbirthdate.length > 100) {
+        allow_next(next, false, "Enter your child's birthdate");
+    }
+    else if (problems.length == 0 || problems.length > 1000) {
+        allow_next(next, false, "Describe any problems in under 1000 characters");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
+
+function validate_born_before_due() {
+  var answers = document.getElementsByClassName("survey-yes-no-response");
+  var next = document.getElementById("survey-yes-no-next");
+  allow_next(next, false, "Please select yes or no");
+
+  if(answers[0].checked || answers[1].checked){
+      allow_next(next, true);
+  }
+};
+
+function validate_gestation_period() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var ifyes = get_answer(questions, 1);
+
+    if ((ifyes.length == 0 || ifyes.length > 100)) {
+        allow_next(next, false, "Specify the gestation period if you answered yes");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
+
+function validate_language_exposure() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var langexposure = get_answer(questions, 1);
+
+    if (langexposure.length == 0 || langexposure.length > 100) {
+        allow_next(next, false, "Enter the languages that your child is exposed to");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+function validate_problems() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var problems = get_answer(questions, 1);
+
+    if (problems.length == 0 || problems.length > 100) {
+        allow_next(next, false, "Specify any problems your child has");
+    } else {
+        allow_next(next, true);
+    }
+};
