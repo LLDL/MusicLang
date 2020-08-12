@@ -37,7 +37,7 @@ function get_answer(questions, question) {
 };
 
 
-// MODIFIED FOR crowdsourcing
+// MODIFIED FOR CROWDSOURCING //
 
 function validate_idnumber() {
     var questions = document.getElementById("jspsych-content").children;
@@ -53,6 +53,23 @@ function validate_idnumber() {
         allow_next(next, true);
     }
 };
+
+function validate_surveyq() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+
+    var surveyq = get_answer(questions, 1);
+
+    if (surveyq.length > 1000) {
+        allow_next(next, false, "Please type in your answer.");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+// MODIFED FOR CROWDSOURCING -- END//
 
 // MODIFIED FOR RPS //
 
@@ -87,7 +104,7 @@ function validate_rps() {
     }
 };
 
-// MODIFIED FOR RPS //
+// MODIFIED FOR RPS - END //
 
 function validate_confirmation() {
     var answers = document.getElementsByClassName("survey-yes-no-response");
