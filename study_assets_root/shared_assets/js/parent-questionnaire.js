@@ -68,8 +68,8 @@ var childinfo = {
     json_label: 'childinfo',
     questions: [
         {prompt: "Child name"},
-        {prompt: "Child birh date (YYYY/MM/DD)"},
-        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc."}
+        {prompt: "Child birth date (YYYY/MM/DD)"},
+        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc.<br>If your child has no such disorders, write N/A."}
     ],
     on_load: function () {
         validate_childinfo();
@@ -152,7 +152,7 @@ var problems = {
     preamble: header + "<h2>Disorders/Impairments/Disabilities</h2>",
     json_label: 'disabilities',
     questions: [
-        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc."}
+        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc.<br>If your child has no such disorders, write N/A."}
     ],
     on_load: function () {
         validate_problems();
