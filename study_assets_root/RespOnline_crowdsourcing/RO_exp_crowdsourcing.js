@@ -209,21 +209,21 @@ There is a brief practice phase before the actual study begins. Press any key to
 		trial_duration: 15000
 	};
 
-	// Participants get breaks every 60 trials; they need to click Next to continue.
+		// Participants get breaks every 60 trials; they need to click Next to continue.
 	var nose_rest = {
 		type: 'image-keyboard-response',
-		data: {test_part: 'fixation', blocktype: 'nose'},
+		data: {test_part: 'check', blocktype: 'nose'},
   		stimulus: 'shared_assets/img/nose.jpeg',
-  		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p>Remember to return to <b>nose-breathing</b> at the end of the break!</p><p> Press the <i>spacebar</i> to continue when you are ready.</p>',
-  		choices: [32],
+  		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p> Please answer the following question when you are ready to proceed. <b>You will not be penalized for your answer so please be as honest as possible.</b></p><p> You were asked to breathe through your <b>nose</b> for the last block, did you maintain nose-breathing for the entire block?</p> <p> Press <b>y</b> if you maintained your breathing or <b>n</b> if you did not. </p><p> <i>The next block will resume after you have answered this question. Remember to return to <b>nose-breathing</b>!</i></p>',
+  		choices: [89, 78], // 89 for Y, 78 for N
 	};
 
 	var mouth_rest = {
 		type: 'image-keyboard-response',
-		data: {test_part: 'fixation', blocktype: 'mouth'},
+		data: {test_part: 'check', blocktype: 'mouth'},
   		stimulus: 'shared_assets/img/mouth.png',
-  		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p>Remember to return to <b>mouth-breathing</b> at the end of the break!</p><p> Press the <i>spacebar</i> to continue when you are ready.</p>',
-  		choices: [32],
+  		prompt: '<h2>Break time!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p> Please answer the following question when you are ready to proceed. <b>You will not be penalized for your answer so please be as honest as possible.</b></p><p> You were asked to breathe through your <b>mouth</b> for the last block, did you maintain mouth-breathing for the entire block?</p> <p> Press <b>y</b> if you maintained your breathing or <b>n</b> if you did not. </p><p> <i>The next block will resume after you have answered this question. Remember to return to <b>mouth-breathing</b>!</i></p>',
+			choices: [89, 78], // 89 for Y, 78 for N
   	};
 
 	// Here are instructions between nose and mouth block or vice versa; they will also need to click Next to continue.
