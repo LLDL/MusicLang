@@ -8,10 +8,10 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 
 var surveyq = {
     type: 'survey-text-custom',
-    preamble: header + "<h2>Let us know your thoughts!</h2>",
+    preamble: header + "<h2>What did you think of our study? Let us know your thoughts!</h2>",
     json_label: 'surveyq',
     questions: [
-        {prompt: "What did you think of our study? Were you able to maintain your breathing throughout the entire experiment or did you find it too difficult? Thank you for your participation!"}
+        {prompt: "Were you able to maintain your breathing throughout the entire experiment or did you find it too difficult?"}
     ],
     on_load: function () {
         validate_surveyq();
@@ -26,7 +26,7 @@ var surveyq = {
 var end = {
     type: 'instructions',
     pages: [
-        header + 'Click <i>next</i> to receive your completion code.'
+        header + 'Thank you for your participation! Click <i>next</i> to receive your completion code.'
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
