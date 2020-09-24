@@ -9,7 +9,7 @@ var info = {
     type: 'instructions',
     pages: [
         header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> ' +
-        '<p> Note: This study must be completed on a desktop computer or laptop. Please make sure you are using one of the following browsers, Google Chrome or FireFox, to complete the study. </p>' +
+        '<p> Note: This study must be completed on a desktop computer or laptop. Please make sure that you have a stable internet connection and that you are using one of the following browsers, Google Chrome or FireFox, to complete the study. </p>' +
         '<p> If you are completing this study for RPS credit, please make sure you fill out the RPS form at the end of the experiment. <p>' +
         '<p> If you experience technical difficulties during the experiment, email us at <a href="mailto:langdev@sfu.ca">langdev@sfu.ca</a> </p>'
     ],
