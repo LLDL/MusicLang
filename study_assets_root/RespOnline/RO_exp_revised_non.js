@@ -3363,8 +3363,6 @@ jsPsych.data.addProperties({subject : studyID});     // adds study ID to results
             };
         },
 
-			use_webaudio: false,
-
 
 			//to display data and add subject number:
 			on_finish: function(data) {
