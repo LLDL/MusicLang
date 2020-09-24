@@ -3366,9 +3366,6 @@ jsPsych.data.addProperties({prolificID : prolificID});   // adds prolific ID to 
             };
         },
 
-			use_webaudio: false,
-
-
 			//to display data and add subject number:
 			on_finish: function(data) {
 				// jsPsych.data.displayData("CSV");
