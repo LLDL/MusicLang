@@ -3350,7 +3350,7 @@ jsPsych.data.addProperties({subject : studyID});     // adds study ID to results
 				
 				use_webaudio: false,
 				preload_audio: audio,
-				max_load_time: 18000,
+				max_load_time: 180000,
 				max_preload_attempts: 10,
 
         on_interaction_data_update: function (data) {
