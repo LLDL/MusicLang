@@ -3353,7 +3353,7 @@ jsPsych.data.addProperties({prolificID : prolificID});   // adds prolific ID to 
 				
 				use_webaudio: false,
 				preload_audio: audio,
-				max_load_time: 18000,
+				max_load_time: 180000,
 				max_preload_attempts: 10,
 
         on_interaction_data_update: function (data) {
