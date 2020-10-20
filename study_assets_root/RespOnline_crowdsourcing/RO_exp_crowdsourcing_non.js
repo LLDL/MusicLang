@@ -228,14 +228,12 @@ There is a brief practice phase before the actual study begins. Press any key to
 
 	// Here are instructions between nose and mouth block or vice versa; they will also need to click Next to continue.
 	var instr_btwn = {
-		type: "instructions",
-		pages: [
-		"<h2>You're halfway through!</h2><p> Click <i>Next</i> to continue when you are ready.</p>"
-		],
-  	 	show_clickable_nav: true,
-    	button_label_next: 'Next',
-    	allow_keys: false
-	};
+type: "html-keyboard-response",
+data: {test_part: 'check'},
+          stimulus: '<h2>You are halfway through!</h2><p> Feel free to breathe as you like, but please stay on this screen.</p><p> Please answer the following question when you are ready to proceed. <b>You will not be penalized for your answer so please be as honest as possible.</b></p><p> You were asked to breathe a certain way for the last block, did you maintain your breathing for the entire block?</p> <p> Press <b>y</b> if you maintained your breathing or <b>n</b> if you did not. </p><p> <i>The next block will resume after you have answered this question.</p>',
+choices: [89, 78], // 89 for Y, 78 for N
+};
+
 // CONTINUA UPDATED ON JULY. 3RD [bd: 20-69, dn: 32-81, mn: 25-64]
 	// Below is the test stimuli bank with all the audio stimuli organized in 8 different playlists (4 each block type) with versions in each dleft and dright. Participants will get all 4 in random order, depending on their random integer.
 		// DLEFT
@@ -3293,6 +3291,15 @@ There is a brief practice phase before the actual study begins. Press any key to
 		timeline.push(nose_rest);
 		timeline.push(main_procedure_dright_nose1);
 	}
+
+var check_end = {
+type: "html-keyboard-response",
+data: {test_part: 'check'},
+          stimulus: '<h2>You have reached the end of the experiment!</h2><p> Please answer the following question. <b>You will not be penalized for your answer so please be as honest as possible.</b></p><p> You were asked to breathe a certain way for the last block, did you maintain your breathing for the entire block?</p> <p> Press <b>y</b> if you maintained your breathing or <b>n</b> if you did not. </p>',
+choices: [89, 78], // 89 for Y, 78 for N
+};
+
+timeline.push(check_end);
 
 	var end = {
 			type: 'instructions',
