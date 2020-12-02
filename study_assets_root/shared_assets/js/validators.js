@@ -47,7 +47,7 @@ function validate_idnumber() {
 
     var idnumber = get_answer(questions, 1);
 
-    if (idnumber.length > 1000) {
+    if (idnumber.length == 0 || idnumber.length > 1000) {
         allow_next(next, false, "Please enter your Prolific ID here.");
     } else {
         allow_next(next, true);
@@ -70,6 +70,41 @@ function validate_surveyq() {
 };
 
 // MODIFED FOR CROWDSOURCING -- END//
+
+// MODIFIED FOR CONASSIM'S ADDITIONAL Q'S //
+
+function validate_USA() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+    var is_valid = true;
+
+    var yes = document.getElementById("survey-yes-no-response-0-0");
+    var no = document.getElementById("survey-yes-no-response-0-1");
+
+    if(!yes.checked && !no.checked){
+        allow_next(next, false, "Please select yes or no");
+        is_valid = false;
+    }
+}
+
+function validate_state() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+
+    var state = get_answer(questions, 1);
+
+    if (state.length == 0 || state.length > 1000) {
+        allow_next(next, false, "Please enter the state or territory you were born in");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+// MODIFIED FOR CONASSIM'S ADDITIONAL Q'S -- END //
 
 // MODIFIED FOR RPS //
 
