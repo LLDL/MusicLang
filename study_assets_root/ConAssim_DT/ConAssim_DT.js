@@ -382,7 +382,7 @@ var practice_procedure = {
 	timeline: [
 			{
 			type: 'audio-keyboard-response',
-			data: jsPsych.timelineVariable('data'),
+			data: {test_part: 'audio'},
 			stimulus: jsPsych.timelineVariable('practiceaudio'),
 			prompt: "",
 			choices: jsPsych.NO_KEYS,
@@ -632,7 +632,7 @@ var test_procedure = {
 	timeline: [
 			{
 			type: 'audio-keyboard-response',
-			data: jsPsych.timelineVariable('data'),
+			data: {test_part: 'audio'},
 			stimulus: jsPsych.timelineVariable('audio'),
 			prompt: "",
 			choices: jsPsych.NO_KEYS,
@@ -661,7 +661,41 @@ var test_procedure = {
     timeline_variables: audio,
 		randomize_order: true
 };
-timeline.push(test_instructions, preloadaudio3, test_procedure, rest, test_procedure);
+
+var test_procedure2 = {
+	timeline: [
+			{
+			type: 'audio-keyboard-response',
+			data: {test_part: 'audio'},
+			stimulus: jsPsych.timelineVariable('audio'),
+			prompt: "",
+			choices: jsPsych.NO_KEYS,
+			trial_duration: 1750
+
+		},
+			{
+					type: 'html-slider-response',
+					data: jsPsych.timelineVariable('data'),
+					stimulus: function(){return "What sound did you perceive from <p>"+jsPsych.timelineVariable('segments',true)+"</p>";},
+					labels: jsPsych.timelineVariable('choices'),
+					min: 1,
+					max: 6,
+					start: 1,
+					step: 1,
+					slider_width: 500,
+					response_ends_trial: 'true'
+			},
+			{
+		timeline: [rest],
+		conditional_function: function(){
+			return jsPsych.data.get().filter({test_part: 'test'}).count() == 144;
+		}
+	}
+    ],
+    timeline_variables: audio,
+		randomize_order: true
+};
+timeline.push(test_instructions, preloadaudio3, test_procedure, rest, test_procedure2);
 
 
 var end = {
@@ -702,7 +736,7 @@ jsPsych.init({
 			on_finish: function(data) {
 				// jsPsych.data.displayData("CSV");
 				//to submit the results to JATOS...
-				var all_data = jsPsych.data.get().filter([{test_part: 'practice'}, {test_part: 'test'}, {test_part: 'qre'}]);		
+				var all_data = jsPsych.data.get().filter([{test_part: 'practice'}, {test_part: 'test'}, {test_part: 'qre'}, {test_part: 'audio'}]);		
         	    var results = all_data.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_name').ignore('question_count').ignore('key_press').ignore('trial_type').ignore('value').ignore('preload');
             	jatos.submitResultData(results.csv(), jatos.startNextComponent);
 			}
