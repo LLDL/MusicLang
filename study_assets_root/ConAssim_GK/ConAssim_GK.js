@@ -97,10 +97,10 @@ var audio1 = [
 	{ audio: 'shared_assets/audio/k/3_khisi1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'isi', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/4_khisi1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'isi', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/5_khisi1.mp3', data: {speaker: "5", test_part: 'test', vowel: 'isi', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/2_khasa1.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/3_khasa1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/4_khasa1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/5_khasa1.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/2_khusu1.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/3_khusu1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/4_khusu1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/5_khusu1.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/2_ghasa1.mp3', data: {speaker: "2", test_part: 'test', vowel: 'asa', token: '1', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/3_ghasa1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'asa', token: '1', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/4_ghasa1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'asa', token: '1', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
@@ -148,10 +148,10 @@ var audio2 = [
 	{ audio: 'shared_assets/audio/k/3_khisi2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'isi', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/4_khisi2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'isi', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/5_khisi2.mp3', data: {speaker: "5", test_part: 'test', vowel: 'isi', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/2_khasa2.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/3_khasa2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/4_khasa2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/5_khasa2.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/2_khusu2.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/3_khusu2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/4_khusu2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/5_khusu2.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/2_ghasa2.mp3', data: {speaker: "2", test_part: 'test', vowel: 'asa', token: '2', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/3_ghasa2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'asa', token: '2', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/4_ghasa2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'asa', token: '2', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
@@ -199,10 +199,10 @@ var audio3 = [
 	{ audio: 'shared_assets/audio/k/3_khisi3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'isi', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/4_khisi3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'isi', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/5_khisi3.mp3', data: {speaker: "5", test_part: 'test', vowel: 'isi', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/2_khasa3.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/3_khasa3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/4_khasa3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/5_khasa3.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/2_khusu3.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/3_khusu3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/4_khusu3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/5_khusu3.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/2_ghasa3.mp3', data: {speaker: "2", test_part: 'test', vowel: 'asa', token: '3', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/3_ghasa3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'asa', token: '3', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/4_ghasa3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'asa', token: '3', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
@@ -381,7 +381,7 @@ var practice_procedure = {
 	timeline: [
 			{
 			type: 'audio-keyboard-response',
-			data: jsPsych.timelineVariable('data'),
+			data: {test_part: 'audio'},
 			stimulus: jsPsych.timelineVariable('practiceaudio'),
 			prompt: "",
 			choices: jsPsych.NO_KEYS,
@@ -441,10 +441,10 @@ var audio = [
 	{ audio: 'shared_assets/audio/k/3_khisi1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'isi', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/4_khisi1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'isi', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/5_khisi1.mp3', data: {speaker: "5", test_part: 'test', vowel: 'isi', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/2_khasa1.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/3_khasa1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/4_khasa1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/5_khasa1.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/2_khusu1.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/3_khusu1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/4_khusu1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/5_khusu1.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '1', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/2_ghasa1.mp3', data: {speaker: "2", test_part: 'test', vowel: 'asa', token: '1', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/3_ghasa1.mp3', data: {speaker: "3", test_part: 'test', vowel: 'asa', token: '1', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/4_ghasa1.mp3', data: {speaker: "4", test_part: 'test', vowel: 'asa', token: '1', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
@@ -489,10 +489,10 @@ var audio = [
 	{ audio: 'shared_assets/audio/k/3_khisi2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'isi', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/4_khisi2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'isi', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/5_khisi2.mp3', data: {speaker: "5", test_part: 'test', vowel: 'isi', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/2_khasa2.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/3_khasa2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/4_khasa2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/5_khasa2.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/2_khusu2.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/3_khusu2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/4_khusu2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/5_khusu2.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '2', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/2_ghasa2.mp3', data: {speaker: "2", test_part: 'test', vowel: 'asa', token: '2', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/3_ghasa2.mp3', data: {speaker: "3", test_part: 'test', vowel: 'asa', token: '2', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/4_ghasa2.mp3', data: {speaker: "4", test_part: 'test', vowel: 'asa', token: '2', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
@@ -537,10 +537,10 @@ var audio = [
 	{ audio: 'shared_assets/audio/k/3_khisi3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'isi', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/4_khisi3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'isi', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/k/5_khisi3.mp3', data: {speaker: "5", test_part: 'test', vowel: 'isi', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/2_khasa3.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/3_khasa3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/4_khasa3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
-	{ audio: 'shared_assets/audio/k/5_khasa3.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/2_khusu3.mp3', data: {speaker: "2", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/3_khusu3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/4_khusu3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
+	{ audio: 'shared_assets/audio/k/5_khusu3.mp3', data: {speaker: "5", test_part: 'test', vowel: 'usu', token: '3', stimtype: 'kh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/2_ghasa3.mp3', data: {speaker: "2", test_part: 'test', vowel: 'asa', token: '3', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/3_ghasa3.mp3', data: {speaker: "3", test_part: 'test', vowel: 'asa', token: '3', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
 	{ audio: 'shared_assets/audio/g/4_ghasa3.mp3', data: {speaker: "4", test_part: 'test', vowel: 'asa', token: '3', stimtype: 'gh'}, segments: "<b>g</b> to <b>k</b>", choices: ['g','k']},
@@ -630,7 +630,7 @@ var test_procedure = {
 	timeline: [
 			{
 			type: 'audio-keyboard-response',
-			data: jsPsych.timelineVariable('data'),
+			data: {test_part: 'audio'},
 			stimulus: jsPsych.timelineVariable('audio'),
 			prompt: "",
 			choices: jsPsych.NO_KEYS,
@@ -660,8 +660,41 @@ var test_procedure = {
 		randomize_order: true
 };
 
-		timeline.push(test_instructions, preloadaudio3, test_procedure, rest, test_procedure);
+var test_procedure2 = {
+	timeline: [
+			{
+			type: 'audio-keyboard-response',
+			data: {test_part: 'audio'},
+			stimulus: jsPsych.timelineVariable('audio'),
+			prompt: "",
+			choices: jsPsych.NO_KEYS,
+			trial_duration: 1750
 
+		},
+			{
+					type: 'html-slider-response',
+					data: jsPsych.timelineVariable('data'),
+					stimulus: function(){return "What sound did you perceive from <p>"+jsPsych.timelineVariable('segments',true)+"</p>";},
+					labels: jsPsych.timelineVariable('choices'),
+					min: 1,
+					max: 6,
+					start: 1,
+					step: 1,
+					slider_width: 500,
+					response_ends_trial: 'true'
+			},
+			{
+		timeline: [rest],
+		conditional_function: function(){
+			return jsPsych.data.get().filter({test_part: 'test'}).count() == 144;
+		}
+	}
+    ],
+    timeline_variables: audio,
+		randomize_order: true
+};
+
+timeline.push(test_instructions, preloadaudio3, test_procedure, rest, test_procedure2);
 
 var end = {
 		type: 'instructions',
@@ -702,7 +735,7 @@ jsPsych.data.addProperties({prolificID : prolificID});   // adds prolific ID to 
 			on_finish: function(data) {
 				// jsPsych.data.displayData("CSV");
 				//to submit the results to JATOS...
-				var all_data = jsPsych.data.get().filter([{test_part: 'practice'}, {test_part: 'test'}]);		
+				var all_data = jsPsych.data.get().filter([{test_part: 'practice'}, {test_part: 'test'}, {test_part: 'qre'}, {test_part: 'audio'}]);		
         	    var results = all_data.ignore('internal_node_id').ignore('time_elapsed').ignore('trial_name').ignore('question_count').ignore('key_press').ignore('trial_type').ignore('value').ignore('preload');
             	jatos.submitResultData(results.csv(), jatos.startNextComponent);
 			}
