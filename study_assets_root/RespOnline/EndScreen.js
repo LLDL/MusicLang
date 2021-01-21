@@ -85,7 +85,8 @@ var rps = {
           pages: [
               header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>' + jatos.studyResultId + '</b>.' +
               '<p> Your participation is counted in the RPS system.</p>' +
-              '<p> If you have any questions about your participation, please save this ID and email <a href="mailto:langdev@sfu.ca">langdev@sfu.ca</a>.</p>'
+              '<p> If you have any questions about your participation, please save this ID and email <a href="mailto:langdev@sfu.ca">langdev@sfu.ca</a>.</p>' +
+              '<p> Please click <b> close </b> to end the experiment. </p>
             ],
           show_clickable_nav: true,
           button_label_next: 'Close',
@@ -96,6 +97,14 @@ var rps = {
         exclusions: {
             min_width: 800,
             min_height: 600
+        },
+        on_data_update: function(data){
+          var studyID = jatos.studyResultId;
+            jsPsych.data.addProperties({subject : studyID});
+            var resultsRaw = jsPsych.data.get();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed');
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV);
         },
         on_finish: function (data) {
             var studyID = jatos.studyResultId;
