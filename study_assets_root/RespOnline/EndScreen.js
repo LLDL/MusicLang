@@ -9,17 +9,53 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 jatos.onLoad(function() {
 
 var cash_rps = {
-type: 'html-keyboard-response',
-stimulus: header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>RO' + jatos.studyResultId + '</b>. <p> If you have completed this study for cash, please email <a href="mailto:langdev@sfu.ca?Subject=Participant%20RO' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Participant RO' + jatos.studyResultId + '</b> to arrange payment.' +
-' After you have emailed us your confirmation ID, you may press <b> N </b> to end the experiment.</p>' +
-'<p>If you have completed this study for RPS credits, press <b> Y </b> to complete the online RPS form. </p>',
-choices: [89,78], // Y or N
-on_finish: function(data){
-if(data.key_press == 78){
-  jsPsych.endExperiment('The experiment was ended.');
-}
-}
-}
+    type: 'survey-yes-no',
+    questions: [
+        {prompt: '<p>Thank you for your participation. Your confirmation ID is <b>RO' + jatos.studyResultId + '</b>.' +
+        '<p> If you have completed this study for cash, please email <a href="mailto:langdev@sfu.ca?Subject=Participant%20RO' + jatos.studyResultId + '">langdev@sfu.ca</a> with the subject <b>Participant RO' + jatos.studyResultId + '</b> to arrange payment.' +
+        ' After you have emailed us your confirmation ID, you may click "no" to end the experiment.</p>' +
+        '<p> If you have completed this study for RPS credits, click "yes" to complete the online RPS form. </p>'
+        }
+    ],
+    preamble: header + "<h2>Study Complete</h2>",
+    json_label: 'cash_rps',
+    on_load: function(){
+        validate_confirmation();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_cash_rps);
+    },
+    on_finish: function(){
+        toggle_listeners(form, false, validate_cash_rps);
+    },
+    data: {test_part: 'cashrps'}
+    };
+    
+    var end = {
+    type: 'instructions',
+    pages: [
+        header + '<h2>Study Complete</h2><p>Thanks for your participation. You may <i>close</i> to end the experiment.</p>',
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Close',
+    button_label_previous: 'Back',
+    allow_keys: false,
+    on_finish: function(data){
+      jsPsych.endExperiment(':)');
+      }
+};
+
+var if_node = {
+    timeline: [end],
+    conditional_function: function(){
+        // get the data from the previous trial
+        var data = jsPsych.data.get().filter({test_part:'cashrps'}).last(1).values()[0];
+        if(data.q1 == false){
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
 
 var online = {
     type: 'instructions',
@@ -93,7 +129,7 @@ var rps = {
           allow_keys: false
       };
       jsPsych.init({
-        timeline: [cash_rps, online, confirmation, rps, finish_conf],
+        timeline: [cash_rps, if_node, online, confirmation, rps, finish_conf],
         exclusions: {
             min_width: 800,
             min_height: 600
