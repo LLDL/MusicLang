@@ -139,6 +139,16 @@ function validate_rps() {
     }
 };
 
+function validate_cash_rps() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
+
 // MODIFIED FOR RPS - END //
 
 function validate_confirmation() {
