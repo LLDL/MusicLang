@@ -82,6 +82,14 @@ var rps = {
             min_width: 800,
             min_height: 600
         },
+          on_data_update: function(data){
+          var studyID = jatos.studyResultId;
+            jsPsych.data.addProperties({subject : studyID});
+            var resultsRaw = jsPsych.data.get();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed');
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV);
+        },
         on_finish: function (data) {
             var studyID = jatos.studyResultId;
             jsPsych.data.addProperties({subject : studyID});
