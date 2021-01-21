@@ -2,7 +2,7 @@ var blur_count = 0; //number of times subject's focus leaves tab
 var form; //current jspych-content element, to allow listeners to be toggled from different functions
 var likely_invalid = false; //gets set to true if blur_count>threshold
 
-var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab RespOnline</h1>"; //to be prepended to preludes
+var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab</h1>"; //to be prepended to preludes
 
 // Instruction pages that appear at the start
 var online = {
