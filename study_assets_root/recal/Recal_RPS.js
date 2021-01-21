@@ -69,7 +69,8 @@ var rps = {
           pages: [
               header + '<h2>Study Complete</h2><p>Thank you for your participation. Your confirmation ID is <b>' + jatos.studyResultId + '</b>.' +
               '<p>Your participation is counted in the RPS system.</p>' +
-              '<p> If you have any questions about your participation, please save this ID and email <a href="mailto:langdev@sfu.ca">langdev@sfu.ca</a>.</p>'
+              '<p> If you have any questions about your participation, please save this ID and email <a href="mailto:langdev@sfu.ca">langdev@sfu.ca</a>.</p>' +
+              '<p> Please click <b> close </b> to end the experiment. </p>
             ],
           show_clickable_nav: true,
           button_label_next: 'Close',
