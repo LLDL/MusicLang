@@ -8,7 +8,7 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 var info = {
     type: 'instructions',
     pages: [
-        header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent_L2-IDS.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
+        header + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/consent_l2-ids.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
     ],
     show_clickable_nav: true,
     button_label_next: 'Next',
@@ -24,22 +24,57 @@ var info = {
         1   releases listeners
 */
 
-var idnumber = {
-    type: 'survey-text-custom',
-    preamble: header + "<h2>Worker ID Information</h2>",
-    json_label: 'idnumber',
+var copy = {
+    type: 'survey-yes-no',
     questions: [
-        {prompt: "Please enter your Prolific ID below."}
+        {prompt: "Would you like a copy of your child's language counts?"}
     ],
-    on_load: function () {
-        validate_idnumber();
+    preamble: header + "<h2>Parent Questionnaire</h2>",
+    json_label: 'Language Count',
+    on_load: function(){
+        validate_copy();
         form = document.getElementById("jspsych-content");
-        toggle_listeners(form, true, validate_idnumber);
+        toggle_listeners(form, true, validate_copy);
     },
-    on_finish: function () {
-        toggle_listeners(form, false, validate_idnumber);
+    on_finish: function(){
+        toggle_listeners(form, false, validate_copy);
     }
 };
+
+var talkbank = {
+    type: 'survey-yes-no',
+    questions: [
+        {prompt: "Do you wish for you data to be included into the TalkBank archive? We will then only use your data for our current analysis without uploading to the online repository."}
+    ],
+    preamble: header + "<h2>Data Collection</h2>",
+    json_label: 'TalkBank Permission',
+    on_load: function(){
+        validate_talkbank();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_talkbank);
+    },
+    on_finish: function(){
+        toggle_listeners(form, false, validate_talkbank);
+    }
+};
+
+var futurecontact = {
+    type: 'survey-yes-no',
+    questions: [
+        {prompt: "Would you like to opt in for us to contact you in the future?"}
+    ],
+    preamble: header + "<h2></h2>",
+    json_label: 'Future Contact',
+    on_load: function(){
+        validate_futurecontact();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_futurecontact);
+    },
+    on_finish: function(){
+        toggle_listeners(form, false, validate_futurecontact);
+    }
+};
+
 var parentinfo = {
     type: 'survey-text-custom',
     preamble: header + "<h2>Parent Information</h2>",
@@ -68,8 +103,8 @@ var childinfo = {
     json_label: 'childinfo',
     questions: [
         {prompt: "Child name"},
-        {prompt: "Child birth date (YYYY/MM/DD)"},
-        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc.<br>If your child has no such disorders, write N/A."}
+        {prompt: "Child birh date (YYYY/MM/DD)"},
+        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc."}
     ],
     on_load: function () {
         validate_childinfo();
@@ -147,23 +182,6 @@ var language_exposure = {
     }
 };
 
-var problems = {
-    type: 'survey-text-custom',
-    preamble: header + "<h2>Disorders/Impairments/Disabilities</h2>",
-    json_label: 'disabilities',
-    questions: [
-        {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc.<br>If your child has no such disorders, write N/A."}
-    ],
-    on_load: function () {
-        validate_problems();
-        form = document.getElementById("jspsych-content");
-        toggle_listeners(form, true, validate_problems);
-    },
-    on_finish: function () {
-        toggle_listeners(form, false, validate_problems);
-    }
-};
-
 var end = {
   type: 'instructions',
   pages: [
@@ -178,7 +196,7 @@ var end = {
 jatos.onLoad(function() {
 
 jsPsych.init({
-    timeline: [info, parentinfo, childinfo, born_before_due, gestation_period, gender, language_exposure, problems, end],
+    timeline: [info, copy, talkbank, futurecontact, parentinfo, childinfo, born_before_due, gestation_period, gender, language_exposure, end],
     exclusions: {
         min_width: 800,
         min_height: 600
