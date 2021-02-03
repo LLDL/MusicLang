@@ -414,8 +414,37 @@ function validate_musical_detail(){
 }
 
 //Functions for questionnaire to reflect on LangDev's parent registration questions
-//include: parentinfo, childinfo, born_before_due, gestation_period, gender, language_exposure, problems
+//include: talkbank, copy, futurecontact, parentinfo, childinfo, born_before_due, gestation_period, gender, language_exposure, problems
 
+function validate_talkbank() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
+
+function validate_copy() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
+
+function validate_futurecontact() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
 function validate_parentinfo() {
     var questions = document.getElementById("jspsych-content").children;
     var next = document.getElementById("jspsych-survey-text-next");
