@@ -35,7 +35,383 @@ function allow_next(next, enable, prompt) {
 function get_answer(questions, question) {
     return questions[question].children[1].value;
 };
+// Modified for LangDev Parent Questionnaire //
+function update_known_member(questions) {
+    var known = [];
+    for (var i = 0; i < 8; i++) {
+        if (get_answer(questions, i + 1) != '') {
+            known[i] = get_answer(questions, i + 1);
+        } else {
+            break;
+        }
+    }
+    known_member = known;
+};
 
+function get_known_member() {
+    return known_member;
+}
+
+function update_known_members(questions) {
+    var known = [];
+    for (var i = 0; i < 8; i++) {
+        if (get_answer(questions, i + 1) != '') {
+            known[i] = get_answer(questions, i + 1);
+        } else {
+            break;
+        }
+    }
+    known_members = known;
+};
+
+function get_known_members() {
+    return known_members;
+}
+
+// PARENT QUESTIONNAIRE: SECTION 1 //
+function validate_imageuse() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
+
+function validate_contactfut() {
+    var answers = document.getElementsByClassName("survey-yes-no-response");
+    var next = document.getElementById("survey-yes-no-next");
+    allow_next(next, false, "Please select yes or no");
+
+    if(answers[0].checked || answers[1].checked){
+        allow_next(next, true);
+    }
+};
+
+function validate_contactinfo() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    //start with next disabled
+    allow_next(next, false);
+
+    var parentcaregiver = get_answer(questions, 1);
+    var telephone = get_answer(questions, 2);
+    var email = get_answer(questions, 3);
+    var notes = get_answer(questions, 4);
+    var contact = get_answer(questions, 5);
+
+    //regex from: https://cs.chromium.org/chromium/src/third_party/WebKit/LayoutTests/fast/forms/resources/ValidityState-typeMismatch-email.js?sq=package:chromium&type=cs
+    var email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if ((parentcaregiver.length == 0 || parentcaregiver.length > 100)) {
+        allow_next(next, false, "Enter names of parent/caregivers");
+    } else if (telephone.length < 9 || telephone.length > 100) {
+        allow_next(next, false, "Enter a valid phone number");
+    } else if (!email_regex.test(String(email).toLowerCase())) {
+        allow_next(next, false, "Enter a valid email address");
+    } else if (notes.length == 0 || notes.length > 100) {
+        allow_next(next, false, "Enter any additional contact information");
+    } else if (contact.length == 0 || contact.length > 100) {
+          allow_next(next, false, "Enter how you would like to be contacted");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+function validate_childreninfo() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var childname = get_answer(questions, 1);
+    var childbirthdate = get_answer(questions, 2);
+    var gestation = get_answer(questions, 3);
+
+    if ((childname.length == 0 || childname.length > 100)) {
+        allow_next(next, false, "Enter names of child/ren(s) separated by semicolons");
+    }
+    else if (childbirthdate.length == 0 || childbirthdate.length > 100) {
+        allow_next(next, false, "Enter your child/ren(s) birthdates");
+    }
+    else if (gestation.length == 0 || gestation.length > 1000) {
+        allow_next(next, false, "Enter name(s) and gestation period(s) if applicable");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
+
+function validate_languageexposure() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var exposure = get_answer(questions, 1);
+    var notes = get_answer(questions, 2);
+    
+    if ((exposure.length == 0 || exposure.length > 100)) {
+        allow_next(next, false, "Enter names of child/ren(s), separated by semicolons");
+    }
+    else if (notes.length == 0 || notes.length > 100) {
+        allow_next(next, false, "Enter any additional notes");
+	}
+    else {
+        allow_next(next, true);
+    }
+};
+
+// PARENT QUESTIONNAIRE: SECTION 2 //
+function validate_childnamecountry() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var childname = get_answer(questions, 1);
+    var childcountry = get_answer(questions, 2);
+    
+    if ((childname.length == 0 || childname.length > 100)) {
+        allow_next(next, false, "Enter the name of the child participating in the study");
+    }
+    else if (childcountry.length == 0 || childcountry.length > 100) {
+        allow_next(next, false, "Enter the child's country of birth");
+	}
+    else {
+        allow_next(next, true);
+    }
+};
+
+function validate_languagedomacq() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var langdom = get_answer(questions, 1);
+    var orderacq = get_answer(questions, 2);
+    
+    if ((langdom.length == 0 || langdom.length > 100)) {
+        allow_next(next, false, "Enter languages in order of dominance, separated by semicolons");
+    }
+    else if (orderacq.length == 0 || orderacq.length > 100) {
+        allow_next(next, false, "Enter languages in order of acquisition, separated by semicolons");
+	}
+    else {
+        allow_next(next, true);
+    }
+};
+
+function validate_disabilities() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var problems = get_answer(questions, 1);
+
+    if (problems.length == 0 || problems.length > 1000) {
+        allow_next(next, false, "Describe any hearing problems, learning disorders, and language disorders in under 1000 characters");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+function validate_daycare() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var daycare = get_answer(questions, 1);
+
+    if (daycare.length == 0 || daycare.length > 1000) {
+        allow_next(next, false, "Enter if your child attends daycare/school/nursery, the hours per week and languages spoken");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+function validate_extracurricular() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var extracurricular = get_answer(questions, 1);
+
+    if (extracurricular.length == 0 || extracurricular.length > 1000) {
+        allow_next(next, false, "Enter if your child attends extra-curricular/language programs, the hours per week and languages spoken");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+function validate_family_languageexposure() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var family_lang1 = get_answer(questions, 1);
+
+    if (family_lang1.length == 0 || family_lang1.length > 50) {
+        allow_next(next, false, "Enter the family members who your child speaks to at least once a week and the language spoken");
+    } else {
+        update_known_member(questions);
+        allow_next(next, true);
+    }
+};
+
+function validate_family_languagedetails() {
+    var next = document.getElementById("jspsych-member-info-next");
+    allow_next(next, false);
+    var is_valid = true;
+    for (var i = 0; i < 8; i++) {
+        currRow = document.getElementById("member-row-" + i);
+        if (currRow == null || !is_valid) {
+            break;
+        }
+        var proportion_of_language_spoken = currRow.children[1].children[0].value;
+        var hours_spent = currRow.children[2].children[0].value;
+        if (isNaN(parseInt(proportion_of_language_spoken)) || (proportion_of_language_spoken == 0 || proportion_of_language_spoken > 100)) {
+            allow_next(next, false, "On a scale from 1-7, please indicate how much they speak this language(s) to your child. (1 being all English and 7 being all the other language)" + currRow.children[0].innerText);
+            is_valid = false;
+        } else if (isNaN(parseInt(hours_spent)) || (hours_spent == 0 || hours_spent > 120)) {
+            allow_next(next, false, "Please list the hours they spend with the child on an average weekday (Monday - Friday) and an average weekend day (Saturday/Sunday)" + currRow.children[0].innerText);
+            is_valid = false;
+        }
+    }
+    if (is_valid) {
+        allow_next(next, true);
+    }
+};
+
+
+function validate_other_languageexposure() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var other_lang1 = get_answer(questions, 1);
+
+    if (other_lang1.length == 0 || other_lang1.length > 50) {
+        allow_next(next, false, "Enter other individuals who your child speaks to at least once a week and the language spoken");
+    } else {
+        update_known_members(questions);
+        allow_next(next, true);
+    }
+};
+
+function validate_other_languagedetails() {
+    var next = document.getElementById("jspsych-members-info-next");
+    allow_next(next, false);
+    var is_valid = true;
+    for (var i = 0; i < 8; i++) {
+        currRow = document.getElementById("members-row-" + i);
+        if (currRow == null || !is_valid) {
+            break;
+        }
+        var proportion_of_language_spoken = currRow.children[1].children[0].value;
+        var hours_spent = currRow.children[2].children[0].value;
+        if (isNaN(parseInt(proportion_of_language_spoken)) || (proportion_of_language_spoken == 0 || proportion_of_language_spoken > 100)) {
+            allow_next(next, false, "On a scale from 1-7, please indicate how much they speak this language(s) to your child. (1 being all English and 7 being all the other language)" + currRow.children[0].innerText);
+            is_valid = false;
+        } else if (isNaN(parseInt(hours_spent)) || (hours_spent == 0 || hours_spent > 120)) {
+            allow_next(next, false, "Please list the hours they spend with the child on an average weekday (Monday - Friday) and an average weekend day (Saturday/Sunday)" + currRow.children[0].innerText);
+            is_valid = false;
+        }
+    }
+    if (is_valid) {
+        allow_next(next, true);
+    }
+};
+
+function validate_addlanguage() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var radio = get_answer(questions, 1);
+    var music = get_answer(questions, 2);
+    var TV = get_answer(questions, 3);
+    var read = get_answer(questions, 4);
+    
+    if ((radio.length == 0 || radio.length > 100)) {
+        allow_next(next, false, "Enter the language heard and hours spent when listening to the radio.");
+    }
+    else if (music.length == 0 || music.length > 100) {
+        allow_next(next, false, "Enter the language heard and hours spent when listening to music");
+	}
+	else if (TV.length == 0 || TV.length > 100) {
+        allow_next(next, false, "Enter the language heard and hours spent when watching TV/videos");
+    }
+    else if (read.length == 0 || read.length > 100) {
+        allow_next(next, false, "Enter the language heard and hours spent when your child is being read to");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
+
+
+// PARENT QUESTIONNAIRE: SECTION 3
+function validate_parentcareinfo() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var country = get_answer(questions, 1);
+    var langdom = get_answer(questions, 2);
+    var edu = get_answer(questions, 3);
+    
+    if ((country.length == 0 || country.length > 100)) {
+        allow_next(next, false, "Enter country of birth for each parent, separated by semicolons");
+    }
+    else if (langdom.length == 0 || langdom.length > 100) {
+        allow_next(next, false, "Enter languages in order of most to least fluent for each parent, separated by semicolons");
+	}
+	else if (edu.length == 0 || edu.length > 100) {
+        allow_next(next, false, "Enter highest level of education attained for each parent, separated by semicolons");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
+
+// END - PARENT QUESTIONNAIRE //
+
+// MODIFIED FOR MCDI //
+
+function validate_subject() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+
+    var subject = get_answer(questions, 1);
+
+    if (subject.length == 0 || subject.length > 1000) {
+        allow_next(next, false, "Please enter your subject ID.");
+    } else {
+        allow_next(next, true);
+    }
+};
+
+function validate_sentences() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+
+    var sen1 = get_answer(questions, 1);
+    var sen2 = get_answer(questions, 2);
+    var sen3 = get_answer(questions, 3);
+
+    if (sen1.length == 0 || sen1.length > 1000) {
+        allow_next(next, false, "Please enter the longest sentence you've heard your child say.");
+    } else if (sen2.length == 0 || sen2.length > 1000) {
+        allow_next(next, false, "Please enter the 2nd longest sentence you've heard your child say.");
+    } else if (sen3.length == 0 || sen3.length > 1000) {
+        allow_next(next, false, "Please enter the 3rd longest sentence you've heard your child say.");
+    } else {
+        allow_next(next, true);
+    }
+};
 
 // MODIFIED FOR CROWDSOURCING //
 
