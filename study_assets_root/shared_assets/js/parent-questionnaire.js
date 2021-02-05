@@ -44,7 +44,7 @@ var copy = {
 var talkbank = {
     type: 'survey-yes-no',
     questions: [
-        {prompt: "Do you wish for you data to be included into the TalkBank archive? We will then only use your data for our current analysis without uploading to the online repository."}
+        {prompt: "Do you wish for you data to be included into the TalkBank archive? If you select no, we will then only use your data for our current analysis without uploading to the online repository."}
     ],
     preamble: header + "<h2>Data Collection</h2>",
     json_label: 'TalkBank Permission',
