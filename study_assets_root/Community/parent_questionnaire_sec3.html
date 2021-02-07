@@ -46,7 +46,11 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
         toggle_listeners(form, false, validate_parentcareinfo);
     }
 };
-  
+	  
+  	jatos.onLoad(function() {
+var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
+jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
+
       var end = {
     type: 'instructions',
     pages: [
@@ -58,10 +62,6 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
     button_label_previous: 'Back',
     allow_keys: false
 };
-
-	jatos.onLoad(function() {
-var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
-jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
 
   jsPsych.init({
     timeline: [section3_page1, end],
