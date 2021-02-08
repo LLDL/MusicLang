@@ -32,11 +32,11 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
     preamble: header + "<h2>SECTION 1: GENERAL INFORMATION</h2>",
     json_label: 'General Information',
     questions: [
-        {prompt: "1.2 Parent/caregiver name(s), separated by semicolons <br>e.g. Jane Appleseed; John Appleseed"},
+        {prompt: "1.1 Parent/caregiver name(s), separated by semicolons <br>e.g. Jane Appleseed; John Appleseed"},
+        {prompt: "1.2 Primary email address"},
         {prompt: "1.3 Primary telephone number"},
-        {prompt: "1.4 Primary email address"},
-        {prompt: "1.5 Additional contact information"},
-        {prompt: "1.6 Do you prefer to be contacted via telephone or email?"}
+        {prompt: "1.4 Additional contact information"},
+        {prompt: "1.5 Do you prefer to be contacted via telephone or email?"}
         
     ],
     on_load: function () {
@@ -57,10 +57,10 @@ var childreninfo = {
       ' in the same order for the relevant fields that follow.',
     json_label: 'Household Information',
     questions: [
-        {prompt: "1.7 Please list your child/rens first name(s) and gender(s), separated by semicolons as exampled above. "},
-        {prompt: "1.8 Please list your child/rens birth date(s) in [YYYY/MM/DD] and separated by semicolons." +
+        {prompt: "1.6 Please list your child/rens first name(s) and gender(s), separated by semicolons as exampled above. "},
+        {prompt: "1.7 Please list your child/rens birth date(s) in [YYYY/MM/DD] and separated by semicolons." +
         " <br> Example: For Chidi, Dylan and Evelyn, their entries would be: 2015/07/25; 2019/10/23; 2018/05/15 (where Chidi is entered first, Dylan is second and Evelyn is third)."},
-        {prompt: "1.9-1.10 Were any of your children born before their due date? If so, please indicate here their name and their gestation period (i.e. how many weeks" +
+        {prompt: "1.8-1.9 Were any of your children born before their due date? If so, please indicate here their name and their gestation period (i.e. how many weeks" +
         " spent in utero before birth), separated by semicolons. <br>Example: Dylan, 35 weeks."}  
     ],
     on_load: function () {
@@ -78,11 +78,11 @@ var languageexposure = {
     preamble: header + "<h2>SECTION 1: GENERAL INFORMATION</h2>",
     json_label: 'Language Exposure',
     questions: [
-        {prompt: ' 1.11 Please share all the languages that your child(ren) is/are exposed to, with estimates of total ' +
+        {prompt: ' 1.10 Please share all the languages that your child(ren) is/are exposed to, with estimates of total ' +
         'time spent hearing each language (in percentages), separated by semicolons.' +
         '<br>Example: If Chidi and Dylan are enrolled in an Armenian daycare 6 hours/day (which Evelyn is too small to attend) and have French-speaking parents,' + 
         ' their entries would be: Chidi & Dylan: 25% Armenian & 75% French; Evelyn: 100% French.'},
-        {prompt: "1.12 Is there anything else you would like us to know? Do you have any questions for us?"}
+        {prompt: "1.11 Is there anything else you would like us to know? Do you have any questions for us?"}
         ],
     on_load: function () {
         validate_languageexposure();
