@@ -138,7 +138,7 @@ var gestation_period = {
     preamble: header + "<h2>Child's Information</h2>",
     json_label: 'gestation_period',
     questions: [
-        {prompt: "If you answered yes, how long was their gestation period? <br>If you answered no, enter N/A."}
+        {prompt: "Was your child born before their due date? <br>If the answer is yes, how long was their gestation period? (i.e. how many weeks spent in utero before birth?) <br>If you answered no, enter N/A."}
     ],
     on_load: function () {
         validate_gestation_period();
@@ -196,7 +196,7 @@ var end = {
 jatos.onLoad(function() {
 
 jsPsych.init({
-    timeline: [info, copy, talkbank, futurecontact, parentinfo, childinfo, born_before_due, gestation_period, gender, language_exposure, end],
+    timeline: [info, copy, talkbank, futurecontact, parentinfo, childinfo, gestation_period, gender, language_exposure, end],
     exclusions: {
         min_width: 800,
         min_height: 600
