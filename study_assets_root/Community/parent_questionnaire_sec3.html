@@ -8,11 +8,7 @@
     <script src="shared_assets/jspsych-6.1/plugins/jspsych-survey-text.js"></script>
     <script src="shared_assets/jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
     
-   	<script src="shared_assets/js/survey-yes-no.js"></script>
     <script src="shared_assets/js/survey-text-custom.js"></script>
-    <script src="shared_assets/js/member-info.js"></script>
-    <script src="shared_assets/js/gender-info.js"></script>
-    <script src="shared_assets/js/music-info.js"></script>
     <script src="shared_assets/js/validators.js"></script>
     
     <link href="shared_assets/stylesheet.css" rel="stylesheet" />
@@ -31,11 +27,11 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
     json_label: 'Parent/Caregiver information',
     questions: [
         {prompt: "3.1-3.2 Please list the Country and region of birth for each parent/caregiver, separated by semicolons. <br>If not born in Canada, please indicate the date of arrival to Canada in (YYYY/MM)." +
-        "<br> Example: Parent A: B.C., Canada; Parent B: Guangzhao, China, 1990/02/10."},
+        "<br> <i><b>Example:</b> Parent A: B.C., Canada; Parent B: Guangzhao, China, 1990/02/10.</i>"},
         {prompt: "3.3-3.6 Please list all the languages that each parent/caregiver speaks at home in order of fluency (your most fluent language first), separated by semicolons." +
         " Please also indicate if the language(s) is/are your native language(s)." +
-      " <br>Example: Parent A: English (Native), French, Cantonese (where English is the most fluent and Cantonese is least fluent); Parent B: Cantonese (Native), English (Cantonese being most fluent and English least fluent)."},
-      {prompt: "3.7 For each parent/caregiver listed, please list the highest level of highest education attained, separated by semicolons. <br> Example: Parent A: Bachelor's Degree; Parent B: Master's Degree."}
+      " <br><i><b>Example:</b> Parent A: English (Native), French, Cantonese (where English is the most fluent and Cantonese is least fluent); Parent B: Cantonese (Native), English (Cantonese being most fluent and English least fluent).</i>"},
+      {prompt: "3.7 For each parent/caregiver listed, please list the highest level of highest education attained, separated by semicolons. <br> <i><b>Example:</b> Parent A: Bachelor's Degree; Parent B: Master's Degree.</i>"}
     ],
     on_load: function () {
         validate_parentcareinfo();
@@ -46,8 +42,8 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
         toggle_listeners(form, false, validate_parentcareinfo);
     }
 };
-	  
-  	jatos.onLoad(function() {
+
+  jatos.onLoad(function() {
 var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
 jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
 
@@ -63,6 +59,7 @@ jsPsych.data.addProperties({subject : studyID});     // adds study ID to results
     allow_keys: false
 };
 
+	
   jsPsych.init({
     timeline: [section3_page1, end],
     show_progress_bar: true,
