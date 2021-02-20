@@ -10,10 +10,8 @@
     
    	<script src="shared_assets/js/survey-yes-no.js"></script>
     <script src="shared_assets/js/survey-text-custom.js"></script>
-    <script src="shared_assets/js/familymember-info.js"></script>
-    <script src="shared_assets/js/othermember-info.js"></script>
-    <script src="shared_assets/js/gender-info.js"></script>
-    <script src="shared_assets/js/music-info.js"></script>
+    <script src="shared_assets/js/family-info.js"></script>
+    <script src="shared_assets/js/other-info.js"></script>
     <script src="shared_assets/js/validators.js"></script>
     
     <link href="shared_assets/stylesheet.css" rel="stylesheet" />
@@ -27,10 +25,26 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 
 var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
 
+var sec2_child = {
+    type: 'survey-yes-no',
+    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2>",
+    questions: [
+        {prompt: "<br>Please note that all of the questions asked in Section 2 refer to the <b>CHILD PARTICIPATING IN THE STUDY</b>.<br> <p> </p>"}
+    ],
+    json_label: 'Language Exposure',
+    on_load: function () {
+        validate_sec2();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_sec2);
+    },
+    on_finish: function () {
+        toggle_listeners(form, false, validate_sec2);
+    }
+};
+
   var name_country = {
     type: 'survey-text-custom',
-    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2>" +
-    ' All of the questions asked in Section 2 refer to the <b>CHILD PARTICIPATING IN THE STUDY</b>.',
+    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2>",
     json_label: 'Child Name & Birth Country',
     questions: [
         {prompt: "Please enter your child's name."},
@@ -51,8 +65,8 @@ var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
     preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2>",
     json_label: 'Language Dominance & Order of Acquisition',
     questions: [
-        {prompt: "2.1 Please list all the languages your child knows/is learning in order of <b>dominance</b> (your child’s most dominant language first), separated by semicolons. <br>Example: English; French (where English is the most dominant, and French is the least dominant)"},
-        {prompt: "2.2 Please list all the languages your child knows/is learning in order of <b>acquisition</b>. Please also indicate if the language(s) is/are your child’s native language(s), separated by semicolons. <br>Example: English (Native); French"}, 
+        {prompt: "2.1 Please list all the languages your child knows/is learning in order of <b>dominance</b> (your child’s most dominant language first), separated by semicolons. <br><i><b>Example:</b>  English; French (where English is the most dominant, and French is the least dominant)</i>"},
+        {prompt: "2.2 Please list all the languages your child knows/is learning in order of <b>acquisition</b>. Please also indicate if the language(s) is/are your child’s native language(s), separated by semicolons. <br><i><b>Example:</b>  English (Native); French</i>"}, 
         ],
     on_load: function () {
         validate_languagedomacq();
@@ -70,7 +84,7 @@ var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
     json_label: 'Disabilities',
     questions: [
             {prompt: '2.3 Please indicate whether your child has any of the following disabilities: vision impairment, language disability, hearing impairment and/or learning disability?' +
-            ' <br>If yes, please add a bit more detail below (including any corrections or therapy) <br>Example: Hearing impairment (hearing aid)'}, 
+            ' <br>If yes, please add a bit more detail below (including any corrections or therapy) <br><i><b>Example:</b>  Hearing impairment (hearing aid)</i>'}, 
             ],
     on_load: function () {
         validate_disabilities();
@@ -89,7 +103,7 @@ var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
     json_label: 'Daycare/School',
     questions: [
             {prompt: '2.4 Does your child attend daycare, kindergarten/nursery, or school?' +
-      ' If yes, how many hours/week and which languages are spoken there? <br>For instance, if Chidi attends an English and French speaking daycare 5 hours a week, their entry would be: 5 hours/week; English & French.'}, 
+      ' If yes, how many hours/week and which languages are spoken there? <br><i><b>Example:</b> if Chidi attends an English and French speaking daycare 5 hours a week, their entry would be: 5 hours/week; English & French.</i>'}, 
             ],
     on_load: function () {
         validate_daycare();
@@ -107,7 +121,7 @@ var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
     json_label: 'Extra-curricular',
     questions: [
             {prompt: '2.5 Does your child attend any evening/weekend language or extra-curricular programs?' +
-      ' If yes, how often and which languages are spoken there? <br>For instance, if Chidi attends an English speaking extra-curricular program twice a week, their entry would be: Twice a week; English.'}, 
+      ' If yes, how often and which languages are spoken there? <br><i><b>Example:</b>  if Chidi attends an English speaking extra-curricular program twice a week, their entry would be: Twice a week; English.</i>'}, 
             ],
     on_load: function () {
         validate_extracurricular();
@@ -119,6 +133,69 @@ var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
     }
 };
 
+var familyinfo = {
+    type: 'family-info',
+    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Family Language Exposure </b> <br>2.6.1 Please fill out the table below.<br>" +
+    "<br>In the first column, please list the <b>family members</b> who talk to the child at least once a week." +
+    "<br><i><b>Example:</b> mother, father, siblings, maternal/paternal grandparents, aunts, etc.<br></i>" +
+    	" <br> In the second column, please indicate which language(s), other than English, that each individual speaks around your child." +
+      	" <br> <i><b>Example:</b> If Chidi is spoken to by his mother who speaks English and French, <br> is spoken to by grandmother who speaks French, <br>and is spoken to by their brother who speaks English, <br>their entries would be: <br> Mother: English; French, Grandmother: French, Brother: English</i> <br>" +
+      	" <br>In the third column, please indicate how much they speak the language(s) to your child, using the scale below:" +
+      	"<br> <b>Proportion Spoken</b>" +
+       " <br> 1 = English only" +
+       " <br> 2-3 = Mostly English" +
+       " <br> 4 = Half English/Half other language(s)" +
+       " <br> 5-6 = Mostly other language(s)" +
+       " <br> 7 = Other language(s) only<br>" +
+       " <br> <i><b>Example:</b> Since Chidi's mother speaks mainly English and some French, they would enter: 3" +
+       " <br> Since Chidi's grandmother speaks only French, they would enter: 7" +
+       " <br> Since Chidi's brother speaks only English to Chidi, they would enter: 1</i><br>" +
+       " <br> In the fourth column, please indicate the number of hours each person spends with the child on an <b>average weekday (Monday - Friday)</b> and an <b>average weekend day (Saturday/Sunday)</b>. Please do not include the time the child spends sleeping." +
+       " <br> <i><b>Example:</b> Mother: 10 hours/weekday; 12 hours/weekend; Grandmother: 2 hours/weekday; 5 hours/weekend; Brother: 5 hours/weekday; 8 hours/weekend)</i><br> <br> <br>",
+    json_label: 'Family Language Exposure',
+    on_start: function(trial){
+        trial.proceed = get_lang_exp();
+    },
+    on_load: function(){
+        validate_familyinfo();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_familyinfo);
+    },
+    on_finish: function(data){
+        toggle_listeners(form, false, validate_familyinfo);
+    }
+};
+
+var otherinfo = {
+    type: 'other-info',
+    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Other Language Exposure </b> <br>2.6.2 Please fill out the table below. This time, in the first column, please indicate <b>other individuals</b> who talk to the child at least once a week." +
+    "<br><i><b>Example:</b> teachers, daycare workers in nursery, friends, etc.</i><br>" +
+    	"<br> In the second column, please indicate which language(s), other than English, that each individual speaks around your child." +
+      ' <br> <i><b>Example:</b> If Chidi is spoken to by his teacher who speaks English and daycare worker who speaks English and French, their entries would be:' +
+        ' Teacher: English; Daycare worker: English; French</i><br>' +
+        " <br>In the third column, please indicate how much they speak the language(s) to your child, using the scale below:" +
+      	"<br> <b>Proportion Spoken</b>" +
+       " <br> 1 = English only" +
+       " <br> 2-3 = Mostly English" +
+       " <br> 4 = Half English/Half other language(s)" +
+       " <br> 5-6 = Mostly other language(s)" +
+       " <br> 7 = Other language(s) only<br>" +
+       "<br> In the fourth column, please indicate the number of hours each person spends with the child on an <b>average weekday (Monday - Friday)</b> and an <b>average weekend day (Saturday/Sunday)</b>. Please do not include the time the child spends sleeping." +
+      " <br> <i><b>Example:</b> Teacher: 8 hours/weekday; 0 hours/weekend; Daycare worker: 2 hours/weekday; 0 hours/weekend</i><br> <br> <br>",
+        json_label: 'Other Language Exposure',
+    on_start: function(trial){
+        trial.proceed = get_lang_exp();
+    },
+    on_load: function(){
+        validate_otherinfo();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_otherinfo);
+    },
+    on_finish: function(data){
+        toggle_listeners(form, false, validate_otherinfo);
+    }
+};
+/*
 var family_languageexposure = {
     type: 'survey-text-custom',
     preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Family Language Exposure Part 1 </b> <br>2.6 Please list the family members who talk to the child at least once a week and indicate which language(s) each person listed below speaks around your child." + 
@@ -153,7 +230,7 @@ var family_languagedetails = {
        " <br> 1 means the person uses only English to speak to the child, 4 means they use half English and half the other language, whereas 7 means that the person only uses another language.<br>" +
        " <br> <i><b>Example:</b> If Chidi's mother speaks mainly English and some French, <br>grandmother speaks both English and French <br>and brother speaks only English to him, <br>their entries would be: Mother: 2; Grandmother: 4; Brother: 1.</i><br>" +
        " <br> Under <b>'Hours Spent'</b>, please list the hours each person spends with the child on an average weekday (Monday - Friday) and an average weekend day (Saturday/Sunday). Please do not include the time the child spends sleeping. <br>" +
-       " <br> <i><b>Example:</b> Mother: 10 hours/weekday; 10 hours/weekend; Grandmother: 2 hours/weekday; 2 hours/weekend; Brother: 12 hours/weekday; 12 hours/weekend</i><br>",
+       " <br> <i><b>Example:</b> Mother: 10 hours/weekday; 10 hours/weekend; Grandmother: 2 hours/weekday; 2 hours/weekend; Brother: 12 hours/weekday; 12 hours/weekend</i><br> <br> <br>",
     member: ['temp'],
     json_label: 'Family Language Details',
     on_start: function (trial) {
@@ -169,12 +246,13 @@ var family_languagedetails = {
     }
 };
 
+    
 var other_languageexposure = {
     type: 'survey-text-custom',
     preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Other Individual Language Exposure Part 1</b> <br> 2.6 Please list any individuals in your environment who talk to the child at least once a week and indicate which language(s) each person listed below speaks around your child." + 
       ' If a person speaks a language(s) other than English with your child, please list this/these languages.<br>' +
       ' <br> <i><b>Example:</b> If Chidi is spoken to by his teacher who speaks English and daycare giver who speaks English and French, their entries would be:' +
-        ' Teacher: English; Daycare caregiver: English; French</i><br>' +
+        ' Teacher: English; Daycare worker: English; French</i><br>' +
         ' <br> On the next page, you will be asked the proportion of English that each person speaks to your child and average amount of hours they spend with your child.',
     json_label: 'Other Language Exposure',
     questions: [
@@ -203,8 +281,8 @@ var other_languagedetails = {
     preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Other Individual Language Exposure Part 2</b> <br> Under <b>'Proportion Spoken'</b>, on a scale from 1-7, please indicate how much they speak this language(s) to your child." +
        "<br> 1 means the person uses only English to speak to the child, 4 means they use half English and half the other language, whereas 7 means that the person only uses another language.<br>" +
       "<br> <i><b>Example</b>: If Chidi is spoken to by his teacher in all English, but is spoken to in English and French by his daycare giver, their entries would be: Teacher: 1; Daycare giver: 4</i><br>" +
-       "<br> Under <b>'Hours Spent'</b>, please list the hours each person spends with the child on an average weekday (Monday - Friday) and an average weekend day (Saturday/Sunday). Please do not include the time the child spends sleeping. </br>" +
-      " <br> <i><b>Example:</b> Teacher: 8 hours/weekday; 0 hours/weekend; Daycare caregiver: 2 hours/weekday; 0 hours/weekend</i></br>",
+       "<br> Under <b>'Hours Spent'</b>, please list the hours each person spends with the child on an average weekday (Monday - Friday) and an average weekend day (Saturday/Sunday). Please do not include the time the child spends sleeping. <br>" +
+      " <br> <i><b>Example:</b> Teacher: 8 hours/weekday; 0 hours/weekend; Daycare worker: 2 hours/weekday; 0 hours/weekend</i><br> <br> <br>",
     members: ['temp'],
     json_label: 'Other Language Details',
     on_start: function (trial) {
@@ -219,12 +297,13 @@ var other_languagedetails = {
         toggle_listeners(form, false, validate_other_languagedetails);
     }
 };
+*/
 
  var section2_page7 = {
  	type: 'survey-text-custom',
     preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> 2.8 Please specify the proportion of English (in percentages) that your child hears during each activity listed below." +
-      " Again, if your child hears language(s) other than English, please list the appropriate languages below each activity." +
-      " <br> Please specify the approximate number of hours your child spends each weekday (Monday - Friday) and weekend (Saturday/Sunday) participating in these activities, separated by semicolons. Please do not include the time the child spends sleeping. </br>" +
+      " Again, if your child hears language(s) other than English, please list the appropriate languages for each activity." +
+      " <br> Please also specify the approximate number of hours your child spends each weekday (Monday - Friday) and weekend (Saturday/Sunday) participating in these activities, separated by semicolons. Please do not include the time the child spends sleeping. <br>" +
         "<br> <i><b>Example</b>: <br> 1. Listening to the radio: English; 100%; 2 hours/weekday; 2 hours/weekend <br> 2. Listening to music: French & English; 50%; 10 hours/weekday; 10 hours/weekend <br> 3. Watching TV/videos: N/A <br> 4. Reading stories to child: N/A</i>",
     json_label: 'Additional Language Exposure & Hours Spent',
     questions: [
@@ -261,7 +340,7 @@ jsPsych.data.addProperties({subject : studyID});     // adds study ID to results
 
   jsPsych.init({
   // timeline: [name_country, langdom_langacq, disabilities, daycare, extracurr, family_languageexposure, family_languagedetails, other_languageexposure, other_languagedetails, section2_page7, section2_over]
-    timeline: [name_country, langdom_langacq, disabilities, daycare, extracurr, family_languageexposure, family_languagedetails, other_languageexposure, other_languagedetails, section2_page7, section2_over],
+    timeline: [sec2_child, name_country, langdom_langacq, disabilities, daycare, extracurr, familyinfo, otherinfo, section2_page7, section2_over],
     show_progress_bar: true,
    on_finish: function (data) {
             var studyID = jatos.studyResultId;
