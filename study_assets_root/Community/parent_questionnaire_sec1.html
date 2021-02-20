@@ -11,10 +11,6 @@
     
    	<script src="shared_assets/js/survey-yes-no.js"></script>
     <script src="shared_assets/js/survey-text-custom.js"></script>
-    <script src="shared_assets/js/member-info.js"></script>
-    <script src="shared_assets/js/language-info.js"></script>
-    <script src="shared_assets/js/gender-info.js"></script>
-    <script src="shared_assets/js/music-info.js"></script>
     <script src="shared_assets/js/validators.js"></script>
     
     <link href="shared_assets/stylesheet.css" rel="stylesheet" />
@@ -32,7 +28,7 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
     preamble: header + "<h2>SECTION 1: GENERAL INFORMATION</h2>",
     json_label: 'General Information',
     questions: [
-        {prompt: "1.1 Parent/caregiver name(s), separated by semicolons <br>e.g. Jane Appleseed; John Appleseed"},
+        {prompt: "1.1 Parent/caregiver name(s), separated by semicolons <br><i><b>Example:</b> Jane Appleseed; John Appleseed</i>"},
         {prompt: "1.2 Primary telephone number"},
         {prompt: "1.3 Primary email address"},
         {prompt: "1.4 Additional contact information"},
@@ -52,16 +48,16 @@ var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><
 var childreninfo = {
     type: 'survey-text-custom',
     preamble: header + "<h2>SECTION 1: GENERAL INFORMATION</h2>" +
-    ' NOTE: For multi-child households, please record each child’s information in the same order for all fields.' +
-      ' <br>For instance, if three names are given, e.g. Chidi (boy); Dylan (boy); Evelyn (girl), please record information' +
-      ' in the same order for the relevant fields that follow.',
+    ' <p>NOTE: For multi-child households, please record each child’s information in the same order for all fields.' +
+      ' <br><i><b>Example:</b> if three names are given, e.g. Chidi (boy); Dylan (boy); Evelyn (girl), please record information' +
+      ' in the same order for the relevant fields that follow.</i></p>',
     json_label: 'Household Information',
     questions: [
         {prompt: "1.6 Please list your child/rens first name(s) and gender(s), separated by semicolons as exampled above. "},
         {prompt: "1.7 Please list your child/rens birth date(s) in [YYYY/MM/DD] and separated by semicolons." +
-        " <br> Example: For Chidi, Dylan and Evelyn, their entries would be: 2015/07/25; 2019/10/23; 2018/05/15 (where Chidi is entered first, Dylan is second and Evelyn is third)."},
-        {prompt: "1.8-1.9 Were any of your children born before their due date? If so, please indicate here their name and their gestation period (i.e. how many weeks" +
-        " spent in utero before birth), separated by semicolons. <br>Example: Dylan, 35 weeks."}  
+        " <br> <i><b>Example:</b> For Chidi, Dylan and Evelyn, their entries would be: 2015/07/25; 2019/10/23; 2018/05/15 (where Chidi is entered first, Dylan is second and Evelyn is third).</i>"},
+        {prompt: "1.8-1.9 Were any of your children born before their due date? If not, enter N/A. If so, please indicate here their name and their gestation period (i.e. how many weeks" +
+        " spent in utero before birth), separated by semicolons. <br><i><b>Example:</b> Dylan, 35 weeks.</i>"}  
     ],
     on_load: function () {
         validate_childreninfo();
@@ -80,8 +76,8 @@ var languageexposure = {
     questions: [
         {prompt: ' 1.10 Please share all the languages that your child(ren) is/are exposed to, with estimates of total ' +
         'time spent hearing each language (in percentages), separated by semicolons.' +
-        '<br>Example: If Chidi and Dylan are enrolled in an Armenian daycare 6 hours/day (which Evelyn is too small to attend) and have French-speaking parents,' + 
-        ' their entries would be: Chidi & Dylan: 25% Armenian & 75% French; Evelyn: 100% French.'},
+        '<br><i><b>Example:</b>  If Chidi and Dylan are enrolled in an Armenian daycare 6 hours/day (which Evelyn is too small to attend) and have French-speaking parents,' + 
+        ' their entries would be: Chidi & Dylan: 25% Armenian & 75% French; Evelyn: 100% French.</i>'},
         {prompt: "1.11 Is there anything else you would like us to know? Do you have any questions for us?"}
         ],
     on_load: function () {
