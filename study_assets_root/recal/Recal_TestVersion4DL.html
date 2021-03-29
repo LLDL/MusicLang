@@ -1,0 +1,4769 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LangDev Recal</title>
+        <script src="jatos.js"></script>
+        <script src="jspsych-6.1/jspsych.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-audio-keyboard-response.js"></script>
+        <script src="jspsych-6.1/plugins/jspsych-video-keyboard-response.js"></script>
+        <script src="shared_assets/js/instructions.js"></script>
+        <link href="shared_assets/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <link href="jspsych-6.1/css/jspsych.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body></body>
+    <script>
+
+    var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img>"; //to be prepended to preludes
+
+    // create timeline //
+    var timeline = [];
+
+    // welcoming participants and general instructions //
+    var generalinstructions = {
+      type: 'instructions',
+      pages: [
+        header +
+        '<p><div style="font-size:20px;text-align: center;"><h1>Language Learning & Development Lab: Recal</h1></p></div>' +
+        '<p><div style="font-size:20px;text-align: center;">Welcome to the second part of the experiment. The second part of the experiment consists of two sections.</div></p>' +
+    '<p><div style="font-size:20px;test-align: center;">This is a video and audio listening task.</div></p>' +
+    '<p><div style="font-size:20px;text-align: center;">Please put on your headphones now. Make sure your headphones are set to a comfortable volume by playing the following audio clip and adjusting accordingly.</div></p>' +
+    '<div style="font-size:20px;text-align: center;"><audio preload="auto" controls><source src="audio/sample.mp3" type="audio/mpeg"></audio></div>' +
+          '<p> The second part of the experiment will take 30-40 minutes. You will get two breaks, one halfway through the first section and one between the first and second section. </p>' +
+    '<p><div style="font-size:20px;text-align: center;">Click <i>next</i> to begin the experiment.</div></p>'],
+    data: {test_part: 'instructions'},
+      show_clickable_nav: true,
+      allow_keys: false
+    }
+    timeline.push(generalinstructions);
+
+    // practice instructions //
+    var practiceinstructions = {
+    type: 'instructions',
+    pages: ["<h2> Section 1: Instructions </h2>" +
+    "<p> There are two phases for each trial, you will be presented with a series of videos immediately followed by a series of sound clips. </p>" +
+    "<p> <h2>Series of video clips</h2></p>" +
+    "<p> In this phase, you will be asked to silently articulate a sound in sync with the audiovisual face in the videos. </p>" +
+    "<p> The sound that you're told to silently articulate will sometimes not match with the face in the videos. </p>" +
+    "<p> You will also hear static noise during some videos, this is normal, continue watching the videos. </p>" +
+    "<p> <h2>Series of sound clips</h2></p>" +
+    "<p> In this phase, you will be asked to decide what sound you heard after each sound clip.</p>" +
+    "<p> Press the left arrow key for <b>/ADA/</b> or right arrow key for <b>/ABA/</b>.</p>" +
+    "<p> Answer as quickly and accurately as you can. </p>" +
+    "<p> Please use your dominant hand (right if righthanded, left if lefthanded) to press the arrow keys and your non-dominant hand to press the spacebar or enter key. </p>" +
+    "<p> <h2> Practice Trial </h2>" +
+    "<p> A trial consists of both the series of video clips and series of sound clips phases. <p>" +
+    "<p> You will be given two practice trials before starting the test. Click <i>next</i> to begin the practice trials.</p>"],
+          show_clickable_nav: true,
+          allow_keys: false
+        }
+    timeline.push(practiceinstructions);
+
+    /* begin test trials screen */
+    var begintest = {
+        type: 'instructions',
+        pages: ['The test trials will now begin. Click <i>next</i> to continue.'],
+        data: {test_part: 'instructions'},
+        show_clickable_nav: true,
+        allow_keys: false
+    }
+
+/* PRACTICE PROCEDURE OUTLINES HOW INSTRUCTIONS AND VIDEOS ARE SUPPOSED TO STRUCTURED LIKE
+      1) instructions to say either [ADA or ABA]
+      2) series of video clips either [ADA or ABA]
+      3) series of audio clips [respond ADA or ABA] */
+
+/* MAIN PROCEDURE; OUTLINES HOW INSTRUCTIONS AND VIDEOS ARE SUPPOSED TO STRUCTURED LIKE
+    1) instructions to say either [ADA or ABA]
+    2) series of video clips either [ADA or ABA]
+    3) series of audio clips [respond ADA or ABA] */
+
+// instructions for saying ABA //
+var say_ABA = {
+        type: 'html-keyboard-response',
+        data: {test_part: 'instructions', blocktype: 'ABA'},
+        stimulus: '<p>Please silently mouth <b>ABA</b> in sync with the following videos.</p>' +
+        '<p>Press the spacebar or enter key to begin.</p>',
+        choices: ['spacebar', 'enter']
+    }
+
+// instructions for saying ADA //
+var say_ADA = {
+    type: 'html-keyboard-response',
+    data: {test_part: 'instructions', blocktype: 'ADA'},
+    stimulus: '<p>Please silently mouth <b>ADA</b> in sync with the following videos.</p>' +
+    '<p>Press the spacebar or enter key to begin.</p>',
+    choices: ['spacebar', 'enter']
+  }
+
+// LIST OF PRACTICE TRIALS BY BLOCK TYPE "ABA"
+// condition 4: block "ABA" //
+var prac_con4ABA = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '',
+            trial_duration: 1
+        },
+        {
+            type: 'video-keyboard-response',
+            sources: jsPsych.timelineVariable('sources'),
+            data: jsPsych.timelineVariable('data'),
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
+        },
+    ],
+
+    timeline_variables: [
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+    ]
+}
+
+// condition 5: block "ABA" //
+var prac_con5ABA = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '',
+
+            trial_duration: 1
+        },
+        {
+            type: 'video-keyboard-response',
+            sources: jsPsych.timelineVariable('sources'),
+            data: jsPsych.timelineVariable('data'),
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
+        },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+    ]
+}
+
+
+// condition 6: block ABA //
+var prac_con6ABA = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '',
+
+            trial_duration: 1
+        },
+        {
+            type: 'video-keyboard-response',
+            sources: jsPsych.timelineVariable('sources'),
+            data: jsPsych.timelineVariable('data'),
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
+        },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+    ]
+}
+
+// condition 4: block "ADA" //
+var prac_con4ADA = {
+timeline: [
+    {
+        type: 'html-keyboard-response',
+        stimulus: '',
+        trial_duration: 1
+    },
+    {
+        type: 'video-keyboard-response',
+        sources: jsPsych.timelineVariable('sources'),
+        data: jsPsych.timelineVariable('data'),
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
+    },
+
+],
+timeline_variables: [
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+]
+}
+
+// condition 5: block "ADA" //
+var prac_con5ADA = {
+timeline: [
+    {
+        type: 'html-keyboard-response',
+        stimulus: '',
+        trial_duration: 1
+    },
+    {
+        type: 'video-keyboard-response',
+        sources: jsPsych.timelineVariable('sources'),
+        data: jsPsych.timelineVariable('data'),
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
+    },
+
+],
+timeline_variables: [
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+]
+}
+// condition 6: block "ADA" //
+var prac_con6ADA = {
+timeline: [
+    {
+        type: 'html-keyboard-response',
+        stimulus: '',
+        trial_duration: 1
+    },
+    {
+        type: 'video-keyboard-response',
+        sources: jsPsych.timelineVariable('sources'),
+        data: jsPsych.timelineVariable('data'),
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
+    },
+
+],
+timeline_variables: [
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+]
+}
+
+/* LIST OF INCONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" */
+// condition 4: block "ABA" //
+var prac_incon4ABA = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '',
+            trial_duration: 1
+        },
+        {
+            type: 'video-keyboard-response',
+            sources: jsPsych.timelineVariable('sources'),
+            data: jsPsych.timelineVariable('data'),
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
+        },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+    ]
+}
+
+// condition 5: block "ABA" //
+var prac_incon5ABA = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '',
+            trial_duration: 1
+        },
+        {
+            type: 'video-keyboard-response',
+            sources: jsPsych.timelineVariable('sources'),
+            data: jsPsych.timelineVariable('data'),
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
+        },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+    ]
+}
+
+
+// condition 6: block ABA //
+var prac_incon6ABA = {
+    timeline: [
+        {
+            type: 'html-keyboard-response',
+            stimulus: '',
+            trial_duration: 1
+        },
+        {
+            type: 'video-keyboard-response',
+            sources: jsPsych.timelineVariable('sources'),
+            data: jsPsych.timelineVariable('data'),
+            choices: jsPsych.NO_KEYS,
+            trial_ends_after_video: true
+        },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+      { sources: ['video/VbA0.mp4'], data: {}},
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+    ]
+}
+
+// condition 4: block "ADA" //
+var prac_incon4ADA = {
+timeline: [
+    {
+        type: 'html-keyboard-response',
+        stimulus: '',
+        trial_duration: 1
+    },
+    {
+        type: 'video-keyboard-response',
+        sources: jsPsych.timelineVariable('sources'),
+        data: jsPsych.timelineVariable('data'),
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
+    },
+
+],
+timeline_variables: [
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+]
+}
+
+// condition 5: block "ADA" //
+var prac_incon5ADA = {
+timeline: [
+    {
+        type: 'html-keyboard-response',
+        stimulus: '',
+
+        trial_duration: 1
+    },
+    {
+        type: 'video-keyboard-response',
+        sources: jsPsych.timelineVariable('sources'),
+        data: jsPsych.timelineVariable('data'),
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
+    },
+
+],
+timeline_variables: [
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+]
+}
+
+// condition 6: block "ADA" //
+var prac_incon6ADA = {
+timeline: [
+    {
+        type: 'html-keyboard-response',
+        stimulus: '',
+        trial_duration: 1
+    },
+    {
+        type: 'video-keyboard-response',
+        sources: jsPsych.timelineVariable('sources'),
+        data: jsPsych.timelineVariable('data'),
+        choices: jsPsych.NO_KEYS,
+        trial_ends_after_video: true
+    },
+
+],
+timeline_variables: [
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+  { sources: ['video/VdA0.mp4'], data: {}},
+  { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+]
+}
+
+
+// LIST OF CONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" //
+// condition 4: block "ABA" //
+    var con4ABA = {
+        timeline: [
+            {
+                type: 'html-keyboard-response',
+                stimulus: '',
+                trial_duration: 1
+            },
+            {
+                type: 'video-keyboard-response',
+                sources: jsPsych.timelineVariable('sources'),
+                data: jsPsych.timelineVariable('data'),
+                choices: jsPsych.NO_KEYS,
+                trial_ends_after_video: true
+            },
+
+        ],
+        timeline_variables: [
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+        ]
+    }
+
+// condition 5: block "ABA" //
+    var con5ABA = {
+        timeline: [
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
+
+        ],
+        timeline_variables: [
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+        ]
+    }
+
+
+// condition 6: block ABA //
+    var con6ABA = {
+        timeline: [
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
+
+        ],
+        timeline_variables: [
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+        ]
+    }
+
+// condition 4: block "ADA" //
+var con4ADA = {
+    timeline: [
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+    ]
+}
+
+// condition 5: block "ADA" //
+var con5ADA = {
+    timeline: [
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+    ]
+}
+// condition 6: block "ADA" //
+var con6ADA = {
+    timeline: [
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+    ]
+}
+
+/* LIST OF INCONGRUENT VIDEO TRIALS BY BLOCK TYPE "ABA" */
+// condition 4: block "ABA" //
+    var incon4ABA = {
+        timeline: [
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
+
+        ],
+        timeline_variables: [
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}},
+        ]
+    }
+
+// condition 5: block "ABA" //
+    var incon5ABA = {
+        timeline: [
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
+
+        ],
+        timeline_variables: [
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}},
+        ]
+    }
+
+
+// condition 6: block ABA //
+    var incon6ABA = {
+        timeline: [
+          {
+              type: 'html-keyboard-response',
+              stimulus: '',
+              trial_duration: 1
+          },
+          {
+              type: 'video-keyboard-response',
+              sources: jsPsych.timelineVariable('sources'),
+              data: jsPsych.timelineVariable('data'),
+              choices: jsPsych.NO_KEYS,
+              trial_ends_after_video: true
+          },
+
+        ],
+        timeline_variables: [
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+          { sources: ['video/VbA0.mp4'], data: {}},
+          { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}},
+        ]
+    }
+
+// condition 4: block "ADA" //
+var incon4ADA = {
+    timeline: [
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+    ]
+}
+
+// condition 5: block "ADA" //
+var incon5ADA = {
+    timeline: [
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+    ]
+}
+
+// condition 6: block "ADA" //
+var incon6ADA = {
+    timeline: [
+      {
+          type: 'html-keyboard-response',
+          stimulus: '',
+          trial_duration: 1
+      },
+      {
+          type: 'video-keyboard-response',
+          sources: jsPsych.timelineVariable('sources'),
+          data: jsPsych.timelineVariable('data'),
+          choices: jsPsych.NO_KEYS,
+          trial_ends_after_video: true
+      },
+
+    ],
+    timeline_variables: [
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+      { sources: ['video/VdA0.mp4'], data: {}},
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+    ]
+}
+
+
+/* AUDIO TRIALS FOR EACH CONDITION */
+// CONDITION 4 AUDIO //
+var audio_stimuli4 = [
+  {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4m'}},
+  {stimulus: 'audio/bd04.wav', data: {test_part: 'test', dresponse: 'DL', level: '4'}},
+  {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4p'}},
+  {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4m'}},
+  {stimulus: 'audio/bd04.wav', data: {test_part: 'test', dresponse: 'DL', level: '4'}},
+  {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '4p'}},
+];
+
+var audioDL = {
+      type: "audio-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: true
+    }
+
+/* after audio finishes completely, participant can make a response & "level" data is logged to the response trial */
+    var responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var audioDL4 = {
+              timeline: [audioDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: audio_stimuli4, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+  // condition 4 practice audio //
+            var prac_audio_stimuli4 = [
+              {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4m'}},
+              {stimulus: 'audio/bd04.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4'}},
+              {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4p'}},
+              {stimulus: 'audio/bd04_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4m'}},
+              {stimulus: 'audio/bd04.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4'}},
+              {stimulus: 'audio/bd04_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '4p'}},
+            ];
+
+            var prac_audioDL = {
+                  type: "audio-keyboard-response",
+                  stimulus: jsPsych.timelineVariable('stimulus'),
+                  choices: jsPsych.NO_KEYS,
+                  trial_ends_after_audio: true
+                }
+
+                var prac_responseDL = {
+                      type: "html-keyboard-response",
+                      stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+                      "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+                      choices: ['leftarrow', 'rightarrow'],
+                      response_ends_trial: true,
+                      trial_duration: null,
+                      data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+                      on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                        if (data.key_press == 37) {
+                          data.resp = 1;
+                        } else if (data.key_press == 39) {
+                          data.resp = 0;
+                        }
+                      }
+                    }
+
+                    var prac_audioDL4 = {
+                          timeline: [prac_audioDL, prac_responseDL], // alternates the audio trial and response trial
+                          timeline_variables: prac_audio_stimuli4, // takes stimuli from "audio_stimuli"
+                          randomize_order: true // randomize order of trials
+                        }
+
+
+
+
+// CONDITION 5 AUDIO //
+var audio_stimuli5 = [
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'test', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5p'}},
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'test', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '5p'}},
+];
+
+var audioDL = {
+      type: "audio-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: true
+    }
+
+    var responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var audioDL5 = {
+              timeline: [audioDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: audio_stimuli5, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+// condition 5 practice audio //
+var prac_audio_stimuli5 = [
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5p'}},
+  {stimulus: 'audio/bd05_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5m'}},
+  {stimulus: 'audio/bd05.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5'}},
+  {stimulus: 'audio/bd05_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '5p'}},
+];
+
+var prac_audioDL = {
+      type: "audio-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: true
+    }
+
+    var prac_responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var prac_audioDL5 = {
+              timeline: [prac_audioDL, prac_responseDL], // alternates the audio trial and response trial
+              timeline_variables: prac_audio_stimuli5, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+
+// CONDITION 6 AUDIO //
+var audio_stimuli6 = [
+  {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6m'}},
+  {stimulus: 'audio/bd06.wav', data: {test_part: 'test', dresponse: 'DL', level: '6'}},
+  {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6p'}},
+  {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6m'}},
+  {stimulus: 'audio/bd06.wav', data: {test_part: 'test', dresponse: 'DL', level: '6'}},
+  {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'test', dresponse: 'DL', level: '6p'}},
+];
+
+var audioDL = {
+      type: "audio-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_audio: true
+    }
+
+    var responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var audioDL6 = {
+              timeline: [audioDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: audio_stimuli6, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+
+// condition 6 practice audio //
+            var prac_audio_stimuli6 = [
+              {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6m'}},
+              {stimulus: 'audio/bd06.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6'}},
+              {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6p'}},
+              {stimulus: 'audio/bd06_minus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6m'}},
+              {stimulus: 'audio/bd06.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6'}},
+              {stimulus: 'audio/bd06_plus.wav', data: {test_part: 'practice', dresponse: 'DL', level: '6p'}},
+            ];
+
+            var prac_audioDL = {
+                  type: "audio-keyboard-response",
+                  stimulus: jsPsych.timelineVariable('stimulus'),
+                  choices: jsPsych.NO_KEYS,
+                  trial_ends_after_audio: true
+                }
+
+                var prac_responseDL = {
+                      type: "html-keyboard-response",
+                      stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+                      "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+                      choices: ['leftarrow', 'rightarrow'],
+                      response_ends_trial: true,
+                      trial_duration: null,
+                      data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+                      on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+                        if (data.key_press == 37) {
+                          data.resp = 1;
+                        } else if (data.key_press == 39) {
+                          data.resp = 0;
+                        }
+                      }
+                    }
+
+            var prac_audioDL6 = {
+                  timeline: [prac_audioDL, prac_responseDL], // alternates the audio trial and response trial
+                  timeline_variables: prac_audio_stimuli6, // takes stimuli from "audio_stimuli"
+                  randomize_order: true // randomize order of trials
+                }
+
+  // instructions for breaks: rest //
+  var rest = {
+    type: 'instructions',
+      pages: [
+        '<h2>Break time!</h2><p> Feel free to do as you like, but please stay on this screen.</p><p> Click <i>next</i> to continue when you are ready.</p>',
+    ],
+    data: {test_part: 'instructions'},
+      show_clickable_nav: true,
+      button_label_next: 'Next',
+      allow_keys: false
+  };
+
+  // instructions for breaks: halfway //
+  var halfway = {
+    type: "instructions",
+    pages: [
+    "<h2>Break time! You're halfway through!</h2><p> Feel free to do as you like, but please stay on this screen.</p> <p>Click <i>next</i> to continue when you are ready.</p>"
+    ],
+    data: {test_part: 'instructions'},
+      show_clickable_nav: true,
+      button_label_next: 'Next',
+      allow_keys: false
+  };
+
+// create a jatos wrapper so you can run this study in jatos && access paramters from jatos //
+jatos.onLoad(function() {
+var condition = jatos.urlQueryParameters.condition;   // accesses condition number from the URL
+var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
+jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
+jsPsych.data.addProperties({condition : condition});   // adds condition to results data
+
+
+// PRACTICE TRIAL //
+// RANDOMIZER, CREATES RANDOM INTEGER FROM 0-100 TO DECIDE WHICH PLAYLIST TO PLAY //
+// condition 4 //
+// if condition 4, play these trials //
+if(condition == 4){
+
+randomint = Math.floor(Math.random()*200);
+
+if(randomint > 175){
+  timeline.push(
+    // condition 4: practice playlist #1
+    say_ABA, prac_con4ABA, prac_audioDL4,
+    say_ABA, prac_incon4ADA, prac_audioDL4
+  );
+} else if(randomint > 150){
+  timeline.push(
+    // condition 4: practice playlist #2
+    say_ADA, prac_con4ADA, prac_audioDL4,
+    say_ABA, prac_incon4ADA, prac_audioDL4
+  );
+} else if(randomint > 125){
+  timeline.push(
+    // condition 4: practice playlist #3
+    say_ADA, prac_con4ADA, prac_audioDL4,
+    say_ADA, prac_incon4ABA, prac_audioDL4
+  );
+} else if(randomint > 100){
+  timeline.push(
+    // condition 4 playlist #4
+    say_ABA, prac_con4ABA, prac_audioDL4,
+    say_ADA, prac_incon4ABA, prac_audioDL4
+);
+} else if(randomint > 75){
+  timeline.push(
+    // condition 4 playlist #5
+    say_ADA, prac_incon4ABA, prac_audioDL4,
+    say_ADA, prac_con4ADA, prac_audioDL4
+);
+} else if(randomint > 50){
+  timeline.push(
+    // condition 4 playlist #6
+    say_ADA, prac_incon4ABA, prac_audioDL4,
+    say_ABA, prac_con4ABA, prac_audioDL4
+);
+} else if(randomint > 25){
+  timeline.push(
+    // condition 4 playlist #7
+    say_ABA, prac_incon4ADA, prac_audioDL4,
+    say_ADA, prac_con4ADA, prac_audioDL4
+);
+} else if(randomint > 0){
+  timeline.push(
+    // condition 4 playlist #8
+    say_ABA, prac_incon4ADA, prac_audioDL4,
+    say_ABA, prac_con4ABA, prac_audioDL4
+);
+}
+}
+
+// condition 5 //
+// if condition 5, play these trials //
+if(condition == 5){
+randomint = Math.floor(Math.random()*200);
+
+if(randomint > 175){
+  timeline.push(
+    // condition 5: practice playlist #1
+    say_ABA, prac_con5ABA, prac_audioDL5,
+    say_ABA, prac_incon5ADA, prac_audioDL5
+  );
+} else if(randomint > 150){
+  timeline.push(
+    // condition 5: practice playlist #2
+    say_ADA, prac_con5ADA, prac_audioDL5,
+    say_ABA, prac_incon5ADA, prac_audioDL5
+  );
+} else if(randomint > 125){
+  timeline.push(
+    // condition 5: practice playlist #3
+    say_ADA, prac_con5ADA, prac_audioDL5,
+    say_ADA, prac_incon5ABA, prac_audioDL5
+  );
+} else if(randomint > 100){
+  timeline.push(
+    // condition 5 playlist #4
+    say_ABA, prac_con5ABA, prac_audioDL5,
+    say_ADA, prac_incon5ABA, prac_audioDL5
+);
+} else if(randomint > 75){
+  timeline.push(
+    // condition 5 playlist #5
+    say_ADA, prac_incon5ABA, prac_audioDL5,
+    say_ADA, prac_con5ADA, prac_audioDL5
+);
+} else if(randomint > 50){
+  timeline.push(
+    // condition 5 playlist #6
+    say_ADA, prac_incon5ABA, prac_audioDL5,
+    say_ABA, prac_con5ABA, prac_audioDL5
+);
+} else if(randomint > 25){
+  timeline.push(
+    // condition 5 playlist #7
+    say_ABA, prac_incon5ADA, prac_audioDL5,
+    say_ADA, prac_con5ADA, prac_audioDL5
+);
+} else if(randomint > 0){
+  timeline.push(
+    // condition 5 playlist #8
+    say_ABA, prac_incon5ADA, prac_audioDL5,
+    say_ABA, prac_con5ABA, prac_audioDL5
+);
+}
+}
+
+
+// condition 6 //
+// if condition 6, play these trials //
+if(condition == 6){
+randomint = Math.floor(Math.random()*200);
+if(randomint > 175){
+  timeline.push(
+    // condition 6: practice playlist #1
+    say_ABA, prac_con6ABA, prac_audioDL6,
+    say_ABA, prac_incon6ADA, prac_audioDL6
+  );
+} else if(randomint > 150){
+  timeline.push(
+    // condition 6: practice playlist #2
+    say_ADA, prac_con6ADA, prac_audioDL6,
+    say_ABA, prac_incon6ADA, prac_audioDL6
+  );
+} else if(randomint > 125){
+  timeline.push(
+    // condition 6: practice playlist #3
+    say_ADA, prac_con6ADA, prac_audioDL6,
+    say_ADA, prac_incon6ABA, prac_audioDL6
+  );
+} else if(randomint > 100){
+  timeline.push(
+    // condition 6 playlist #4
+    say_ABA, prac_con6ABA, prac_audioDL6,
+    say_ADA, prac_incon6ABA, prac_audioDL6
+);
+} else if(randomint > 75){
+  timeline.push(
+    // condition 6 playlist #5
+    say_ABA, prac_incon6ADA, prac_audioDL6,
+    say_ADA, prac_con6ADA, prac_audioDL6
+);
+} else if(randomint > 50){
+  timeline.push(
+    // condition 6 playlist #6
+    say_ABA, prac_incon6ADA, prac_audioDL6,
+    say_ABA, prac_con6ABA, prac_audioDL6
+);
+} else if(randomint > 25){
+  timeline.push(
+    // condition 6 playlist #7
+    say_ADA, prac_incon6ABA, prac_audioDL6,
+    say_ADA, prac_con6ADA, prac_audioDL6
+);
+} else if(randomint > 0){
+  timeline.push(
+    // condition 6 playlist #8
+    say_ADA, prac_incon6ABA, prac_audioDL6,
+    say_ABA, prac_con6ABA, prac_audioDL6
+);
+}
+}
+
+
+timeline.push(begintest);
+
+
+// MAIN TRIALS //
+// RANDOMIZER, CREATES RANDOM INTEGER FROM 0-100 TO DECIDE WHICH PLAYLIST TO PLAY //
+// CONDITION 4 //
+// if condition 4, play these trials //
+if(condition == 4){
+randomint = Math.floor(Math.random()*120);
+
+if(randomint > 115){
+  timeline.push(
+    // PLAYLIST # 1
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    halfway,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4
+  );
+} else if(randomint > 110){
+    timeline.push(
+      // PLAYLIST # 2
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ABA, con4ABA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      say_ADA, con4ADA, audioDL4,
+      halfway,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ADA, incon4ABA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4,
+      say_ABA, incon4ADA, audioDL4
+    );
+  } else if(randomint > 105){
+      timeline.push(
+        // PLAYLIST # 3
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ABA, con4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        say_ADA, incon4ABA, audioDL4,
+        halfway,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ADA, con4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4,
+        say_ABA, incon4ADA, audioDL4
+      );
+    } else if(randomint > 100){
+        timeline.push(
+          // PLAYLIST # 4
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ABA, con4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          say_ADA, incon4ABA, audioDL4,
+          halfway,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ABA, incon4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4,
+          say_ADA, con4ADA, audioDL4
+        );
+} else if(randomint > 95){
+  timeline.push(
+    // PLAYLIST # 5
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    halfway,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4
+  );
+} else if(randomint > 90){
+  timeline.push(
+    // PLAYLIST # 6
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    halfway,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4
+  );
+} else if(randomint > 85){
+  timeline.push(
+    // PLAYLIST # 7
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    halfway,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4
+  );
+} else if(randomint > 80){
+  timeline.push(
+    // PLAYLIST # 8
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    halfway,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4
+  );
+} else if(randomint > 75){
+  timeline.push(
+    // PLAYLIST # 9
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4
+  );
+} else if(randomint > 70){
+  timeline.push(
+    // PLAYLIST # 10
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+  );
+} else if(randomint > 65){
+  timeline.push(
+    // PLAYLIST # 11
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4
+  );
+} else if(randomint > 60){
+  timeline.push(
+    // PLAYLIST # 12
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    halfway,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4
+  );
+
+} else if(randomint > 55){
+  timeline.push(
+    // PLAYLIST # 13
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4
+  );
+} else if(randomint > 50){
+  timeline.push(
+    // PLAYLIST # 14
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    halfway,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4
+  );
+} else if(randomint > 45){
+  timeline.push(
+    // PLAYLIST # 15
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    halfway,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+  );
+} else if(randomint > 40){
+  timeline.push(
+    // PLAYLIST # 16
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    halfway,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4
+  );
+} else if(randomint > 35){
+  timeline.push(
+    // PLAYLIST # 17
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    halfway,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4
+  );
+} else if(randomint > 30){
+  timeline.push(
+    // PLAYLIST # 18
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4
+  );
+} else if(randomint > 25){
+  timeline.push(
+    // PLAYLIST # 19
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    halfway,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4
+  );
+} else if(randomint > 20){
+  timeline.push(
+    // PLAYLIST # 20
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    halfway,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4
+);
+} else if(randomint > 15){
+  timeline.push(
+    // PLAYLIST # 21
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    halfway,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4
+);
+} else if(randomint > 10){
+  timeline.push(
+    // PLAYLIST # 22
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4
+  );
+} else if(randomint > 5){
+  timeline.push(
+    // PLAYLIST # 23
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    halfway,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4
+  );
+} else if(randomint > 0){
+  timeline.push(
+    // PLAYLIST # 24
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ABA, incon4ADA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    say_ADA, incon4ABA, audioDL4,
+    halfway,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ABA, con4ABA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4,
+    say_ADA, con4ADA, audioDL4
+);
+}
+}
+
+
+// CONDITION 5 //
+// if condition 5, play these trials //
+if(condition == 5){
+randomint = Math.floor(Math.random()*120);
+
+if(randomint > 115){
+  timeline.push(
+    // PLAYLIST # 1
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    halfway,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5
+  );
+} else if(randomint > 110){
+    timeline.push(
+      // PLAYLIST # 2
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ABA, con5ABA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      say_ADA, con5ADA, audioDL5,
+      halfway,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ADA, incon5ABA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5,
+      say_ABA, incon5ADA, audioDL5
+    );
+  } else if(randomint > 105){
+      timeline.push(
+        // PLAYLIST # 3
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ABA, con5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        say_ADA, incon5ABA, audioDL5,
+        halfway,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ADA, con5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5,
+        say_ABA, incon5ADA, audioDL5
+      );
+    } else if(randomint > 100){
+        timeline.push(
+          // PLAYLIST # 4
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ABA, con5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          say_ADA, incon5ABA, audioDL5,
+          halfway,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ABA, incon5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5,
+          say_ADA, con5ADA, audioDL5
+        );
+} else if(randomint > 95){
+  timeline.push(
+    // PLAYLIST # 5
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    halfway,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5
+  );
+} else if(randomint > 90){
+  timeline.push(
+    // PLAYLIST # 6
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    halfway,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5
+  );
+} else if(randomint > 85){
+  timeline.push(
+    // PLAYLIST # 7
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    halfway,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5
+  );
+} else if(randomint > 80){
+  timeline.push(
+    // PLAYLIST # 8
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    halfway,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5
+  );
+} else if(randomint > 75){
+  timeline.push(
+    // PLAYLIST # 9
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5
+  );
+} else if(randomint > 70){
+  timeline.push(
+    // PLAYLIST # 10
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+  );
+} else if(randomint > 65){
+  timeline.push(
+    // PLAYLIST # 11
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5
+  );
+} else if(randomint > 60){
+  timeline.push(
+    // PLAYLIST # 12
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    halfway,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5
+  );
+
+} else if(randomint > 55){
+  timeline.push(
+    // PLAYLIST # 13
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5
+  );
+} else if(randomint > 50){
+  timeline.push(
+    // PLAYLIST # 14
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    halfway,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5
+  );
+} else if(randomint > 45){
+  timeline.push(
+    // PLAYLIST # 15
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    halfway,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+  );
+} else if(randomint > 40){
+  timeline.push(
+    // PLAYLIST # 16
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    halfway,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5
+  );
+} else if(randomint > 35){
+  timeline.push(
+    // PLAYLIST # 17
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    halfway,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5
+  );
+} else if(randomint > 30){
+  timeline.push(
+    // PLAYLIST # 18
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5
+  );
+} else if(randomint > 25){
+  timeline.push(
+    // PLAYLIST # 19
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    halfway,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5
+  );
+} else if(randomint > 20){
+  timeline.push(
+    // PLAYLIST # 20
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    halfway,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5
+);
+} else if(randomint > 15){
+  timeline.push(
+    // PLAYLIST # 21
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    halfway,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5
+);
+} else if(randomint > 10){
+  timeline.push(
+    // PLAYLIST # 22
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5
+  );
+} else if(randomint > 5){
+  timeline.push(
+    // PLAYLIST # 23
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    halfway,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5
+  );
+} else if(randomint > 0){
+  timeline.push(
+    // PLAYLIST # 24
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ABA, incon5ADA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    say_ADA, incon5ABA, audioDL5,
+    halfway,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ABA, con5ABA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5,
+    say_ADA, con5ADA, audioDL5
+);
+}
+}
+
+
+// CONDITION 6 //
+// if condition 6, play these trials //
+if(condition == 6){
+randomint = Math.floor(Math.random()*120);
+
+if(randomint > 115){
+  timeline.push(
+    // PLAYLIST # 1
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    halfway,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6
+  );
+} else if(randomint > 110){
+    timeline.push(
+      // PLAYLIST # 2
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ABA, con6ABA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      say_ADA, con6ADA, audioDL6,
+      halfway,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ADA, incon6ABA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6,
+      say_ABA, incon6ADA, audioDL6
+    );
+  } else if(randomint > 105){
+      timeline.push(
+        // PLAYLIST # 3
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ABA, con6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        say_ADA, incon6ABA, audioDL6,
+        halfway,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ADA, con6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6,
+        say_ABA, incon6ADA, audioDL6
+      );
+    } else if(randomint > 100){
+        timeline.push(
+          // PLAYLIST # 4
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ABA, con6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          say_ADA, incon6ABA, audioDL6,
+          halfway,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ABA, incon6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6,
+          say_ADA, con6ADA, audioDL6
+        );
+} else if(randomint > 95){
+  timeline.push(
+    // PLAYLIST # 5
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    halfway,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6
+  );
+} else if(randomint > 90){
+  timeline.push(
+    // PLAYLIST # 6
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    halfway,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6
+  );
+} else if(randomint > 85){
+  timeline.push(
+    // PLAYLIST # 7
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    halfway,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6
+  );
+} else if(randomint > 80){
+  timeline.push(
+    // PLAYLIST # 8
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    halfway,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6
+  );
+} else if(randomint > 75){
+  timeline.push(
+    // PLAYLIST # 9
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6
+  );
+} else if(randomint > 70){
+  timeline.push(
+    // PLAYLIST # 10
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+  );
+} else if(randomint > 65){
+  timeline.push(
+    // PLAYLIST # 11
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6
+  );
+} else if(randomint > 60){
+  timeline.push(
+    // PLAYLIST # 12
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    halfway,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6
+  );
+
+} else if(randomint > 55){
+  timeline.push(
+    // PLAYLIST # 13
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6
+  );
+} else if(randomint > 50){
+  timeline.push(
+    // PLAYLIST # 14
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    halfway,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6
+  );
+} else if(randomint > 45){
+  timeline.push(
+    // PLAYLIST # 15
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    halfway,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+  );
+} else if(randomint > 40){
+  timeline.push(
+    // PLAYLIST # 16
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    halfway,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6
+  );
+} else if(randomint > 35){
+  timeline.push(
+    // PLAYLIST # 17
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    halfway,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6
+  );
+} else if(randomint > 30){
+  timeline.push(
+    // PLAYLIST # 18
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6
+  );
+} else if(randomint > 25){
+  timeline.push(
+    // PLAYLIST # 19
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    halfway,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6
+  );
+} else if(randomint > 20){
+  timeline.push(
+    // PLAYLIST # 20
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    halfway,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6
+);
+} else if(randomint > 15){
+  timeline.push(
+    // PLAYLIST # 21
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    halfway,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6
+);
+} else if(randomint > 10){
+  timeline.push(
+    // PLAYLIST # 22
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6
+  );
+} else if(randomint > 5){
+  timeline.push(
+    // PLAYLIST # 23
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    halfway,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6
+  );
+} else if(randomint > 0){
+  timeline.push(
+    // PLAYLIST # 24
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ABA, incon6ADA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    say_ADA, incon6ABA, audioDL6,
+    halfway,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ABA, con6ABA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6,
+    say_ADA, con6ADA, audioDL6
+);
+}
+}
+
+// VERSION 4 UPDATE: ADDING PERCEPTION OF TRAINING TEST TRIALS
+var perception_instructions = {
+type: "instructions",
+pages: [
+	'<h2><b> Section 2: Instructions </b></h2> <p>You will now only be presented videos, during which you will be asked to silently articulate a sound in sync with the face in the video.' +
+	' After each video, please respond with what sound you perceived by pressing the left arrow key for ADA or right arrow key for ABA.</p>' +
+	' You will get four practice trials. <p>Click <i> next </i> to start the practice trials.</p>',
+],
+data: {test_part: 'instructions'},
+show_clickable_nav: true,
+	button_label_next: 'Next',
+	allow_keys: false,
+timing_post_trial: 8000
+};
+
+
+// condition 4
+var video_stimuli4_con4ABA = [
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+    ];
+
+var video_stimuli4_con4ADA = [
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+    ];
+
+var video_stimuli4_incon4ABA = [
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}}
+    ];
+
+var video_stimuli4_incon4ADA = [
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+    ];    
+
+
+var videoDL = {
+      type: "video-keyboard-response",
+      sources: jsPsych.timelineVariable('sources'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_video: true
+    }
+
+    var responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var percon4ABA = {
+              timeline: [say_ABA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli4_con4ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+		var percon4ADA = {
+              timeline: [say_ADA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli4_con4ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var perincon4ABA = {
+              timeline: [say_ADA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli4_incon4ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var perincon4ADA = {
+              timeline: [say_ABA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli4_incon4ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+// condition 5
+var video_stimuli5_con5ABA = [
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+    ];
+
+var video_stimuli5_con5ADA = [
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+    ];
+
+var video_stimuli5_incon5ABA = [
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}}
+    ];
+
+var video_stimuli5_incon5ADA = [
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+    ]; 
+
+
+var videoDL = {
+      type: "video-keyboard-response",
+      sources: jsPsych.timelineVariable('sources'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_video: true
+    }
+
+    var responseDL = {
+          type: "html-keyboard-response",
+         stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var percon5ABA = {
+              timeline: [say_ABA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli5_con5ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+		var percon5ADA = {
+              timeline: [say_ADA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli5_con5ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var perincon5ABA = {
+              timeline: [say_ADA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli5_incon5ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var perincon5ADA = {
+              timeline: [say_ABA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli5_incon5ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+
+// condition 6
+var video_stimuli6_con6ABA = [
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+    ];
+
+var video_stimuli6_con6ADA = [
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+    ];
+
+var video_stimuli6_incon6ABA = [
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}}
+    ];
+
+var video_stimuli6_incon6ADA = [
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'perception', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+    ]; 
+
+
+
+var videoDL = {
+      type: "video-keyboard-response",
+      sources: jsPsych.timelineVariable('sources'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_video: true
+    }
+
+    var responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var percon6ABA = {
+              timeline: [say_ABA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli6_con6ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+		var percon6ADA = {
+              timeline: [say_ADA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli6_con6ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var perincon6ABA = {
+              timeline: [say_ADA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli6_incon6ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var perincon6ADA = {
+              timeline: [say_ABA, videoDL, responseDL], // alternates the audio trial and response trial
+              timeline_variables: video_stimuli6_incon6ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+// practice trials
+
+// condition 4
+var p_video_stimuli4_con4ABA = [
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA4'}},
+    ];
+
+var p_video_stimuli4_con4ADA = [
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA4'}},
+    ];
+
+var p_video_stimuli4_incon4ABA = [
+      { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA4'}}
+    ];
+
+var p_video_stimuli4_incon4ADA = [
+      { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA4'}},
+    ];    
+
+
+var p_videoDL = {
+      type: "video-keyboard-response",
+      sources: jsPsych.timelineVariable('sources'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_video: true
+    }
+
+    var p_responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var p_percon4ABA = {
+              timeline: [say_ABA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli4_con4ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+		var p_percon4ADA = {
+              timeline: [say_ADA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli4_con4ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var p_perincon4ABA = {
+              timeline: [say_ADA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli4_incon4ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var p_perincon4ADA = {
+              timeline: [say_ABA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli4_incon4ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+// condition 5
+var p_video_stimuli5_con5ABA = [
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA5'}},
+    ];
+
+var p_video_stimuli5_con5ADA = [
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA5'}},
+    ];
+
+var p_video_stimuli5_incon5ABA = [
+      { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA5'}}
+    ];
+
+var p_video_stimuli5_incon5ADA = [
+      { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA5'}},
+    ]; 
+
+
+var p_videoDL = {
+      type: "video-keyboard-response",
+      sources: jsPsych.timelineVariable('sources'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_video: true
+    }
+
+    var p_responseDL = {
+          type: "html-keyboard-response",
+         stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var p_percon5ABA = {
+              timeline: [say_ABA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli5_con5ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+		var p_percon5ADA = {
+              timeline: [say_ADA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli5_con5ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var p_perincon5ABA = {
+              timeline: [say_ADA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli5_incon5ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var p_perincon5ADA = {
+              timeline: [say_ABA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli5_incon5ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+
+// condition 6
+var p_video_stimuli6_con6ABA = [
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'congruent', level: 'VbA6'}},
+    ];
+
+var p_video_stimuli6_con6ADA = [
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'congruent', level: 'VdA6'}},
+    ];
+
+var p_video_stimuli6_incon6ABA = [
+      { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ABA', congruency: 'incongruent', level: 'VbA6'}}
+    ];
+
+var p_video_stimuli6_incon6ADA = [
+      { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DL', blocktype: 'ADA', congruency: 'incongruent', level: 'VdA6'}},
+    ]; 
+
+
+
+var p_videoDL = {
+      type: "video-keyboard-response",
+      sources: jsPsych.timelineVariable('sources'),
+      choices: jsPsych.NO_KEYS,
+      trial_ends_after_video: true
+    }
+
+    var p_responseDL = {
+          type: "html-keyboard-response",
+          stimulus: "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:left';'><b>ADA</b></div>" +
+          "<div style='font-size:25px';'><div style='width: 500px;'><div style='float:right';'><b>ABA</b></div>",
+          choices: ['leftarrow', 'rightarrow'],
+          response_ends_trial: true,
+          trial_duration: null,
+          data: jsPsych.timelineVariable('data'), // this should add the 'level' data to the response trial (look at how stimuli is tagged "data")
+          on_finish: function(data){ //this should add 'resp' column, converting key_press output 37,39 to 0,1 respectively
+            if (data.key_press == 37) {
+              data.resp = 1;
+            } else if (data.key_press == 39) {
+              data.resp = 0;
+            }
+          }
+        }
+
+        var p_percon6ABA = {
+              timeline: [say_ABA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli6_con6ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+		var p_percon6ADA = {
+              timeline: [say_ADA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli6_con6ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var p_perincon6ABA = {
+              timeline: [say_ADA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli6_incon6ABA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+        
+        var p_perincon6ADA = {
+              timeline: [say_ABA, p_videoDL, p_responseDL], // alternates the audio trial and response trial
+              timeline_variables: p_video_stimuli6_incon6ADA, // takes stimuli from "audio_stimuli"
+              randomize_order: true // randomize order of trials
+            }
+
+timeline.push(rest, perception_instructions);
+
+
+if(condition == 4){
+randomint = Math.floor(Math.random()*110);
+
+if(randomint > 100){
+  timeline.push(
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, perincon4ABA, perincon4ADA,
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, perincon4ABA, perincon4ADA,
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, perincon4ABA, perincon4ADA,
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, perincon4ABA, perincon4ADA,
+    )
+} else if(randomint > 90){
+  timeline.push(
+  	percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ABA, percon4ADA, perincon4ADA, perincon4ABA,
+    perincon4ADA, perincon4ABA, percon4ABA, percon4ADA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA,
+    percon4ADA, percon4ADA, perincon4ABA, perincon4ADA, percon4ABA, percon4ABA, perincon4ADA, perincon4ABA,
+    percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, percon4ABA, perincon4ABA, percon4ADA,
+    );
+} else if(randomint > 80){
+  timeline.push(
+  	perincon4ADA, percon4ABA, perincon4ABA, percon4ADA, percon4ADA, percon4ABA, perincon4ABA, perincon4ADA,
+    percon4ABA, percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ABA, percon4ABA, percon4ADA,
+    percon4ADA, percon4ADA, perincon4ADA, perincon4ADA, percon4ADA, perincon4ABA, perincon4ABA, perincon4ADA,
+    percon4ABA, percon4ABA, perincon4ADA, perincon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA,
+    );
+} else if(randomint > 70){
+  timeline.push(
+  	perincon4ADA, percon4ABA, perincon4ABA, percon4ADA, percon4ABA, percon4ABA, perincon4ADA, perincon4ABA,
+    perincon4ADA, perincon4ABA, percon4ABA, percon4ADA, percon4ADA, percon4ABA, perincon4ABA, perincon4ADA,
+    percon4ABA, percon4ADA, perincon4ADA, perincon4ABA, percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA,
+    perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, percon4ADA, percon4ADA, perincon4ABA, perincon4ADA,
+    );
+} else if(randomint > 60){
+  timeline.push(
+  	perincon4ADA, perincon4ABA, percon4ABA, percon4ADA, percon4ABA, percon4ABA, perincon4ADA, perincon4ABA,
+    percon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA,
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ABA, percon4ADA, perincon4ADA, perincon4ABA,
+    percon4ADA, percon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, percon4ABA, perincon4ABA, percon4ADA,   
+    );
+} else if(randomint > 50){
+  timeline.push(
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ABA, percon4ADA, perincon4ADA, perincon4ABA,
+    percon4ABA, percon4ABA, perincon4ADA, perincon4ABA, percon4ADA, perincon4ABA, perincon4ADA, perincon4ADA,
+    perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, perincon4ADA, percon4ABA, perincon4ABA, percon4ADA,
+    percon4ADA, percon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, perincon4ABA, percon4ABA, percon4ADA,    
+    );
+} else if(randomint > 40){
+  timeline.push(
+  	perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA,
+    perincon4ADA, percon4ABA, perincon4ABA, percon4ADA, percon4ABA, percon4ABA, perincon4ADA, perincon4ABA,
+    percon4ADA, percon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, perincon4ABA, percon4ABA, percon4ADA,    
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, percon4ABA, percon4ADA, perincon4ADA, perincon4ABA,
+    );
+} else if(randomint > 30){
+  timeline.push(
+  	percon4ABA, percon4ABA, perincon4ADA, perincon4ABA, percon4ADA, percon4ADA, perincon4ABA, perincon4ADA,
+	percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, percon4ABA, perincon4ABA, percon4ADA,
+    percon4ABA, percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ABA, percon4ABA, percon4ADA,
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA,
+    );
+} else if(randomint > 20){
+  timeline.push(
+  	percon4ABA, percon4ABA, perincon4ADA, perincon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA,
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, perincon4ADA, percon4ABA, perincon4ABA, percon4ADA,
+    percon4ADA, percon4ADA, perincon4ABA, perincon4ADA, percon4ABA, percon4ADA, perincon4ADA, perincon4ABA,
+    percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ADA, perincon4ABA, percon4ABA, percon4ADA,
+    );
+} else if(randomint > 10){
+  timeline.push(
+    percon4ADA, percon4ABA, perincon4ABA, perincon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, percon4ABA,
+    perincon4ABA, percon4ADA, percon4ADA, percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ADA,
+    percon4ADA, percon4ABA,  percon4ADA, perincon4ADA, perincon4ABA, perincon4ABA, percon4ABA, percon4ADA,
+    percon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, percon4ABA, perincon4ADA, perincon4ABA,
+    );
+} else if(randomint > 0){
+  timeline.push(
+    percon4ADA, percon4ABA,  percon4ADA, perincon4ADA, perincon4ABA, perincon4ABA, percon4ABA, percon4ADA,
+    percon4ABA, perincon4ABA, perincon4ADA, percon4ADA, percon4ABA, percon4ABA, perincon4ADA, perincon4ABA,
+    perincon4ABA, percon4ADA, percon4ADA, percon4ADA, perincon4ADA, perincon4ABA, perincon4ADA, perincon4ADA,
+    percon4ADA, percon4ABA, perincon4ABA, percon4ABA, perincon4ADA, perincon4ABA, perincon4ADA, percon4ABA,   
+    );
+}
+}
+ 
+
+if(condition == 5){
+randomint = Math.floor(Math.random()*110);
+
+if(randomint > 100){
+  timeline.push(
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA,
+    )
+} else if(randomint > 90){
+  timeline.push(
+  	percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ABA, percon5ADA, perincon5ADA, perincon5ABA,
+    perincon5ADA, perincon5ABA, percon5ABA, percon5ADA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA,
+    percon5ADA, percon5ADA, perincon5ABA, perincon5ADA, percon5ABA, percon5ABA, perincon5ADA, perincon5ABA,
+    percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, percon5ABA, perincon5ABA, percon5ADA,
+    );
+} else if(randomint > 80){
+  timeline.push(
+  	perincon5ADA, percon5ABA, perincon5ABA, percon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA,
+    percon5ABA, percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, perincon5ABA, percon5ABA, percon5ADA,
+    percon5ADA, percon5ADA, perincon5ADA, perincon5ADA, percon5ADA, perincon5ABA, perincon5ABA, perincon5ADA,
+    percon5ABA, percon5ABA, perincon5ADA, perincon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA,
+    );
+} else if(randomint > 70){
+  timeline.push(
+  	perincon5ADA, percon5ABA, perincon5ABA, percon5ADA, percon5ABA, percon5ABA, perincon5ADA, perincon5ABA,
+    perincon5ADA, perincon5ABA, percon5ABA, percon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA,
+    percon5ABA, percon5ADA, perincon5ADA, perincon5ABA, percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA,
+    perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, percon5ADA, percon5ADA, perincon5ABA, perincon5ADA,
+    );
+} else if(randomint > 60){
+  timeline.push(
+  	perincon5ADA, perincon5ABA, percon5ABA, percon5ADA, percon5ABA, percon5ABA, perincon5ADA, perincon5ABA,
+    percon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ABA, percon5ADA, perincon5ADA, perincon5ABA,
+    percon5ADA, percon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, percon5ABA, perincon5ABA, percon5ADA,   
+    );
+} else if(randomint > 50){
+  timeline.push(
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ABA, percon5ADA, perincon5ADA, perincon5ABA,
+    percon5ABA, percon5ABA, perincon5ADA, perincon5ABA, percon5ADA, perincon5ABA, perincon5ADA, perincon5ADA,
+    perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, perincon5ADA, percon5ABA, perincon5ABA, percon5ADA,
+    percon5ADA, percon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, perincon5ABA, percon5ABA, percon5ADA,    
+    );
+} else if(randomint > 40){
+  timeline.push(
+  	perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA,
+    perincon5ADA, percon5ABA, perincon5ABA, percon5ADA, percon5ABA, percon5ABA, perincon5ADA, perincon5ABA,
+    percon5ADA, percon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, perincon5ABA, percon5ABA, percon5ADA,    
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, percon5ABA, percon5ADA, perincon5ADA, perincon5ABA,
+    );
+} else if(randomint > 30){
+  timeline.push(
+  	percon5ABA, percon5ABA, perincon5ADA, perincon5ABA, percon5ADA, percon5ADA, perincon5ABA, perincon5ADA,
+	percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, percon5ABA, perincon5ABA, percon5ADA,
+    percon5ABA, percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, perincon5ABA, percon5ABA, percon5ADA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA,
+    );
+} else if(randomint > 20){
+  timeline.push(
+  	percon5ABA, percon5ABA, perincon5ADA, perincon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, perincon5ADA, percon5ABA, perincon5ABA, percon5ADA,
+    percon5ADA, percon5ADA, perincon5ABA, perincon5ADA, percon5ABA, percon5ADA, perincon5ADA, perincon5ABA,
+    percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, perincon5ADA, perincon5ABA, percon5ABA, percon5ADA,
+    );
+} else if(randomint > 10){
+  timeline.push(
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, percon5ABA,
+    perincon5ABA, percon5ADA, percon5ADA, percon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, perincon5ADA,
+    percon5ADA, percon5ABA,  percon5ADA, perincon5ADA, perincon5ABA, perincon5ABA, percon5ABA, percon5ADA,
+    percon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, percon5ABA, perincon5ADA, perincon5ABA,
+    );
+} else if(randomint > 0){
+  timeline.push(
+  	percon5ABA, perincon5ABA, perincon5ADA, percon5ADA, percon5ABA, percon5ABA, perincon5ADA, perincon5ABA,
+    percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, perincon5ADA, perincon5ABA, perincon5ADA, percon5ABA,
+    percon5ADA, percon5ABA,  percon5ADA, perincon5ADA, perincon5ABA, perincon5ABA, percon5ABA, percon5ADA,
+    perincon5ABA, percon5ADA, percon5ADA, percon5ADA, percon5ABA, perincon5ABA, perincon5ADA, perincon5ADA,
+    );
+}
+}
+
+if(condition == 6){
+randomint = Math.floor(Math.random()*110);
+
+if(randomint > 100){
+  timeline.push(
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, perincon6ABA, perincon6ADA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, perincon6ABA, perincon6ADA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, perincon6ABA, perincon6ADA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, perincon6ABA, perincon6ADA,
+    )
+} else if(randomint > 90){
+  timeline.push(
+  	percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA,
+    perincon6ADA, perincon6ABA, percon6ABA, percon6ADA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA,
+    percon6ADA, percon6ADA, perincon6ABA, perincon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, percon6ABA, perincon6ABA, percon6ADA,
+    );
+} else if(randomint > 80){
+  timeline.push(
+  	perincon6ADA, percon6ABA, perincon6ABA, percon6ADA, percon6ADA, percon6ABA, perincon6ABA, perincon6ADA,
+    percon6ABA, percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ABA, percon6ABA, percon6ADA,
+    percon6ADA, percon6ADA, perincon6ADA, perincon6ADA, percon6ADA, perincon6ABA, perincon6ABA, perincon6ADA,
+    percon6ABA, percon6ABA, perincon6ADA, perincon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA,
+    );
+} else if(randomint > 70){
+  timeline.push(
+  	perincon6ADA, percon6ABA, perincon6ABA, percon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    perincon6ADA, perincon6ABA, percon6ABA, percon6ADA, percon6ADA, percon6ABA, perincon6ABA, perincon6ADA,
+    percon6ABA, percon6ADA, perincon6ADA, perincon6ABA, percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA,
+    perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, percon6ADA, percon6ADA, perincon6ABA, perincon6ADA,
+    );
+} else if(randomint > 60){
+  timeline.push(
+  	perincon6ADA, perincon6ABA, percon6ABA, percon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    percon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA,
+    percon6ADA, percon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, percon6ABA, perincon6ABA, percon6ADA,   
+    );
+} else if(randomint > 50){
+  timeline.push(
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA,
+    percon6ABA, percon6ABA, perincon6ADA, perincon6ABA, percon6ADA, perincon6ABA, perincon6ADA, perincon6ADA,
+    perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, perincon6ADA, percon6ABA, perincon6ABA, percon6ADA,
+    percon6ADA, percon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, percon6ABA, percon6ADA,    
+    );
+} else if(randomint > 40){
+  timeline.push(
+  	perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA,
+    perincon6ADA, percon6ABA, perincon6ABA, percon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    percon6ADA, percon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, percon6ABA, percon6ADA,    
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA,
+    );
+} else if(randomint > 30){
+  timeline.push(
+  	percon6ABA, percon6ABA, perincon6ADA, perincon6ABA, percon6ADA, percon6ADA, perincon6ABA, perincon6ADA,
+	percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, percon6ABA, perincon6ABA, percon6ADA,
+    percon6ABA, percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ABA, percon6ABA, percon6ADA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA,
+    );
+} else if(randomint > 20){
+  timeline.push(
+  	percon6ABA, percon6ABA, perincon6ADA, perincon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, perincon6ADA, percon6ABA, perincon6ABA, percon6ADA,
+    percon6ADA, percon6ADA, perincon6ABA, perincon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA,
+    percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, percon6ABA, percon6ADA,
+    );
+} else if(randomint > 10){
+  timeline.push(
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, percon6ABA,
+    perincon6ABA, percon6ADA, percon6ADA, percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ADA,
+    percon6ADA, percon6ABA,  percon6ADA, perincon6ADA, perincon6ABA, perincon6ABA, percon6ABA, percon6ADA,
+    percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    );
+} else if(randomint > 0){
+  timeline.push(
+  	percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    percon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, percon6ABA, percon6ADA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, perincon6ADA, percon6ABA, perincon6ABA, percon6ADA,
+    percon6ADA, percon6ADA, perincon6ABA, perincon6ADA, percon6ABA, percon6ADA, perincon6ADA, perincon6ABA,
+    );
+} else if(randomint > 0){
+  timeline.push(
+    percon6ADA, percon6ABA,  percon6ADA, perincon6ADA, perincon6ABA, perincon6ABA, percon6ABA, percon6ADA,
+    percon6ABA, perincon6ABA, perincon6ADA, percon6ADA, percon6ABA, percon6ABA, perincon6ADA, perincon6ABA,
+    percon6ADA, percon6ABA, perincon6ABA, perincon6ADA, perincon6ADA, perincon6ABA, perincon6ADA, percon6ABA,
+    perincon6ABA, percon6ADA, percon6ADA, percon6ADA, perincon6ADA, perincon6ABA, percon6ABA, perincon6ADA,
+    );
+}
+}
+
+
+var end = {
+    type: 'instructions',
+    pages: [ '<h2>Study Complete</h2>' +
+    '<p>Thank you for participating!</p>' +
+    '<p>This study aims to investigate audiovisual processing in combination with motor information.' +
+     ' In particular, we are interested in how an ambiguous auditory stimulus can be recalibrated by a non-ambiguous visual stimulus in conjunction with motor processing.' +
+     ' For example, if you were presented with an ambiguous sound between /ABA/ and /ADA/ paired with your own articulations or a face saying /ABA/, then you have perceived that sound as more like /ABA/, thus "recalibrating" your perception of that ambiguous sound.' +
+     ' Later, during the auditory-only trials, you should have tended to experience a bias to hear the ambiguous sound as /ABA/. </p>' +
+     '<p> In our study, we also sometimes put the articulation in opposition to the face.' +
+     ' For example, we had you articulate /ABA/ paired with a face saying /ADA/. Here, there are two biases on that ambiguous sound pushing in opposite directions.' +
+     ' We are interested to see how auditory-only responses would change after this conflict training. This research will help us clarify the link between audition and vision and the motor system in speech processing.</p>' +
+  '<b>Click <i>next</i> for instructions on arranging compensation or to fill out the RPS form.</b>'],
+    show_clickable_nav: true,
+    button_label_next: "Next",
+    allow_keys: false
+}
+timeline.push(end);
+
+//IN TERMINAL: open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+
+      /* start the experiment */
+    jsPsych.init({
+        timeline: timeline, // plays timeline "trial"
+        use_webaudio: false, // allows audio to play in browser
+        show_preload_progress_bar: false, // hide preload progress bar,
+        preload_video: ["video/VbA0.mp4", "video/VbA4.mp4", "video/VbA5.mp4", "video/VbA6.mp4", "video/VdA0.mp4", "video/VdA4.mp4", "video/VdA5.mp4", "video/VdA6.mp4"],
+        preload_audio: ["audio/bd04.wav", "audio/bd04_minus.wav", "audio/bd04_plus.wav", "audio/bd05.wav", "audio/bd05_minus.wav", "audio/bd05_plus.wav", "audio/bd06.wav", "audio/bd06_plus.wav", "audio/bd06_minus.wav"],
+                    exclusions: {
+                        min_width: 800,
+                        min_height: 600
+                    },
+        on_finish: function (data) {
+          var resultJson = jsPsych.data.get().ignore('internal_node_id').ignore('time_elapsed'); // retrieves all data
+          jatos.submitResultData(resultJson.csv(), jatos.startNextComponent); // ignore these columns when generating results
+        },
+        default_iti: 10
+      });
+    });
+    </script>
+  </html>
