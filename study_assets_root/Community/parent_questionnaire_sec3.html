@@ -62,17 +62,18 @@ jsPsych.data.addProperties({subject : studyID});     // adds study ID to results
 	
   jsPsych.init({
     timeline: [section3_page1, end],
-    show_progress_bar: true,
-   on_finish: function (data) {
+    show_progress_bar: true,     
+    on_finish: function (data) { // on_finish will overwrite any data saved from on_data_update if all of the data gets sent in at the end
+                    alert("You have successfully completed the experiment. Thank you for your participation!");
             var studyID = jatos.studyResultId;
             jsPsych.data.addProperties({subject : studyID});
             var resultsRaw = jsPsych.data.get();
-            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('stimulus');
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('key_press').ignore('question_order').ignore('stimulus');
             var resultsCSV = results.csv();
-            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
+            jatos.submitResultData(resultsCSV, jatos.endStudy);
             },
-  })
- });
+ 			})
+ 		});
 
   </script>
 </html>
