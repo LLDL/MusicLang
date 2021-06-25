@@ -106,17 +106,17 @@ var prac_adapt4ABA = {
     ],
 
     timeline_variables: [
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
     ]
 }
@@ -140,17 +140,17 @@ var prac_adapt5ABA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
     ]
 }
@@ -175,17 +175,17 @@ var prac_adapt6ABA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA1.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
     ]
 }
@@ -208,17 +208,17 @@ timeline: [
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
 ]
 }
@@ -241,17 +241,17 @@ timeline: [
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
 ]
 }
@@ -273,17 +273,17 @@ timeline: [
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA9.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
 ]
 }
@@ -307,17 +307,17 @@ var prac_recal4ABA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
     ]
 }
@@ -340,17 +340,17 @@ var prac_recal5ABA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
     ]
 }
@@ -374,17 +374,17 @@ var prac_recal6ABA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-      { sources: ['video/VbA0.mp4'], data: {}},
+      
       { sources: ['video/VbA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
     ]
 }
@@ -407,17 +407,17 @@ timeline: [
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA4.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
 ]
 }
@@ -441,17 +441,17 @@ timeline: [
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA5.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
 ]
 }
@@ -474,17 +474,17 @@ timeline: [
 
 ],
 timeline_variables: [
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-  { sources: ['video/VdA0.mp4'], data: {}},
+  
   { sources: ['video/VdA6.mp4'], data: {test_part: 'practice', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
 ]
 }
@@ -509,17 +509,17 @@ timeline_variables: [
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
         ]
     }
@@ -542,17 +542,17 @@ timeline_variables: [
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
         ]
     }
@@ -576,17 +576,17 @@ timeline_variables: [
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA1.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'adaptation', level: 'VbA1'}},
         ]
     }
@@ -609,17 +609,17 @@ var adapt4ADA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
     ]
 }
@@ -642,17 +642,17 @@ var adapt5ADA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
     ]
 }
@@ -674,17 +674,17 @@ var adapt6ADA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA9.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'adaptation', level: 'VdA9'}},
     ]
 }
@@ -708,17 +708,17 @@ var adapt6ADA = {
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA4'}},
         ]
     }
@@ -741,17 +741,17 @@ var adapt6ADA = {
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA5'}},
         ]
     }
@@ -775,17 +775,17 @@ var adapt6ADA = {
 
         ],
         timeline_variables: [
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
-          { sources: ['video/VbA0.mp4'], data: {}},
+          
           { sources: ['video/VbA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ABA', congruency: 'recalibration', level: 'VbA6'}},
         ]
     }
@@ -808,17 +808,17 @@ var recal4ADA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA4.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA4'}},
     ]
 }
@@ -841,17 +841,17 @@ var recal5ADA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA5.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA5'}},
     ]
 }
@@ -874,17 +874,17 @@ var recal6ADA = {
 
     ],
     timeline_variables: [
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
-      { sources: ['video/VdA0.mp4'], data: {}},
+      
       { sources: ['video/VdA6.mp4'], data: {test_part: 'test', dresponse: 'DR', blocktype: 'ADA', congruency: 'recalibration', level: 'VdA6'}},
     ]
 }
