@@ -1030,13 +1030,13 @@ function validate_parentcareinfo() {
     var langdom = get_answer(questions, 2);
     var edu = get_answer(questions, 3);
     
-    if ((country.length == 0 || country.length > 100)) {
+    if ((country.length == 0 || country.length > 1000)) {
         allow_next(next, false, "Enter country of birth for each parent, separated by semicolons");
     }
-    else if (langdom.length == 0 || langdom.length > 100) {
+    else if (langdom.length == 0 || langdom.length > 1000) {
         allow_next(next, false, "Enter languages in order of most to least fluent for each parent, separated by semicolons");
 	}
-	else if (edu.length == 0 || edu.length > 100) {
+	else if (edu.length == 0 || edu.length > 1000) {
         allow_next(next, false, "Enter highest level of education attained for each parent, separated by semicolons");
     }
     else {
