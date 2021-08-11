@@ -1,0 +1,53 @@
+<!--Listening Quizzes for the Hul'q'umi'num' Language Academy developed Summer 2021-->
+<!--"Choose quiz" component developed on jsPsych by Elise McClay, July 2021-->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Choose Component</title>
+        <script src="shared_assets/jspsych-6.3.1/jspsych.js"></script>
+        <script src="shared_assets/jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+        <script src="jatos.js"></script>
+        <link rel="stylesheet" href="shared_assets/jspsych-6.3.1/css/jspsych.css" type="text/css">
+    </head>
+    <body></body>
+
+    <script>
+
+let timeline = [];
+
+let choose_component = {
+	type: 'html-button-response',
+	stimulus: "Which questionnaire would you like to start?",
+	choices: ['Parent Questionnaire', 'MCDI']
+	//note that the choices can have any text, but must be in the same order as the components in the JATOS list!
+};
+
+timeline.push(choose_component);
+
+jatos.onLoad(function() {
+	jsPsych.init({
+		timeline: timeline,
+		show_progress_bar:false,
+
+		on_finish: function(data){
+			var resultCSV = jsPsych.data.get().csv();
+			//get the trial data from the participant picking which quiz to do:
+			var p_choice = jsPsych.data.getLastTimelineData().last(1).values()[0];
+			//add 2 to their response, because the buttons are numbered 0, 1, etc.
+			//the components are 1 = this component; 2 = the first real quiz, etc.
+			var choice = p_choice['response']+2;
+      //For the parent questionnaire and MCDI study, the parent questionnaire has 4 components so we need to advance the counter (bump up the number) if parent chooses the MCDI
+            if (choice==3){
+              choice=6;
+            }
+      jatos.startComponentByPos(choice);
+			finish();
+		}
+
+	});
+});
+
+</script>
+</html>
