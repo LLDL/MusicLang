@@ -4,23 +4,23 @@
   	<script src="jatos.js"></script>
 	<script src="shared_assets/jspsych-6.1/jspsych.js"></script>
 	<script src="shared_assets/js/instructions.js"></script>
-	
+
     <script src="shared_assets/jspsych-6.1/plugins/jspsych-survey-text.js"></script>
     <script src="shared_assets/jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
-    
+
    	<script src="shared_assets/js/survey-yes-no.js"></script>
     <script src="shared_assets/js/survey-text-custom.js"></script>
     <script src="shared_assets/js/family-info.js"></script>
     <script src="shared_assets/js/other-info.js"></script>
     <script src="shared_assets/js/validators.js"></script>
-    
+
     <link href="shared_assets/stylesheet.css" rel="stylesheet" />
 	<link href="shared_assets/jspsych-6.1/css/jspsych.css" rel="stylesheet" type="text/css"></link>
   </head>
   <body></body>
   <script>
  /*NOTE: add numbers at beginning of each question that correspond with the question numbers in the parent guide */
- 
+
 var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Parent Questionnaire</h1>"; //to be prepended to preludes
 
 var image = "<img id=\"logo\" src=\"shared_assets/img/example.jpg\"</img>";
@@ -66,7 +66,7 @@ var sec2_child = {
     json_label: 'Language Dominance & Order of Acquisition',
     questions: [
         {prompt: "2.1 Please list all the languages your child knows/is learning in order of <b>dominance</b> (your child’s most dominant language first), separated by semicolons. <br><i><b>Example:</b>  English; French (where English is the most dominant, and French is the least dominant)</i>"},
-        {prompt: "2.2 Please list all the languages your child knows/is learning in order of <b>acquisition</b>. Please also indicate if the language(s) is/are your child’s native language(s), separated by semicolons. <br><i><b>Example:</b>  English (Native); French</i>"}, 
+        {prompt: "2.2 Please list all the languages your child knows/is learning in order of <b>acquisition</b>. Please also indicate if the language(s) is/are your child’s native language(s), separated by semicolons. <br><i><b>Example:</b>  English (Native); French</i>"},
         ],
     on_load: function () {
         validate_languagedomacq();
@@ -84,7 +84,7 @@ var sec2_child = {
     json_label: 'Disabilities',
     questions: [
             {prompt: '2.3 Please indicate whether your child has any of the following disabilities: vision impairment, language disability, hearing impairment and/or learning disability?' +
-            ' <br>If yes, please add a bit more detail below (including any corrections or therapy) <br><i><b>Example:</b>  Hearing impairment (hearing aid)</i>'}, 
+            ' <br>If yes, please add a bit more detail below (including any corrections or therapy) <br><i><b>Example:</b>  Hearing impairment (hearing aid)</i>'},
             ],
     on_load: function () {
         validate_disabilities();
@@ -103,7 +103,7 @@ var sec2_child = {
     json_label: 'Daycare/School',
     questions: [
             {prompt: '2.4 Does your child attend daycare, kindergarten/nursery, or school?' +
-      ' If yes, how many hours/week and which languages are spoken there? <br><i><b>Example:</b> if Chidi attends an English and French speaking daycare 5 hours a week, their entry would be: 5 hours/week; English & French.</i>'}, 
+      ' If yes, how many hours/week and which languages are spoken there? <br><i><b>Example:</b> if Chidi attends an English and French speaking daycare 5 hours a week, their entry would be: 5 hours/week; English & French.</i>'},
             ],
     on_load: function () {
         validate_daycare();
@@ -114,14 +114,14 @@ var sec2_child = {
         toggle_listeners(form, false, validate_daycare);
     }
 };
-    
+
       var extracurr = {
  	type: 'survey-text-custom',
     preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2>",
     json_label: 'Extra-curricular',
     questions: [
             {prompt: '2.5 Does your child attend any evening/weekend language or extra-curricular programs?' +
-      ' If yes, how often and which languages are spoken there? <br><i><b>Example:</b>  if Chidi attends an English speaking extra-curricular program twice a week, their entry would be: Twice a week; English.</i>'}, 
+      ' If yes, how often and which languages are spoken there? <br><i><b>Example:</b>  if Chidi attends an English speaking extra-curricular program twice a week, their entry would be: Twice a week; English.</i>'},
             ],
     on_load: function () {
         validate_extracurricular();
@@ -198,7 +198,7 @@ var otherinfo = {
 /*
 var family_languageexposure = {
     type: 'survey-text-custom',
-    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Family Language Exposure Part 1 </b> <br>2.6 Please list the family members who talk to the child at least once a week and indicate which language(s) each person listed below speaks around your child." + 
+    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Family Language Exposure Part 1 </b> <br>2.6 Please list the family members who talk to the child at least once a week and indicate which language(s) each person listed below speaks around your child." +
       ' If a person speaks a language(s) other than English with your child, please list this/these languages. <br>' +
       ' <br> <i><b>Example:</b> If Chidi is spoken to by his mother who speaks English and French, <br> is spoken to by grandmother who speaks French, <br>and is spoken to by their brother who speaks English and French, <br>their entries would be: <br> Mother: English; French, Grandmother: French, Brother: English; French</i> <br>' +
       ' <br> On the next page, you will be asked the proportion of English that each person speaks to your child and average amount of hours they spend with your child.',
@@ -246,10 +246,10 @@ var family_languagedetails = {
     }
 };
 
-    
+
 var other_languageexposure = {
     type: 'survey-text-custom',
-    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Other Individual Language Exposure Part 1</b> <br> 2.6 Please list any individuals in your environment who talk to the child at least once a week and indicate which language(s) each person listed below speaks around your child." + 
+    preamble: header + "<h2>SECTION 2: LANGUAGE BACKGROUND ASSESSMENT</h2> <b> Other Individual Language Exposure Part 1</b> <br> 2.6 Please list any individuals in your environment who talk to the child at least once a week and indicate which language(s) each person listed below speaks around your child." +
       ' If a person speaks a language(s) other than English with your child, please list this/these languages.<br>' +
       ' <br> <i><b>Example:</b> If Chidi is spoken to by his teacher who speaks English and daycare giver who speaks English and French, their entries would be:' +
         ' Teacher: English; Daycare worker: English; French</i><br>' +
@@ -339,7 +339,7 @@ var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purp
 jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
 
   jsPsych.init({
-  // timeline: [name_country, langdom_langacq, disabilities, daycare, extracurr, family_languageexposure, family_languagedetails, other_languageexposure, other_languagedetails, section2_page7, section2_over]
+
     timeline: [sec2_child, name_country, langdom_langacq, disabilities, daycare, extracurr, familyinfo, otherinfo, section2_page7, section2_over],
     show_progress_bar: true,
    on_finish: function (data) {
