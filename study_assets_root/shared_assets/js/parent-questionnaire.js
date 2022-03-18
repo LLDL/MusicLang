@@ -32,12 +32,12 @@ var copy = {
     preamble: header + "<h2>Parent Questionnaire</h2>",
     json_label: 'Language Count',
     on_load: function(){
-        validate_copy();
+        validate_confirmation();
         form = document.getElementById("jspsych-content");
-        toggle_listeners(form, true, validate_copy);
+        toggle_listeners(form, true, validate_confirmation);
     },
     on_finish: function(){
-        toggle_listeners(form, false, validate_copy);
+        toggle_listeners(form, false, validate_confirmation);
     }
 };
 
@@ -49,12 +49,12 @@ var talkbank = {
     preamble: header + "<h2>Data Collection</h2>",
     json_label: 'TalkBank Permission',
     on_load: function(){
-        validate_talkbank();
+        validate_confirmation();
         form = document.getElementById("jspsych-content");
-        toggle_listeners(form, true, validate_talkbank);
+        toggle_listeners(form, true, validate_confirmation);
     },
     on_finish: function(){
-        toggle_listeners(form, false, validate_talkbank);
+        toggle_listeners(form, false, validate_confirmation);
     }
 };
 
@@ -66,12 +66,12 @@ var futurecontact = {
     preamble: header + "<h2></h2>",
     json_label: 'Future Contact',
     on_load: function(){
-        validate_futurecontact();
+        validate_future();
         form = document.getElementById("jspsych-content");
-        toggle_listeners(form, true, validate_futurecontact);
+        toggle_listeners(form, true, validate_future);
     },
     on_finish: function(){
-        toggle_listeners(form, false, validate_futurecontact);
+        toggle_listeners(form, false, validate_future);
     }
 };
 
@@ -103,7 +103,7 @@ var childinfo = {
     json_label: 'childinfo',
     questions: [
         {prompt: "Child name"},
-        {prompt: "Child birh date (YYYY/MM/DD)"},
+        {prompt: "Child birth date (YYYY/MM/DD)"},
         {prompt: "If your child has any vision/hearing problems, learning disorders or language disorders, please specify.<br>For example: aphasia, dyslexia, hearing impairment, ADHD, etc."}
     ],
     on_load: function () {
