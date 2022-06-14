@@ -112,6 +112,14 @@ jatos.onLoad(function() {
       }
     }
   };
+	
+  //LING RPS question
+  var rps = {
+    type: jsPsychSurvey,
+    pages: [
+      [{type: 'text', prompt: "If you want to use participation in this study as a credit in the Linguistics RPS system, specify which course (e.g. LING 100, LING 220, etc.) you'd like to apply it to below. If this doesn't apply to you, type NA.", name: 'rps', required: true}]
+    ]
+  };
 
     //introduction text, orienting to task
     var lb_intro = {
@@ -163,7 +171,7 @@ jatos.onLoad(function() {
       choices: ['Continue']
     };
 
-    jsPsych.run([consent_text, consent_fut, consent_study, lb_intro, loop_node, closeQ]); 
+    jsPsych.run([consent_text, consent_fut, consent_study, rps, lb_intro, loop_node, closeQ]); 
 });
   </script>
 </html>
