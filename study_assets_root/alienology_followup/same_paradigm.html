@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="shared_assets/jspsych.js"></script>
-    <script src="shared_assets/plugin-instructions.js"></script>
-    <script src="shared_assets/plugin-audio-button-response.js"></script>
-    <script src="shared_assets/plugin-html-button-response.js"></script>
-    <script src="shared_assets/plugin-preload.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/jspsych.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-instructions.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-audio-button-response.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-html-button-response.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-preload.js"></script>
     <script src="jatos.js"></script>
-    <link rel="stylesheet" href="shared_assets/jspsych.css">
+    <link rel="stylesheet" href="shared_assets/dist/jspsych.css">
   </head>
   <body></body>
   <script>
@@ -37,7 +37,7 @@ jatos.onLoad(function() {
     <br><span style="color:#cc0000;font-weight:bold;font-style:italic">slight</span> and <span style="color:#cc0000;font-weight:bold;font-style:italic">sliding</span> do not share a base form</p>`
 
   let intro2 = `<p>Whether two words share a base form depends on the meanings of the words, but often you can make a pretty good guess based on how the words sound. In this study, you can assume that words that sound the same DO share a base form, and words that sound different do NOT share a base form.</p>
-    <img src="./img/check_x_img.png" alt="Graphic with two rows: top row has two identical visualizations of an audio waveform and a green check, bottom row has two different waveforms and a red X" width=50%>`
+    <img src="shared_assets/img/check_x_img.png" alt="Graphic with two rows: top row has two identical visualizations of an audio waveform and a green check, bottom row has two different waveforms and a red X" width=50%>`
 
   let intro3 = `<p>In this experiment, your job is to hear some made-up words and judge whether those words share a base form or not, based on how they sound. One of the words will have an -ing suffix, and the other will not. Compare the two to determine if they share the base, just as you would words like <i>look</i> and <i>looking</i>.<p/>
       <p>You'll hear different people saying the words. It doesn't matter if two words are spoken by different voices--if they sound the same, then they share a base form.</p>
@@ -78,10 +78,10 @@ jatos.onLoad(function() {
     ],
     //contents of each training trial
     timeline_variables: [
-      {stimulus: 'sound/Training_Final/training1_dancing_jump_diff.wav', text: 'You heard <i>dancing</i> and <i>jump</i>. Those two words <span style="color:#cc0000;font-weight:bold">DO NOT</span> share the same base. You know that because they sound completely different.</p>', word:'dancingjump'},
-      {stimulus: 'sound/Training_Final/training2_bike_biking_same.wav', text: 'You heard <i>bike</i> and <i>biking</i>. Those two words <span style="color:#008000;font-weight:bold">DO</span> share the same base. You know that because they sound the same.</p>', word:'bike'},
-      {stimulus: 'sound/Training_Final/training3_paddling_paddle_same.wav', text: 'You heard <i>paddling</i> and <i>paddle</i>. Those two words <span style="color:#008000;font-weight:bold">DO</span> share the same base. You know that because they sound the same.</p>', word:'paddle'},
-      {stimulus: 'sound/Training_Final/training4_ride_writing_diff.wav', text: 'You heard <i>ride</i> and <i>writing</i>. Those two words <span style="color:#cc0000;font-weight:bold">DO NOT</span> share the same base. You know that because they do not sound the same.</p>',word:'ridewriting'}
+      {stimulus: 'shared_assets/audio/alien/Training_Final/training1_dancing_jump_diff.wav', text: 'You heard <i>dancing</i> and <i>jump</i>. Those two words <span style="color:#cc0000;font-weight:bold">DO NOT</span> share the same base. You know that because they sound completely different.</p>', word:'dancingjump'},
+      {stimulus: 'shared_assets/audio/alien/Training_Final/training2_bike_biking_same.wav', text: 'You heard <i>bike</i> and <i>biking</i>. Those two words <span style="color:#008000;font-weight:bold">DO</span> share the same base. You know that because they sound the same.</p>', word:'bike'},
+      {stimulus: 'shared_assets/audio/alien/Training_Final/training3_paddling_paddle_same.wav', text: 'You heard <i>paddling</i> and <i>paddle</i>. Those two words <span style="color:#008000;font-weight:bold">DO</span> share the same base. You know that because they sound the same.</p>', word:'paddle'},
+      {stimulus: 'shared_assets/audio/alien/Training_Final/training4_ride_writing_diff.wav', text: 'You heard <i>ride</i> and <i>writing</i>. Those two words <span style="color:#cc0000;font-weight:bold">DO NOT</span> share the same base. You know that because they do not sound the same.</p>',word:'ridewriting'}
     ]
   };
 
@@ -95,7 +95,7 @@ jatos.onLoad(function() {
     //creating list of audio files
     var audio_list = [];
     //starting to build the filename
-    var e_audio = 'sound/Experimental_Final/';
+    var e_audio = 'shared_assets/audio/alien/Experimental_Final/';
     var data = {};
     /*Ashley's notes: They're named item#_type_paradigm_word_order#. 
       The item number is 1-40. The type is opaque, transparent, or unambiguous.    01-10 are all opaque, 11-20 are all trans, 21-40 are all unamb
