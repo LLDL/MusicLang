@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="shared_assets/jspsych.js"></script>
+    <script src="shared_assets/plugin-instructions.js"></script>
+    <script src="shared_assets/plugin-html-button-response.js"></script>
+    <script src="shared_assets/plugin-survey.js"></script>
+    <script src="jatos.js"></script>
+    <link rel="stylesheet" href="shared_assets/jspsych.css">
+  </head>
+  <body></body>
+  <script>
+
+jatos.onLoad(function() {
+    var jsPsych = initJsPsych({
+      on_finish: function() {
+        //jsPsych.data.displayData();
+		var consentdata = jsPsych.data.get().filter({trial: 'consentYN'}).ignore('stimulus');
+		var contactdata = jsPsych.data.get().filter({trial: 'contactYN'}).ignore('stimulus');
+        var langdata = jsPsych.data.get().filter({trial_type: 'survey'});
+        
+		var goodData = consentdata.join(contactdata);
+		goodData = goodData.join(langdata);
+		goodData = goodData.ignore('accuracy').ignore('internal_node_id').ignore('time_elapsed')
+		jatos.submitResultData(goodData.csv(),jatos.startNextComponent());
+	}
+});
+  //Defining the welcome message
+  let welcome = `<b>Welcome!</b><br>
+    <br><p>On behalf of the Simon Fraser University Linguistics Department, we thank you for choosing to participate in our online study. Before you begin, there are a few things you should keep in mind:</p>
+    <p><b>1.</b> This experiment will last approximately 1 hour. So, please make sure you are seated comfortably and will not be disturbed for that length of time.</p>
+    <p><b>2.</b> You will require headphones to participate.</p>
+    <p><b>3.</b> You may press escape (ESC) at any time to quit.</p><br>`
+
+  //Defining the various pages of the consent form (next 50 lines)
+  let consent1 = `<b>Consent Form (1/5)</b><br>
+    <p><span style="font-weight:bold;font-style:italic">Who is conducting the study?</span>
+      <br>Principal Investigator: Ashley Farris-Trimble, SFU Department of Linguistics (afarrist@sfu.ca) and the research team in the Phonological Processing Lab (phono@sfu.ca)</p>
+    <p><span style="font-weight:bold;font-style:italic">Who is funding this study?</span>
+        <br>This study is funded by the Social Sciences and Humanities Research Council.</p>
+    <p><span style="font-weight:bold;font-style:italic">Why are we doing this study?</span>
+        <br>We are doing this study to learn more about how people learn languages with different characteristics, including how they store words in their minds.</p>
+    <p><span style="font-weight:bold;font-style:italic">Your participation is voluntary.</span>
+      <br>Your participation is voluntary. You have the right to refuse to participate in this study. If you decide to participate, you may still choose to withdraw at any time without any negative consequences to the education, employment, or other services to which you are entitled or are presently receiving.</p>`
+
+  let consent2 = `<b>Consent Form (2/5)</b><br>
+  <p><span style="font-weight:bold;font-style:italic">What happens to you in the study?</span>
+    <br>If you agree to participate, we will ask you to complete <span style="font-weight:bold;font-style:italic">one or more of the following tasks</span> that involve making judgements about words from a made-up language. The study takes about an hour in total. You will complete the tasks online through a platform called JSPsych; the experimenter will not be present.
+    <br>1)	<span style="color:#008000;font-weight:bold">You will fill out a language background questionnaire, which asks questions about your native language and other languages you've studied.</span>
+    <br>2)	You will take part in a production task where you provide the names of familiar pictures out-loud. This will require that have access to a computer with an inboard or external microphone or another recording device like a phone or tablet.
+    <br>3)	<span style="color:#008000;font-weight:bold">You will hear words from a made-up language and be asked to provide judgements about those words. These judgements will also be collected on a computer.</span></p>
+  <p><span style="font-weight:bold;font-style:italic">Is there any way being in this study could be bad for you?</span>
+      <br>There are no foreseeable risks to you in participating in this study.</p>
+  <p><span style="font-weight:bold;font-style:italic">What are the benefits of participating?</span>
+      <br>We do not think taking part in this study will help you.</p>
+  <p><span style="font-weight:bold;font-style:italic">Will you receive anything for taking part in this research study?</span>
+      <br>You will receive two research participation points from the Linguistics Department Research Participation Pool. If you withdraw before the session is over, you will receive one point.</p>`
+
+  let consent3 = `<b>Consent Form (3/5)</b><br>
+  <p><span style="font-weight:bold;font-style:italic">How will your identity be protected?</span>
+    <br>Your confidentiality will be respected. All documents will be identified only by a unique code number and kept in a locked filing cabinet or on a password-protected server. Participants will not be identified by name in any reports of the completed study.
+    <br>In current best practices in research, electronic data is to be preserved for future use in open access initiatives. Open access initiatives allow researchers from different universities to share their data upon completion of studies, in an effort to stimulate further use and exploration of existing data sets. Data from this study may be uploaded to an online repository and these files will be stripped of any information that could identify participants (e.g., names, email addresses), to ensure confidentiality.</p>
+  <p><span style="font-weight:bold;font-style:italic">What if I decide to withdraw my consent to participate?</span>
+    <br>You may withdraw from this study at any time without giving reasons and with no effects on grades, employment etc. If you want to have your data withdrawn from the study, you may request this, even after you have participated. Otherwise, we will retain the data indefinitely.</p>
+  <p><span style="font-weight:bold;font-style:italic">Study results</span>
+    <br>The main study findings will be published in academic journal articles and presented at academic conferences. Links to these publications and presentations will be available on our web page (www.sfu.ca/phono). Please note that it can take months or years before study data are published.</p>
+  <p><span style="font-weight:bold;font-style:italic">Who can you contact if you have questions about the study?</span>
+    <br>If you have any questions about this study or your participation in it, please contact Dr. Ashley Farris-Trimble, Director, Phonological Processing Lab, afarrist@sfu.ca or 778-782-5601.</p>`
+
+  let consent4 = `<b>Consent Form (4/5)</b><br>
+  <p><span style="font-weight:bold;font-style:italic">Who can you contact if you have complaints or concerns about the study?</span>
+    <br>If you have any concerns about your rights as a research participant and/or your experiences while participating in this study, you may contact the SFU Office of Research Ethics at dore@sfu.ca or 778-782-6618.</p>
+  <p><span style="font-weight:bold;font-style:italic">Future use of your data.</span>
+    <br>Your data may be published in research articles in the future. Data from this study may be uploaded to an online repository and these files will be stripped of any information that could identify participants (e.g., names, email addresses), to ensure confidentiality.</p>
+  <p><span style="font-weight:bold;font-style:italic">Future contact.</span>
+    <br>The SFU Department of Linguistics may want to contact you in the future to invite you to participate in other studies. Please indicate whether we may contact you again in the future.</p>`
+
+  let consent5 = `<b>Consent Form (5/5)</b><br>
+    <p><span style="font-weight:bold;font-style:italic">Consent and signature</span>
+    <br>Taking part in this study is entirely up to you. You have the right to refuse to participate in this study. If you decide to take part, you may choose to pull out of the study at any time without giving a reason and without any negative impact on your class or university standing.</p>
+    <p>•	Clicking on the CONSENT button below indicates that you consent to participate in this study.
+    <br>•	You do not waive any of your legal rights by participating in this study.</p>
+    <p>If choose not to participate, click "<b>I do not consent</b>"; the experiment will not continue.</p>`
+
+  let complete_rejection = "<p><b>Thank you!</b></p><p>Thank you for your time. Please close your browser to exit the experiment.</p><p>If you have any other questions or concerns, please contact us at phono@sfu.ca or our principal investigator, Dr. Ashley Farris-Trimble at afarrist@sfu.ca.</p>"
+
+  //Creating the consent form pages
+  let consent_text = {
+    type: jsPsychInstructions,
+    pages: [welcome, consent1, consent2, consent3],
+    allow_backward: true,
+    show_clickable_nav: true
+  };
+
+  //Future Contact
+  let consent_fut = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: consent4,
+    choices: ['No, you may not contact me.', 'Yes, you may contact me.'],
+    data: {trial: 'contactYN'}
+  };
+
+  //Consent to study
+  let consent_study = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: consent5,
+    choices: ['I do not consent to participate in this study.', 'I consent to participate in this study.'],
+    data: {trial: 'consentYN'},
+    on_finish: function(data) {
+      if(data.response == 0){
+        jsPsych.endExperiment(complete_rejection, data);
+      }
+    }
+  };
+
+    //introduction text, orienting to task
+    var lb_intro = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `<h2>Language Background Questionnaire</h2><p>What languages do you speak? For each language, select the word that best reflects your estimate of your skill with the language, and list the age at which you began learning the language. If you are a native speaker of a language, put “birth” as the age at which learning started.</p>
+<p>If you are a parent of a child who is participating in a study, please fill the form out on behalf of your child.</p>`,
+      choices: ['Continue']
+    };
+    
+    //first question about language
+    var lang_q = {
+      type: jsPsychSurvey,
+      pages: [
+        [
+          {type: 'text', prompt: 'Name of language:', name: 'language', required: true},
+          {type: 'drop-down', prompt: 'Skill with language:', options: ['beginner','intermediate','proficient'], name: 'skill', required: true},
+          {type: 'text', prompt: 'Age learning started:', placeholder: 'Birth or age in years', name: 'age', required: true}
+			  ]
+			  /*,
+        [
+          {type: 'ranking', prompt: 'Proficiency with languages', options: []}
+        ]*/
+    ]
+    };
+
+    //query about adding more
+    var add_lang_q = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '<p>Would you like to add more languages?</p>',
+      choices: ['Yes','No']
+    };
+
+    //loop for adding more languages
+    var loop_node = {
+      timeline: [lang_q, add_lang_q],
+      loop_function: function(data){
+        if(jsPsych.data.getLastTrialData().values()[0].response == 0){
+          return true;
+        } else {
+          return false;
+        }
+      }
+    };
+
+    //exited successfully
+    var closeQ = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: 'Thank you! Next up is the study.',
+      choices: ['Continue']
+    };
+
+    jsPsych.run([consent_text, consent_fut, consent_study, lb_intro, loop_node, closeQ]); 
+});
+  </script>
+</html>
