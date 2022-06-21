@@ -18,7 +18,7 @@ jatos.onLoad(function() {
       var resultData = jsPsych.data.get().filter({trial_type: 'audio-button-response'}).ignore('internal_node_id').ignore('success').ignore('timeout').ignore('failed_images').ignore('failed_video');
       jatos.submitResultData(resultData.csv(),jatos.endStudy);
 	    
-    }
+    },
     on_close: function() {
        var resultData = jsPsych.data.get().filter({trial_type: 'audio-button-response'}).ignore('internal_node_id').ignore('success').ignore('timeout').ignore('failed_images').ignore('failed_video');
        jatos.endStudy(resultData.json());
