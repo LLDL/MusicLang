@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang"en">
+  <head>
+	<meta charset="utf-8"/>
+    <script src="shared_assets/jspsych-7.2/dist/jspsych.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-survey-multi-choice.js"></script>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-survey.js"></script>
+	<script src="shared_assets/jspsych-7.2/dist/plugin-html-button-response.js"></script>
+	<script src="jatos.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@0.2.0/css/survey.css">
+	<style>
+		.box {
+			width: 75%;
+			height: 75%;
+			margin: auto;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+  </head>
+  <body></body>
+  <script>
+
+//old stylesheet:
+// <link rel="stylesheet" href="shared_assets/jspsych-7.2/dist/jspsych.css">
+jatos.onLoad(function() {
+  var jsPsych = initJsPsych({
+    on_finish: function() {
+      //jsPsych.data.displayData('csv')
+      var resultData = jsPsych.data.get().ignore('internal_node_id');
+      jatos.submitResultData(resultData.csv(),jatos.endStudy);
+	    
+    },
+    on_close: function() {
+		var resultData = jsPsych.data.get().ignore('internal_node_id');
+       jatos.endStudy(resultData.csv());
+    }
+  });
+
+
+	//defining the header that gives the study a consistent feel
+	var header = "<div class='box'><img id='logo' src='shared_assets/img/langdev-logo.jpg' alt='LangDev Lab Logo' </img></div><h1>Language Learning & Development Lab Questionnaire</h1>";
+
+	//introduction
+	let introduction = header + "<p>Thank you! This survey focuses on ethnicity, community, and language in specific.</p><p>This version was prepared for respondents who are from <b>Chinese</b> backgrounds specifically; if that doesn't describe you, please let us know now.</p>"
+
+	var introscreen = {
+		type: jsPsychHtmlButtonResponse,
+		stimulus: introduction,
+		choices: ['Continue']
+		}
+	
+	var demo = {
+      type: jsPsychSurvey, //can also use jsPsychSurveyHtml if we want clickable dates -- see immi_date section
+      pages: [
+        [
+		  {type: 'html', prompt: header},
+          {type: 'text', prompt: 'Please enter your assigned code.', name: 'code', required: true}
+		]
+    ]
+    };
+
+    //Chinese definition
+    var section_a = {
+        type: jsPsychSurvey,
+        pages: [
+            [
+                {type: 'html', prompt: header + "<p>We use 'Chinese' as a label that is inclusive of several ethnic or cultural identities, including 'from China', 'Mandarin-speaking', 'Cantonese-speaking', 'of the Han Chinese diaspora', and many more.</p>"},
+				{type: 'html', prompt: 'In all instances, the term "Chinese" in this questionnaire refers to the broadest possible range of language and/or identities.'}
+            ],
+        [
+		  {type: 'html', prompt: header},
+          {type: 'multi-choice', prompt: 'Do you think of yourself as Chinese, Canadian, or Chinese-Canadian?', options: ['Chinese','Canadian','Chinese-Canadian'], name: 'ethnID', required: true},
+		  {type: 'likert', prompt: 'Are your friends Chinese?', likert_scale_min_label: 'All non-Chinese', likert_scale_max_label: 'All Chinese', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'friendID', required: true},
+		  {type: 'likert', prompt: 'Are people in your neighbourhood Chinese?', likert_scale_min_label: 'All non-Chinese', likert_scale_max_label: 'All Chinese', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'neighbourID', required: true},
+		  {type: 'likert', prompt: 'Are the people you work with Chinese?', likert_scale_min_label: 'All non-Chinese', likert_scale_max_label: 'All Chinese', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'colleagueID', required: true},
+		],
+		[
+		{type: 'html', prompt: header},
+		{type: 'html', prompt: 'When you were growing up...'},
+		{type: 'likert', prompt: '...were the kids in your school Chinese?', likert_scale_min_label: 'All non-Chinese', likert_scale_max_label: 'All Chinese', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'kidschoolID', required: true},
+		{type: 'likert', prompt: '...were your friends Chinese?', likert_scale_min_label: 'All non-Chinese', likert_scale_max_label: 'All Chinese', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'kidfriendID', required: true},
+		{type: 'likert', prompt: '...were the kids in your neighbourhood Chinese?', likert_scale_min_label: 'All non-Chinese', likert_scale_max_label: 'All Chinese', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'kidneighbourID', required: true},
+		],
+        [
+		  {type: 'html', prompt: header},
+          {type: 'likert', prompt: 'Do you speak Chinese (any Chinese dialect or language) well?', likert_scale_min_label: 'No', likert_scale_max_label: 'Yes', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'speak-well', required: true},
+		  {type: 'likert', prompt: 'How often do you speak Chinese (any Chinese dialect or language)?', likert_scale_min_label: 'Never', likert_scale_max_label: 'Very Often', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'speak-freq', required: true},
+		  {type: 'likert', prompt: 'Can you understand Chinese (any Chinese dialect or language)?', likert_scale_min_label: 'Not at all', likert_scale_max_label: 'Very Well', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'chi-understand', required: true},
+		  {type: 'multi-choice', prompt: 'Where did you learn Chinese (any Chinese dialect or language)?', options: ['At home','At school','Both','Neither'], name: 'where-learn', required:true},
+		  {type: 'text', prompt: 'Feel free to elaborate on any responses given above.', name: 'chi-elab'}
+		],
+		[
+		{type: 'html', prompt: header},
+        {type: 'likert', prompt: 'Do you prefer to speak Chinese or English?', likert_scale_min_label: 'Chinese', likert_scale_max_label: 'English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'speak-pref', required: true},
+		{type: 'likert', prompt: 'Do you prefer to read Chinese or English?', likert_scale_min_label: 'Chinese', likert_scale_max_label: 'English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'read-pref', required: true},
+		{type: 'likert', prompt: 'Are you comfortable with reading in Chinese?', likert_scale_min_label: 'Not at all', likert_scale_max_label: 'Very Comfortable', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'chi-read-comf', required: true},
+		{type: 'likert', prompt: 'Are you comfortable with writing in Chinese?', likert_scale_min_label: 'Not at all', likert_scale_max_label: 'Very Comfortable', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'chi-write-comf', required: true},
+		{type: 'likert', prompt: 'Are you comfortable with reading in English?', likert_scale_min_label: 'Not at all', likert_scale_max_label: 'Very Comfortable', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'eng-read-comf', required: true},
+		{type: 'likert', prompt: 'Are you comfortable with writing in English?', likert_scale_min_label: 'Not at all', likert_scale_max_label: 'Very Comfortable', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'eng-write-comf', required: true},
+		{type: 'likert', prompt: 'How often do you read print media in Chinese (e.g. magazines, newspapers, websites)?', likert_scale_min_label: 'Never', likert_scale_max_label: 'Always/Every day', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'magazine-chi', required: true},
+		{type: 'likert', prompt: 'Do you prefer to listen to the radio or watch TV in Chinese or English?', likert_scale_min_label: 'Chinese', likert_scale_max_label: 'English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'radio-pref', required: true},
+		],
+		  [
+		    {type: 'html', prompt: header},
+			{type: 'likert', prompt: 'When I speak with my family, I speak...', likert_scale_min_label: 'All Chinese', likert_scale_max_label: 'All English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'fam-choice', required: true},
+			{type: 'likert', prompt: 'When I speak with my friends, I speak...', likert_scale_min_label: 'All Chinese', likert_scale_max_label: 'All English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'frd-choice', required: true},
+			{type: 'likert', prompt: 'When I am talking about something personal, I speak...', likert_scale_min_label: 'All Chinese', likert_scale_max_label: 'All English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'personal-choice', required: true},
+			{type: 'likert', prompt: 'When I am angry, I speak...', likert_scale_min_label: 'All Chinese', likert_scale_max_label: 'All English', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'angry-choice', required: true},
+			{type: 'text', prompt: 'Feel free to elaborate on any responses given above.', name: 'choice-elab1', required:false},
+		  ],
+		  [
+			{type: 'html', prompt: header + "<p>Please skip questions about (grand)parents if not applicable.</p>"},
+			{type: 'likert', prompt: 'How often did/do you speak to your parents in Chinese?', likert_scale_min_label: 'Never', likert_scale_max_label: 'Always/Every day', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'parents-chi'},
+			{type: 'likert', prompt: 'How often did/do you speak to your grandparents in Chinese?', likert_scale_min_label: 'Never', likert_scale_max_label: 'Always/Every day', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'grand-chi'},
+			{type: 'likert', prompt: 'How often do you speak to your child(ren) in Chinese?', likert_scale_min_label: 'Never', likert_scale_max_label: 'Always/Every day', likert_scale_values: [{value: 1},{value:2},{value:3},{value: 4},{value: 5}], name: 'children-chi', required:true},
+			{type: 'text', prompt: 'Feel free to elaborate on any responses given above.', name: 'choice-elab2'}
+		  ],
+		  [
+			{type: 'html', prompt: header},
+			{type: 'html', prompt: '<b>If you were born in China/Hong Kong/Taiwan:</b>'},
+			{type: 'text', prompt: 'How old were you when you first arrived in Canada?', name: 'movehere-age'},
+			{type: 'text', prompt: 'How long have you lived in Canada?', name: 'live-years'},
+			{type: 'html', prompt: '<b>If you were born in Canada/North America:</b>'},
+			{type: 'multi-choice', prompt: 'Have you ever been to China/Hong Kong?', options: ['Yes','No'], name: 'hk-china'},
+			{type: 'text', prompt: 'If yes, when? For how long?', name: 'china-hk-years'},
+			{type: 'multi-choice', prompt: 'Where did you go to primary/secondary school?', options: ['China/Hong Kong/Taiwan','Canada/North America','Other'], name: 'prim-skl-loc', required:true},
+			{type: 'multi-choice', prompt: 'Where did you receive higher education?', options: ['China/Hong Kong/Taiwan','Canada/North America','Other/No college experience'], name: 'higher-edu-loc6', required:true},
+			{type: 'text', prompt: 'Please elaborate if you answered "Other" for any of the above questions', name: 'heritage-elab'},
+		  ],
+		  [
+			{type: 'html', prompt: header},
+			{type: 'multi-choice', prompt: 'Do your parents think of themselves as Chinese, Canadian or Chinese-Canadian?', options: ['Chinese','Canadian','Chinese-Canadian'], name: 'parents-ethnID'},
+			{type: 'multi-choice', prompt: 'Do/did your parents speak Chinese and/or English?', options: ['Chinese only','English only','Both','Other'], name: 'parents-lang'},
+			{type: 'multi-choice', prompt: 'Do/did your grandparents speak Chinese and/or English?', options: ['Chinese only','English only','Both','Other'], name: 'grand-lang'},
+			{type: 'text', prompt: 'Please elaborate if you answered "Other" for any of the above questions', name: 'parents-elab'},
+			{type: 'multi-choice', prompt: 'If they live or have lived in Canada, how old were your parents when they came here?', options:['Born in Canada','Children (1-12)','Teenagers (13-18)','Young adults (19-35)','Adults (35+)','N/A'], name: 'parents-here-age', required:true},
+			{type: 'multi-choice', prompt: 'If they live or have lived in Canada, how old were your grandparents when they came here?', options:['Born in Canada','Children (1-12)','Teenagers (13-18)','Young adults (19-35)','Adults (35+)','N/A'], name: 'grand-here-age', required:true}
+		  ],
+		  [
+			{type: 'html', prompt: header},
+			{type: 'multi-choice', prompt: "If you're partnered, is your partner Chinese?", options: ['Yes','No','N/A'], name: 'partner-ethn', required:true},
+			{type: 'multi-choice', prompt: 'Does your partner think of themselves as Chinese, Canadian or Chinese-Canadian?', options: ['Chinese','Canadian','Chinese-Canadian', 'N/A'], name: 'partner-ethnID', required: true},
+			{type: 'multi-choice', prompt: 'Do they speak Chinese?', options:['Yes','No','Other'], name: 'partner-speak-chi', required:true},
+			{type: 'multi-choice', prompt: 'Do you speak Chinese to them?', options:['Yes','No','Other'], name: 'partner-speakto-chi', required:true},
+			{type: 'text', prompt: 'Please elaborate if you answered "Other" for any of the above questions', name: 'partner-elab'}
+		  ],
+		  [
+			{type: 'html', prompt: header},
+			{type: 'likert-table', prompt: ' ', statements:[{prompt: 'Chinese-Canadian kids should learn Chinese language(s).', name: 'kids-learn-chi', required:true},
+			{prompt: 'Chinese-Canadian kids should learn about Chinese culture.', name:'kids-learn-culture', required:true},
+			{prompt: 'I would rather live in a Chinese neighbourhood than a non-Chinese one.', name:'neighbour-culture', required:true},
+			{prompt: 'Chinese people should only marry other Chinese.', name: 'marry-culture', required:true}], required:true,
+			options:['Strongly Disagree','Disagree','Neutral','Agree','Strongly Agree'],}
+		  ],
+		  [
+			{type: 'html', prompt: header},
+			{type: 'html', prompt: 'The next section inquires about negative experiences, such as discrimination and bullying. If you do not wish to talk about those topics, your responses are not required and you can skip that section.'}
+		  ],
+		  [
+			{type: 'html', prompt: header},
+			{type: 'likert', prompt: "Have you ever had a problem getting a job because you're Chinese?", likert_scale_values: [{value: 1, text: 'Never or Rarely'},{value:2, text:'Sometimes'},{value:3, text:'Often'}], options:['Yes','No','Other'], name: 'job-discrim'},
+			{type: 'likert', prompt: 'What about renting an apartment or buying a house?', likert_scale_values: [{value: 1, text: 'Never or Rarely'},{value:2, text:'Sometimes'},{value:3, text:'Often'}], name: 'house-discrim'},
+			{type: 'likert', prompt: 'Were you treated differently by your teachers in school?',  likert_scale_values: [{value: 1, text: 'Never or Rarely'},{value:2, text:'Sometimes'},{value:3, text:'Often'}], name: 'skl-discrim'},
+			{type: 'likert', prompt: "Have you ever been treated badly because you're Chinese?",  likert_scale_values: [{value: 1, text: 'Never or Rarely'},{value:2, text:'Sometimes'},{value:3, text:'Often'}], name: 'treat-discrim'},
+			{type: 'likert', prompt: 'Is there a lot of discrimination against Chinese in Canada?',  likert_scale_values: [{value: 1, text: 'Never or Rarely'},{value:2, text:'Sometimes'},{value:3, text:'Often'}], name: 'chi-discrim'}
+		  ],
+        [
+		  {type: 'html', prompt: header},
+		  {type: 'likert-table', prompt: ' ', statements:[{prompt: 'It is important for me to be able to speak and understand Chinese.', name: 'self-speak'},
+			{prompt: 'It is important for me to be able to read and write Chinese.', name:'self-read'},
+			{prompt: 'I hope to (continue to) improve my Chinese language skills.', name:'self-improve'},
+			{prompt: 'I want others to think of me as fluent in Chinese.', name: 'self-fluent-chi'},
+			{prompt: 'I want others to think of me as fluent in English.', name: 'self-fluent-eng'}], required:true,
+			options:['Strongly Disagree','Disagree','Neutral','Agree','Strongly Agree'],}
+		],
+		[
+		{type: 'html', prompt: header},
+		{type: 'likert', prompt: 'Compared to my Chinese friends and peers, I am ... at Chinese.', likert_scale_values: [{value: 1, text:'much worse'},{value:2, text: 'worse'},{value:3, text:'the same'},{value: 4, text:'better'},{value: 5, text:'much better'}], name: 'self-peers-chi', required: true},
+		{type: 'likert', prompt: 'Compared to my Chinese friends and peers, I am ... at English.', likert_scale_values: [{value: 1, text:'much worse'},{value:2, text: 'worse'},{value:3, text:'the same'},{value: 4, text:'better'},{value: 5, text:'much better'}], name: 'self-peers-eng', required: true}
+		],
+		[
+			{type: 'html', prompt: header},
+			{type: 'likert-table', prompt: ' ', statements:[
+			  {prompt: 'Learning/using Chinese regularly will negatively affect my English.', name: 'self-neg-eng'},
+			  {prompt: 'Learning/using English regularly will negatively affect my Chinese.', name:'self-neg-chi'},
+			  {prompt: 'I feel that Chinese is important to my cultural identity.', name:'self-imp-chi'},
+			  {prompt: 'I feel that English is important to my cultural identity.', name:'self-imp-eng'},
+			  {prompt: 'I have sufficient support/resources to use, learn, or improve my Chinese.', name: 'self-resources'},
+			  {prompt: 'My local Chinese-speaking community is important to me.', name: 'self-comm'}], required:true,
+			  options:['Strongly Disagree','Disagree','Neutral','Agree','Strongly Agree'],
+			},
+		],
+        [
+		  {type: 'html', prompt: header},
+		  {type: 'likert-table', prompt: ' ', statements:[{prompt: 'I hope that my child(ren) will learn to speak/understand Chinese.', name: 'child-speak'},
+			{prompt: 'I hope that my child(ren) will learn to read/write Chinese.', name:'child-read'},
+			{prompt: 'If my child(ren) learn/use Chinese regularly, it will negatively affect their English.', name:'child-neg-chi'},
+			{prompt: 'If my child(ren) learn/use English regularly, it will negatively affect their Chinese.', name: 'child-neg-eng'},
+			{prompt: 'There are sufficient support/resources for my child(ren) to use, learn, or improve their Chinese.', name: 'child-resources'}], required:true,
+			options:['Strongly Disagree','Disagree','Neutral','Agree','Strongly Agree'],}
+		],
+        [
+		  {type: 'html', prompt: header},
+		  {type: 'likert-table', prompt: ' ', statements:[{prompt: 'English use contributes to the good of my community.', name: 'comm-good-eng', required:true},
+			{prompt: 'Chinese use contributes to the good of my community.', name:'comm-good-chi', required:true},
+			{prompt: 'English is a language of Canada.', name:'comm-canada-eng', required:true},
+			{prompt: 'Chinese is a language of Canada.', name: 'comm-canada-chi', required:true},
+			{prompt: 'English should be more visible in public spaces/media in Canada than it is now.', name: 'comm-vis-eng'},
+			{prompt: 'Chinese should be more visible in public spaces/media in Canada than it is now.', name: 'comm-vis-chi'},
+			{prompt: 'Chinese should be taught (or provided as a language option) in public schools.', name: 'comm-schools-chi'},
+			{prompt: 'The government of British Columbia could do more to support multilingualism.', name: 'comm-multi-supp'},
+			{prompt: 'British Columbia is a good representative of a multilingual region/province.', name: 'comm-multi-rep'}
+		], required:true,
+			options:['Strongly Disagree','Disagree','Neutral','Agree','Strongly Agree'],}
+		],
+		[
+		{type: 'html', prompt: header},
+		{type: 'text', prompt: 'We acknowledge that you may personally use the term "Chinese" to mean something different or more specific. If you wish, please indicate what language and/or identity the term "Chinese" evokes for you. ', name: 'chi-def'}
+		]
+	  ],
+	};
+
+	//exit
+	let exit = header + "<p>You've completed the questionnaire. Thank you for your time! Please click the button below to end the study.</p>"
+
+	var exitscreen = {
+		type: jsPsychHtmlButtonResponse,
+		stimulus: exit,
+		choices: ['End']
+	};
+
+    jsPsych.run([introscreen, demo, section_a, exitscreen]);
+});
+  </script>
+</html>
