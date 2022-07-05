@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>LEAP Questionnaire</title>
+	<meta charset="utf-8"/>
+    <script src="./shared_assets/jsPsych_7.2/dist/jspsych.js"></script>
+	<script src="./shared_assets/jsPsych_7.2/dist/plugin-survey-html-form.js"></script>
+    <script src="./shared_assets/jsPsych_7.2/dist/plugin-survey-multi-choice.js"></script>
+    <script src="./shared_assets/jsPsych_7.2/dist/plugin-survey.js"></script>
+    <script src="./shared_assets/jsPsych_7.2/dist/plugin-html-button-response.js"></script>
+	<script scr="/assets/javascripts/jatos.js"></script>
+	<link rel="stylesheet" href="./shared_assets/jsPsych_7.2/dist/jspsych.css">
+	<style>
+		.box {
+			width: 75%;
+			height: 75%;
+			margin: auto;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+  </head>
+  <body></body>
+  <script>
+//   <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@0.2.0/css/survey.css"> // alternate stylesheet
+
+jatos.onLoad(function() {
+  var jsPsych = initJsPsych({
+    on_finish: function() {
+      //jsPsych.data.displayData('csv')
+      var resultData = jsPsych.data.get().ignore('internal_node_id');
+      jatos.submitResultData(resultData.csv(),jatos.endStudy);
+	    
+    },
+    on_close: function() {
+		var resultData = jsPsych.data.get().ignore('internal_node_id');
+       jatos.endStudy(resultData.csv());
+    }
+  });
+
+	//defining the header that gives the study a consistent feel
+	var header = "<div class='box'><img id='logo' src='shared_assets/img/langdev-logo.jpg' alt='LangDev Lab Logo' </img></div><h1>Language Learning & Development Lab Questionnaire</h1>";
+
+	//introduction
+	let introduction = header + "<p>Welcome to the LangDev Lab study! This survey asks you about language experience and proficiency.</p><p>Please finish it prior to your scheduled appointment. It will take approximately 10-30 minutes.</p>"
+
+	var introscreen = {
+		type: jsPsychHtmlButtonResponse,
+		stimulus: introduction,
+		choices: ['Continue']
+	};
+	
+	var demo = {
+      type: jsPsychSurvey, //can also use jsPsychSurveyHtml if we want clickable dates -- see immi_date section
+      pages: [
+        [
+		  {type: 'html', prompt: header},
+          {type: 'text', prompt: 'Please enter your assigned code.', name: 'code', required: true}
+		]
+    ], button_label_finish: 'Next'
+    };
+
+	
+	//defining language list to be populated below
+	var lang_list = [];
+	
+	//Languages
+    var lang_all = {
+      type: jsPsychSurvey,
+	  stimulus: '',
+      pages: [
+        [
+		  {type: 'html', prompt: header + "<p>Please list the languages you use in your life; if you know more than 5 languages, please list the 5 you use the most.</p>"},
+          {type: 'text', prompt: 'Language 1:', name: 'lang1', required: true},
+		  {type: 'text', prompt: 'Language 2:', name: 'lang2'},
+		  {type: 'text', prompt: 'Language 3:', name: 'lang3'},
+		  {type: 'text', prompt: 'Language 4:', name: 'lang4'},
+		  {type: 'text', prompt: 'Language 5:', name: 'lang5'}
+		]
+    ], button_label_finish: 'Next',
+    //adding responses to the list
+    on_finish: function (){
+    	lang_list.push(jsPsych.data.getLastTrialData().trials[0].response.lang1,jsPsych.data.getLastTrialData().trials[0].response.lang2,jsPsych.data.getLastTrialData().trials[0].response.lang3,jsPsych.data.getLastTrialData().trials[0].response.lang4,jsPsych.data.getLastTrialData().trials[0].response.lang5);
+    	lang_list = lang_list.filter(function (val) {return val !== ""});
+    }
+    };
+
+	//Order of dominance
+	var lang_dom = {
+		type: jsPsychSurvey,
+		stimulus: '',
+		pages: function() { return [
+			[
+				{type: 'html', prompt: header + '<p><b>Language dominance</b></p>'},
+				{type: 'ranking', prompt: 'Click and drag to rank your languages in order of most dominant (1) to least dominant (5)', options: [lang_list[0], lang_list[1], lang_list[2], lang_list[3], lang_list[4]], name: "langdom"}
+		  //jsPsych.data.get().last(1).values()[0].response.lang1
+		  //jsPsych.data.getLastTrialData().trials[0].response.lang1 
+		  //JSON.parse(jsPsych.data.getLastTrialData().select('responses').values).lang1
+        	]
+		]}, button_label_finish: 'Next'
+	};
+
+	//Order of acquisition
+	var lang_acq = {
+		type: jsPsychSurvey,
+		stimulus: '',
+		button_label_finish: 'Next',
+		pages: function() { return [
+			[
+				{type: 'html', prompt: header + '<p><b>Language acquisition</b></p>'},
+				{type: 'ranking', prompt: 'Click and drag to rank your languages in order of acquisition (your first language/s first):', options: [lang_list[0], lang_list[1], lang_list[2], lang_list[3], lang_list[4]], name: "langacq"}
+        	]
+		]}
+	};
+
+	//Percent of time exposed; defining the text here
+	var percent_text = 'I am exposed to...</br>' 
+	function make_percent_text(){
+		for(var i=0; i<lang_list.length; i++){
+			percent_text += lang_list[i] + ': <input name="expose%' + lang_list[i] + '" type="number" size = 5/>% of the time </br>'
+		};
+		percent_text += "</p><p></p>"
+		return percent_text
+	};
+	
+	//Percent of time exposed; actual trial
+	var lang_time = {
+		type: jsPsychSurveyHtmlForm,
+		preamble: header + '<p><b>Percentage of time with each language</b></p><p>Please list what percentage of the time you are <i>currently</i> and <i>on average</i> exposed to each language. <p>The total percentage should sum to 100.</p>',
+		html: make_percent_text
+	};
+
+	//Reading preference; defining the text here
+	var read_text = 'I would choose to read in...</br>' 
+	function make_read_text(){
+		for(var i=0; i<lang_list.length; i++){
+			read_text += lang_list[i] + ': <input name="read%' + lang_list[i] + '" type="number" size = 5/>% of the time </br>'
+		};
+		read_text += "</p><p></p>"
+		return read_text
+	};
+	
+	//Reading preference; actual trial
+	var lang_read = {
+		type: jsPsychSurveyHtmlForm,
+		preamble: header + '<p><b>Choosing to read texts in each language</b></p><p>When choosing to <b>read a text</b> available in all your languages, in what percentage of cases would you choose to read it in each of your languages? Assume that the original was written in another language, which is unknown to you.</p>The total percentage should sum to 100.</p>',
+		html: make_read_text
+	};
+
+	//Speaking/signing/using preference; defining the text here
+	var use_text = 'I would choose to use...</br>' 
+	function make_use_text(){
+		for(var i=0; i<lang_list.length; i++){
+			use_text += lang_list[i] + ': <input name="use%' + lang_list[i] + '" type="number" size = 5/>% of the time </br>'
+		};
+		use_text += "</p><p></p>"
+		return use_text
+	};
+
+	//Note: I switched from "spoken" to "used" in case of signed languages, but we can 100% swap back!
+	//Speaking/signing/using preference; actual trial
+	var lang_used = {
+		type: jsPsychSurveyHtmlForm,
+		preamble: header + '<p><b>Choosing to use specific language</b></p><p>When choosing a language to use with a person who is equally fluent in all your languages, what percentage of the time would you choose to use each language? Please report percent of total time.</p>The total percentage should sum to 100.</p>',
+		html: make_use_text
+	};
+
+	//Defining culture list to add to
+	var culture_list = [];
+	
+	//Cultures identified with
+	var culture = {
+		type: jsPsychSurvey,
+		stimulus: '',
+		pages: [
+			[
+				{type: 'html', prompt: header + '<p><b>Cultural identification</b></p><p>Please name up to five cultures with which you identify.</p><p>Examples of possible cultures include US-American, Chinese, Jewish-Orthodox, etc.</p>'},
+				{type: 'text', prompt: "Culture 1:", name: 'culture1', required: true},
+				{type: 'text', prompt: 'Culture 2:', name: 'culture2'},
+				{type: 'text', prompt: 'Culture 3:', name: 'culture3'},
+				{type: 'text', prompt: 'Culture 4:', name: 'culture4'},
+				{type: 'text', prompt: 'Culture 5:', name: 'culture5'}
+		 	]
+		], button_label_finish: 'Next',
+		//adding responses to the list
+		on_finish: function (){
+    	culture_list.push(jsPsych.data.getLastTrialData().trials[0].response.culture1,jsPsych.data.getLastTrialData().trials[0].response.culture2,jsPsych.data.getLastTrialData().trials[0].response.culture3,jsPsych.data.getLastTrialData().trials[0].response.culture4,jsPsych.data.getLastTrialData().trials[0].response.culture5);
+    	culture_list = culture_list.filter(function (val) {return val !== ""});
+    	}
+    };
+    
+	//Ranking cultural identification; defining the "statements" for ranking here
+	/*
+	function make_culture_statements(){
+		var cultIDarr = [];
+		for(var i=0; i< culture_list.length; i++){
+			var culture_ID = {}
+			culture_ID.prompt = culture_list[i];
+			culture_ID.name = culture_list[i] + "ID";
+			cultIDarr.push(culture_ID);
+		};
+		return cultIDarr
+	};
+    */
+	function make_culture_text(){
+		var culture_text ='';
+		for(var i=0; i<culture_list.length; i++){
+			culture_text += 'On a scale from 0-10, I identify as ' + culture_list[i] +
+			//for code to display value of range https://stackoverflow.com/questions/15195449/html5-type-range-showing-label
+			' at around a: <input name="' + culture_list[i] + 'ID" type="range" min="0" max="10" step="1" oninput="document.getElementById(\''+culture_list[i]+'IDLabel\').innerHTML=this.value;" value="5"/><em id="'+culture_list[i]+'IDLabel" style="font-style: normal;"></em></br>';
+		};
+		return culture_text
+	};
+
+	//Ranking cultural identification; the trial
+	var culture_rank = {
+		type: jsPsychSurveyHtmlForm,
+		preamble: header + '<p><b>Cultural identification details</b></p><p>On a scale from zero to ten, please rate the extent to which you identify with each culture you listed.</p><p><b>Legend:</b> 0: no identification, 1: very low identification, 5: moderate identification, 10: complete identification</p>',
+		html: make_culture_text
+	};
+
+	/* Skipped because it's redundant!
+	//Formal education
+	var formal_edu = {
+		type: jsPsychSurvey,
+		stimulus: '',
+		pages: [
+			[
+				{type: 'html', prompt: header + '<b>Educational background</b>'},
+				{type: 'text', prompt: 'How many years of formal education do you have?', name: 'eduyear', required:true},
+				{type: 'multi-choice', prompt: 'Please select your highest education level (or the approximate US equivalent to a degree obtained in another country):', options: ['Less than High School','High School','Professional Training','Some College','College','Some Graduate School','Masters','Ph.D./M.D./J.D.','Other (to be specified below)'], name: 'maxeduc',required:true},
+				{type: 'text', prompt: 'Highest education level, if "other" was selected above:'}
+			]
+		]	
+	};
+	*/
+
+	/* Skipped because it's redundant!
+	//Immigration
+	//Note: Do we want to switch this to Canada?
+	var immi_date = {
+		type: jsPsychSurveyHtmlForm,
+		preamble: header + '<p><b>Date of immigration</b></p><p>If you immigrated to the USA, please share the date you arrived.</p>',
+		html: 'I came to the <b>USA</b> on <input name="USAdate" type="date" /></p><p>If you have ever immigrated to another country, please provide the name of country and the date of immigration here.</br>I immigrated to <input name="immicountry" type="text" placeholder="country"> on <input name="immidate" type="date" /></p><p></p>'
+	};*/
+
+	//Ability
+	var ability = {
+		type: jsPsychSurvey,
+		stimulus: '',
+		pages: [
+			[
+				{type: 'html', prompt: header + '<b>Ability</b>'},
+				{type: 'multi-select', prompt: 'Have you ever had a...', name: 'ability', options: ['vision problem','hearing impairment','language disability','learning disability']},
+				{type: 'html',prompt: '(Check all if applicable)'},
+				{type: 'text',prompt: 'If yes, please explain (including any corrections):', name:'ability_details', textbox_rows: 3}
+			]
+		], button_label_finish: 'Next'
+	};
+
+	//Language detail text for each language; defining the text here 
+	function make_langdet_text(){
+		var langdet_text = ''
+		for(var i=0; i<lang_list.length; i++){
+			langdet_text += "<h3>" + lang_list[i] + "</h3>"
+			langdet_text += lang_list[i] + ' is my <input name="order' + lang_list[i] + '" placeholder="First, Second, Third, Fourth, Fifth" size = 25 type="text" /> language. </br>';
+			langdet_text += 'Age when you <b>were first exposed to</b> ' + lang_list[i] + ': <input type="number" size = 5 name="ageAcq' + lang_list[i] + '"> </br>';
+			langdet_text += 'Age when you became <b>fluent</b> in ' + lang_list[i] + ': <input type="number" size = 5 name="ageFluent' + lang_list[i] + '"> </br>';
+			langdet_text += "<em>If you aren't fluent yet, enter <b>-1</b>.</em></br>"
+			langdet_text += 'Age when you <b>began reading</b> in ' + lang_list[i] + ': <input type="number" size = 5 name="ageRead' + lang_list[i] + '"> </br>';
+			langdet_text += "<em>If you don't read yet, enter <b>-1</b> for both reading questions.</em></br>"
+			langdet_text += 'Age when you became <b>fluent reading</b> in ' + lang_list[i] + ': <input type="number" size = 5 name="ageFluRead' + lang_list[i] + '"></br>'
+			langdet_text += 'Please list the number of years and months you spent in each language environment...</br>'
+			//langdet_text += 'A <b>community? region/country/official lang?</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="countryYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="countryMonths' + lang_list[i] + '"> months.</br>'
+			langdet_text += 'A <b>community</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="countryYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="countryMonths' + lang_list[i] + '"> months.</br>'
+			langdet_text += 'A <b>family</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="familyYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="familyMonths' + lang_list[i] + '"> months.</br>'
+			langdet_text += 'A <b>school and/or working environment</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="schoolWorkYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="schoolWorkMonths' + lang_list[i] + '"> months.</br>'
+			langdet_text += "</p><p></p>"
+		};
+		langdet_text += "</p><p></p>"
+		return langdet_text
+	};
+
+	//Language details trial
+	var lang_details = {
+		type: jsPsychSurveyHtmlForm,
+		preamble: header + '<p><b>Language details</b></p><p>Please answer each of the following questions with respect to each of your languages.</p>',
+		html: make_langdet_text
+	};
+
+	//Language exposure text for each language; defining the text here
+	function make_langexp_questions(){
+		var langExpArr = [];
+		var zeroTenList = ["0","1","2","3","4","5","6","7","8","9","10"];
+		for(var i=0; i< lang_list.length; i++){
+			//proficiency: speakProf, listenProf, readProf
+			var currentQ = {horizontal: true, options: zeroTenList, name: "speakProf"+lang_list[i]};
+			currentQ.prompt = 'Speaking proficiency in ' + lang_list[i] + ' (0 - none, 1 - very low, 2 - low, 3 - fair, 4 - slightly less than adequate, 5 - adequate, 6 - slightly more than adequate, 7 - good, 8 - very good, 9 - excellent, 10 - perfect)';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "listenProf"+lang_list[i]};
+			currentQ.prompt = 'Listening proficiency in ' + lang_list[i];
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "readProf"+lang_list[i]};
+			currentQ.prompt = 'Reading proficiency in ' + lang_list[i];
+			langExpArr.push(currentQ);
+			//factors contributing to competence: friends, classroom, family, media
+			currentQ = {horizontal: true, options: zeroTenList, name: "friendFact"+lang_list[i]};
+			currentQ.prompt = 'How much did friends contribute to your knowledge of ' + lang_list[i] + '? (0 - not a contributor, 1 - minimal contributor, 5- moderate contributor, 10 - most important contributor)';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "familyFact"+lang_list[i]};
+			currentQ.prompt = 'How much did your family contribute to your knowledge of ' + lang_list[i] + '?';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "classFact"+lang_list[i]};
+			currentQ.prompt = 'How much did classroom experiences contribute to your knowledge of ' + lang_list[i] + '?';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "mediaFact"+lang_list[i]};
+			currentQ.prompt = 'How much did media contribute to your knowledge of ' + lang_list[i] + '?';
+			langExpArr.push(currentQ);
+			//current exposure
+			currentQ = {horizontal: true, options: zeroTenList, name: "friendTime"+lang_list[i]};
+			currentQ.prompt = 'How much do your friends use ' + lang_list[i]+ ' with you? (0 - never, 1 - almost never, 5 - half the time, 10 - always)';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "familyTime"+lang_list[i]};
+			currentQ.prompt = 'How much does your family use ' + lang_list[i]+ ' with you?';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "classTime"+lang_list[i]};
+			currentQ.prompt = 'How much classroom time in ' + lang_list[i]+ ' do you have?';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "mediaTime"+lang_list[i]};
+			currentQ.prompt = 'How much media time in ' + lang_list[i]+ ' do you have?';
+			langExpArr.push(currentQ);
+			//accent and IDS
+			currentQ = {horizontal: true, options: zeroTenList, name: "selfAccen"+lang_list[i]};
+			currentQ.prompt = 'In your perception, how much of a foreign accent do you have in ' + lang_list[i]+ '? (0 - none, 1 - almost none, 2 - very light, 3 - light, 4 - some, 5 - moderate, 6 - considerable, 7 - heavy, 8 - very heavy, 9 - extremely heavy, 10 - pervasive)';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "otherAccent"+lang_list[i]};
+			currentQ.prompt = 'How frequently do others identify you as a non-native speaker based on your accent in ' + lang_list[i]+ '? (0 - never, 1 - almost never, 5 - half the time, 10 - always)';
+			langExpArr.push(currentQ);
+			currentQ = {horizontal: true, options: zeroTenList, name: "hearIDS"+lang_list[i]};
+			currentQ.prompt = 'How frequently do you hear others speak to babies in ' + lang_list[i]+ '? (0 - never, 1 - almost never, 5 - half the time, 10 - always)';
+			langExpArr.push(currentQ);
+		};
+		return langExpArr
+	};
+
+	// Language details trial part 2: exposure, contributing factors, proficiency
+	var lang_details_exp = {
+		type: jsPsychSurveyMultiChoice,
+		preamble: header + '<p><b>Experiences with languages</b></p>'+
+		'<p>On a scale from zero to ten, please select your <i>level of <b>proficiency</b></i> in speaking, understanding, and reading the following languages, as well as how much the various <b>factors contributed to your learning</b>, then how much you have been <b>exposed to each language</b> and how you describe your <b>accent</b>.', 
+		questions: function() { return make_langexp_questions() }
+	};
+
+	//exit
+	let exit = header + "<p>Thank you for your time! Please click the button below to end the study.</p>"
+
+	var exitscreen = {
+		type: jsPsychHtmlButtonResponse,
+		stimulus: exit,
+		choices: ['End']
+	};
+	
+	jsPsych.run([introscreen, demo, lang_all, lang_dom, lang_acq, lang_time, lang_read, lang_used, culture, culture_rank,ability,lang_details,lang_details_exp,exitscreen]);
+	//jsPsych.run([lang_all, lang_acq])
+
+});
+  </script>
+</html>
