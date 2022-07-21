@@ -1,431 +1,335 @@
+
 <!DOCTYPE html>
-<html lang"en">
+<html lang="en">
   <head>
-	<meta charset="utf-8"/>
+        <title>LEAP Questionnaire</title>
+        <meta charset="utf-8"/>
     <script src="shared_assets/jspsych-7.2/dist/jspsych.js"></script>
+        <script src="shared_assets/jspsych-7.2/dist/plugin-survey-html-form.js"></script>
     <script src="shared_assets/jspsych-7.2/dist/plugin-survey-multi-choice.js"></script>
     <script src="shared_assets/jspsych-7.2/dist/plugin-survey.js"></script>
-	<script src="shared_assets/jspsych-7.2/dist/plugin-html-button-response.js"></script>
-	<script src="jatos.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@0.2.0/css/survey.css">
-	<style>
-		.box {
-			width: 75%;
-			height: 75%;
-			margin: auto;
-		}
-		img {
-			width: 100%;
-			height: 100%;
-		}
-	</style>
+    <script src="shared_assets/jspsych-7.2/dist/plugin-html-button-response.js"></script>
+        <script src="jatos.js"></script>
+        <link rel="stylesheet" href="shared_assets/jspsych-7.2/dist/jspsych.css">
+        <style>
+                .box {
+                        width: 75%;
+                        height: 75%;
+                        margin: auto;
+                }
+                img {
+                        width: 100%;
+                        height: 100%;
+                }
+        </style>
   </head>
   <body></body>
   <script>
+//   <link rel="stylesheet" href="https://unpkg.com/@jspsych/plugin-survey@0.2.0/css/survey.css"> // alternate stylesheet
 
-//old stylesheet:
-//    <link rel="stylesheet" href="./shared_assets/jspsych-7.2/dist/jspsych.css">
+        //<link rel="stylesheet" href="./shared_assets/jspsych-7.2/dist/jspsych.css">
 jatos.onLoad(function() {
   var jsPsych = initJsPsych({
     on_finish: function() {
       //jsPsych.data.displayData('csv')
       var resultData = jsPsych.data.get().ignore('internal_node_id');
       jatos.submitResultData(resultData.csv(),jatos.endStudy);
-	    
+         
     },
     on_close: function() {
-		var resultData = jsPsych.data.get().ignore('internal_node_id');
+                var resultData = jsPsych.data.get().ignore('internal_node_id');
        jatos.endStudy(resultData.csv());
     }
   });
 
-	//defining the header that gives the study a consistent feel
-	var header = "<div class='box'><img id='logo' src='shared_assets/img/langdev-logo.jpg' alt='LangDev Lab Logo' </img></div><h1>Language Learning & Development Lab Questionnaire</h1>";
+        //defining the header that gives the study a consistent feel
+        var header = "<div class='box'><img id='logo' src='shared_assets/img/langdev-logo.jpg' alt='LangDev Lab Logo' </img></div><h1>Language Learning & Development Lab Questionnaire</h1>";
 
-	//introduction
-	let introduction = header + "<p>Welcome to the LangDev Lab's follow-up survey. Please leave approximately 45 minutes to complete it.</p><p>If you have any questions, please contact langdev@sfu.ca.</p>"
+        //introduction
+        let introduction = header + "<p>Welcome to the LangDev Lab study! This survey asks you about language experience and proficiency.</p><p>Please finish it prior to your scheduled appointment. It will take approximately 10-30 minutes.</p>"
 
-	var introscreen = {
-		type: jsPsychHtmlButtonResponse,
-		stimulus: introduction,
-		choices: ['Continue']
-		}
-    
-	var demo = {
+        var introscreen = {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: introduction,
+                choices: ['Continue']
+        };
+        
+        var demo = {
       type: jsPsychSurvey, //can also use jsPsychSurveyHtml if we want clickable dates -- see immi_date section
       pages: [
         [
-		  {type: 'html', prompt: header},
+                  {type: 'html', prompt: header},
           {type: 'text', prompt: 'Please enter your assigned code.', name: 'code', required: true}
-		]
+                ]
     ], button_label_finish: 'Next'
     };
 
-    //demographic questions
-    var demo_qs = {
-        type: jsPsychSurvey,
-        button_label_finish: 'Continue',
-        pages: [
-            [
-                {type: 'html', prompt: header + 'Please provide the following information by checking the appropriate response or filling in the blank.'},
-                {type: 'text', prompt: 'What is your gender? (e.g. Male, Female, Non-Binary, etc.)', name: 'gender', required: true},
-                {type: 'multi-choice', prompt: 'Is English your first language?', options: ['Yes','No'], name: 'L1Eng', required: true},
-                {type: 'text', prompt: 'What is your age? (e.g. 19, 30, 42)', name: 'age', required: true},
-                {type: 'text', prompt: 'What is your country of origin?', name: 'country', required: true}
-            ]
-        ], button_label_finish: 'Next'
+        
+        //defining language list to be populated below
+        var lang_list = [];
+        
+        //Languages
+    var lang_all = {
+      type: jsPsychSurvey,
+          stimulus: '',
+      pages: [
+	      [
+                  {type: 'html', prompt: header + "<p>Please list the languages you use in your life; if you know more than 5 languages, please list the 5 you use the most.</p>"},
+          	  {type: 'text', prompt: 'Language 1:', name: 'lang1', required: true},
+                  {type: 'text', prompt: 'Language 2:', name: 'lang2'},
+                  {type: 'text', prompt: 'Language 3:', name: 'lang3'},
+                  {type: 'text', prompt: 'Language 4:', name: 'lang4'},
+                  {type: 'text', prompt: 'Language 5:', name: 'lang5'}
+                ]
+      		],
+    button_label_finish: 'Next',
+    //adding responses to the list
+    on_finish: function (){
+        lang_list.push(jsPsych.data.getLastTrialData().trials[0].response.lang1,jsPsych.data.getLastTrialData().trials[0].response.lang2,jsPsych.data.getLastTrialData().trials[0].response.lang3,jsPsych.data.getLastTrialData().trials[0].response.lang4,jsPsych.data.getLastTrialData().trials[0].response.lang5);
+        lang_list = lang_list.filter(function (val) {return val !== ""});
     }
-
-var values = [{value: 1},{value:2},{value:3},{value:4},{value:5},{value:6}, {value:7}, {value:'NA'}]
-
-    //Adult Temperament Questionnaire (v. 1.3)
-    var atq = {
-        type: jsPsychSurvey,
-        pages: [
-            [
-                {type: 'html', prompt: header + "<p>On the following pages you will find a series of statements that individuals can use to describe themselves. There are no correct or incorrect responses. All people are unique and different, and it is these differences which we are trying to learn about. Please read each statement carefully and give your best estimate of how well it describes you. Select the appropriate number below to indicate how well a given statement describes you.</p>" + 
-                "<p>If one of the statements does not apply to you (for example, if it involves driving a car and you don’t drive), then select “NA” (not applicable). Check to make sure that you have answered every item.</p>"},
-                {type: 'html', prompt: 'Select #: if the statement is... <p><p>1 = extremely untrue of you</br>2 = quite untrue of you</br>3 = slightly untrue of you</br>4 = neither true nor false of you</br>5 = slightly true of you</br>6 = quite true of you</br>7 = extremely true of you'},
-            ],
-            [
-                {type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'I become easily frightened.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'frightened', required: true},
-				{type: 'likert', prompt: 'I am often late for appointments.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'lateappts', required: true},
-				{type: 'likert', prompt: 'Sometimes minor events cause me to feel intense happiness.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'happiness', required: true},
-				{type: 'likert', prompt: 'I find loud noises to be very irritating.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'noiseirritating', required: true},
-				{type: 'likert', prompt: 'It’s often hard for me to alternate between two different tasks.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'hardalternate', required: true},
-				{type: 'likert', prompt: 'I rarely become annoyed when I have to wait in a slow moving line.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'slowline', required: true},
-				{type: 'likert', prompt: 'I would not enjoy the sensation of listening to loud music with a laser light show.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'loudmusic1', required: true},
-				{type: 'likert', prompt: 'I often make plans that I do not follow through with.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'flakeplans', required: true},
-				{type: 'likert', prompt: 'I rarely feel sad after saying goodbye to friends or relatives.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'notsad1', required: true},
-				{type: 'likert', prompt: 'Barely noticeable visual details rarely catch my attention.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'visualdetails', required: true},
-				{type: 'likert', prompt: 'Even when I feel energized, I can usually sit still without much trouble if it’s necessary.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'sitstill', required: true}
-            ],
-            [
-				{type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'Looking down at the ground from an extremely high place would make me feel uneasy.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'heights', required: true},
-				{type: 'likert', prompt: 'When I am listening to music, I am usually aware of subtle emotional tones.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'emomusic', required: true},
-				{type: 'likert', prompt: 'I would not enjoy a job that involves socializing with the public.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'nosocializing', required: true},
-				{type: 'likert', prompt: 'I can keep performing a task even when I would rather not do it.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'keepdoingtask', required: true},
-				{type: 'likert', prompt: 'I sometimes seem to be unable to feel pleasure from events and activities that I should enjoy.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'unabletoenjoy', required: true},
-				{type: 'likert', prompt: 'I find it very annoying when a store does not stock an item that I wish to buy.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'outofstock', required: true},
-				{type: 'likert', prompt: 'I tend to notice emotional aspects of paintings and pictures.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'emoart', required: true},
-				{type: 'likert', prompt: 'I usually like to talk a lot.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'talkative', required: true},
-				{type: 'likert', prompt: 'I seldom become sad when I watch a sad movie.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'sadmovie', required: true},
-				{type: 'likert', prompt: 'I’m often aware of the sounds of birds in my vicinity.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'birds', required: true},
-				{type: 'likert', prompt: 'When I am enclosed in small places such as an elevator, I feel uneasy.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'elevator', required: true}
-            ],
-            [
-				{type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'When listening to music, I usually like to turn up the volume more than other people.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'loudmusic2', required: true},
-				{type: 'likert', prompt: 'I sometimes seem to understand things intuitively.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'intuitiveunderstand', required: true},
-				{type: 'likert', prompt: 'Sometimes minor events cause me to feel intense sadness.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'intensesad', required: true},
-				{type: 'likert', prompt: 'It is easy for me to hold back my laughter in a situation when laughter wouldn’t be appropriate.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'holdlaugh', required: true},
-				{type: 'likert', prompt: 'I can make myself work on a difficult task even when I don’t feel like trying.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'hardtask', required: true},
-				{type: 'likert', prompt: 'I rarely ever have days where I don’t at least experience brief moments of intense happiness.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'intensehappiness', required: true},
-				{type: 'likert', prompt: 'When I am trying to focus my attention, I am easily distracted.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'easydistract', required: true},
-				{type: 'likert', prompt: 'I would probably enjoy playing a challenging and fast paced video game that makes lots of noise and has lots of flashing, bright lights.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'loudvideogames', required: true},
-				{type: 'likert', prompt: 'Whenever I have to sit and wait for something (e.g., a waiting room), I become agitated.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'waitagitate', required: true},
-				{type: 'likert', prompt: 'I’m often bothered by light that is too bright.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'brightlight', required: true},
-				{type: 'likert', prompt: 'I rarely notice the colour of people’s eyes.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'eyecolour', required: true}
-            ],
-            [
-				{type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'I seldom become sad when I hear of an unhappy event.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'notsad2', required: true},
-				{type: 'likert', prompt: 'When interrupted or distracted, I usually can easily shift my attention back to whatever I was doing before.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'shiftattention', required: true},
-				{type: 'likert', prompt: 'I find certain scratch sounds very irritating.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'scratchsounds', required: true},
-				{type: 'likert', prompt: 'I like conversations that include several people.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'convopeople', required: true},
-				{type: 'likert', prompt: 'I am usually a patient person.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'patient', required: true},
-				{type: 'likert', prompt: 'When I am resting with my eyes closed, I sometimes see visual images.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'visualclosedeyes', required: true},
-				{type: 'likert', prompt: 'It is very hard for me to focus my attention when I am distressed.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'focusdistress', required: true},
-				{type: 'likert', prompt: 'Sometimes my mind is full of a diverse array of loosely connected thoughts and images.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'mindfull', required: true},
-				{type: 'likert', prompt: 'Very bright colours sometimes bother me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'brightcolours', required: true},
-				{type: 'likert', prompt: 'I can easily resist talking out of turn, even when I’m excited and want to express an idea.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'resisttalking', required: true},
-				{type: 'likert', prompt: 'I would probably not enjoy a fast, wild carnival ride.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'carnivalride', required: true}
-            ],
-            [
-				{type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'I sometimes feel sad for longer than an hour.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'sadhour', required: true},
-				{type: 'likert', prompt: 'I rarely enjoy socializing with large groups of people.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'dislikebiggrps', required: true},
-				{type: 'likert', prompt: 'If I think of something that needs to be done, I usually get right to work on it.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'noprocrastinate', required: true},
-				{type: 'likert', prompt: 'It doesn’t take very much to make me feel frustrated or irritated.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'easyirritated', required: true},
-				{type: 'likert', prompt: 'It doesn’t take much to evoke a happy response in me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'easyhappy', required: true},
-				{type: 'likert', prompt: 'When I am happy and excited about an upcoming event, I have a hard time focusing my attention on tasks that require concentration.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'focushappy', required: true},
-				{type: 'likert', prompt: 'Sometimes, I feel a sense of panic or terror for no apparent reason.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'dreadnoreason', required: true},
-				{type: 'likert', prompt: 'I often notice mild odors and fragrances.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'mildsmell', required: true},
-				{type: 'likert', prompt: 'I often have trouble resisting my cravings for food, drink, etc.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'resistcravings', required: true},
-				{type: 'likert', prompt: 'Colourful flashing lights bother me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'flashinglights', required: true},
-				{type: 'likert', prompt: 'I usually finish doing things before they are actually due (e.g., paying bills, finishing homework, etc.)', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'beforedue', required: true}
-            ],
-            [
-				{type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'I often feel sad.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'oftensad', required: true},
-				{type: 'likert', prompt: 'I am often aware how the color and lighting of a room affects my mood.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'lightingmood', required: true},
-				{type: 'likert', prompt: 'I usually remain calm without getting frustrated when things are not going smoothly for me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'calm', required: true},
-				{type: 'likert', prompt: 'Loud music is unpleasant to me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'loudmusic3', required: true},
-				{type: 'likert', prompt: 'When I’m excited about something, it’s usually hard for me to resist jumping right into it before I’ve considered the possible consequences.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'resistexcitement', required: true},
-				{type: 'likert', prompt: 'Loud noises sometimes scare me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'loudnoisefear', required: true},
-				{type: 'likert', prompt: 'I sometimes dream of vivid, detailed settings that are unlike anything that I have experienced when awake.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'vividdream', required: true},
-				{type: 'likert', prompt: 'When I see an attractive item in a store, it’s usually very hard for me to resist buying it.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'resistbuy', required: true},
-				{type: 'likert', prompt: 'I would enjoy watching a laser show with lots of bright, colorful flashing lights.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'lasershow', required: true},
-				{type: 'likert', prompt: 'When I hear of an unhappy event, I immediately feel sad.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'feelsad', required: true},
-				{type: 'likert', prompt: 'When I watch a movie, I usually don’t notice how the setting is used to convey the mood of the characters.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'moviemood', required: true}
-            ],
-            [
-				{type: 'html', prompt: header + 'Select #: if the statement is... 1 = extremely untrue of you; 2 = quite untrue of you; 3 = slightly untrue of you; 4 = neither true nor false of you; 5 = slightly true of you; 6 = quite true of you; 7 = extremely true of you'},
-				{type: 'likert', prompt: 'I usually like to spend my free time with people.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'freetimepeople', required: true},
-				{type: 'likert', prompt: 'It does not frighten me if I think that I am alone and suddenly discover someone close by.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'surpriseperson', required: true},
-				{type: 'likert', prompt: 'I am often consciously aware of how the weather seems to affect my mood.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'weathermood', required: true},
-				{type: 'likert', prompt: 'It takes a lot to make me feel truly happy.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'lottomakehappy', required: true},
-				{type: 'likert', prompt: 'I am rarely aware of the texture of things that I hold.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'texture', required: true},
-				{type: 'likert', prompt: 'When I am afraid of how a situation might turn out, I usually avoid dealing with it.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'avoidant', required: true},
-				{type: 'likert', prompt: 'I especially enjoy conversations where I am able to say things without thinking first.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'talkfirst', required: true},
-				{type: 'likert', prompt: 'Without applying effort, creative ideas sometimes present themselves to me.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'creative', required: true},
-				{type: 'likert', prompt: 'When I try something new, I am rarely concerned about the possibility of failing.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'nofailure', required: true},
-				{type: 'likert', prompt: 'It is easy for me to inhibit fun behavior that would be inappropriate.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'inhibitfun', required: true},
-				{type: 'likert', prompt: 'I would not enjoy the feeling that comes from yelling as loud as I can.', likert_scale_min_label: 'Extremely untrue of you', likert_scale_values: values, name: 'loudyell', required: true}
-            ]
-	  ], button_label_finish: 'Next'
-	};
-
-    //child questions
-    var child_qs = {
-        type: jsPsychSurvey,
-        button_label_finish: 'Continue',
-        pages: [
-            [
-                {type: 'html', prompt: header + 'Please provide the following information by checking the appropriate response or filling in the blank.'},
-                {type: 'text', prompt: "Child's name:", name: 'childname', required: true},
-                {type: 'text', prompt: "Child's birthdate (DD/MM/YYYY):", name: 'childbday', required: true},
-                {type: 'text', prompt: "Today's date (DD/MM/YYYY):", name: 'todaydate', required: true},
-                {type: 'text', prompt: 'Relation to child:', name: 'relation', required: true},
-                {type: 'text', prompt: 'Sex of child:', name: 'childgen', required: true}
-            ]
-        ], button_label_finish: 'Next'
     };
 
-    //ECBQ (Short)
-    var ecbq = {
-        type: jsPsychSurvey,
-        pages: [
-            [
-                {type: 'html', prompt: header + "<p>As you read each description of the child’s behaviour on the following pages, please indicate how often the child did this during the last two weeks by selecting one of the numbers. These numbers indicate how often you observed the behaviour described during the last two weeks.</p>" + 
-                "<p>The “Does Not Apply” value (NA) is used when you did not see the child in the situation described during the last two weeks. For example, if the situation mentions the child going to the doctor and there was no time during the last two weeks when the child went to the doctor, select NA. “Does Not Apply” (NA) if different from “Never” (1). “Never” is used when you saw the child in the situation but the child never engaged in the behaviour mentioned in the last two weeks. Please be sure to select a number or NA for every item.</p>"},
-                {type: 'html', prompt: 'Select #: if the behaviour happened... <p><p>1 = never</br>2 = very rarely</br>3 = less than half the time</br>4 = about half the time</br>5 = more than half the time</br>6 = almost always</br>7 = always</br>NA = does not apply'}
-            ],
-            [	
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-                {type: 'html', prompt: '<b>When told that it was time for bed or a nap, how often did your child</b>'},
-				{type: 'likert', prompt: 'get irritable?', name: 'bedirritable', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When approached by an unfamiliar person in a public space (e.g., the grocery store), how often did your child</b>'},
-				{type: 'likert', prompt: 'pull back and avoid the person?', name: 'stranger1', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'cling to a parent?', name: 'stranger2', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>During everyday activities, how often did your child</b>'},
-				{type: 'likert', prompt: 'tap or drum with fingers on tables or other objects?', name: 'tap', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become uncomfortable when their socks were not aligned properly on their feet?', name: 'uncomfysock', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become distressed when their hands were dirty and/or sticky?', name: 'distressdirty', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'notice low-pitched noises such as the air conditioner, heater, or refrigerator running or starting up?', name: 'noticelownoise', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'blink a lot?', name: 'blinklots', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>While playing outdoors, how often did your child</b>'},
-				{type: 'likert', prompt: 'enjoy sitting quietly in the sunshine?', name: 'sitsunshine', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'look immediately when you pointed at something?', name: 'lookatthing', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'choose to take chances for the fun and excitement of it?', name: 'takechances', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem to be one of the most active children?', name: 'mostactive', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When they were carried, how often did your child</b>'},
-				{type: 'likert', prompt: 'push against you until put down?', name: 'carrypush', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'snuggle up next to you?', name: 'carrysnuggle', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While having trouble completing a task (e.g., building, drawing, dressing), how often did your child</b>'},
-				{type: 'likert', prompt: 'get easily irritated?', name: 'taskirritable', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-                {type: 'html', prompt: '<b>When a familiar child came to your home, how often did your child</b>'},
-				{type: 'likert', prompt: 'seek out the company of the child?', name: 'friendcompany', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When offered a choice of activities, how often did your child</b>'},
-				{type: 'likert', prompt: 'stop and think before deciding?', name: 'thinkchoice', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'decide what to do very quickly and go after it?', name: 'decidechoice', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When asked NOT to, how often did your child</b>'},
-				{type: 'likert', prompt: 'touch an attractive item (such as an ornament) anyway?', name: 'touchthings', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>During daily or evening quiet time with you and your child, how often did your child</b>'},
-				{type: 'likert', prompt: 'enjoy just being quietly sung to?', name: 'enjoysung', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'smile at the sound of words, as in nursery rhymes?', name: 'smilerhymes', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'enjoy just being talked to?', name: 'enjoytalketo', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'enjoy rhythmic activities, such as rocking or swaying?', name: 'enjoyswaying', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'want to be cuddled?', name: 'enjoycuddle', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>While at home, how often did your child</b>'},
-				{type: 'likert', prompt: 'show fear at a loud sound (e.g., blender, vacuum cleaner, etc.)?', name: 'fearloud', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem afraid of the dark?', name: 'feardark', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While bathing, how often did your child</b>'},
-				{type: 'likert', prompt: 'sit quietly?', name: 'sitbath', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When they were upset, how often did your child</b>'},
-				{type: 'likert', prompt: 'change to feeling better within a few minutes?', name: 'recoverupset', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When engaged in play with their favorite toy, how often did your child</b>'},
-				{type: 'likert', prompt: 'play for more than 10 minutes?', name: 'play10min', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'continue to play while at the same time responding to your remarks or questions?', name: 'playmultitask', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>When approaching unfamiliar children playing, how often did your child</b>'},
-				{type: 'likert', prompt: 'watch rather than join in?', name: 'watchstrangekids', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem uncomfortable?', name: 'uncomfstrangekids', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>During everyday activities, how often did your child</b>'},
-				{type: 'likert', prompt: 'move quickly from one place to another?', name: 'movefast', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'notice the smoothness or roughness of objects they touched?', name: 'noticetexture', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become sad or blue for no apparent reason?', name: 'sadnoreason', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'pay attention to you right away when you called to them?', name: 'attentionfast', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem to be disturbed by loud sounds?', name: 'disturbloud', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem frightened for no apparent reason?', name: 'fearnoreason', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem to be irritated by tags in their clothes?', name: 'clothirritable', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-                {type: 'html', prompt: '<b>After having been interrupted, how often did your child</b>'},
-				{type: 'likert', prompt: 'return to a previous activity?', name: 'returninterrupt', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'have difficulty returning to the previous activity?', name: 'distractinterrupt', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When told that loved adults would visit, how often did your child</b>'},
-				{type: 'likert', prompt: 'get very excited?', name: 'excitedfriendadults', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become very happy?', name: 'happyfriendadults', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>During quiet activities, such as reading a story, how often did your child</b>'},
-				{type: 'likert', prompt: 'swing or tap their foot?', name: 'tapfeetquiet', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'fiddle with their hair, clothing, etc.?', name: 'fiddlehairquiet', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'show repeated movements like squinting, hunching up the shoulders, or twitching the facial muscles?', name: 'ticquiet', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While playing indoors, how often did your child</b>'},
-				{type: 'likert', prompt: 'like rough and rowdy games?', name: 'rowdygame', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'enjoy playing boisterous games like “chase”?', name: 'boistrousgame', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'enjoy vigorously jumping on the couch or bed?', name: 'jumpbed', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-                {type: 'html', prompt: '<b>In situations where they are meeting new people, how often did your child</b>'},
-				{type: 'likert', prompt: 'turn away?', name: 'avoidnewpeople', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When being gently rocked or hugged, how often did your child</b>'},
-				{type: 'likert', prompt: 'seem eager to get away?', name: 'eagerleave', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When encountering a new activity, how often did your child</b>'},
-				{type: 'likert', prompt: 'sit on the sidelines and observe before joining in?', name: 'watchnewactivity', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'get involved immediately?', name: 'jumpinnewactivity', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When visiting the home of a familiar child, how often did your child</b>'},
-				{type: 'likert', prompt: 'engage in an activity with the child?', name: 'playwithfriend', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-                {type: 'html', prompt: '<b>When engaged in an activity requiring attention, such as building with blocks, how often did your child</b>'},
-				{type: 'likert', prompt: 'move quickly to another activity?', name: 'changeattention', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'tire of the activity relatively quickly?', name: 'boredactivity', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While in a public place, how often did your child</b>'},
-				{type: 'likert', prompt: 'seem uneasy about approaching an elevator or escalator?', name: 'dislikeelevator', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'cry or show distress when approached by an unfamiliar animal?', name: 'fearanimals', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem afraid of large, noisy vehicles?', name: 'fearvehicles', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'show fear when the caregiver stepped out of sight?', name: 'fearnocaregiver', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When being dressed or undressed, how often did your child</b>'},
-				{type: 'likert', prompt: 'squirm and try to get away?', name: 'avoiddressed', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'stay still?', name: 'stilldressed', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>When told “no”, how often did your child</b>'},
-				{type: 'likert', prompt: 'stop the forbidden activity?', name: 'nostop', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become sadly tearful?', name: 'notear', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>Following an exciting activity or event, how often did your child</b>'},
-				{type: 'likert', prompt: 'calm down quickly?', name: 'calmdownfast', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'have a hard time settling down?', name: 'cantcalmdown', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem to feel down or blue?', name: 'sadafterexcitement', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>During everyday activities, how often did your child</b>'},
-				{type: 'likert', prompt: 'easily shift attention from one activity to another?', name: 'shiftattentioneasily', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become bothered by sounds while in noisy environments?', name: 'botheredbysounds', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become bothered by scratchy materials like wool?', name: 'botheredbyscratchy', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'notice changes in your appearance (such as wet hair, a hat, or jewelry)?', name: 'noticeappearance', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'appear to listen to even very quiet sounds?', name: 'listenquietsound', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'seem full of energy, even in the evening?', name: 'fullofenergy', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become irritated when their clothes were tight?', name: 'irritableclothingtight', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>While playing indoors, how often did your child</b>'},
-				{type: 'likert', prompt: 'run through the house?', name: 'runinhouse', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'climb over furniture?', name: 'climbfurniture', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'enjoy activities such as being spun, etc.?', name: 'enjoyspun', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When playing alone, how often did your child</b>'},
-				{type: 'likert', prompt: 'become easily distracted?', name: 'easilydistractedalone', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'play with a set of objects for 5 minutes or longer at a time?', name: 'playwithobjs5min', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'tear materials close at hand?', name: 'tearmaterials', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>Before an exciting event (such as receiving a new toy), how often did your child</b>'},
-				{type: 'likert', prompt: 'get very excited about getting it?', name: 'excitednewtoy', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'remain pretty calm?', name: 'calmnewtoy', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>When they asked for something and you said “no”, how often did your child</b>'},
-				{type: 'likert', prompt: 'become frustrated?', name: 'nofrustrated', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'protest with anger?', name: 'noanger', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'have a temper tantrum?', name: 'notemper', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become sad?', name: 'nosad', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While playing or walking outdoors, how often did your child</b>'},
-				{type: 'likert', prompt: 'notice sights or sounds (e.g., wind chimes or water sprinklers)?', name: 'seesightssounds', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When asked to wait for a desirable item (such as ice cream), how often did your child</b>'},
-				{type: 'likert', prompt: 'go after it anyway?', name: 'refusetowait', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'wait patiently?', name: 'waitpatiently', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>When being gently rocked, how often did your child</b>'},
-				{type: 'likert', prompt: 'smile?', name: 'rocksmile', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When you removed something they should not have been playing with, how often did your child</b>'},
-				{type: 'likert', prompt: 'become sad?', name: 'removesad', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While being held on your lap, how often did your child</b>'},
-				{type: 'likert', prompt: 'seem to enjoy themselves?', name: 'lapenjoy', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'mold to your body?', name: 'lapmold', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When hearing about a future family outing (such as a trip to the playground), how often did your child</b>'},
-				{type: 'likert', prompt: 'look forward to it?', name: 'lookforwardouting', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While looking at picture books on their own, how often did your child</b>'},
-				{type: 'likert', prompt: 'become easily distracted?', name: 'distractedbooksown', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When a familiar adult, such as a relative or friend, visited your home, how often did your child</b>'},
-				{type: 'likert', prompt: 'want to interact with the adult?', name: 'interactwithfamiliaradult', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>When asked to do so how often was your child able to...</b>'},
-				{type: 'likert', prompt: 'stop an ongoing activity?', name: 'stopongoing', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'be careful with something breakable?', name: 'carefulbreakable', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When visiting a new place, how often did your child</b>'},
-				{type: 'likert', prompt: 'not want to enter?', name: 'notenternew', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While you were talking with someone else, how often did your child</b>'},
-				{type: 'likert', prompt: 'easily switch attention from speaker to speaker?', name: 'switchattentionspeaker', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When you mildly criticized or corrected their behavior, how often did your child</b>'},
-				{type: 'likert', prompt: 'get mad?', name: 'criticizedmad', likert_scale_values: values, required: true}
-            ],
-            [
-                {type: 'html', prompt: header + '<p>1 = never; 2 = very rarely; 3 = less than half the time; 4 = about half the time; 5 = more than half the time; 6 = almost always; 7 = always; NA = does not apply'},
-				{type: 'html', prompt: '<b>When they were upset, how often did your child</b>'},
-				{type: 'likert', prompt: 'cry for more than 3 minutes, even when being comforted?', name: 'cry3min', likert_scale_values: values, required: true},
-				{type: 'likert', prompt: 'become easily soothed?', name: 'soothedupset', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When you were busy, how often did your child</b>'},
-				{type: 'likert', prompt: 'find another activity to do when asked?', name: 'findotheractivity', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>While playing outdoors, how often did your child</b>'},
-				{type: 'likert', prompt: 'want to jump from heights?', name: 'jumpfromheights', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When around large gatherings of familiar adults or children, how often did your child</b>'},
-				{type: 'likert', prompt: 'enjoy playing with a number of different people?', name: 'enjoyplayingwithkids', likert_scale_values: values, required: true},
-				{type: 'html', prompt: '<b>When they were asked to share their toys, how often did your child</b>'},
-                {type: 'likert', prompt: 'become sad?', name: 'sharetoyssad', likert_scale_values: values, required: true}
-            ]
-        ]
+        //Order of dominance
+        var lang_dom = {
+                type: jsPsychSurvey,
+                stimulus: '',
+                pages: function() { return [
+                        [
+                                {type: 'html', prompt: header + '<p><b>Language dominance</b></p>'},
+                                {type: 'ranking', prompt: 'Click and drag to rank your languages in order of most dominant (1) to least dominant (5)', options:lang_list, name: "langdom"}
+                  //jsPsych.data.get().last(1).values()[0].response.lang1
+                  //jsPsych.data.getLastTrialData().trials[0].response.lang1 
+                  //JSON.parse(jsPsych.data.getLastTrialData().select('responses').values).lang1
+                ]
+                ]}, button_label_finish: 'Next'
+        };
+
+        //Order of acquisition
+        var lang_acq = {
+                type: jsPsychSurvey,
+                stimulus: '',
+                button_label_finish: 'Next',
+                pages: function() { return [
+                        [
+                                {type: 'html', prompt: header + '<p><b>Language acquisition</b></p>'},
+                                {type: 'ranking', prompt: 'Click and drag to rank your languages in order of acquisition (your first language/s first):', options: lang_list, name: "langacq"}
+                ]              ]}
+        };
+
+        //Percent of time exposed; defining the text here
+        var percent_text = 'I am exposed to...</br>' 
+        function make_percent_text(){
+                for(var i=0; i<lang_list.length; i++){
+                        percent_text += lang_list[i] + ': <input name="expose%' + lang_list[i] + '" type="number" size = 5/>% of the time </br>'
+                };
+                percent_text += "</p><p></p>"
+                return percent_text
+        };
+        
+        //Percent of time exposed; actual trial
+        var lang_time = {
+                type: jsPsychSurveyHtmlForm,
+                preamble: header + '<p><b>Percentage of time with each language</b></p><p>Please list what percentage of the time you are <i>currently</i> and <i>on average</i> exposed to each language. <p>The total percentage should sum to 100.</p>',
+                html: make_percent_text
+        };
+
+        //Reading preference; defining the text here
+        var read_text = 'I would choose to read in...</br>' 
+        function make_read_text(){
+                for(var i=0; i<lang_list.length; i++){
+                        read_text += lang_list[i] + ': <input name="read%' + lang_list[i] + '" type="number" size = 5/>% of the time </br>'
+                };
+                read_text += "</p><p></p>"
+                return read_text
+        };
+        
+        //Reading preference; actual trial
+        var lang_read = {
+                type: jsPsychSurveyHtmlForm,
+                preamble: header + '<p><b>Choosing to read texts in each language</b></p><p>When choosing to <b>read a text</b> available in all your languages, in what percentage of cases would you choose to read it in each of your languages? Assume that the original was written in another language, which is unknown to you.</p>The total percentage should sum to 100.</p>',
+                html: make_read_text
+        };
+
+        //Speaking/signing/using preference; defining the text here
+        var use_text = 'I would choose to use...</br>' 
+        function make_use_text(){
+                for(var i=0; i<lang_list.length; i++){
+                        use_text += lang_list[i] + ': <input name="use%' + lang_list[i] + '" type="number" size = 5/>% of the time </br>'
+                };
+                use_text += "</p><p></p>"
+               return use_text
+        };
+
+        //Note: I switched from "spoken" to "used" in case of signed languages, but we can 100% swap back!
+        //Speaking/signing/using preference; actual trial
+        var lang_used = {
+                type: jsPsychSurveyHtmlForm,
+                preamble: header + '<p><b>Choosing to use specific language</b></p><p>When choosing a language to use with a person who is equally fluent in all your languages, what percentage of the time would you choose to use each language? Please report percent of total time.</p>The total percentage should sum to 100.</p>',
+                html: make_use_text
+        };
+
+        //Defining culture list to add to
+        var culture_list = [];
+        
+        //Cultures identified with
+        var culture = {
+                type: jsPsychSurvey,
+                stimulus: '',
+                pages: [
+                        [
+                                {type: 'html', prompt: header + '<p><b>Cultural identification</b></p><p>Please name up to five cultures with which you identify.</p><p>Examples of possible cultures include US-American, Chinese, Jewish-Orthodox, etc.</p>'},
+                                {type: 'text', prompt: "Culture 1:", name: 'culture1', required: true},
+                                {type: 'text', prompt: 'Culture 2:', name: 'culture2'},
+                                {type: 'text', prompt: 'Culture 3:', name: 'culture3'},
+                                {type: 'text', prompt: 'Culture 4:', name: 'culture4'},
+                                {type: 'text', prompt: 'Culture 5:', name: 'culture5'}
+                        ]
+                ], button_label_finish: 'Next',
+                //adding responses to the list
+                on_finish: function (){
+        culture_list.push(jsPsych.data.getLastTrialData().trials[0].response.culture1,jsPsych.data.getLastTrialData().trials[0].response.culture2,jsPsych.data.getLastTrialData().trials[0].response.culture3,jsPsych.data.getLastTrialData().trials[0].response.culture4,jsPsych.data.getLastTrialData().trials[0].response.culture5);
+        culture_list = culture_list.filter(function (val) {return val !== ""});
+        }
     };
+    
+        function make_culture_text(){
+                var culture_text ='';
+                for(var i=0; i<culture_list.length; i++){
+                        culture_text += 'On a scale from 0-10, I identify as ' + culture_list[i] +
+                        //for code to display value of range https://stackoverflow.com/questions/15195449/html5-type-range-showing-label
+                        ' at around a: <input name="' + culture_list[i] + 'ID" type="range" min="0" max="10" step="1" oninput="document.getElementById(\''+culture_list[i]+'IDLabel\').innerHTML=this.value;" value="5"/><em id="'+culture_list[i]+'IDLabel" style="font-style: normal;"></em></br>';
+                };
+                return culture_text
+        };
 
-	//exit
-	let exit = header + "<p>You've completed our follow-up questionnaires. Thank you for your time! Please click the button below to end the study.</p>"
+        //Ranking cultural identification; the trial
+        var culture_rank = {
+                type: jsPsychSurveyHtmlForm,
+                preamble: header + '<p><b>Cultural identification details</b></p><p>On a scale from zero to ten, please rate the extent to which you identify with each culture you listed.</p><p><b>Legend:</b> 0: no identification, 1: very low identification, 5: moderate identification, 10: complete identification</p>',
+                html: make_culture_text
+        };
 
-	var exitscreen = {
-		type: jsPsychHtmlButtonResponse,
-		stimulus: exit,
-		choices: ['End']
-	};
 
-    jsPsych.run([introscreen, demo, demo_qs, atq, child_qs, ecbq, exitscreen]);
+        //Ability
+        var ability = {
+                type: jsPsychSurvey,
+                stimulus: '',
+                pages: [
+                        [
+                                {type: 'html', prompt: header + '<b>Ability</b>'},
+                                {type: 'multi-select', prompt: 'Have you ever had a...', name: 'ability', options: ['vision problem','hearing impairment','language disability','learning disability']},
+                                {type: 'html',prompt: '(Check all if applicable)'},
+                                {type: 'text',prompt: 'If yes, please explain (including any corrections):', name:'ability_details', textbox_rows: 3}
+                        ]
+                ], button_label_finish: 'Next'
+        };
+
+        //Language detail text for each language; defining the text here 
+        function make_langdet_text(){
+                var langdet_text = ''
+                for(var i=0; i<lang_list.length; i++){
+                        langdet_text += "<h3>" + lang_list[i] + "</h3>"
+                        langdet_text += lang_list[i] + ' is my <input name="order' + lang_list[i] + '" placeholder="First, Second, Third, Fourth, Fifth" size = 25 type="text" /> language. </br>';
+                        langdet_text += 'Age when you <b>were first exposed to</b> ' + lang_list[i] + ': <input type="number" size = 5 name="ageAcq' + lang_list[i] + '"> </br>';
+                        langdet_text += 'Age when you became <b>fluent</b> in ' + lang_list[i] + ': <input type="number" size = 5 name="ageFluent' + lang_list[i] + '"> </br>';
+                        langdet_text += "<em>If you aren't fluent yet, enter <b>-1</b>.</em></br>"
+                        langdet_text += 'Age when you <b>began reading</b> in ' + lang_list[i] + ': <input type="number" size = 5 name="ageRead' + lang_list[i] + '"> </br>';
+                        langdet_text += "<em>If you don't read yet, enter <b>-1</b> for both reading questions.</em></br>"
+                        langdet_text += 'Age when you became <b>fluent reading</b> in ' + lang_list[i] + ': <input type="number" size = 5 name="ageFluRead' + lang_list[i] + '"></br>'
+                        langdet_text += 'Please list the number of years and months you spent in each language environment...</br>'
+                        //langdet_text += 'A <b>community? region/country/official lang?</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="countryYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="countryMonths' + lang_list[i] + '"> months.</br>'
+                        langdet_text += 'A <b>community</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="countryYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="countryMonths' + lang_list[i] + '"> months.</br>'
+                        langdet_text += 'A <b>family</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="familyYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="familyMonths' + lang_list[i] + '"> months.</br>'
+                        langdet_text += 'A <b>school and/or working environment</b> where ' + lang_list[i] + ' is spoken: <input type="number" size = 5 name="schoolWorkYears' + lang_list[i] +'"> years and <input type="number" size = 5 name="schoolWorkMonths' + lang_list[i] + '"> months.</br>'
+                        langdet_text += "</p><p></p>"
+                };
+                langdet_text += "</p><p></p>"
+                return langdet_text
+        };
+
+        //Language details trial
+        var lang_details = {
+                type: jsPsychSurveyHtmlForm,
+                preamble: header + '<p><b>Language details</b></p><p>Please answer each of the following questions with respect to each of your languages.</p>',
+                html: make_langdet_text
+        };
+
+        //Language exposure text for each language; defining the text here
+        function make_langexp_questions(){
+                var langExpArr = [];
+                var zeroTenList = ["0","1","2","3","4","5","6","7","8","9","10"];
+                for(var i=0; i< lang_list.length; i++){
+                        //proficiency: speakProf, listenProf, readProf
+                        var currentQ = {horizontal: true, options: zeroTenList, name: "speakProf"+lang_list[i]};
+                        currentQ.prompt = 'Speaking proficiency in ' + lang_list[i] + ' (0 - none, 1 - very low, 2 - low, 3 - fair, 4 - slightly less than adequate, 5 - adequate, 6 - slightly more than adequate, 7 - good, 8 - very good, 9 - excellent, 10 - perfect)';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "listenProf"+lang_list[i]};
+                        currentQ.prompt = 'Listening proficiency in ' + lang_list[i];
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "readProf"+lang_list[i]};
+                        currentQ.prompt = 'Reading proficiency in ' + lang_list[i];
+                        langExpArr.push(currentQ);
+                        //factors contributing to competence: friends, classroom, family, media
+                        currentQ = {horizontal: true, options: zeroTenList, name: "friendFact"+lang_list[i]};
+                        currentQ.prompt = 'How much did friends contribute to your knowledge of ' + lang_list[i] + '? (0 - not a contributor, 1 - minimal contributor, 5- moderate contributor, 10 - most important contributor)';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "familyFact"+lang_list[i]};
+                        currentQ.prompt = 'How much did your family contribute to your knowledge of ' + lang_list[i] + '?';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "classFact"+lang_list[i]};
+                        currentQ.prompt = 'How much did classroom experiences contribute to your knowledge of ' + lang_list[i] + '?';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "mediaFact"+lang_list[i]};
+                        currentQ.prompt = 'How much did media contribute to your knowledge of ' + lang_list[i] + '?';
+                        langExpArr.push(currentQ);
+                        //current exposure
+                        currentQ = {horizontal: true, options: zeroTenList, name: "friendTime"+lang_list[i]};
+                        currentQ.prompt = 'How much do your friends use ' + lang_list[i]+ ' with you? (0 - never, 1 - almost never, 5 - half the time, 10 - always)';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "familyTime"+lang_list[i]};
+                        currentQ.prompt = 'How much does your family use ' + lang_list[i]+ ' with you?';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "classTime"+lang_list[i]};
+                        currentQ.prompt = 'How much classroom time in ' + lang_list[i]+ ' do you have?';
+                        langExpArr.push(currentQ);
+                       langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "mediaTime"+lang_list[i]};
+                        currentQ.prompt = 'How much media time in ' + lang_list[i]+ ' do you have?';
+                        langExpArr.push(currentQ);
+                        //accent and IDS
+                        currentQ = {horizontal: true, options: zeroTenList, name: "selfAccen"+lang_list[i]};
+                        currentQ.prompt = 'In your perception, how much of a foreign accent do you have in ' + lang_list[i]+ '? (0 - none, 1 - almost none, 2 - very light, 3 - light, 4 - some, 5 - moderate, 6 - considerable, 7 - heavy, 8 - very heavy, 9 - extremely heavy, 10 - pervasive)';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "otherAccent"+lang_list[i]};
+                        currentQ.prompt = 'How frequently do others identify you as a non-native speaker based on your accent in ' + lang_list[i]+ '? (0 - never, 1 - almost never, 5 - half the time, 10 - always)';
+                        langExpArr.push(currentQ);
+                        currentQ = {horizontal: true, options: zeroTenList, name: "hearIDS"+lang_list[i]};
+                        currentQ.prompt = 'How frequently do you hear others speak to babies in ' + lang_list[i]+ '? (0 - never, 1 - almost never, 5 - half the time, 10 - always)';
+                        langExpArr.push(currentQ);
+                };
+                return langExpArr
+        };
+
+        // Language details trial part 2: exposure, contributing factors, proficiency
+        var lang_details_exp = {
+                type: jsPsychSurveyMultiChoice,
+                preamble: header + '<p><b>Experiences with languages</b></p>'+
+                '<p>On a scale from zero to ten, please select your <i>level of <b>proficiency</b></i> in speaking, understanding, and reading the following languages, as well as how much the various <b>factors contributed to your learning</b>, then how much you have been <b>exposed to each language</b> and how you describe your <b>accent</b>.', 
+                questions: function() { return make_langexp_questions() }
+        };
+
+        //exit
+        let exit = header + "<p>Thank you for your time! Please click the button below to end the study.</p>"
+
+        var exitscreen = {
+                type: jsPsychHtmlButtonResponse,
+                stimulus: exit,
+                choices: ['End']
+        };
+        
+        jsPsych.run([introscreen, demo, lang_all, lang_dom, lang_acq, lang_time, lang_read, lang_used, culture, culture_rank,ability,lang_details,lang_details_exp,exitscreen]);
+        //jsPsych.run([lang_all, lang_acq])
 });
   </script>
 </html>
