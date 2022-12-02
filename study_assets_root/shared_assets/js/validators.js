@@ -1044,3 +1044,22 @@ function validate_parentcareinfo() {
     }
 };
 
+
+function validate_parentcareinfo2() {
+    var questions = document.getElementById("jspsych-content").children;
+    var next = document.getElementById("jspsych-survey-text-next");
+    allow_next(next, false);
+
+    var langdom = get_answer(questions, 1);
+    var edu = get_answer(questions, 2);
+    
+    if (langdom.length == 0 || langdom.length > 1000) {
+        allow_next(next, false, "Enter languages in order of most to least fluent for each parent, separated by semicolons");
+	}
+	else if (edu.length == 0 || edu.length > 1000) {
+        allow_next(next, false, "Enter highest level of education attained for each parent, separated by semicolons");
+    }
+    else {
+        allow_next(next, true);
+    }
+};
