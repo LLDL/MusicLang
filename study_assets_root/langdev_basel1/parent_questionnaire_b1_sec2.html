@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script src="jatos.js"></script>
+    <script src="shared_assets/jspsych-6.1/jspsych.js"></script>
+    <script src="shared_assets/js/instructions.js"></script>
+
+    <script src="shared_assets/jspsych-6.1/plugins/jspsych-survey-text.js"></script>
+    <script src="shared_assets/jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
+
+    <script src="shared_assets/js/survey-text-custom.js"></script>
+    <script src="shared_assets/js/validators.js"></script>
+
+    <link href="shared_assets/stylesheet.css" rel="stylesheet" />
+	<link href="shared_assets/jspsych-6.1/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  </head>
+  <body></body>
+  <script>
+ /*NOTE: Copied from Community, where this was section 3; this is instead section 2 for BaSeL1! Didn't change variable names, but did change title of file and text in headers.*/
+
+var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Parent Questionnaire</h1>"; //to be prepended to preludes
+
+jatos.onLoad(function() {
+var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
+jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
+
+var section3_page1 = {
+ 	type: 'survey-text-custom',
+    preamble: header + "<h2>SECTION 2: PARENT/CAREGIVER INFORMATION</h2>",
+    json_label: 'Parent/Caregiver information',
+    questions: [
+        /*{prompt: "3.1-3.2 Please list the Country and region of birth for each parent/caregiver, separated by semicolons. <br>If not born in Canada, please indicate the date of arrival to Canada in (YYYY/MM)." +
+        "<br> <i><b>Example:</b> Parent A: B.C., Canada; Parent B: Guangzhao, China, 1990/02/10.</i>"},*/
+        {prompt: "2.1-2.2 Please list all the languages that each parent/caregiver speaks at home in order of fluency (your most fluent language first), separated by semicolons." +
+        " Please also indicate if the language(s) is/are your native language(s)." +
+      " <br><i><b>Example:</b> Parent A: English (Native), French, Cantonese (where English is the most fluent and Cantonese is least fluent); Parent B: Cantonese (Native), English (Cantonese being most fluent and English least fluent).</i>"},
+      {prompt: "2.3 For each parent/caregiver listed, please list the highest level of highest education attained, separated by semicolons. <br> <i><b>Example:</b> Parent A: Bachelor's Degree; Parent B: High School.</i>"}
+    ],
+    on_load: function () {
+        validate_parentcareinfo2();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_parentcareinfo2);
+    },
+    on_finish: function () {
+        toggle_listeners(form, false, validate_parentcareinfo2);
+    }
+};
+
+var end = {
+    type: 'instructions',
+    pages: [
+        header + 'The LangDev Parent Questionnaire is now complete. Thank you for your participation! <p> Your confirmation ID is <b>' + jatos.studyResultId + '</b>.</p>' +
+    '<p>Click <i>close</i> to end the questionnaire.</p>',
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Close',
+    button_label_previous: 'Back',
+    allow_keys: false
+};
+
+  jsPsych.init({
+    timeline: [section3_page1, end],
+    show_progress_bar: true,
+    on_finish: function (data) {
+            var studyID = jatos.studyResultId;
+            jsPsych.data.addProperties({subject : studyID});
+            var resultsRaw = jsPsych.data.get();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('key_press').ignore('question_order').ignore('stimulus');
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV, jatos.endStudy);
+            finish();
+            },
+      })
+ 		});
+
+  </script>
+</html>
