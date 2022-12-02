@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LangDev Parent Questionnaire</title>
+        <script src="jatos.js"></script>
+		<script src="shared_assets/jspsych-6.1/jspsych.js"></script>
+		<script src="shared_assets/js/instructions.js"></script>
+		<script src="shared_assets/jspsych-6.1/plugins/jspsych-html-keyboard-response.js"></script>
+
+   		<script src="shared_assets/js/survey-yes-no.js"></script>
+    	<script src="shared_assets/js/survey-text-custom.js"></script>
+    	<script src="shared_assets/js/member-info.js"></script>
+    	<script src="shared_assets/js/language-info.js"></script>
+    	<script src="shared_assets/js/gender-info.js"></script>
+    	<script src="shared_assets/js/music-info.js"></script>
+        <script src="shared_assets/js/validators.js"></script>
+
+
+        <link href="shared_assets/stylesheet.css" rel="stylesheet" />
+		<link href="shared_assets/jspsych-6.1/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    </head>
+    <body></body>
+    <script>
+
+var header = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Parent Questionnaire</h1>"; //to be prepended to preludes
+
+var header2 = "<img id=\"logo\" src=\"shared_assets/img/langdev-logo.jpg\"</img><h1>Language Learning & Development Lab Consent</h1>"; //to be prepended to preludes
+
+
+/* create timeline */
+    var timeline = [];
+
+var info = {
+    type: 'instructions',
+    pages: [
+        header2 + '<h2>Participant Consent</h2><p>Please download and read <a href="shared_assets/ConsentForm_BaSeL1.pdf" target="_blank">this consent form</a>. By continuing, you are consenting to our study.</p> '
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    button_label_previous: 'Back',
+    allow_keys: false
+}
+timeline.push(info);
+
+    var imageuse = {
+    type: 'survey-yes-no',
+    questions: [
+        {prompt: "Do you permit the use of your image as well as that of your child?"}
+    ],
+    preamble: header2,
+    json_label: 'ImageUse',
+    on_load: function(){
+        validate_imageuse();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_imageuse);
+    },
+    on_finish: function(){
+        toggle_listeners(form, false, validate_imageuse);
+    }
+}
+timeline.push(imageuse);
+
+var contact = {
+    type: 'survey-yes-no',
+    questions: [
+        {prompt: "Would you like to opt in for us to contact you in the future?"}
+    ],
+    preamble: header2,
+    json_label: 'Contact',
+    on_load: function(){
+        validate_contactfut();
+        form = document.getElementById("jspsych-content");
+        toggle_listeners(form, true, validate_contactfut);
+    },
+    on_finish: function(){
+        toggle_listeners(form, false, validate_contactfut);
+    }
+}
+timeline.push(contact);
+
+var IDcode = {
+    type: 'survey-text-custom',
+    preamble: header2,
+    json_label: 'ID Code',
+    questions: [
+        {prompt: "You should have received a special <strong>ID code</strong> by email. Please input that here; if you aren't sure what the code is, email langdev@sfu.ca for clarification.",required:true}
+        ]
+};
+timeline.push(IDcode);
+
+
+/* provide a small blurb about what the questionnaire will entail */
+var blurb = {
+      type: 'instructions',
+    pages: [ header + "<p> Hello! Welcome to the LangDev Lab Parent Questionnaire. </p>" +
+		  "<p>In this questionnaire, there are three sections in total.</p>" +
+      	  //"<p>In the <strong>first</strong> section, we'll ask you for some general information, <strong>that we will store on our private SFU server</strong> (general contact info, general language details, etc.). " +
+          "</p><p>In the <b>first</b> section, we will ask for specific details about your child's <strong>experience with langauge</strong> in their everyday life.</p>" +
+          "<p>In the <b>second</b> section, we will ask for some information about <strong>you: the parent(s) and/or caregiver(s)</strong> of your child. </p>" +
+          "<p>In the <b>third</b> and final section (also the longest), we will as for information about your ethnicity and family language experiences." +
+          "<p>Click <i>next</i> to begin section 1 of the parent questionnaire.</p>"
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Next',
+    button_label_previous: 'Back',
+    allow_keys: false
+}
+    timeline.push(blurb) ;
+
+
+	jatos.onLoad(function() {
+var studyID = jatos.studyResultId;  // creates a study ID for debrief & RPS purposes
+jsPsych.data.addProperties({subject : studyID});     // adds study ID to results data //
+
+    jsPsych.init({
+        timeline: timeline,
+        show_progress_bar: true,
+        exclusions: {
+            min_width: 800,
+            min_height: 500
+        },
+        on_finish: function (data) {
+            var resultsRaw = jsPsych.data.get();
+            var results = resultsRaw.ignore('internal_node_id').ignore('time_elapsed').ignore('stimulus');
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
+            }
+    });
+});
+    </script>
+</html>
