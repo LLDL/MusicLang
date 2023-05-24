@@ -1,0 +1,335 @@
+<!--Developed Spring 2023 for LangDev Lab by Elise McClay-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Short MCDI</title>
+  <script src="jatos.js"></script> 
+  <script src="shared_assets/jspsych-7.3/dist/jspsych.js"></script>
+  <script src="shared_assets/jspsych-7.3/dist/plugin-instructions.js"></script>
+  <script src="shared_assets/jspsych-7.3/dist/plugin-survey-multi-select.js" ></script>
+  <script src="shared_assets/jspsych-7.3/dist/plugin-survey-multi-choice.js" ></script>
+  <script src="shared_assets/jspsych-7.3/dist/plugin-html-button-response.js" ></script>
+  <script src="shared_assets/jspsych-7.3/dist/plugin-survey-text.js" ></script>
+  <link href="shared_assets/jspsych-7.3/dist/jspsych.css" rel="stylesheet" type="text/css"></link>
+  <style>
+		.box {
+			width: 50%;
+			height: 50%;
+			margin: auto;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+</body>
+<script>
+
+jatos.onLoad(function() {//jatos-related, comment out for jsPsych-only version.
+
+  var jsPsych = initJsPsych({
+      show_progress_bar: true,
+      auto_update_progress_bar: false,
+      on_finish: function (data) {
+            var studyID = jatos.studyResultId;
+            jsPsych.data.addProperties({subject : studyID});
+            var resultsRaw = jsPsych.data.get();
+            var results = resultsRaw.filter([{'trial_type':'survey-text'},{'trial_type':'survey-multi-select'},{'trial_type':'html-button-response'},{'trial_type':'survey-multi-choice'},{'trial_type':'survey-text'}]);
+            var results = results.ignore('view_history').ignore('internal_node_id').ignore('rt').ignore('time_elapsed').ignore('stimulus').ignore('question_order').ignore('trial_type');
+            var resultsCSV = results.csv();
+            jatos.submitResultData(resultsCSV, jatos.startNextComponent);
+      },
+      }); // initjspsych
+
+var header = "<div class='box'><img id='logo' src='shared_assets/img/langdev-logo.jpg' alt='LangDev Lab Logo' </img></div><h1>Language Learning & Development Lab Short MCDI</h1>"//to be prepended to preludes
+
+// welcome message    
+    var welcome = {
+    type: jsPsychInstructions,
+    pages: [
+        header + 'Hello! Welcome to the LangDev Lab MCDI. Click <i>Next</i> to begin.'
+    ],
+    show_clickable_nav: true,
+    on_start: function(){jsPsych.setProgressBar(0);}
+  };
+
+// subject ID section
+var subjectID = {
+    type: jsPsychSurveyText,
+    preamble: header + "<h2>MCDI</h2>",
+    questions: [
+        {prompt: "Please enter your subject ID stated in the email you received.",name:'runsheetID'}
+      ],
+    on_finish: function(data){
+        jsPsych.setProgressBar(0.05);
+        jsPsych.data.addDataToLastTrial({name: 'runsheetID'});
+        jsPsych.data.addDataToLastTrial({response: jsPsych.data.getLastTrialData().trials[0].response.runsheetID});
+    }
+};
+
+//multi-select for vocabulary checklist
+var block1 = {
+        type: jsPsychSurveyMultiSelect,
+        preamble: header + "<h2>Vocabulary Checklist</h2><p>Children understand many more words than they say. We are particularly " +
+              "interested in the words your child <b>SAYS</b>. Please mark the words you have heard your child use. If your child " +
+                "uses a different pronunciation of a word, mark it anyway. This is only a sample of words; your child may know many " +
+                "other words not on this list.</p>",
+        on_finish: function(){jsPsych.setProgressBar(0.10);},
+        questions: [
+          {
+            prompt: "<p><strong>Set One</strong></p>",
+            options: ["dinosaur","donkey","reindeer","castle","drum","football","microscope","tricycle","kite",
+              "wagon","lemon","peanut","cracker","salt","sauce","vanilla","vegetable","beads","jeans","elbow","(finger)nail",
+              "thumb","bandaid/bandage","blade","computer","ALL OF SET ONE"],
+            horizontal: true,
+            required: false,
+            name: 'Set One',
+          },
+          {
+            prompt: "<p><strong>Set Two</strong></p>",
+            options: ["glass","jar","ladder","material","stamp","tire","furniture","kitchen","sofa/couch","cloud","fence","hose",
+            "sidewalk","zoo","child","cowboy","family","farmer","nobody","nurse","accident","circle","front","idea","camping","ALL OF SET TWO"],
+            horizontal: true,
+            required: false,
+            name: 'Set Two',
+          },
+          {
+            prompt: "<p><strong>Set Three</strong></p>",
+            options: ["catch","drop","fasten","forget/forgot","hate","hurry","leave","measure","peel","promise","skate","sneeze",
+            "somersault","think","black","bored","deep","different","empty","expensive","fine","half","long","lost","angry","ALL OF SET THREE"],
+            horizontal: true,
+            required: false,
+            name: 'Set Three',
+          },
+          {
+            prompt: "<p><strong>Set Four</strong></p>",
+            options: ["peculiar","before","then","today","week","yesterday","their","they","those","yourself","why","about","above",
+            "away","between","on top of","each","every","none","might","need to","were","although","because","however","ALL OF SET FOUR"],
+            horizontal: true,
+            required: false,
+            name: 'Set Four',
+          }
+        ],
+        randomize_question_order: false
+    };
+
+    //3-choice question
+    var block2 = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: header + "<h2>Combining Words</h2>" + "<p>Has your child begun to combine words yet, such as 'nother cookie' or 'doggie bite'?</p>",
+      prompt: "<p>Note: the following questions have to do with sentences, so if your child hasn't started combining words yet then your survey will end here.</p>",
+      choices: ['Not Yet', 'Sometimes','Often'],
+      on_finish: function(){
+        jsPsych.setProgressBar(0.15);
+        jsPsych.data.get().addToLast({name: 'Combine Words'})},
+      required: true
+    };
+
+//sentence questions
+    var block3 = {
+        type: jsPsychSurveyMultiChoice,
+        preamble: header + "<h2>Sentences</h2><p>For each pair of sentences below, mark the one that sounds MOST like the way your child talks at the moment. "+
+              "If your child is saying sentences even more complicated than the two provided, mark the second one.</p>",
+        horizontal: true,
+        required: false,
+        on_finish: function(){jsPsych.setProgressBar(0.20);},
+        questions: [
+          {
+            prompt: "(Talking about something that already happened.)",
+            options: ["Daddy pick me up.","Daddy picked me up."],
+            name: 'sentence1-edforpast',
+          },
+          {
+            prompt: "",
+            options: ["That my truck.","That's my truck."],
+            name: 'sentence2-copula',
+          },
+          {
+            prompt: "",
+            options: ["Coffee hot.","That coffee hot."],
+            name: 'sentence3-demonstrative',
+          },
+          {
+            prompt: "",
+            options: ["I like read stories.","I like to read stories."],
+            name: 'sentence4-toinfinitive',
+          },
+          {
+            prompt: "(Expressing a command.)",
+            options: ["Don't read book.","Don't want you read that book."],
+            name: 'sentence5-multiclause',
+          },
+          {
+            prompt: "",
+            options: ["Why he run away?","Why did he run away?"],
+            name: 'sentence6-dosupport',
+          },
+          {
+            prompt: "",
+            options: ["He did it.","I know who did it."],
+            name: 'sentence7-relclause',
+          },
+          {
+            prompt: "",
+            options: ["We got to go now.","I think we got to go now."],
+            name: 'sentence8-ithink',
+          },
+          {
+            prompt: "",
+            options: ["I want truck.","I want truck like Tommie has."],
+            name: 'sentence9-like',
+          },
+          {
+            prompt: "",
+            options: ["This dolly big.","This dolly big and this dolly little."],
+            name: 'sentence10-contrast',
+          },
+          {
+            prompt: "",
+            options: ["This pig have a broken leg.","This pig have a broken leg but kitty don't."],
+            name: 'sentence11-contrast',
+          },
+          {
+            prompt: "",
+            options: ["It got broken.","It got broken by the car."],
+            name: 'sentence12-byphrase',
+          }
+        ],
+        randomize_question_order: false
+    };
+
+//using language questions
+    var block4 = {
+        type: jsPsychHtmlButtonResponse,
+        stimulus: header + "<h2>Using Language</h2>",
+        choices: ["No","Yes"],
+        horizontal: true,
+        required: false,
+        timeline: [
+          {
+            prompt: "Does your child understand the concept of 'one'? If you ask for just one (cookie, strawberry, etc.) "+
+            "will your child give you only one and then stop?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.25);
+              jsPsych.data.get().addToLast({name: 'language1-conceptofone'})}
+          },
+          {
+            prompt: "Does your child ask questions with more than one word that begin 'what' or 'where'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.30);
+              jsPsych.data.get().addToLast({name: 'language2-whatwhere'})}
+          },
+          {
+            prompt: "Does your child ask questions with more than one word that begin 'why' or 'how'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.35);
+              jsPsych.data.get().addToLast({name: 'language3-whyhow'})}
+          },
+          {
+            prompt: "Does your child give reasons for things, using the word 'because'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.40);
+              jsPsych.data.get().addToLast({name: 'language4-reasonsbecause'})}
+          },
+          {
+            prompt: "If you asked your child 'What is a horse?' could they answer 'an animal'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.45);
+              jsPsych.data.get().addToLast({name: 'language5-category'})}
+          },
+          {
+            prompt: "Can your child name simple shapes with the words 'circle', 'square', and 'triangle'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.50);
+              jsPsych.data.get().addToLast({name: 'language6-shapes'})}
+          },
+          {
+            prompt: "Does your child talk about things that 'could' or 'might' happen, such as 'he could hurt himself if he's not careful'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.55);
+              jsPsych.data.get().addToLast({name: 'language7-possibilities'})}
+          },
+          {
+            prompt: "Does your child ever ask what a particular word means?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.60);
+              jsPsych.data.get().addToLast({name: 'language8-wordmeaning'})}
+          },
+          {
+            prompt: "Could your child tell you which of two objects is larger if they were not present--for example, 'which is bigger, a horse or a dog'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.65);
+              jsPsych.data.get().addToLast({name: 'language9-comparativesize'})}
+          },
+          {
+            prompt: "Does your child know his/her right hand from his/her left hand?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.70);
+              jsPsych.data.get().addToLast({name: 'language10-rightleft'})}
+          },
+          {
+            prompt: "Does your child use '-est' words such as 'biggest' and 'strongest'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.75);
+              jsPsych.data.get().addToLast({name: 'language11-superlatives'})}
+          },
+          {
+            prompt: "Can your child answer questions such as 'what do you do when you are hungry?' and 'what do you do when you are tired?' "+
+            "with appropriate answer such as 'get food', 'eat', 'go to sleep', and/or 'take a nap'?",
+            on_finish: function(){
+              jsPsych.setProgressBar(0.80);
+              jsPsych.data.get().addToLast({name: 'language12-answeringquestions'})}
+          }
+        ],
+        randomize_question_order: false
+    };
+
+//long sentences
+    var block5 = {
+        type: jsPsychSurveyText,
+        preamble: header + "<h2>Long Sentences</h2>",
+        questions: [
+          {
+            prompt: "Please list three of the longest sentences you have heard your child say recently.",
+            name: 'three-longest-sentences', 
+            rows: 5
+          }
+        ],
+        on_start: function(){jsPsych.setProgressBar(0.95);},
+    };
+
+//conditional for multi-sentence things
+var if_node = {
+    timeline: [block3,block4, block5],
+    conditional_function: function(){
+        // get the data from the previous trial,
+        // and check which key was pressed
+        var data = jsPsych.data.get().last(1).values()[0];
+        if(data.response == 0){
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+//goodbye message  
+var goodbye = {
+    type: jsPsychInstructions,
+    pages: [
+        header + 'Thank you for participating in this study. Click <i>Finish</i> to end.'
+    ],
+    show_clickable_nav: true,
+    button_label_next: 'Finish',
+    on_finish: function(){jsPsych.setProgressBar(1)}
+  };
+
+    //running the timeline
+    jsPsych.run([welcome, subjectID, block1, block2, if_node, goodbye]);
+    });//jatos-related, comment out for jsPsych-only version.
+  </script>
+</html>
