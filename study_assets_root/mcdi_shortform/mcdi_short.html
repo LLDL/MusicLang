@@ -71,6 +71,20 @@ var subjectID = {
     }
 };
 
+//demographic questions
+var demo_qs = {
+	type: jsPsychSurvey,
+        button_label_finish: 'Continue',
+        pages: [
+            [
+                {type: 'html', prompt: header + 'Please provide the following information by filling in the blank.'},
+                {type: 'text', prompt: 'What is your gender? (e.g. Male, Female, Non-Binary, etc.)', name: 'gender', required: true},
+                {type: 'text', prompt: 'What is your birth date (YYYY/MM/DD)? (e.g. 1990/10/15)', name: 'birthdate', required: true},
+                {type: 'text', prompt: 'What is your country of origin?', name: 'country', required: true}
+            ]
+        ], button_label_finish: 'Next'
+};
+	
 //multi-select for vocabulary checklist
 var block1 = {
         type: jsPsychSurveyMultiSelect,
@@ -329,7 +343,7 @@ var goodbye = {
   };
 
     //running the timeline
-    jsPsych.run([welcome, subjectID, block1, block2, if_node, goodbye]);
+    jsPsych.run([welcome, subjectID, demo_qs, block1, block2, if_node, goodbye]);
     });//jatos-related, comment out for jsPsych-only version.
   </script>
 </html>
