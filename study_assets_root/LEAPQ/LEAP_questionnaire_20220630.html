@@ -64,7 +64,20 @@ jatos.onLoad(function() {
     ], button_label_finish: 'Next'
     };
 
-        
+    //demographic questions
+    var demo_qs = {
+        type: jsPsychSurvey,
+        button_label_finish: 'Continue',
+        pages: [
+            [
+                {type: 'html', prompt: header + 'Please provide the following information by filling in the blank.'},
+                {type: 'text', prompt: 'What is your gender? (e.g. Male, Female, Non-Binary, etc.)', name: 'gender', required: true},
+                {type: 'text', prompt: 'What is your birth date (YYYY/MM/DD)? (e.g. 1990/10/15)', name: 'birthdate', required: true},
+                {type: 'text', prompt: 'What is your country of origin?', name: 'country', required: true}
+            ]
+        ], button_label_finish: 'Next'
+    };
+
         //defining language list to be populated below
         var lang_list = [];
         
@@ -328,7 +341,7 @@ jatos.onLoad(function() {
                 choices: ['End']
         };
         
-        jsPsych.run([introscreen, demo, lang_all, lang_dom, lang_acq, lang_time, lang_read, lang_used, culture, culture_rank,ability,lang_details,lang_details_exp,exitscreen]);
+        jsPsych.run([introscreen, demo, demo_qs, lang_all, lang_dom, lang_acq, lang_time, lang_read, lang_used, culture, culture_rank,ability,lang_details,lang_details_exp,exitscreen]);
         //jsPsych.run([lang_all, lang_acq])
 });
   </script>
