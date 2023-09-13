@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fantasy Names Generator</title>
+    <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.1"></script>
+    <script src = "https://unpkg.com@jspsych/jsPsych.randomization.factorial(factors, repetitions, unpack)"></script>
+    <script src = "https://unpkg.com@jspsych/jsPsych.randomization.sampleWithoutReplacement"></script>
+    <script src = "https://unpkg.com/@jspsych/plugin-survey@0.2.1"></script>
+    <script src = "https://unpkg.com/@jspsych/plugin-survey-html-form@1.0.2"></script>
+    <script src ="https://unpkg.com/@jspsych/plugin-survey-text"></script>
+    <script src ="https://unpkg.com/@jspsych/plugin-html-slider-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice"></script>
+    <script src="jatos.js"></script>
+    <link href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+  <style>
+  </style>
+  </head>
+  <body> </body>
+  <script>
+    //initialize jsPsych 
+      var jsPsych = initJsPsych({
+        experiment_width: 600,
+        on_close: () => jatos.endStudy(jsPsych.data.get().csv(), "closed early"),
+        on_finish: () => jatos.endStudy(jsPsych.data.get().csv())
+      });
+
+    //create timeline 
+      var timeline = [];
+      
+    //This is the welcome message at the start of the experiment. The participant can press any key to continue
+    var welcome = {
+      type: jsPsychInstructions,
+      pages: ['Welcome to our English accent rating task. This study will take approximately 60 minutes to complete. Please do not press back or refresh because the experiment will be terminated. Press continue if you would like to proceed with the consent form.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(welcome);
+
+ /* consent form */
+ var consent = {
+   type: jsPsychSurvey,
+   button_label_finish: "Continue",
+   pages: [
+    [
+    { 
+        type: 'html',
+        prompt: '<p><strong>Consent Form (1/3)</p><p>Accent rating task, Study #30001771</p>'
+      },
+      { 
+        type: 'html',
+        prompt: '<p><strong>Who is conducting this study?</strong></p><p>Principal investigator: Dr. Henny Yeung, student lead: Xizi Deng, SFU Department of Linguistics, xizid@sfu.ca.Research personnel: Xizi Deng the Language Learning and Development Lab (SFU Department of Linguistics)</p>'
+      },
+      {
+        type: 'html',
+        prompt: '<p><strong>Why are we doing this study?</strong></p><p>This project examines how non-native English accents are perceived by native and non-native English listeners</p>'
+      },
+      {
+        type: 'html',
+        prompt: '<p><strong>Your participation is voluntary.</strong></p><p>Your participation is voluntary. You have the right to refuse to participate in this study. If you decide to participate, you may still choose to withdraw from the study without reason and without negative consequences to the education, employment, or other services to which you are entitled or are presently receiving. You may withdraw your data any time until the results of the study have been published.</p>'
+      },
+      {
+      type: 'html',
+        prompt: '<p><strong>What happens in this study?</strong></p><p> If you choose to participate in this study, you will receive a link to an online study hosted in JATOS. You will hear a series of sentences, and for each sentence you will be asked to rate how non-native the accent of this sentence sounds to you, on a scale of 1 to 9, based on standard Canadian English. You will click on a button on the screen to make your response. 1 stands for a completely native accent and 9 stands for a very strong non-native accent. You will then be asked to fill out a questionnaire on the computer about your language background and your experience with accented English. The study will take about 40 minutes.</p>'
+      },
+      {
+      type: 'html',
+       prompt:'<p><strong>Are there any risks associated with this study?</strong></p><p>We do not think there is anything in this study that could harm you or be bad for you.</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><strong>Are there any benefits associated with this study?</strong></p><p>We do not think taking part in this study will help you. However, the results of this study may inform how we understand language.</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>Will you be paid for taking part in this research study?</b></p><p>You will receive monetary compensation for your participation, the amount of which is determined by Prolific. Alternatively, if you are taking any undergraduate Linguistics courses at SFU, you will receive two (2) credits in the SFU Department of Linguistics RPS system.</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>How will your privacy be maintained?</b></p><p>Your confidentiality will be respected. If you participate through JATOS, your name will never appear alongside the data. The data we collect will be stored on a password protected server located in Canada. Your Prolific ID number will be linked to your unique code only in a single master file stored on a password-protected server. Your data and the master file will be stored separately on that server and will only be accessible by the PI and student lead. Your identifying information will never appear in any reports of the completed study. In current best practices in research, electronic data is to be preserved for future use in open access initiatives, which allow researchers from different universities to share their data in an effort to stimulate further use and exploration of existing datasets. Data from this study may be uploaded to an online repository; these files will be stripped of any information that could identify participants, to ensure confidentiality.</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>How long will we keep your data?</b></p><p>Because this is the first in a series of studies, we will keep your data indefinitely and will be destroyed if the study is not published. Your data will be maintained on a password-protected server in Canada; only the PI and student lead will have access to the data. Passwords are changed regularly. The master file with identifiable information will be deleted after 7 years.</p>'
+      },
+      {
+          type: 'html',
+        prompt: '<p><b>What will happen with the results of this study?</b></p><p>The results of this study will be published in academic journal articles and/or presented at academic conferences. If you are interested in the results of the study, you may contact the student lead (Xizi Deng, xizid@sfu.ca) for results when they become available.</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>Who can you contact if you have complaints or concerns about the study?</b></p><p>If you have any concerns about your rights as a research participant and/or your experience while participating in this study, please contact the Director, SFU Office of Research Ethics at dore@sfu.ca or 778-782-6593.'
+       },
+    ],
+    [
+    { 
+        type: 'html',
+        prompt: '<p><strong>Consent Form (2/3)</p><p>Accent perception, Study #30001771</p>'
+      },
+    {
+            type: 'html',
+        prompt:'<p><b>Future use of your data.</b></p><p>Your data may be published in research articles in the future. Data from this study may be uploaded to an online repository and these files will be stripped of any information that could identify participants (e.g., names, email addresses), to ensure confidentiality. Please indicate whether you consent for your de-identified research data to be kept for use in future research. </p>'
+       },
+       {
+        type: 'multi-choice',
+        prompt: ' ',
+        options: ['yes', 'no'],
+        required: true,
+        name: "Future Use of Data"
+       },
+
+       {
+          type: 'html',
+        prompt:'<p><b>Future contact.</b></p><p>The SFU Department of Linguistics may want to contact you in the future to invite you to participate in other studies. Please indicate whether we may contact you again in the future.</p>'
+       },
+       {
+        type: 'multi-choice',
+        prompt: ' ',
+        options: ['yes', 'no'],
+        required: true,
+        name: "Future Contact"
+       },
+    ],
+    [
+    { 
+        type: 'html',
+        prompt: '<p><strong>Consent Form (3/3)</p><p>Accent perception, Study #30001771</p>'
+      },
+      {
+        type: 'html',
+        prompt: '<p><b>How do I provide my consent to participate?</b></p><p>Taking part in this study is entirely up to you. You have the right to refuse to participate in this study. If you decide to take part, you may choose to withdraw at any time without giving a reason and without any negative consequences to the education, employment, or other services to which you are entitled or are presently receiving.</p>'
+    },
+    {
+        type: 'html',
+        prompt: 'Select an option below to indicate your consent. If you select “do not consent,” you will be directed to close your browser. If you wish to withdraw your consent at any time, please contact the student lead, Xizi Deng, at xizid@sfu.ca. By consenting, you do not waive any rights to legal recourse in the event of research-related harm.'
+    },
+    {
+      type: 'multi-choice',
+       prompt: ' ',
+       options: ['yes', 'do not consent'],
+      required: true,
+      name: "consent"
+      },
+    ],
+  ],
+  on_finish: function (data) {
+    consent = jsPsych.data.get().values()[1]['response']['consent'] == 'yes';
+    if(consent == false){ 
+     console.log("Did not consent, ending experiment.");
+      jsPsych.endExperiment("Thank you for considering our study. You may now exit your browser and end the experiment");
+}
+  }
+    };
+    timeline.push(consent)
+
+
+    //This is the instructions page. The participant can press any key to continue
+    var instructions= {
+      type: jsPsychInstructions,
+      pages: [
+        'In this experiment, you will hear a number of short audio clips. From 1 to 9, you need to rate how non-native the accents in the audio clips sound,based on standard Canadian English. 1 stands for a completely native accent and 9 stands for a very strong non-native accent. The following 3 practice trials will give you examples of how these sentences sound. Please put on your headphones/earphones now and press continue if you are ready to begin the practice trials.'
+    ],
+      button_label_next:"Continue",
+      show_clickable_nav: true,
+      allow_backward: false,
+    };
+    timeline.push(instructions);
+
+  //practice trial 1
+    var practicetrial1 = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: 'Audio/Sentences/PT_ss_cops.wav',
+        choices: ['1', '2','3','4','5','6','7','8','9'],
+        prompt: "<p>From 1 to 9,how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent (Practice 1/3)</p>",
+        response_allowed_while_playing: false,
+        };
+  timeline.push(practicetrial1)
+
+
+//adjusting volume
+    var volume = {
+        type: jsPsychInstructions,
+        pages: ['Great! You have now finished the first practice trial. Please now adjust the sound volume on your computer accordingly if the sound just now was too loud or too quiet. Press continue if you are ready to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(volume);
+
+    //practice trial 2
+    var practicetrial2 = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: 'Audio/Sentences/PT_ss_pies.wav',
+        choices: ['1', '2','3','4','5','6','7','8','9'],
+        prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent (Practice 2/3)</p>",
+        response_allowed_while_playing: false,
+        };
+    timeline.push(practicetrial2)
+
+    //practice trial 3
+    var practicetrial3 = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: 'Audio/Sentences/PT_ss_pot.wav',
+        choices: ['1', '2','3','4','5','6','7','8','9'],
+        prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent (Practice 3/3)</p>",
+        response_allowed_while_playing: false,
+        };
+    timeline.push(practicetrial3)
+
+
+    //transition
+    var transition = {
+        type: jsPsychInstructions,
+        pages: ['Great! The experiment will now begin. Press continue if you are ready to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(transition);
+
+
+   //This preloads all  stimuli so that the trials run smoothly
+   var audio = ['Audio/Sentences/ET1_ns_caps.wav','Audio/Sentences/ET1_ns_cat.wav','Audio/Sentences/ET1_ns_kit.wav','Audio/Sentences/ET1_ns_tap.wav','Audio/Sentences/ET1_ns_three.wav','Audio/Sentences/ET1_ns_tips.wav','Audio/Sentences/ET1_ss_bad.wav','Audio/Sentences/ET1_ss_bat.wav','Audio/Sentences/ET1_ss_bed.wav','Audio/Sentences/ET1_ss_bet.wav','Audio/Sentences/ET1_ss_caps.wav','Audio/Sentences/ET1_ss_cat.wav','Audio/Sentences/ET1_ss_feel.wav','Audio/Sentences/ET1_ss_fill.wav','Audio/Sentences/ET1_ss_filled.wav','Audio/Sentences/ET1_ss_kit.wav','Audio/Sentences/ET1_ss_live.wav','Audio/Sentences/ET1_ss_mouse.wav','Audio/Sentences/ET1_ss_mouth.wav','Audio/Sentences/ET1_ss_pat.wav','Audio/Sentences/ET1_ss_sheep.wav','Audio/Sentences/ET1_ss_ship.wav','Audio/Sentences/ET1_ss_sink.wav','Audio/Sentences/ET1_ss_tap.wav','Audio/Sentences/ET1_ss_thighs.wav','Audio/Sentences/ET1_ss_think.wav','Audio/Sentences/ET1_ss_thought.wav','Audio/Sentences/ET1_ss_thought2.wav','Audio/Sentences/ET1_ss_three.wav','Audio/Sentences/ET1_ss_tips.wav','Audio/Sentences/MT1_ns_caps.wav','Audio/Sentences/MT1_ns_cat.wav','Audio/Sentences/MT1_ns_kit.wav','Audio/Sentences/MT1_ns_tap.wav','Audio/Sentences/MT1_ns_three.wav','Audio/Sentences/MT1_ns_tips.wav','Audio/Sentences/MT1_ss_bad.wav','Audio/Sentences/MT1_ss_bat.wav','Audio/Sentences/MT1_ss_bed.wav','Audio/Sentences/MT1_ss_bet.wav','Audio/Sentences/MT1_ss_caps.wav','Audio/Sentences/MT1_ss_cat.wav','Audio/Sentences/MT1_ss_feel.wav','Audio/Sentences/MT1_ss_fill.wav','Audio/Sentences/MT1_ss_filled.wav','Audio/Sentences/MT1_ss_kit.wav','Audio/Sentences/MT1_ss_live.wav','Audio/Sentences/MT1_ss_mouse.wav','Audio/Sentences/MT1_ss_mouth.wav','Audio/Sentences/MT1_ss_pat.wav','Audio/Sentences/MT1_ss_sheep.wav','Audio/Sentences/MT1_ss_ship.wav','Audio/Sentences/MT1_ss_sink.wav','Audio/Sentences/MT1_ss_tap.wav','Audio/Sentences/MT1_ss_thighs.wav','Audio/Sentences/MT1_ss_think.wav','Audio/Sentences/MT1_ss_thought.wav','Audio/Sentences/MT1_ss_thought2.wav','Audio/Sentences/MT1_ss_three.wav','Audio/Sentences/MT1_ss_tips.wav','Audio/Sentences/MT2_ns_caps.wav','Audio/Sentences/MT2_ns_cat.wav','Audio/Sentences/MT2_ns_kit.wav','Audio/Sentences/MT2_ns_tap.wav','Audio/Sentences/MT2_ns_three.wav','Audio/Sentences/MT2_ns_tips.wav','Audio/Sentences/MT2_ss_bad.wav','Audio/Sentences/MT2_ss_bat.wav','Audio/Sentences/MT2_ss_bed.wav','Audio/Sentences/MT2_ss_bet.wav','Audio/Sentences/MT2_ss_caps.wav','Audio/Sentences/MT2_ss_cat.wav','Audio/Sentences/MT2_ss_feel.wav','Audio/Sentences/MT2_ss_fill.wav','Audio/Sentences/MT2_ss_filled.wav','Audio/Sentences/MT2_ss_kit.wav','Audio/Sentences/MT2_ss_live.wav','Audio/Sentences/MT2_ss_mouse.wav','Audio/Sentences/MT2_ss_mouth.wav','Audio/Sentences/MT2_ss_pat.wav','Audio/Sentences/MT2_ss_sheep.wav','Audio/Sentences/MT2_ss_ship.wav','Audio/Sentences/MT2_ss_sink.wav','Audio/Sentences/MT2_ss_tap.wav','Audio/Sentences/MT2_ss_thighs.wav','Audio/Sentences/MT2_ss_think.wav','Audio/Sentences/MT2_ss_thought1.wav','Audio/Sentences/MT2_ss_thought2.wav','Audio/Sentences/MT2_ss_three.wav','Audio/Sentences/MT2_ss_tips.wav','Audio/Sentences/MT3_ns_caps.wav','Audio/Sentences/MT3_ns_cat.wav','Audio/Sentences/MT3_ns_kit.wav','Audio/Sentences/MT3_ns_tap.wav','Audio/Sentences/MT3_ns_three.wav','Audio/Sentences/MT3_ns_tips.wav','Audio/Sentences/MT3_ss_bad.wav','Audio/Sentences/MT3_ss_bat.wav','Audio/Sentences/MT3_ss_bed.wav','Audio/Sentences/MT3_ss_bet.wav','Audio/Sentences/MT3_ss_caps.wav','Audio/Sentences/MT3_ss_cat.wav','Audio/Sentences/MT3_ss_feel.wav','Audio/Sentences/MT3_ss_fill.wav','Audio/Sentences/MT3_ss_filled.wav','Audio/Sentences/MT3_ss_kit.wav','Audio/Sentences/MT3_ss_live.wav','Audio/Sentences/MT3_ss_mouse.wav','Audio/Sentences/MT3_ss_mouth.wav','Audio/Sentences/MT3_ss_pat.wav','Audio/Sentences/MT3_ss_sheep.wav','Audio/Sentences/MT3_ss_ship.wav','Audio/Sentences/MT3_ss_sink.wav','Audio/Sentences/MT3_ss_tap.wav','Audio/Sentences/MT3_ss_thighs.wav','Audio/Sentences/MT3_ss_think.wav','Audio/Sentences/MT3_ss_thought1.wav','Audio/Sentences/MT3_ss_thought2.wav','Audio/Sentences/MT3_ss_three.wav','Audio/Sentences/MT3_ss_tips.wav','Audio/Sentences/MT4_ns_caps.wav','Audio/Sentences/MT4_ns_cat.wav','Audio/Sentences/MT4_ns_kit.wav','Audio/Sentences/MT4_ns_tap.wav','Audio/Sentences/MT4_ns_three.wav','Audio/Sentences/MT4_ns_tips.wav','Audio/Sentences/MT4_ss_bad.wav','Audio/Sentences/MT4_ss_bat.wav','Audio/Sentences/MT4_ss_bed.wav','Audio/Sentences/MT4_ss_bet.wav','Audio/Sentences/MT4_ss_caps.wav','Audio/Sentences/MT4_ss_cat.wav','Audio/Sentences/MT4_ss_feel.wav','Audio/Sentences/MT4_ss_fill.wav','Audio/Sentences/MT4_ss_filled.wav','Audio/Sentences/MT4_ss_kit.wav','Audio/Sentences/MT4_ss_live.wav','Audio/Sentences/MT4_ss_mouse.wav','Audio/Sentences/MT4_ss_mouth.wav','Audio/Sentences/MT4_ss_pat.wav','Audio/Sentences/MT4_ss_sheep.wav','Audio/Sentences/MT4_ss_ship.wav','Audio/Sentences/MT4_ss_sink.wav','Audio/Sentences/MT4_ss_tap.wav','Audio/Sentences/MT4_ss_thighs.wav','Audio/Sentences/MT4_ss_think.wav','Audio/Sentences/MT4_ss_thought1.wav','Audio/Sentences/MT4_ss_thought2.wav','Audio/Sentences/MT4_ss_three.wav','Audio/Sentences/MT4_ss_tips.wav','Audio/Sentences/MT5_ns_caps.wav','Audio/Sentences/MT5_ns_cat.wav','Audio/Sentences/MT5_ns_kit.wav','Audio/Sentences/MT5_ns_tap.wav','Audio/Sentences/MT5_ns_three.wav','Audio/Sentences/MT5_ns_tips.wav','Audio/Sentences/MT5_ss_bad.wav','Audio/Sentences/MT5_ss_bat.wav','Audio/Sentences/MT5_ss_bed.wav','Audio/Sentences/MT5_ss_bet.wav','Audio/Sentences/MT5_ss_caps.wav','Audio/Sentences/MT5_ss_cat.wav','Audio/Sentences/MT5_ss_feel.wav','Audio/Sentences/MT5_ss_fill.wav','Audio/Sentences/MT5_ss_filled.wav','Audio/Sentences/MT5_ss_kit.wav','Audio/Sentences/MT5_ss_live.wav','Audio/Sentences/MT5_ss_mouse.wav','Audio/Sentences/MT5_ss_mouth.wav','Audio/Sentences/MT5_ss_pat.wav','Audio/Sentences/MT5_ss_sheep.wav','Audio/Sentences/MT5_ss_ship.wav','Audio/Sentences/MT5_ss_sink.wav','Audio/Sentences/MT5_ss_tap.wav','Audio/Sentences/MT5_ss_thighs.wav','Audio/Sentences/MT5_ss_think.wav','Audio/Sentences/MT5_ss_thought1.wav','Audio/Sentences/MT5_ss_thought2.wav','Audio/Sentences/MT5_ss_three.wav','Audio/Sentences/MT5_ss_tips.wav','Audio/Sentences/MT6_ns_caps.wav','Audio/Sentences/MT6_ns_cat.wav','Audio/Sentences/MT6_ns_kit.wav','Audio/Sentences/MT6_ns_tap.wav','Audio/Sentences/MT6_ns_three.wav','Audio/Sentences/MT6_ns_tips.wav','Audio/Sentences/MT6_ss_bad.wav','Audio/Sentences/MT6_ss_bat.wav','Audio/Sentences/MT6_ss_bed.wav','Audio/Sentences/MT6_ss_bet.wav','Audio/Sentences/MT6_ss_caps.wav','Audio/Sentences/MT6_ss_cat.wav','Audio/Sentences/MT6_ss_feel.wav','Audio/Sentences/MT6_ss_fill.wav','Audio/Sentences/MT6_ss_filled.wav','Audio/Sentences/MT6_ss_kit.wav','Audio/Sentences/MT6_ss_live.wav','Audio/Sentences/MT6_ss_mouse.wav','Audio/Sentences/MT6_ss_mouth.wav','Audio/Sentences/MT6_ss_pat.wav','Audio/Sentences/MT6_ss_sheep.wav','Audio/Sentences/MT6_ss_ship.wav','Audio/Sentences/MT6_ss_sink.wav','Audio/Sentences/MT6_ss_tap.wav','Audio/Sentences/MT6_ss_thighs.wav','Audio/Sentences/MT6_ss_think.wav','Audio/Sentences/MT6_ss_thought1.wav','Audio/Sentences/MT6_ss_thought2.wav','Audio/Sentences/MT6_ss_three.wav','Audio/Sentences/MT6_ss_tips.wav','Audio/Sentences/MT7_ns_caps.wav','Audio/Sentences/MT7_ns_cat.wav','Audio/Sentences/MT7_ns_kit.wav','Audio/Sentences/MT7_ns_tap.wav','Audio/Sentences/MT7_ns_three.wav','Audio/Sentences/MT7_ns_tips.wav','Audio/Sentences/MT7_ss_bad.wav','Audio/Sentences/MT7_ss_bat.wav','Audio/Sentences/MT7_ss_bed.wav','Audio/Sentences/MT7_ss_bet.wav','Audio/Sentences/MT7_ss_caps.wav','Audio/Sentences/MT7_ss_cat.wav','Audio/Sentences/MT7_ss_feel.wav','Audio/Sentences/MT7_ss_fill.wav','Audio/Sentences/MT7_ss_filled.wav','Audio/Sentences/MT7_ss_kit.wav','Audio/Sentences/MT7_ss_live.wav','Audio/Sentences/MT7_ss_mouse.wav','Audio/Sentences/MT7_ss_mouth.wav','Audio/Sentences/MT7_ss_pat.wav','Audio/Sentences/MT7_ss_sheep.wav','Audio/Sentences/MT7_ss_ship.wav','Audio/Sentences/MT7_ss_sink.wav','Audio/Sentences/MT7_ss_tap.wav','Audio/Sentences/MT7_ss_thighs.wav','Audio/Sentences/MT7_ss_think.wav','Audio/Sentences/MT7_ss_thought1.wav','Audio/Sentences/MT7_ss_thought2.wav','Audio/Sentences/MT7_ss_three.wav','Audio/Sentences/MT7_ss_tips.wav','Audio/Sentences/MT8_ns_caps.wav','Audio/Sentences/MT8_ns_cat.wav','Audio/Sentences/MT8_ns_kit.wav','Audio/Sentences/MT8_ns_tap.wav','Audio/Sentences/MT8_ns_three.wav','Audio/Sentences/MT8_ns_tips.wav','Audio/Sentences/MT8_ss_bad.wav','Audio/Sentences/MT8_ss_bat.wav','Audio/Sentences/MT8_ss_bed.wav','Audio/Sentences/MT8_ss_bet.wav','Audio/Sentences/MT8_ss_caps.wav','Audio/Sentences/MT8_ss_cat.wav','Audio/Sentences/MT8_ss_feel.wav','Audio/Sentences/MT8_ss_fill.wav','Audio/Sentences/MT8_ss_filled.wav','Audio/Sentences/MT8_ss_kit.wav','Audio/Sentences/MT8_ss_live.wav','Audio/Sentences/MT8_ss_mouse.wav','Audio/Sentences/MT8_ss_mouth.wav','Audio/Sentences/MT8_ss_pat.wav','Audio/Sentences/MT8_ss_sheep.wav','Audio/Sentences/MT8_ss_ship.wav','Audio/Sentences/MT8_ss_sink.wav','Audio/Sentences/MT8_ss_tap.wav','Audio/Sentences/MT8_ss_thighs.wav','Audio/Sentences/MT8_ss_think.wav','Audio/Sentences/MT8_ss_thought1.wav','Audio/Sentences/MT8_ss_thought2.wav','Audio/Sentences/MT8_ss_three.wav','Audio/Sentences/MT8_ss_tips.wav','Audio/Sentences/MT9_ns_caps.wav','Audio/Sentences/MT9_ns_cat.wav','Audio/Sentences/MT9_ns_kit.wav','Audio/Sentences/MT9_ns_tap.wav','Audio/Sentences/MT9_ns_three.wav','Audio/Sentences/MT9_ns_tips.wav','Audio/Sentences/MT9_ss_bad.wav','Audio/Sentences/MT9_ss_bat.wav','Audio/Sentences/MT9_ss_bed.wav','Audio/Sentences/MT9_ss_bet.wav','Audio/Sentences/MT9_ss_caps.wav','Audio/Sentences/MT9_ss_cat.wav','Audio/Sentences/MT9_ss_feel.wav','Audio/Sentences/MT9_ss_fill.wav','Audio/Sentences/MT9_ss_filled.wav','Audio/Sentences/MT9_ss_kit.wav','Audio/Sentences/MT9_ss_live.wav','Audio/Sentences/MT9_ss_mouse.wav','Audio/Sentences/MT9_ss_mouth.wav','Audio/Sentences/MT9_ss_pat.wav','Audio/Sentences/MT9_ss_sheep.wav','Audio/Sentences/MT9_ss_ship.wav','Audio/Sentences/MT9_ss_sink.wav','Audio/Sentences/MT9_ss_tap.wav','Audio/Sentences/MT9_ss_thighs.wav','Audio/Sentences/MT9_ss_think.wav','Audio/Sentences/MT9_ss_thought.wav','Audio/Sentences/MT9_ss_thought2.wav','Audio/Sentences/MT9_ss_three.wav','Audio/Sentences/MT9_ss_tips.wav','Audio/Sentences/MT10_ns_caps.wav','Audio/Sentences/MT10_ns_cat.wav','Audio/Sentences/MT10_ns_kit.wav','Audio/Sentences/MT10_ns_tap.wav','Audio/Sentences/MT10_ns_three.wav','Audio/Sentences/MT10_ns_tips.wav','Audio/Sentences/MT10_ss_bad.wav','Audio/Sentences/MT10_ss_bat.wav','Audio/Sentences/MT10_ss_bed.wav','Audio/Sentences/MT10_ss_bet.wav','Audio/Sentences/MT10_ss_caps.wav','Audio/Sentences/MT10_ss_cat.wav','Audio/Sentences/MT10_ss_feel.wav','Audio/Sentences/MT10_ss_fill.wav','Audio/Sentences/MT10_ss_filled.wav','Audio/Sentences/MT10_ss_kit.wav','Audio/Sentences/MT10_ss_live.wav','Audio/Sentences/MT10_ss_mouse.wav','Audio/Sentences/MT10_ss_mouth.wav','Audio/Sentences/MT10_ss_pat.wav','Audio/Sentences/MT10_ss_sheep.wav','Audio/Sentences/MT10_ss_ship.wav','Audio/Sentences/MT10_ss_sink.wav','Audio/Sentences/MT10_ss_tap.wav','Audio/Sentences/MT10_ss_thighs.wav','Audio/Sentences/MT10_ss_think.wav','Audio/Sentences/MT10_ss_thought.wav','Audio/Sentences/MT10_ss_thought2.wav','Audio/Sentences/MT10_ss_three.wav','Audio/Sentences/MT10_ss_tips.wav','Audio/Sentences/MT11_ns_caps.wav','Audio/Sentences/MT11_ns_cat.wav','Audio/Sentences/MT11_ns_kit.wav','Audio/Sentences/MT11_ns_tap.wav','Audio/Sentences/MT11_ns_three.wav','Audio/Sentences/MT11_ns_tips.wav','Audio/Sentences/MT11_ss_bad.wav','Audio/Sentences/MT11_ss_bat.wav','Audio/Sentences/MT11_ss_bed.wav','Audio/Sentences/MT11_ss_bet.wav','Audio/Sentences/MT11_ss_caps.wav','Audio/Sentences/MT11_ss_cat.wav','Audio/Sentences/MT11_ss_feel.wav','Audio/Sentences/MT11_ss_fill.wav','Audio/Sentences/MT11_ss_filled.wav','Audio/Sentences/MT11_ss_kit.wav','Audio/Sentences/MT11_ss_live.wav','Audio/Sentences/MT11_ss_mouse.wav','Audio/Sentences/MT11_ss_mouth.wav','Audio/Sentences/MT11_ss_pat.wav','Audio/Sentences/MT11_ss_sheep.wav','Audio/Sentences/MT11_ss_ship.wav','Audio/Sentences/MT11_ss_sink.wav','Audio/Sentences/MT11_ss_tap.wav','Audio/Sentences/MT11_ss_thighs.wav','Audio/Sentences/MT11_ss_think.wav','Audio/Sentences/MT11_ss_thought.wav','Audio/Sentences/MT11_ss_thought2.wav','Audio/Sentences/MT11_ss_three.wav','Audio/Sentences/MT11_ss_tips.wav','Audio/Sentences/MT12_ns_caps.wav','Audio/Sentences/MT12_ns_cat.wav','Audio/Sentences/MT12_ns_kit.wav','Audio/Sentences/MT12_ns_tap.wav','Audio/Sentences/MT12_ns_three.wav','Audio/Sentences/MT12_ns_tips.wav','Audio/Sentences/MT12_ss_bad.wav','Audio/Sentences/MT12_ss_bat.wav','Audio/Sentences/MT12_ss_bed.wav','Audio/Sentences/MT12_ss_bet.wav','Audio/Sentences/MT12_ss_caps.wav','Audio/Sentences/MT12_ss_cat.wav','Audio/Sentences/MT12_ss_feel.wav','Audio/Sentences/MT12_ss_fill.wav','Audio/Sentences/MT12_ss_filled.wav','Audio/Sentences/MT12_ss_kit.wav','Audio/Sentences/MT12_ss_live.wav','Audio/Sentences/MT12_ss_mouse.wav','Audio/Sentences/MT12_ss_mouth.wav','Audio/Sentences/MT12_ss_pat.wav','Audio/Sentences/MT12_ss_sheep.wav','Audio/Sentences/MT12_ss_ship.wav','Audio/Sentences/MT12_ss_sink.wav','Audio/Sentences/MT12_ss_tap.wav','Audio/Sentences/MT12_ss_thighs.wav','Audio/Sentences/MT12_ss_think.wav','Audio/Sentences/MT12_ss_thought.wav','Audio/Sentences/MT12_ss_thought2.wav','Audio/Sentences/MT12_ss_three.wav','Audio/Sentences/MT12_ss_tips.wav'];
+
+    //This shows a loading bar with the message "please wait" while the stimuli are preloading
+    var preload= {
+        type: jsPsychPreload,
+        audio: audio, 
+        show_progress_bar: true,
+        message: 'Please wait, experiment files are loading.',
+        auto_update_progress_bar: true
+    }
+    timeline.push(preload);
+
+    //This is the starting point of the experiment after all the audio have loaded
+    var start = {
+      type: jsPsychInstructions,
+      pages: ['Please click continue when you are ready to start the experiment.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(start);
+
+    //creating empty arrays for the timelines for blocks 1, 2, 3, and ingredients for them
+    var block1 = [];
+    var block2 = [];
+    var block3 = [];
+    var block4 = [];
+    var block5 = [];
+    var block6 = [];
+
+    //creating timeline_variables for block 1
+    var block1files = jsPsych.randomization.sampleWithoutReplacement(audio,65);
+    for(var i=0; i<block1files.length; i++){
+      block1.push({audio: block1files[i]});
+    };
+
+    audio = audio.filter( function( el ){
+      return block1files.indexOf( el ) < 0;
+    });
+
+    //creating timeline_variables for block 2
+    var block2files = jsPsych.randomization.sampleWithoutReplacement(audio,65);
+    for(var i=0; i<block2files.length; i++){
+      block2.push({audio: block2files[i]});
+    };
+
+    audio = audio.filter( function( el ){
+      return block2files.indexOf( el ) < 0;
+    });
+
+    //creating timeline_variables for block 3
+    var block3files = jsPsych.randomization.sampleWithoutReplacement(audio,65);
+    for(var i=0; i<block3files.length; i++){
+      block3.push({audio: block3files[i]});
+    };
+    
+    audio = audio.filter( function( el ){
+      return block3files.indexOf( el ) < 0;
+    });
+
+    //creating timeline_variables for block 4
+    var block4files = jsPsych.randomization.sampleWithoutReplacement(audio,65);
+    for(var i=0; i<block4files.length; i++){
+      block4.push({audio: block4files[i]});
+    };
+
+    audio = audio.filter( function( el ){
+      return block4files.indexOf( el ) < 0;
+    });
+
+
+    //creating timeline_variables for block 5
+    var block5files = jsPsych.randomization.sampleWithoutReplacement(audio,65);
+    for(var i=0; i<block5files.length; i++){
+      block5.push({audio: block5files[i]});
+    };
+
+    audio = audio.filter( function( el ){
+      return block5files.indexOf( el ) < 0;
+    });
+
+   
+    //creating timeline_variables for block 6
+    var block6files = jsPsych.randomization.sampleWithoutReplacement(audio,65);
+    for(var i=0; i<block4files.length; i++){
+      block6.push({audio: block6files[i]});
+    };
+
+    
+
+    //timeline variables: Each timeline is separated by block
+    var firstblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: ['1', '2','3','4','5','6','7','8','9'],
+            prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent</p>",
+            response_allowed_while_playing: false
+        }
+    ],
+    randomize_order: true,
+    timeline_variables: block1
+};
+timeline.push(firstblock)
+
+//This is the first break
+var break1 = {
+      type: jsPsychInstructions,
+      pages: ['Break time! Press continue when you would like to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(break1);
+
+ //timeline variables: Block 2 audio files
+ var secondblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: ['1', '2','3','4','5','6','7','8','9'],
+            prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent</p>",
+            response_allowed_while_playing: false
+        }
+    ],
+    randomize_order: true,
+    timeline_variables: block2
+};
+timeline.push(secondblock)
+
+//This is the second break
+var break2 = {
+      type: jsPsychInstructions,
+      pages: ['Break time! Press continue when you would like to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(break2)
+
+ //timeline variables: Block 3 audio files
+ var thirdblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: ['1', '2','3','4','5','6','7','8','9'],
+            prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent</p>",
+            response_allowed_while_playing: false
+        }
+    ],
+    randomize_order: true,
+    timeline_variables: block3
+};
+timeline.push(thirdblock)
+
+//This is the third break
+var break3 = {
+      type: jsPsychInstructions,
+      pages: ['Break time! Press continue when you would like to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(break3)
+
+//timeline variables: Block 4 audio files
+ var fourthblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: ['1', '2','3','4','5','6','7','8','9'],
+            prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent</p>",
+            response_allowed_while_playing: false
+        }
+    ],
+    randomize_order: true,
+    timeline_variables: block4
+};
+timeline.push(fourthblock)
+
+//This is the fourth break
+var break4 = {
+      type: jsPsychInstructions,
+      pages: ['Break time! Press continue when you would like to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(break4)
+
+//timeline variables: Block 5 audio files
+ var fifthblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: ['1', '2','3','4','5','6','7','8','9'],
+            prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent</p>",
+            response_allowed_while_playing: false
+        }
+    ],
+    randomize_order: true,
+    timeline_variables: block5
+};
+timeline.push(fifthblock)
+
+//This is the fifth break
+var break5 = {
+      type: jsPsychInstructions,
+      pages: ['Break time! Press continue when you would like to proceed.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(break5)
+  
+  //timeline variables: Block 6 audio files
+ var sixthblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: ['1', '2','3','4','5','6','7','8','9'],
+            prompt: "<p>From 1 to 9, how non-native does the accent in this audio clip sound? 1 stands for a completely native accent and 9 stands for a very strong non-native accent</p>",
+            response_allowed_while_playing: false
+        }
+    ],
+    randomize_order: true,
+    timeline_variables: block6
+};
+timeline.push(sixthblock)
+
+//End of main part, introducing survey
+var instructions1 = {
+        type: jsPsychInstructions,
+         pages: ['Thank you for completing the main part of the experiment! The next part will be a quick 5 minute survey, and then you will have completed the entire experiment.'
+     ],
+         button_label_next: "Continue",
+         show_clickable_nav: true,
+        allow_backward:false,
+        };
+    timeline.push(instructions1);
+
+ 
+// adding identifying questions
+   var survey = {
+        type: jsPsychSurveyText,
+        questions: [
+          {prompt: '  Please enter your Prolific ID: ', placeholder: 'Prolific ID', required: true, rows: 1, 
+          name: "Prolific ID"},
+          {prompt: 'Please enter your age ', placeholder: 'enter age', required: true, rows: 1,
+          name: "Age"},
+          {prompt: 'Please enter your sex ', placeholder: 'enter sex', required: true, rows: 1,
+          name: "Sex"},
+          {prompt: 'Please enter your gender ', placeholder: 'enter gender', required: true, rows: 1,
+          name: "Gender"},
+          {prompt: 'Please enter your highest education ', placeholder: 'enter education (high school, university, post-graduate, etc.)', required: true, rows: 1,
+          name: "Education"},
+          {prompt: 'If you are currently a student, please enter what degree you are working on. If not, put N/A ', placeholder: 'enter degree (undergraduate, post-graduate, etc.)', required: true, rows: 1,
+          name: "Degree"},
+        ]
+     };
+     timeline.push(survey) 
+
+
+ //adding in langauge questions
+ var survey1 = {
+     type: jsPsychSurveyHtmlForm,
+      preamble: '<p>1.	Please list all of the languages that you speak below. Based on the provided scale, input your proficiency and years of learning in each language. Please also specify which variety of Canadian English is your first language (West,Ontario,Quebec,Maritimes,Newfoundland). If you speak more than five languages please let us know at xizid@sfu.ca.</p>',
+       html: '<p style="text-align:centre"> First Language <input name="first" type="text" placeholder="English, etc." required=true />, <select name="proficiency1"> <option value="native">native</option> <option value="proficient">proficient</option> <option value="intermediate">intermediate</option> <option value="beginner">beginner</option></select>, <select name="Variety of Canadian English"> <option value="West(B.C.,Alberta,Saskatchewan,Manitoba)">West(B.C.,Alberta,Saskatchewan,Manitoba)</option> <option value="Ontario">Ontario</option> <option value="Quebec">Quebec</option> <option value="Newfoundland">Newfoundland</option> <option value="Maritimes(PEI,NS,NB)">Maritimes(PEI,NS,NB)</option></select>,Years of learning <input name="years of learning" type="text" /></p>'+
+       '<p style="text-align:centre"> Second Language <input name="second" type="text" />, <input name="Years of learning" type="text" />, <select name="proficiency2"> <option value="native">native</option> <option value="proficient">proficient</option> <option value="intermediate">intermediate</option> <option value="beginner">beginner</option></select>, Years of learning <input name="years of learning" type="text" /></p>'+
+       '<p style="text-align:centre"> Third Language <input name="third" type="text" />, <input name="Years of learning" type="text" />, <select name="proficiency3"> <option value="native">native</option> <option value="proficient">proficient</option> <option value="intermediate">intermediate</option> <option value="beginner">beginner</option></select>, Years of learning <input name="years of learning" type="text" /></p>'+
+       '<p style="text-align:centre"> Fourth Language <input name="fourth" type="text" />, <input name="Years of learning" type="text" />, <select name="proficiency4"> <option value="native">native</option> <option value="proficient">proficient</option> <option value="intermediate">intermediate</option> <option value="beginner">beginner</option></select>, Years of learning <input name="years of learning" type="text" /></p>'+
+       '<p style="text-align:centre"> Fifth Language <input name="fifth" type="text" />, <input name="Years of learning" type="text" />, <select name="proficiency5"> <option value="native">native</option> <option value="proficient">proficient</option> <option value="intermediate">intermediate</option> <option value="beginner">beginner</option></select>, Years of learning <input name="years of learning" type="text" /></p>',
+       name: "Languages Spoken"
+};
+timeline.push(survey1);
+
+
+    //Survey: language exposure questionnaire
+    var survey = {
+        type: jsPsychSurveyText,
+        questions: [
+          {prompt: '2.	List any languages you have been regularly exposed to that are not your native language (if you do not have regular exposure to a non-native language, put N/A below): ', placeholder: 'enter languages here separated by a comma (e.g. Mandarin, French,...Max 250 char.)', required: true, rows: 2, 
+          name: "Language Exposure"},
+          {prompt: '3.	What is the medium of exposure to each of the languages that is not your native language (if you do not have regular exposure to a non-native language, put N/A below)? Please list the languages and medium of exposure here(e.g. Mandarin:parents, French:university classroom, Spanish: TV shows, etc.): ', placeholder: 'enter languages and medium of exposure here separated by a comma (e.g. Mandarin:parents, French:university classroom,... Max 250 char.),', required: true, rows: 2,
+          name: "Media Exposure"},
+        ]
+     };
+     timeline.push(survey)
+
+    //Survey: accented English exposure questionnaire
+    //Slider question for rating exposure to accented English
+    var survey = {
+      type: jsPsychHtmlSliderResponse,
+      stimulus: `<div style="width:600px;">
+         <p>4. How would you rate your familiarity with accented English (non-native accents)?</p>
+            </div>`,
+    require_movement: true,
+    labels: ['1 (no exposure at all)', '2 (a little familiar)', '3 (somewhat familiar)', '4 (very familiar)'],
+    name: "Exposure to accented English"
+    };
+    timeline.push(survey)
+
+    //Survey: medium of exposure to accented English
+    var survey = {
+        type: jsPsychSurveyText,
+        questions: [
+          {prompt: '5.  List any accented English (non-native accents) that you are familiar with, from the most familiar one to the least familiar one (e.g. 1st-Mandarin accented English, 2nd-French accented English, etc. If you are not familiar with any accented English, put N/A below): ', placeholder: 'enter accented English here separated by a comma (e.g. 1st-Mandarin accented English, 2nd-French accented English,...Max 250 char.)', required: true, rows: 2, 
+          name: "Language Exposure"},
+          {prompt: '6.  What is the medium of exposure to each of the accented English (non-native accents) ? Please list the accented English and the respective medium of exposure here (e.g. Mandarin-accented English:parents, French-accented English:friends. If you are not familiar with any accented English, put N/A below): ', placeholder: 'enter accents and medium of exposure here separated by a comma (eg. Mandarin-accented English:parents, French-accented English:friends,... Max 250 char.),', required: true, rows: 2,
+          name: "Media Exposure"},
+          {prompt: '7.  How many hours are you exposed to each of the accented English (non-native accents) in a week (please self-estimate)? Please list the accented English and the respective weekly hours of exposure here (e.g. Mandarin-accented English:21 hours, French-accented English:14 hours, etc. If you are not familiar with any accented English, put N/A below): ', placeholder: 'enter accents and hours of exposure here separated by a comma (e.g. Mandarin-accented English:21 hours, French-accented English:14 hours,... Max 250 char.),', required: true, rows: 2,
+          name: "Media Exposure"},
+        ]
+     };
+     timeline.push(survey)
+
+    
+
+    //Ending message
+    var Goodbye = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Thank you for your participation. Please write down the code C8LENY0X and enter it in Prolific to receive the payment. Afterwards, you may exit your browser and end the experiment",
+    };
+    timeline.push(Goodbye)
+
+jatos.onLoad(() => {
+  jsPsych.run(timeline)
+});
+  </script>
+  </html>
+
+
+
