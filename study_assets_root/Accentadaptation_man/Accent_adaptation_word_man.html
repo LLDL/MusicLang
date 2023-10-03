@@ -485,7 +485,7 @@ timeline.push(fourthblock)
 var instructions= {
       type: jsPsychInstructions,
       pages: [
-        '欢迎进入第二个实验，请现在打开发给你的ppt。在本次实验中，你将听到几段包含一个故事的录音。每段录音的文本都在发给你的ppt里面，请仔细听，注意ppt每页文本的段落中被黄色标记的关键词，然后判断每段录音中哪些被黄色标记的关键词读错了，并从屏幕上的选项中选出读错的单词。如果你认为没有单词读错，请选择“全部发音正确”在正式开始任务之前，你将完成两组练习。当你准备好之后，请点击“continue”。'
+        '欢迎进入第二个实验，请现在打开发给你的pdf文档。在本次实验中，你将听到几段包含一个故事的录音。每段录音的文本都在发给你的ppt里面，请仔细听，注意pdf文档中每页文本的段落中被黄色标记的关键词，然后判断每段录音中哪些被黄色标记的关键词读错了，并从屏幕上的选项中选出读错的单词。如果你认为没有单词读错，请选择“全部发音正确”。在正式开始任务之前，你将完成两组练习。当你准备好之后，请点击“continue”。'
     ],
       button_label_next:"Continue",
       show_clickable_nav: true,
@@ -540,7 +540,7 @@ var instructions= {
     var trial1 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/1.wav',
-        choices: ['three','sick','track','全部发音正确'],
+        choices: ['three','sick','track','sick and track','three and sick','three and track','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第1段)</p>",
         response_allowed_while_playing: false,
         };
@@ -550,7 +550,7 @@ var instructions= {
     var trial2 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/2.wav',
-        choices: ['dinner','pen','全部发音正确'],
+        choices: ['dinner','pen','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第2段)</p>",
         response_allowed_while_playing: false,
         };
@@ -560,7 +560,7 @@ var instructions= {
     var trial3 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/3.wav',
-        choices: ['bags','leaves','soon','全部发音正确'],
+        choices: ['bag','leaves','soon','bag and leaves','bag and soon','leaves and soon','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第3段)</p>",
         response_allowed_while_playing: false,
         };
@@ -570,7 +570,7 @@ var instructions= {
     var trial4 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/4.wav',
-        choices: ['cheek','fever','全部发音正确'],
+        choices: ['cheek','fever','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第4段)</p>",
         response_allowed_while_playing: false,
         };
@@ -580,7 +580,7 @@ var instructions= {
     var trial5 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/5.wav',
-        choices: ['sit','pill','全部发音正确'],
+        choices: ['sit','pill','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第5段)</p>",
         response_allowed_while_playing: false,
         };
@@ -590,7 +590,7 @@ var instructions= {
     var trial6 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/6.wav',
-        choices: ['refuse','mouth','sink','全部发音正确'],
+        choices: ['refuse','mouth','sink','mouth and sink','refuse and mouth','refuse and sink','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第6段)</p>",
         response_allowed_while_playing: false,
         };
@@ -600,7 +600,7 @@ var instructions= {
     var trial7 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/7.wav',
-        choices: ['babysitter','raining','dirt','全部发音正确'],
+        choices: ['babysitter','raining','dirt','raining and dirt','babysitter and raining','babysitter and dirt','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第7段)</p>",
         response_allowed_while_playing: false,
         };
@@ -610,7 +610,7 @@ var instructions= {
     var trial8 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/8.wav',
-        choices: ['feeling','bed','全部发音正确'],
+        choices: ['feeling','bed','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第8段)</p>",
         response_allowed_while_playing: false,
         };
@@ -620,7 +620,7 @@ var instructions= {
     var trial9 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/9.wav',
-        choices: ['throws','waves','全部发音正确'],
+        choices: ['throws','waves','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第9段)</p>",
         response_allowed_while_playing: false,
         };
@@ -630,7 +630,7 @@ var instructions= {
     var trial10 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/10.wav',
-        choices: ['restaurant','fourth','cheap','全部发音正确'],
+        choices: ['restaurant','fourth','cheap','restaurant and fourth','fourth and cheap','restaurant and cheap','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第10段)</p>",
         response_allowed_while_playing: false,
         };
@@ -640,7 +640,7 @@ var instructions= {
     var trial11 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/11.wav',
-        choices: ['first','meal','food','全部发音正确'],
+        choices: ['first','meal','food','first and meal','first and food','meal and food','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第11段)</p>",
         response_allowed_while_playing: false,
         };
@@ -677,11 +677,11 @@ var instructions1 = {
 //adding in language questions
  var survey1 = {
      type: jsPsychSurveyHtmlForm,
-      preamble: '<p>1.  请列出你从出生以来包括母语和外语在内，学习过的所有语言。请在第一语言一栏详细写出你的母语方言（如有）。</p>',
-       html: '<p style="text-align:centre"> First language <input name="第一语言" type="text" placeholder="某种方言（如有）, etc." required=true />, <select name="熟练程度1"> <option value="母语水平">native</option> <option value="精通">proficient</option> <option value="中级">intermediate</option> <option value="初学者">beginner</option></select>, Length of learning <input name="学习时长" type="text" /></p>'+
-       '<p style="text-align:centre"> Second language <input name="第二语言" type="text" required=true />, <select name="熟练程度2"> <option value="母语水平">native</option> <option value="精通">proficient</option> <option value="中级">intermediate</option> <option value="初学者">beginner</option></select>, Length of learning <input name="学习时长" type="text" /></p>'+
-       '<p style="text-align:centre"> Third language <input name="第三语言" type="text" />, <select name="熟练程度3"> <option value="母语者水平">native</option> <option value="精通">proficient</option> <option value="中级">intermediate</option> <option value="初学者">beginner</option></select>, length of learning <input name="学习时长" type="text" /></p>'+
-       '<p style="text-align:centre"> Fourth language <input name="第四语言" type="text" />, <select name="熟练程度3"> <option value="母语者水平">native</option> <option value="精通">proficient</option> <option value="中级">intermediate</option> <option value="初学者">beginner</option></select>, length of learning <input name="学习时长" type="text" /></p>',
+      preamble: '<p>1.  请列出你从出生以来包括母语和外语在内，学习过的所有语言，以及每门语言的水平和学习时长。请在第一语言一栏详细写出你的母语方言（如有）。</p>',
+       html: '<p style="text-align:centre"> 第一语言 <input name="第一语言" type="text" placeholder="某种方言（如有）, etc." required=true />, <select name="熟练程度1"> <option value="母语水平">母语水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>'+
+       '<p style="text-align:centre"> 第二语言 <input name="第二语言" type="text" required=true />, <select name="熟练程度2"> <option value="母语水平">母语水平</option> <option value="精通">精通</option> <option value="中级">初学者</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>'+
+       '<p style="text-align:centre"> Third language <input name="第三语言" type="text" />, <select name="熟练程度3"> <option value="母语者水平">母语者水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>'+
+       '<p style="text-align:centre"> Fourth language <input name="第四语言" type="text" />, <select name="熟练程度3"> <option value="母语者水平">母语水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>',
 
        name: "Languages Spoken"
 };
