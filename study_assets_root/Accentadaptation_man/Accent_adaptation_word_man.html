@@ -229,7 +229,8 @@
 
    //This preloads all  stimuli so that the trials run smoothly
    var audiolist = ['Audio/Words/MT2_bet.wav', 'Audio/Words/MT2_bet2.wav', 'Audio/Words/MT2_bat.wav', 'Audio/Words/MT2_bat2.wav','Audio/Words/MT7_bet.wav', 'Audio/Words/MT7_bet2.wav', 'Audio/Words/MT7_bat.wav', 'Audio/Words/MT7_bat2.wav','Audio/Words/MT11_bet.wav', 'Audio/Words/MT11_bet2.wav', 'Audio/Words/MT11_bat.wav', 'Audio/Words/MT11_bat2.wav','Audio/Words/MT3_bet.wav', 'Audio/Words/MT3_bet2.wav', 'Audio/Words/MT3_bat.wav', 'Audio/Words/MT3_bat2.wav','Audio/Words/MT8_bet.wav', 'Audio/Words/MT8_bet2.wav', 'Audio/Words/MT8_bat.wav', 'Audio/Words/MT8_bat2.wav','Audio/Words/MT12_bet.wav', 'Audio/Words/MT12_bet2.wav', 'Audio/Words/MT12_bat.wav', 'Audio/Words/MT12_bat2.wav','Audio/Words/ET1_bet.wav', 'Audio/Words/ET1_bet2.wav', 'Audio/Words/ET1_bat.wav', 'Audio/Words/ET1_bat2.wav','Audio/Words/ET2_bet.wav', 'Audio/Words/ET2_bet2.wav', 'Audio/Words/ET2_bat.wav', 'Audio/Words/ET2_bat2.wav','Audio/Words/ET3_bet.wav', 'Audio/Words/ET3_bet2.wav', 'Audio/Words/ET3_bat.wav', 'Audio/Words/ET3_bat2.wav','Audio/Words/ET4_bet.wav', 'Audio/Words/ET4_bet2.wav', 'Audio/Words/ET4_bat.wav', 'Audio/Words/ET4_bat2.wav','Audio/Words/ET5_bet.wav', 'Audio/Words/ET5_bet2.wav', 'Audio/Words/ET5_bat.wav', 'Audio/Words/ET5_bat2.wav','Audio/Words/ET6_bet.wav', 'Audio/Words/ET6_bet2.wav', 'Audio/Words/ET6_bat.wav', 'Audio/Words/ET6_bat2.wav','Audio/Words/MT2_bed.wav', 'Audio/Words/MT2_bed2.wav', 'Audio/Words/MT2_bad.wav', 'Audio/Words/MT2_bad2.wav','Audio/Words/MT7_bed.wav', 'Audio/Words/MT7_bed2.wav', 'Audio/Words/MT7_bad.wav', 'Audio/Words/MT7_bad2.wav','Audio/Words/MT11_bed.wav', 'Audio/Words/MT11_bed2.wav', 'Audio/Words/MT11_bad.wav', 'Audio/Words/MT11_bad2.wav','Audio/Words/MT3_bed.wav', 'Audio/Words/MT3_bed2.wav', 'Audio/Words/MT3_bad.wav', 'Audio/Words/MT3_bad2.wav','Audio/Words/MT8_bed.wav', 'Audio/Words/MT8_bed2.wav', 'Audio/Words/MT8_bad.wav', 'Audio/Words/MT8_bad2.wav','Audio/Words/MT12_bed.wav', 'Audio/Words/MT12_bed2.wav', 'Audio/Words/MT12_bad.wav', 'Audio/Words/MT12_bad2.wav','Audio/Words/ET1_bed.wav', 'Audio/Words/ET1_bed2.wav', 'Audio/Words/ET1_bad.wav', 'Audio/Words/ET1_bad2.wav','Audio/Words/ET2_bed.wav', 'Audio/Words/ET2_bed2.wav', 'Audio/Words/ET2_bad.wav', 'Audio/Words/ET2_bad2.wav','Audio/Words/ET3_bed.wav', 'Audio/Words/ET3_bed2.wav', 'Audio/Words/ET3_bad.wav', 'Audio/Words/ET3_bad2.wav','Audio/Words/ET4_bed.wav', 'Audio/Words/ET4_bed2.wav', 'Audio/Words/ET4_bad.wav', 'Audio/Words/ET4_bad2.wav','Audio/Words/ET5_bed.wav', 'Audio/Words/ET5_bed2.wav', 'Audio/Words/ET5_bad.wav', 'Audio/Words/ET5_bad2.wav','Audio/Words/ET6_bed.wav', 'Audio/Words/ET6_bed2.wav', 'Audio/Words/ET6_bad.wav', 'Audio/Words/ET6_bad2.wav','Audio/Words/MT2_ship.wav', 'Audio/Words/MT2_ship2.wav', 'Audio/Words/MT2_sheep.wav', 'Audio/Words/MT2_sheep2.wav','Audio/Words/MT7_ship.wav', 'Audio/Words/MT7_ship2.wav', 'Audio/Words/MT7_sheep.wav', 'Audio/Words/MT7_sheep2.wav','Audio/Words/MT11_ship.wav', 'Audio/Words/MT11_ship2.wav', 'Audio/Words/MT11_sheep.wav', 'Audio/Words/MT11_sheep2.wav','Audio/Words/MT3_ship.wav', 'Audio/Words/MT3_ship2.wav', 'Audio/Words/MT3_sheep.wav', 'Audio/Words/MT3_sheep2.wav','Audio/Words/MT8_ship.wav', 'Audio/Words/MT8_ship2.wav', 'Audio/Words/MT8_sheep.wav', 'Audio/Words/MT8_sheep2.wav','Audio/Words/MT12_ship.wav', 'Audio/Words/MT12_ship2.wav', 'Audio/Words/MT12_sheep.wav', 'Audio/Words/MT12_sheep2.wav','Audio/Words/ET1_ship.wav', 'Audio/Words/ET1_ship2.wav', 'Audio/Words/ET1_sheep.wav', 'Audio/Words/ET1_sheep2.wav','Audio/Words/ET2_ship.wav', 'Audio/Words/ET2_ship2.wav', 'Audio/Words/ET2_sheep.wav', 'Audio/Words/ET2_sheep2.wav','Audio/Words/ET3_ship.wav', 'Audio/Words/ET3_ship2.wav', 'Audio/Words/ET3_sheep.wav', 'Audio/Words/ET3_sheep2.wav','Audio/Words/ET4_ship.wav', 'Audio/Words/ET4_ship2.wav', 'Audio/Words/ET4_sheep.wav', 'Audio/Words/ET4_sheep2.wav','Audio/Words/ET5_ship.wav', 'Audio/Words/ET5_ship2.wav', 'Audio/Words/ET5_sheep.wav', 'Audio/Words/ET5_sheep2.wav','Audio/Words/ET6_ship.wav', 'Audio/Words/ET6_ship2.wav', 'Audio/Words/ET6_sheep.wav', 'Audio/Words/ET6_sheep2.wav','Audio/Words/MT2_fill.wav', 'Audio/Words/MT2_fill2.wav', 'Audio/Words/MT2_feel.wav', 'Audio/Words/MT2_feel2.wav','Audio/Words/MT7_fill.wav', 'Audio/Words/MT7_fill2.wav', 'Audio/Words/MT7_feel.wav', 'Audio/Words/MT7_feel2.wav','Audio/Words/MT11_fill.wav', 'Audio/Words/MT11_fill2.wav', 'Audio/Words/MT11_feel.wav', 'Audio/Words/MT11_feel2.wav','Audio/Words/MT3_fill.wav', 'Audio/Words/MT3_fill2.wav', 'Audio/Words/MT3_feel.wav', 'Audio/Words/MT3_feel2.wav','Audio/Words/MT8_fill.wav', 'Audio/Words/MT8_fill2.wav', 'Audio/Words/MT8_feel.wav', 'Audio/Words/MT8_feel2.wav','Audio/Words/MT12_fill.wav', 'Audio/Words/MT12_fill2.wav', 'Audio/Words/MT12_feel.wav', 'Audio/Words/MT12_feel2.wav','Audio/Words/ET1_fill.wav', 'Audio/Words/ET1_fill2.wav', 'Audio/Words/ET1_feel.wav', 'Audio/Words/ET1_feel2.wav','Audio/Words/ET2_fill.wav', 'Audio/Words/ET2_fill2.wav', 'Audio/Words/ET2_feel.wav', 'Audio/Words/ET2_feel2.wav','Audio/Words/ET3_fill.wav', 'Audio/Words/ET3_fill2.wav', 'Audio/Words/ET3_feel.wav', 'Audio/Words/ET3_feel2.wav','Audio/Words/ET4_fill.wav', 'Audio/Words/ET4_fill2.wav', 'Audio/Words/ET4_feel.wav', 'Audio/Words/ET4_feel2.wav','Audio/Words/ET5_fill.wav', 'Audio/Words/ET5_fill2.wav', 'Audio/Words/ET5_feel.wav', 'Audio/Words/ET5_feel2.wav','Audio/Words/ET6_fill.wav', 'Audio/Words/ET6_fill2.wav', 'Audio/Words/ET6_feel.wav', 'Audio/Words/ET6_feel2.wav','Audio/Words/MT2_mouth.wav', 'Audio/Words/MT2_mouth2.wav', 'Audio/Words/MT2_mouse.wav', 'Audio/Words/MT2_mouse2.wav','Audio/Words/MT7_mouth.wav', 'Audio/Words/MT7_mouth2.wav', 'Audio/Words/MT7_mouse.wav', 'Audio/Words/MT7_mouse2.wav','Audio/Words/MT11_mouth.wav', 'Audio/Words/MT11_mouth2.wav', 'Audio/Words/MT11_mouse.wav', 'Audio/Words/MT11_mouse2.wav','Audio/Words/MT3_mouth.wav', 'Audio/Words/MT3_mouth2.wav', 'Audio/Words/MT3_mouse.wav', 'Audio/Words/MT3_mouse2.wav','Audio/Words/MT8_mouth.wav', 'Audio/Words/MT8_mouth2.wav', 'Audio/Words/MT8_mouse.wav', 'Audio/Words/MT8_mouse2.wav','Audio/Words/MT12_mouth.wav', 'Audio/Words/MT12_mouth2.wav', 'Audio/Words/MT12_mouse.wav', 'Audio/Words/MT12_mouse2.wav','Audio/Words/ET1_mouth.wav', 'Audio/Words/ET1_mouth2.wav', 'Audio/Words/ET1_mouse.wav', 'Audio/Words/ET1_mouse2.wav','Audio/Words/ET2_mouth.wav', 'Audio/Words/ET2_mouth2.wav', 'Audio/Words/ET2_mouse.wav', 'Audio/Words/ET2_mouse2.wav','Audio/Words/ET3_mouth.wav', 'Audio/Words/ET3_mouth2.wav', 'Audio/Words/ET3_mouse.wav', 'Audio/Words/ET3_mouse2.wav','Audio/Words/ET4_mouth.wav', 'Audio/Words/ET4_mouth2.wav', 'Audio/Words/ET4_mouse.wav', 'Audio/Words/ET4_mouse2.wav','Audio/Words/ET5_mouth.wav', 'Audio/Words/ET5_mouth2.wav', 'Audio/Words/ET5_mouse.wav', 'Audio/Words/ET5_mouse2.wav','Audio/Words/ET6_mouth.wav', 'Audio/Words/ET6_mouth2.wav', 'Audio/Words/ET6_mouse.wav', 'Audio/Words/ET6_mouse2.wav','Audio/Words/MT2_think.wav', 'Audio/Words/MT2_think2.wav', 'Audio/Words/MT2_sink.wav', 'Audio/Words/MT2_sink2.wav','Audio/Words/MT7_think.wav', 'Audio/Words/MT7_think2.wav', 'Audio/Words/MT7_sink.wav', 'Audio/Words/MT7_sink2.wav','Audio/Words/MT11_think.wav', 'Audio/Words/MT11_think2.wav', 'Audio/Words/MT11_sink.wav', 'Audio/Words/MT11_sink2.wav','Audio/Words/MT3_think.wav', 'Audio/Words/MT3_think2.wav', 'Audio/Words/MT3_sink.wav', 'Audio/Words/MT3_sink2.wav','Audio/Words/MT8_think.wav', 'Audio/Words/MT8_think2.wav', 'Audio/Words/MT8_sink.wav', 'Audio/Words/MT8_sink2.wav','Audio/Words/MT12_think.wav', 'Audio/Words/MT12_think2.wav', 'Audio/Words/MT12_sink.wav', 'Audio/Words/MT12_sink2.wav','Audio/Words/ET1_think.wav', 'Audio/Words/ET1_think2.wav', 'Audio/Words/ET1_sink.wav', 'Audio/Words/ET1_sink2.wav','Audio/Words/ET2_think.wav', 'Audio/Words/ET2_think2.wav', 'Audio/Words/ET2_sink.wav', 'Audio/Words/ET2_sink2.wav','Audio/Words/ET3_think.wav', 'Audio/Words/ET3_think2.wav', 'Audio/Words/ET3_sink.wav', 'Audio/Words/ET3_sink2.wav','Audio/Words/ET4_think.wav', 'Audio/Words/ET4_think2.wav', 'Audio/Words/ET4_sink.wav', 'Audio/Words/ET4_sink2.wav','Audio/Words/ET5_think.wav', 'Audio/Words/ET5_think2.wav', 'Audio/Words/ET5_sink.wav', 'Audio/Words/ET5_sink2.wav','Audio/Words/ET6_think.wav', 'Audio/Words/ET6_think2.wav', 'Audio/Words/ET6_sink.wav', 'Audio/Words/ET6_sink2.wav'];
-
+   var newaudiolist = ['Audio/Proficiency/PT1_P.wav','Audio/Proficiency/PT2_P.wav','Audio/Proficiency/1.wav','Audio/Proficiency/2.wav','Audio/Proficiency/3.wav','Audio/Proficiency/4.wav','Audio/Proficiency/5.wav','Audio/Proficiency/6.wav','Audio/Proficiency/7.wav','Audio/Proficiency/8.wav','Audio/Proficiency/9.wav','Audio/Proficiency/10.wav','Audio/Proficiency/11.wav']
+     
    //This shows a loading bar with the message "please wait" while the stimuli are preloading
     var preload= {
         type: jsPsychPreload,
@@ -479,7 +480,15 @@ timeline.push(break3)
 };
 timeline.push(fourthblock)
 
-
+//This shows a loading bar with the message "please wait" while the stimuli are preloading
+var preloadproficiency= {
+    type: jsPsychPreload,
+    audio: newaudiolist, 
+    show_progress_bar: true,
+    message: '实验录音正在加载，请等待。',
+    auto_update_progress_bar: true
+  }
+timeline.push(preloadproficiency);
 
 // Proficiency task
 var instructions= {
@@ -494,7 +503,7 @@ var instructions= {
     timeline.push(instructions);
 
 //practice trial 1
-    var practicetrial3 = {
+  var practicetrial3 = {
         type: jsPsychAudioButtonResponse,
         stimulus: 'Audio/Proficiency/PT1_P.wav',
         choices: ['Pies','全部发音正确'],
@@ -535,7 +544,6 @@ var instructions= {
     };
     timeline.push(feedback2);
 
-
   //paragraph 1
     var trial1 = {
         type: jsPsychAudioButtonResponse,
@@ -543,7 +551,8 @@ var instructions= {
         choices: ['three','sick','track','sick and track','three and sick','three and track','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第1段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial1)  
 
   //paragraph 2
@@ -553,7 +562,8 @@ var instructions= {
         choices: ['dinner','pen','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第2段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial2)  
 
 //paragraph 3
@@ -563,7 +573,9 @@ var instructions= {
         choices: ['bag','leaves','soon','bag and leaves','bag and soon','leaves and soon','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第3段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {
+          choices: true
+        }};
   timeline.push(trial3)  
 
   //paragraph 4
@@ -573,7 +585,8 @@ var instructions= {
         choices: ['cheek','fever','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第4段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial4)  
 
   //paragraph 5
@@ -583,7 +596,8 @@ var instructions= {
         choices: ['sit','pill','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第5段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial5)  
 
   //paragraph 6
@@ -593,7 +607,8 @@ var instructions= {
         choices: ['refuse','mouth','sink','mouth and sink','refuse and mouth','refuse and sink','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第6段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial6)  
 
   //paragraph 7
@@ -603,7 +618,8 @@ var instructions= {
         choices: ['babysitter','raining','dirt','raining and dirt','babysitter and raining','babysitter and dirt','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第7段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial7)  
 
   //paragraph 8
@@ -613,7 +629,8 @@ var instructions= {
         choices: ['feeling','bed','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第8段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial8)  
 
   //paragraph 9
@@ -623,7 +640,8 @@ var instructions= {
         choices: ['throws','waves','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第9段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial9) 
 
   //paragraph 10
@@ -633,7 +651,8 @@ var instructions= {
         choices: ['restaurant','fourth','cheap','restaurant and fourth','fourth and cheap','restaurant and cheap','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第10段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial10)   
 
   //paragraph 11
@@ -643,9 +662,9 @@ var instructions= {
         choices: ['first','meal','food','first and meal','first and food','meal and food','全部发音错误','全部发音正确'],
         prompt: "哪个单词读错了? (第11段)</p>",
         response_allowed_while_playing: false,
-        };
+        save_trial_parameters: {choices: true}
+    };
   timeline.push(trial11)  
-
 
 //End of main part, introducing survey
 var instructions1 = {
