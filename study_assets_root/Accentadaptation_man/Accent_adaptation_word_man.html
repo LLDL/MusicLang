@@ -27,8 +27,11 @@
     //initialize jsPsych 
       var jsPsych = initJsPsych({
         experiment_width: 600,
-        on_close: () => jatos.endStudy(jsPsych.data.get().csv(), "closed early"),
-        on_finish: () => jatos.endStudy(jsPsych.data.get().csv())
+        on_close: () => jatos.endStudy(false, "closed early"),
+        on_data_update: function() {
+          jatos.submitResultData(jsPsych.data.get().csv());
+        },
+        on_finish: () => jatos.endStudy(true)
       });
 
     //create timeline 
