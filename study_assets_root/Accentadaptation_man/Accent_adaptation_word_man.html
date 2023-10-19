@@ -39,7 +39,7 @@
           jatos.endStudy(true);
         }
       });
-    
+
     //create timeline 
       var timeline = [];
       
@@ -389,12 +389,9 @@ timeline.push(firstblock)
 
 //This is the first break
 var break1 = {
-      type: jsPsychInstructions,
-      pages: ['休息时间到！如果你想继续进行实验，请点击continue。'
-    ],
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-    allow_backward:false,
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: '休息时间到！如果你想继续进行实验，请点击continue。',
+    trial_duration: 120000 //2 minutes in ms
     };
 timeline.push(break1);
 
@@ -422,15 +419,7 @@ timeline.push(break1);
 timeline.push(secondblock)
 
 //This is the second break
-var break2 = {
-      type: jsPsychInstructions,
-      pages: ['休息时间到！如果你想继续进行实验，请点击continue。'
-    ],
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-    allow_backward:false,
-    };
-timeline.push(break2)
+timeline.push(break1)
 
  //timeline variables: Block 3 audio files
  var thirdblock = {
@@ -455,16 +444,8 @@ timeline.push(break2)
 };
 timeline.push(thirdblock)
 
-//This is the third break
-var break3 = {
-      type: jsPsychInstructions,
-      pages: ['休息时间到！如果你想继续进行实验，请点击continue。'
-    ],
-    button_label_next: "Continue",
-    show_clickable_nav: true,
-    allow_backward:false,
-    };
-timeline.push(break3)
+//this is the third break
+timeline.push(break1)
 
 //timeline variables: Block 4 audio files
  var fourthblock = {
@@ -746,7 +727,6 @@ var survey3 = {
     }
   ],
 };
-
 timeline.push(survey3)
 
 
