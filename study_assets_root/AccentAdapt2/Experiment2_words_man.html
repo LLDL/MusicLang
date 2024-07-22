@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>English word identidication Study - Minimal Pairs</title>
+     <script src="https://unpkg.com/jspsych@7.3.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.1"></script>
+    <script src = "https://unpkg.com@jspsych/jsPsych.randomization.factorial(factors, repetitions, unpack)"></script>
+    <script src = "https://unpkg.com@jspsych/jsPsych.randomization.sampleWithoutReplacement"></script>
+    <script src = "https://unpkg.com/@jspsych/plugin-survey@0.2.1"></script>
+    <script src = "https://unpkg.com/@jspsych/plugin-survey-html-form@1.0.2"></script>
+    <script src ="https://unpkg.com/@jspsych/plugin-survey-text"></script>
+    <script src ="https://unpkg.com/@jspsych/plugin-html-slider-response"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.2"></script>
+    <script src="custom-plugins-7/plugin-passage-highlight.js"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice"></script>
+    <script src="jatos.js"></script>
+    <link href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+  <style>
+  </style>
+  </head>
+  <body> </body>
+  <script>
+
+    //initialize jsPsych 
+      var jsPsych = initJsPsych({
+        experiment_width: 600,
+        on_close: () => jatos.endStudy(jsPsych.data.get().csv(), "closed early"),
+        on_finish: () => jatos.endStudy(jsPsych.data.get().csv())
+      });
+
+    //create timeline 
+      var timeline = [];
+      
+    //This is the welcome message at the start of the experiment. The participant can press any key to continue
+    var welcome = {
+      type: jsPsychInstructions,
+      pages: ['欢迎来到我们的英语单词识别任务。本次实验会持续将近一个小时。请不要返回上一页或者刷新页面，否则实验会终止。如果你想开始阅读实验同意书，请点击Continue。'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(welcome);
+
+ /* consent form */
+ var consent = {
+   type: jsPsychSurvey,
+   button_label_finish: "Continue",
+   pages: [
+    [
+    { 
+        type: 'html',
+        prompt: '<p><strong>实验同意书 (1/3)</p><p>英语单词识别任务, 研究编号 #30001771</p>'
+      },
+      { 
+        type: 'html',
+        prompt: '<p><strong>W谁在开展此次研究?</strong></p><p>主要研究者: Dr. Henny Yeung, 学生主管: Xizi Deng, 加拿大西门菲莎大学，语言学系</p>'
+      },
+      {
+        type: 'html',
+        prompt: '<p><strong>为什么我们要开展此次研究？</strong></p><p>本项研究致力于探讨非英语母语者如何识别英语单词</p>'
+      },
+      {
+        type: 'html',
+        prompt: '<p><strong>你的参与是完全自愿的。</strong></p><p>你的参与是完全自愿的。你有权拒绝参与此次实验。如果你决定参与该实验，你还是可以在没有任何理由的情况下中途退出，并且对你的未来的教育或者职业发展不会有任何负面影响。在实验结果发表之前，你也有权要求撤回你的数据。</p>'
+      },
+      {
+      type: 'html',
+        prompt: '<p><strong>研究中会发生什么？</strong></p><p> 如果你选择参与此次研究，你将会完成两个实验。第一个实验中，你会听到一系列录音，每条录音包含一个英语单词，你需要从屏幕上的两个选项中判断哪一个是你听到的单词，请点击你听到的单词。在第二个实验中，你会听到两个故事，故事的文本会在屏幕上显示，并且有一些关键词会被用绿色标记，如果这些绿色关键词在录音中被读错了，请点击它们。实验的最后你会完成一个很短的问卷调查。整个实验会持续大约60分钟。</p>'
+      },
+      {
+      type: 'html',
+       prompt:'<p><strong>参见本次实验有风险吗？</strong></p><p>我们不认为参加本次实验会对你造成任何损害。</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><strong>参加本次实验有什么益处吗？</strong></p><p>我们也不认为参加本次实验对你有什么直接的影响，但是实验结果可以帮助我们认识人类语言。</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>你参加本次实验会获得酬劳吗？</b></p><p>你会获得人民币65元的酬劳。如果中途退出，你将不会获得任何酬劳。</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>你的隐私将如何被保护？</b></p><p>我们会尊重你的隐私。你的名字绝对不会和你的实验数据一起出现。所有收集的数据会被存储在一个位于加拿大的密码保护的服务器上。 我们会用特殊的ID标记你的个人识别信息，并且这些信息会和实验数据分开储存在服务器上，只有主要研究者和学生主管能够获得这些信息和数据。你的个人识别信息永远不会出现在任何实验报告里面，只有实验数据会被上传到在线的研究共享平台上，供不同大学的研究者进一步探讨分析，但是我们在共享实验数据的同时，会将的你的个人识别信息和实验数据分开储存，你的个人识别信息永远不会出现在任何在线共享平台上。</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>你的数据会被保留多久？</b></p><p>我们会永久保留你的实验数据，但是如果实验结果没有发表，所有实验数据都会被及时销毁。你的个人识别信息会最多被我们保留七年。</p>'
+      },
+      {
+          type: 'html',
+        prompt: '<p><b>我们会怎么处理研究的结果？</b></p><p>本次研究的结果会被出版在学术期刊上或者在学术会议上被展示。如果你对最后的实验结果感兴趣，你可以联系学生主管：Xizi Deng, xizid@sfu.ca 询问之后的实验结果。</p>'
+      },
+      {
+          type: 'html',
+        prompt:'<p><b>如果对本次研究有任何意见你可以联系谁？</b></p><p>如果你对你作为被试享有的权利或者实验参与的体验有任何问题，请联系加拿大西门菲莎大学的学术研究道德办公室主任：dore@sfu.ca or 778-782-6593.'
+       },
+    ],
+    [
+    { 
+        type: 'html',
+        prompt: '<p><strong>实验同意书 (2/3)</p><p>英语单词识别任务, 研究编号 #30001771</p>'
+      },
+    {
+            type: 'html',
+        prompt:'<p><b>数据在未来的使用。</b></p><p>你的实验数据会被发表在学术期刊上。实验数据会被上传到在线共享数据库或者平台。个人识别信息（例如姓名，电子邮箱，微信）会和这些发布或者上传的实验数据分开储存，以确保个人信息的安全。 请选择是否同意你的实验数据在未来的使用。 </p>'
+       },
+       {
+        type: 'multi-choice',
+        prompt: ' ',
+        options: ['yes', 'no'],
+        required: true,
+        name: "Future Use of Data"
+       },
+
+       {
+          type: 'html',
+        prompt:'<p><b>你是否愿意我们之后继续联系你？</b></p><p>西门菲莎大学语言学系有可能会想要在未来继续联系你，邀请你参加以后的其他实验。请选择我们是否以后能够继续联系你。</p>'
+       },
+       {
+        type: 'multi-choice',
+        prompt: ' ',
+        options: ['yes', 'no'],
+        required: true,
+        name: "Future Contact"
+       },
+    ],
+    [
+    { 
+        type: 'html',
+        prompt: '<p><strong>实验同意书 (3/3)</p><p>英语单词识别任务, 研究编号 #30001771</p>'
+      },
+      {
+        type: 'html',
+        prompt: '<p><b>我怎样同意参与实验？</b></p><p>参与本次实验完全取决于你的个人意愿。你有权拒绝参与本次实验。如果你决定参与，你也可以选择在不提供任何理由的情况下中途退出，这不会对你未来的教育或者就业有任何不良影响。</p>'
+    },
+    {
+        type: 'html',
+        prompt: '请选择你是否同意参与本次实验。如果你选择不同意，你会被转至关闭浏览器的页面上。如果你希望中途退出，请联系学生主管的微信：evapossible. 同意之后，你的相关法律权益不会被剥夺。'
+    },
+    {
+      type: 'multi-choice',
+       prompt: ' ',
+       options: ['yes', 'do not consent'],
+      required: true,
+      name: "consent"
+      },
+    ],
+  ],
+  on_finish: function (data) {
+    consent = jsPsych.data.get().values()[1]['response']['consent'] == 'yes';
+    if(consent == false){ 
+     console.log("Did not consent, ending experiment.");
+      jsPsych.endExperiment("感谢考虑参加我们的实验。你现在可以关闭浏览器然后退出实验。");
+}
+  }
+    };
+    timeline.push(consent)
+
+
+//This is the instructions page for Part 1. The participant can press any key to continue
+    var instructions= {
+      type: jsPsychInstructions,
+      pages: [
+        '在本次实验中，你会听到许多条录音，每条录音里面包含一个英语单词。你需要判断屏幕上的两个英语单词中，哪一个是你听到的单词，请点击选择你听到的单词。接下来，你会进行三组练习，通过这三组练习，你可以感受一下实验节奏。请坐在一个安静的环境中，戴上耳机。如果你准备好了，请点击continue。'
+    ],
+      button_label_next:"Continue",
+      show_clickable_nav: true,
+      allow_backward: false,
+    };
+    timeline.push(instructions);
+
+    
+//practice trial 1
+    var practicetrial1 = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: 'Audio/Words/PT1_pot.wav',
+        choices: ['Thought','Pot'],
+        prompt: "你听到的单词是哪一个? (Practice 1/3)</p>",
+        response_allowed_while_playing: false,
+        };
+  timeline.push(practicetrial1)
+
+//adjusting volume
+    var volume = {
+        type: jsPsychInstructions,
+        pages: ['真棒! 你完成了第一组测试。如果刚才录音的音量太小或者太大，请现在相应地调整电脑的音量。如果准备好了，请点击continue。'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(volume);
+
+    //practice trial 2
+    var practicetrial2 = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: 'Audio/Words/PT2_pies.wav',
+        choices: ['Pies','Thighs'],
+        prompt: "你听到的单词是哪一个? (Practice 2/3)</p>",
+        response_allowed_while_playing: false,
+        };
+    timeline.push(practicetrial2)
+
+
+    //practice trial 3
+    var practicetrial3 = {
+        type: jsPsychAudioButtonResponse,
+        stimulus: 'Audio/Words/PT3_cops.wav',
+        choices: ['Caps','Cops'],
+        prompt: "你听到的单词是哪一个? (Practice 3/3)</p>",
+        response_allowed_while_playing: false,
+        };
+    timeline.push(practicetrial3)
+
+    //transition
+    var transition = {
+        type: jsPsychInstructions,
+        pages: ['真棒! 正式的实验现在开始。如果准备好了，请点击continue。.'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(transition);
+
+
+
+//This preloads all  stimuli so that the trials run smoothly
+   var audiolist = ['Audio/Words/ET1_bat1_mono.wav','Audio/Words/ET1_bet1_mono.wav','Audio/Words/ET2_bat1_mono.wav','Audio/Words/ET2_bet1_mono.wav','Audio/Words/ET3_bat1_mono.wav','Audio/Words/ET3_bet1_mono.wav','Audio/Words/MT1_bat1_mono.wav','Audio/Words/MT1_bet1_mono.wav','Audio/Words/MT2_bat1_mono.wav','Audio/Words/MT2_bet1_mono.wav','Audio/Words/MT3_bat1_mono.wav','Audio/Words/MT3_bet1_mono.wav', 'Audio/Words/ET1_bad1_mono.wav','Audio/Words/ET1_bed1_mono.wav','Audio/Words/ET2_bad1_mono.wav','Audio/Words/ET2_bed1_mono.wav','Audio/Words/ET3_bad1_mono.wav','Audio/Words/ET3_bed1_mono.wav','Audio/Words/MT1_bad1_mono.wav','Audio/Words/MT1_bed1_mono.wav','Audio/Words/MT2_bad1_mono.wav','Audio/Words/MT2_bed1_mono.wav','Audio/Words/MT3_bad1_mono.wav','Audio/Words/MT3_bed1_mono.wav','Audio/Words/ET1_pat1_mono.wav','Audio/Words/ET1_pet1_mono.wav','Audio/Words/ET2_pat1_mono.wav','Audio/Words/ET2_pet1_mono.wav','Audio/Words/ET3_pat1_mono.wav','Audio/Words/ET3_pet1_mono.wav','Audio/Words/MT1_pat1_mono.wav','Audio/Words/MT1_pet1_mono.wav','Audio/Words/MT2_pat1_mono.wav','Audio/Words/MT2_pet1_mono.wav','Audio/Words/MT3_pat1_mono.wav','Audio/Words/MT3_pet1_mono.wav','Audio/Words/ET1_pan1_mono.wav','Audio/Words/ET1_pen1_mono.wav','Audio/Words/ET2_pan1_mono.wav','Audio/Words/ET2_pen1_mono.wav','Audio/Words/ET3_pan1_mono.wav','Audio/Words/ET3_pen1_mono.wav','Audio/Words/MT1_pan1_mono.wav','Audio/Words/MT1_pen1_mono.wav','Audio/Words/MT2_pan1_mono.wav','Audio/Words/MT2_pen1_mono.wav','Audio/Words/MT3_pan1_mono.wav','Audio/Words/MT3_pen1_mono.wav','Audio/Words/ET1_fill1_mono.wav','Audio/Words/ET1_feel1_mono.wav','Audio/Words/ET2_fill1_mono.wav','Audio/Words/ET2_feel1_mono.wav','Audio/Words/ET3_fill1_mono.wav','Audio/Words/ET3_feel1_mono.wav','Audio/Words/MT1_fill1_mono.wav','Audio/Words/MT1_feel1_mono.wav','Audio/Words/MT2_fill1_mono.wav','Audio/Words/MT2_feel1_mono.wav','Audio/Words/MT3_fill1_mono.wav','Audio/Words/MT3_feel1_mono.wav','Audio/Words/ET1_ship1_mono.wav','Audio/Words/ET1_sheep1_mono.wav','Audio/Words/ET2_ship1_mono.wav','Audio/Words/ET2_sheep1_mono.wav','Audio/Words/ET3_ship1_mono.wav','Audio/Words/ET3_sheep1_mono.wav','Audio/Words/MT1_ship1_mono.wav','Audio/Words/MT1_sheep1_mono.wav','Audio/Words/MT2_ship1_mono.wav','Audio/Words/MT2_sheep1_mono.wav','Audio/Words/MT3_ship1_mono.wav','Audio/Words/MT3_sheep1_mono.wav','Audio/Words/ET1_pill1_mono.wav','Audio/Words/ET1_peel1_mono.wav','Audio/Words/ET2_pill1_mono.wav','Audio/Words/ET2_peel1_mono.wav','Audio/Words/ET3_pill1_mono.wav','Audio/Words/ET3_peel1_mono.wav','Audio/Words/MT1_pill1_mono.wav','Audio/Words/MT1_peel1_mono.wav','Audio/Words/MT2_pill1_mono.wav','Audio/Words/MT2_peel1_mono.wav','Audio/Words/MT3_pill1_mono.wav','Audio/Words/MT3_peel1_mono.wav','Audio/Words/ET1_will1_mono.wav','Audio/Words/ET1_wheel1_mono.wav','Audio/Words/ET2_will1_mono.wav','Audio/Words/ET2_wheel1_mono.wav','Audio/Words/ET3_will1_mono.wav','Audio/Words/ET3_wheel1_mono.wav','Audio/Words/MT1_will1_mono.wav','Audio/Words/MT1_wheel1_mono.wav','Audio/Words/MT2_will1_mono.wav','Audio/Words/MT2_wheel1_mono.wav','Audio/Words/MT3_will1_mono.wav','Audio/Words/MT3_wheel1_mono.wav','Audio/Words/ET1_think1_mono.wav','Audio/Words/ET1_sink1_mono.wav','Audio/Words/ET2_think1_mono.wav','Audio/Words/ET2_sink1_mono.wav','Audio/Words/ET3_think1_mono.wav','Audio/Words/ET3_sink1_mono.wav','Audio/Words/MT1_think1_mono.wav','Audio/Words/MT1_sink1_mono.wav','Audio/Words/MT2_think1_mono.wav','Audio/Words/MT2_sink1_mono.wav','Audio/Words/MT3_think1_mono.wav','Audio/Words/MT3_sink1_mono.wav','Audio/Words/ET1_thick1_mono.wav','Audio/Words/ET1_sick1_mono.wav','Audio/Words/ET2_thick1_mono.wav','Audio/Words/ET2_sick1_mono.wav','Audio/Words/ET3_thick1_mono.wav','Audio/Words/ET3_sick1_mono.wav','Audio/Words/MT1_thick1_mono.wav','Audio/Words/MT1_sick1_mono.wav','Audio/Words/MT2_thick1_mono.wav','Audio/Words/MT2_sick1_mono.wav','Audio/Words/MT3_thick1_mono.wav','Audio/Words/MT3_sick1_mono.wav','Audio/Words/ET1_faith1_mono.wav','Audio/Words/ET1_face1_mono.wav','Audio/Words/ET2_faith1_mono.wav','Audio/Words/ET2_face1_mono.wav','Audio/Words/ET3_faith1_mono.wav','Audio/Words/ET3_face1_mono.wav','Audio/Words/MT1_faith1_mono.wav','Audio/Words/MT1_face1_mono.wav','Audio/Words/MT2_faith1_mono.wav','Audio/Words/MT2_face1_mono.wav','Audio/Words/MT3_faith1_mono.wav','Audio/Words/MT3_face1_mono.wav','Audio/Words/ET1_mouth1_mono.wav','Audio/Words/ET1_mouse1_mono.wav','Audio/Words/ET2_mouth1_mono.wav','Audio/Words/ET2_mouse1_mono.wav','Audio/Words/ET3_mouth1_mono.wav','Audio/Words/ET3_mouse1_mono.wav','Audio/Words/MT1_mouth1_mono.wav','Audio/Words/MT1_mouse1_mono.wav','Audio/Words/MT2_mouth1_mono.wav','Audio/Words/MT2_mouse1_mono.wav','Audio/Words/MT3_mouth1_mono.wav','Audio/Words/MT3_mouse1_mono.wav','Audio/Words/ET4_cake1_mono.wav', 'Audio/Words/ET4_kick1_mono.wav','Audio/Words/ET5_cake1_mono.wav','Audio/Words/ET5_kick1_mono.wav','Audio/Words/ET6_cake1_mono.wav','Audio/Words/ET6_kick1_mono.wav','Audio/Words/MT4_cake1_mono.wav','Audio/Words/MT4_kick1_mono.wav', 'Audio/Words/MT5_cake1_mono.wav','Audio/Words/MT5_kick1_mono.wav','Audio/Words/MT6_cake1_mono.wav','Audio/Words/MT6_kick1_mono.wav','Audio/Words/ET4_case1_mono.wav','Audio/Words/ET4_kiss1_mono.wav','Audio/Words/ET5_case1_mono.wav','Audio/Words/ET5_kiss1_mono.wav','Audio/Words/ET6_case1_mono.wav','Audio/Words/ET6_kiss1_mono.wav','Audio/Words/MT4_case1_mono.wav','Audio/Words/MT4_kiss1_mono.wav','Audio/Words/MT5_case1_mono.wav','Audio/Words/MT5_kiss1_mono.wav','Audio/Words/MT6_case1_mono.wav','Audio/Words/MT6_kiss1_mono.wav','Audio/Words/ET4_fate1_mono.wav','Audio/Words/ET4_fit1_mono.wav','Audio/Words/ET5_fate1_mono.wav','Audio/Words/ET5_fit1_mono.wav','Audio/Words/ET6_fate1_mono.wav','Audio/Words/ET6_fit1_mono.wav','Audio/Words/MT4_fate1_mono.wav','Audio/Words/MT4_fit1_mono.wav','Audio/Words/MT5_fate1_mono.wav','Audio/Words/MT5_fit1_mono.wav','Audio/Words/MT6_fate1_mono.wav','Audio/Words/MT6_fit1_mono.wav','Audio/Words/ET4_tape1_mono.wav','Audio/Words/ET4_tip1_mono.wav','Audio/Words/ET5_tape1_mono.wav','Audio/Words/ET5_tip1_mono.wav','Audio/Words/ET6_tape1_mono.wav','Audio/Words/ET6_tip1_mono.wav','Audio/Words/MT4_tape1_mono.wav','Audio/Words/MT4_tip1_mono.wav','Audio/Words/MT5_tape1_mono.wav','Audio/Words/MT5_tip1_mono.wav','Audio/Words/MT6_tape1_mono.wav','Audio/Words/MT6_tip1_mono.wav','Audio/Words/ET4_kite1_mono.wav','Audio/Words/ET4_cat1_mono.wav','Audio/Words/ET5_kite1_mono.wav','Audio/Words/ET5_cat1_mono.wav','Audio/Words/ET6_kite1_mono.wav','Audio/Words/ET6_cat1_mono.wav','Audio/Words/MT4_kite1_mono.wav','Audio/Words/MT4_cat1_mono.wav','Audio/Words/MT5_kite1_mono.wav','Audio/Words/MT5_cat1_mono.wav','Audio/Words/MT6_kite1_mono.wav','Audio/Words/MT6_cat1_mono.wav','Audio/Words/ET4_life1_mono.wav','Audio/Words/ET4_laugh1_mono.wav','Audio/Words/ET5_life1_mono.wav','Audio/Words/ET5_laugh1_mono.wav','Audio/Words/ET6_life1_mono.wav','Audio/Words/ET6_laugh1_mono.wav','Audio/Words/MT4_life1_mono.wav','Audio/Words/MT4_laugh1_mono.wav','Audio/Words/MT5_life1_mono.wav','Audio/Words/MT5_laugh1_mono.wav','Audio/Words/MT6_life1_mono.wav','Audio/Words/MT6_laugh1_mono.wav','Audio/Words/ET4_fight1_mono.wav','Audio/Words/ET4_fat1_mono.wav','Audio/Words/ET5_fight1_mono.wav','Audio/Words/ET5_fat1_mono.wav','Audio/Words/ET6_fight1_mono.wav','Audio/Words/ET6_fat1_mono.wav','Audio/Words/MT4_fight1_mono.wav','Audio/Words/MT4_fat1_mono.wav','Audio/Words/MT5_fight1_mono.wav','Audio/Words/MT5_fat1_mono.wav','Audio/Words/MT6_fight1_mono.wav','Audio/Words/MT6_fat1_mono.wav','Audio/Words/ET4_type1_mono.wav','Audio/Words/ET4_tap1_mono.wav','Audio/Words/ET5_type1_mono.wav','Audio/Words/ET5_tap1_mono.wav','Audio/Words/ET6_type1_mono.wav','Audio/Words/ET6_tap1_mono.wav','Audio/Words/MT4_type1_mono.wav','Audio/Words/MT4_tap1_mono.wav','Audio/Words/MT5_type1_mono.wav','Audio/Words/MT5_tap1_mono.wav','Audio/Words/MT6_type1_mono.wav','Audio/Words/MT6_tap1_mono.wav','Audio/Words/ET4_fought1_mono.wav','Audio/Words/ET4_thought1_mono.wav','Audio/Words/ET5_fought1_mono.wav','Audio/Words/ET5_thought1_mono.wav','Audio/Words/ET6_fought1_mono.wav','Audio/Words/ET6_thought1_mono.wav','Audio/Words/MT4_fought1_mono.wav','Audio/Words/MT4_thought1_mono.wav','Audio/Words/MT5_fought1_mono.wav','Audio/Words/MT5_thought1_mono.wav','Audio/Words/MT6_fought1_mono.wav','Audio/Words/MT6_thought1_mono.wav','Audio/Words/ET4_first1_mono.wav','Audio/Words/ET4_thirst1_mono.wav','Audio/Words/ET5_first1_mono.wav','Audio/Words/ET5_thirst1_mono.wav','Audio/Words/ET6_first1_mono.wav','Audio/Words/ET6_thirst1_mono.wav','Audio/Words/MT4_first1_mono.wav','Audio/Words/MT4_thirst1_mono.wav','Audio/Words/MT5_first1_mono.wav','Audio/Words/MT5_thirst1_mono.wav','Audio/Words/MT6_first1_mono.wav','Audio/Words/MT6_thirst1_mono.wav','Audio/Words/ET4_deaf1_mono.wav','Audio/Words/ET4_death1_mono.wav','Audio/Words/ET5_deaf1_mono.wav','Audio/Words/ET5_death1_mono.wav','Audio/Words/ET6_deaf1_mono.wav','Audio/Words/ET6_death1_mono.wav','Audio/Words/MT4_deaf1_mono.wav','Audio/Words/MT4_death1_mono.wav','Audio/Words/MT5_deaf1_mono.wav','Audio/Words/MT5_death1_mono.wav','Audio/Words/MT6_deaf1_mono.wav','Audio/Words/MT6_death1_mono.wav','Audio/Words/ET4_free1_mono.wav','Audio/Words/ET4_three1_mono.wav','Audio/Words/ET5_free1_mono.wav','Audio/Words/ET5_three1_mono.wav','Audio/Words/ET6_free1_mono.wav','Audio/Words/ET6_three1_mono.wav','Audio/Words/MT4_free1_mono.wav','Audio/Words/MT4_three1_mono.wav','Audio/Words/MT5_free1_mono.wav','Audio/Words/MT5_three1_mono.wav','Audio/Words/MT6_free1_mono.wav','Audio/Words/MT6_three1_mono.wav'];
+
+   //This shows a loading bar with the message "please wait" while the stimuli are preloading
+    var preload= {
+        type: jsPsychPreload,
+        audio: audiolist, 
+        show_progress_bar: true,
+        message: '实验录音正在加载，请等待。',
+        auto_update_progress_bar: true
+    }
+    timeline.push(preload);
+
+    //This is the starting point of the experiment after all the audio have loaded
+    var start = {
+      type: jsPsychInstructions,
+      pages: ['如果准备好了，请点击continue。'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(start);
+
+    
+
+     //creating empty arrays for the timelines for blocks 1, 2, 3, and ingredients for them
+    var pretrialstim = []; 
+
+    function whichtarget(wordpair, filename){
+       var data = {};
+       if(filename.indexOf(wordpair[0]) !== -1){
+          data.target=wordpair[0];
+          data.distractor=wordpair[1];
+        } else if(filename.indexOf(wordpair[1]) !== -1){
+              data.target = wordpair[1];
+              data.distractor=wordpair[0];
+        }
+          return data;
+        }
+
+        
+
+//creating distractor, target, audio key/value pairs within trialstim
+for(var i=0; i<audiolist.length; i++){
+    var data = {};
+    if(i<12){
+      data = whichtarget(['bat','bet'], audiolist[i]);
+    } else if(i<24){
+      data = whichtarget(['bad','bed'], audiolist[i]);
+    }else if(i<36){
+      data = whichtarget(['pat','pet'], audiolist[i]);
+    }else if(i<48){
+      data = whichtarget(['pan','pen'], audiolist[i]);
+    }else if(i<60){
+      data = whichtarget(['fill','feel'], audiolist[i]);
+    }else if(i<72){
+      data = whichtarget(['ship','sheep'], audiolist[i]);
+    }else if(i<84){
+      data = whichtarget(['pill','peel'], audiolist[i]);
+    }else if(i<96){
+      data = whichtarget(['will','wheel'], audiolist[i]);
+    }else if(i<108){
+      data = whichtarget(['think','sink'], audiolist[i]);
+    }else if(i<120){
+      data = whichtarget(['thick','sick'], audiolist[i]);
+    }else if(i<132){
+      data = whichtarget(['faith','face'], audiolist[i]);
+    }else if(i<144){
+      data = whichtarget(['mouth','mouse'], audiolist[i]);
+    }else if(i<156){
+      data = whichtarget(['cake','kick'], audiolist[i]);
+    }else if(i<168){
+      data = whichtarget(['case','kiss'], audiolist[i]);
+    }else if(i<180){
+      data = whichtarget(['fate','fit'], audiolist[i]);
+    }else if(i<192){
+      data = whichtarget(['tape','tip'], audiolist[i]);
+    }else if(i<204){
+      data = whichtarget(['kite','cat'], audiolist[i]);
+    }else if(i<216){
+      data = whichtarget(['life','laugh'], audiolist[i]);
+    }else if(i<228){
+      data = whichtarget(['fight','fat'], audiolist[i]);
+    }else if(i<240){
+      data = whichtarget(['type','tap'], audiolist[i]);
+    }else if(i<252){
+      data = whichtarget(['fought','thought'], audiolist[i]);
+    }else if(i<264){
+      data = whichtarget(['first','thirst'], audiolist[i]);
+    }else if(i<276){
+      data = whichtarget(['deaf','death'], audiolist[i]);
+    }else if(i<288){
+      data = whichtarget(['free','three'], audiolist[i]);
+    }else {console.log('unexpected index while making block stimuli: ' + i)}
+    //stretch goal: data.speaker
+    pretrialstim.push({audio: audiolist[i], target:data.target, distractor:data.distractor});
+};
+
+
+//make structured arrays depending on the target word (prep for 'choices')
+var wordsbytarget = {};
+//var alltargets = ['bet','bat','bed','bad','sheep','ship','fill','feel','mouth','mouse','sink','think',etc.];
+wordsbytarget.bat = pretrialstim.filter( function(el) {
+  return el.target == 'bat'
+});
+wordsbytarget.bet = pretrialstim.filter( function(el) {
+  return el.target == 'bet'
+});
+wordsbytarget.bad = pretrialstim.filter( function(el) {
+  return el.target == 'bad'
+});
+wordsbytarget.bed = pretrialstim.filter( function(el) {
+  return el.target == 'bed'
+});
+wordsbytarget.pat = pretrialstim.filter( function(el) {
+  return el.target == 'pat'
+});
+wordsbytarget.pet = pretrialstim.filter( function(el) {
+  return el.target == 'pet'
+});
+wordsbytarget.pan = pretrialstim.filter( function(el) {
+  return el.target == 'pan'
+});
+wordsbytarget.pen = pretrialstim.filter( function(el) {
+  return el.target == 'pen'
+});
+wordsbytarget.fill = pretrialstim.filter( function(el) {
+  return el.target == 'fill'
+});
+wordsbytarget.feel = pretrialstim.filter( function(el) {
+  return el.target == 'feel'
+});
+wordsbytarget.ship = pretrialstim.filter( function(el) {
+  return el.target == 'ship'
+});
+wordsbytarget.sheep = pretrialstim.filter( function(el) {
+  return el.target == 'sheep'
+});
+wordsbytarget.pill = pretrialstim.filter( function(el) {
+  return el.target == 'pill'
+});
+wordsbytarget.peel = pretrialstim.filter( function(el) {
+  return el.target == 'peel'
+});
+wordsbytarget.will = pretrialstim.filter( function(el) {
+  return el.target == 'will'
+});
+wordsbytarget.wheel = pretrialstim.filter( function(el) {
+  return el.target == 'wheel'
+});
+wordsbytarget.think = pretrialstim.filter( function(el) {
+  return el.target == 'think'
+});
+wordsbytarget.sink = pretrialstim.filter( function(el) {
+  return el.target == 'sink'
+});
+wordsbytarget.thick = pretrialstim.filter( function(el) {
+  return el.target == 'thick'
+});
+wordsbytarget.sick = pretrialstim.filter( function(el) {
+  return el.target == 'sick'
+});
+wordsbytarget.faith = pretrialstim.filter( function(el) {
+  return el.target == 'faith'
+});
+wordsbytarget.face = pretrialstim.filter( function(el) {
+  return el.target == 'face'
+});
+wordsbytarget.mouth = pretrialstim.filter( function(el) {
+  return el.target == 'mouth'
+});
+wordsbytarget.mouse = pretrialstim.filter( function(el) {
+  return el.target == 'mouse'
+});
+wordsbytarget.cake = pretrialstim.filter( function(el) {
+  return el.target == 'cake'
+});
+wordsbytarget.kick = pretrialstim.filter( function(el) {
+  return el.target == 'kick'
+});
+wordsbytarget.case = pretrialstim.filter( function(el) {
+  return el.target == 'case'
+});
+wordsbytarget.kiss = pretrialstim.filter( function(el) {
+  return el.target == 'kiss'
+});
+wordsbytarget.fate = pretrialstim.filter( function(el) {
+  return el.target == 'fate'
+});
+wordsbytarget.fit = pretrialstim.filter( function(el) {
+  return el.target == 'fit'
+});
+wordsbytarget.tape = pretrialstim.filter( function(el) {
+  return el.target == 'tape'
+});
+wordsbytarget.tip = pretrialstim.filter( function(el) {
+  return el.target == 'tip'
+});
+wordsbytarget.kite = pretrialstim.filter( function(el) {
+  return el.target == 'kite'
+});
+wordsbytarget.cat = pretrialstim.filter( function(el) {
+  return el.target == 'cat'
+});
+wordsbytarget.life = pretrialstim.filter( function(el) {
+  return el.target == 'life'
+});
+wordsbytarget.laugh = pretrialstim.filter( function(el) {
+  return el.target == 'laugh'
+});
+wordsbytarget.fight = pretrialstim.filter( function(el) {
+  return el.target == 'fight'
+});
+wordsbytarget.fat = pretrialstim.filter( function(el) {
+  return el.target == 'fat'
+});
+wordsbytarget.type = pretrialstim.filter( function(el) {
+  return el.target == 'type'
+});
+wordsbytarget.tap = pretrialstim.filter( function(el) {
+  return el.target == 'tap'
+});
+wordsbytarget.fought = pretrialstim.filter( function(el) {
+  return el.target == 'fought'
+});
+wordsbytarget.thought = pretrialstim.filter( function(el) {
+  return el.target == 'thought'
+});
+wordsbytarget.first = pretrialstim.filter( function(el) {
+  return el.target == 'first'
+});
+wordsbytarget.thirst = pretrialstim.filter( function(el) {
+  return el.target == 'thirst'
+});
+wordsbytarget.deaf = pretrialstim.filter( function(el) {
+  return el.target == 'deaf'
+});
+wordsbytarget.death = pretrialstim.filter( function(el) {
+  return el.target == 'death'
+});
+wordsbytarget.free = pretrialstim.filter( function(el) {
+  return el.target == 'free'
+});
+wordsbytarget.three = pretrialstim.filter( function(el) {
+  return el.target == 'three'
+});
+
+//final version of trialstim to be populated below
+var trialstim = [];
+//making it so that half of each word has "target" as the left choice, and half the right.
+for(i=0;i<Object.keys(wordsbytarget).length;i++){
+  //collect all the objects for the current word (e.g. "bet")
+  var thesewords = wordsbytarget[Object.keys(wordsbytarget)[i]];
+  //assign which ones will have the target word on the right
+  var targetright = jsPsych.randomization.sampleWithoutReplacement(thesewords, 3);
+  //find left ones by using remainder function below
+  var targetleft = thesewords.filter( function( el ){
+      return targetright.indexOf( el ) < 0;
+    });
+  //create "choices" for targetright and targetleft and push to final version of stim
+  for(j=0;j<targetright.length;j++){
+    targetright[j].choices = [targetright[j].distractor,targetright[j].target];
+    trialstim.push(targetright[j]);
+  };
+  for(j=0;j<targetleft.length;j++){
+    targetleft[j].choices = [targetleft[j].target,targetleft[j].distractor];
+    trialstim.push(targetleft[j]);
+  };
+};
+
+
+
+
+//in case we need to submit some artwork to the Louvre
+  //wordsbytarget.bet[i].choices = [wordsbytarget.bet[i].target, wordsbytarget.bet[i].distractor]
+  //wordsbytarget[Object.keys(wordsbytarget)[i]].choices = [wordsbytarget[Object.keys(wordsbytarget)[i]].target,wordsbytarget[Object.keys(wordsbytarget)[i]].distractor];
+
+    //timeline variables: Each timeline is separated by block
+    var firstblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: jsPsych.timelineVariable ('choices'),
+            prompt: "你听到的单词是哪一个?",
+            response_allowed_while_playing: false,
+            button_html: '<button class="jspsych-btn" style=" display: inline-block; padding: 6px 12px; margin: 0px; font-size: 36px; font-weight: 400; font-family: "Open Sans", "Arial", sans-serif; cursor: pointer; line-height: 1.4; text-align: center; white-space: nowrap; vertical-align: middle; background-image: none; border: 1px solid transparent; border-radius: 4px; color: #333; background-color: #fff; border-color: #ccc">%choice%</button>'
+        }],
+    on_finish: function(data) {
+      var choosables = jsPsych.timelineVariable('choices', true);
+      var chosenone = choosables[jsPsych.data.getLastTrialData().trials[0].response];
+      jsPsych.data.addDataToLastTrial({wordchosen: chosenone});
+      jsPsych.data.addDataToLastTrial({correct: jsPsych.timelineVariable('audio', true).includes(chosenone)});
+    },
+    randomize_order: true,
+    timeline_variables: trialstim
+};
+timeline.push(firstblock)
+
+//This is the first break
+var break1 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: '休息时间到！你有最多两分钟的休息时间。如果你想现在继续进行实验，请按空格键。',
+    trial_duration: 120000 //2 minutes in ms
+    };
+timeline.push(break1);
+
+ //timeline variables: Block 2 audio files
+ var secondblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: jsPsych.timelineVariable ('choices'),
+            prompt: "你听到的单词是哪一个? ",
+            response_allowed_while_playing: false,
+            button_html: '<button class="jspsych-btn" style=" display: inline-block; padding: 6px 12px; margin: 0px; font-size: 36px; font-weight: 400; font-family: "Open Sans", "Arial", sans-serif; cursor: pointer; line-height: 1.4; text-align: center; white-space: nowrap; vertical-align: middle; background-image: none; border: 1px solid transparent; border-radius: 4px; color: #333; background-color: #fff; border-color: #ccc">%choice%</button>'
+        }],
+    on_finish: function(data){
+      var choosables = jsPsych.timelineVariable('choices', true);
+      var chosenone = choosables[jsPsych.data.getLastTrialData().trials[0].response];
+      jsPsych.data.addDataToLastTrial({wordchosen: chosenone});
+      jsPsych.data.addDataToLastTrial({correct: jsPsych.timelineVariable('audio', true).includes(chosenone)});
+    },
+    randomize_order: true,
+    timeline_variables: trialstim
+};
+timeline.push(secondblock)
+
+//This is the second break
+timeline.push(break1)
+
+ //timeline variables: Block 3 audio files
+ var thirdblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: jsPsych.timelineVariable ('choices'),
+            prompt: "你听到的单词是哪一个?",
+            response_allowed_while_playing: false,
+            button_html: '<button class="jspsych-btn" style=" display: inline-block; padding: 6px 12px; margin: 0px; font-size: 36px; font-weight: 400; font-family: "Open Sans", "Arial", sans-serif; cursor: pointer; line-height: 1.4; text-align: center; white-space: nowrap; vertical-align: middle; background-image: none; border: 1px solid transparent; border-radius: 4px; color: #333; background-color: #fff; border-color: #ccc">%choice%</button>'
+        }],
+    on_finish: function(data){
+      var choosables = jsPsych.timelineVariable('choices', true);
+      var chosenone = choosables[jsPsych.data.getLastTrialData().trials[0].response];
+      jsPsych.data.addDataToLastTrial({wordchosen: chosenone});
+      jsPsych.data.addDataToLastTrial({correct: jsPsych.timelineVariable('audio', true).includes(chosenone)});
+    },
+    randomize_order: true,
+    timeline_variables: trialstim
+};
+timeline.push(thirdblock)
+
+//this is the third break
+timeline.push(break1)
+
+//timeline variables: Block 4 audio files
+ var fourthblock = {
+    timeline: [
+        {
+            type: jsPsychAudioButtonResponse,
+            stimulus: jsPsych.timelineVariable ('audio'),
+            trial_duration: null,
+            choices: jsPsych.timelineVariable ('choices'),
+            prompt: "你听到的单词是哪一个?",
+            response_allowed_while_playing: false,
+            button_html: '<button class="jspsych-btn" style=" display: inline-block; padding: 6px 12px; margin: 0px; font-size: 36px; font-weight: 400; font-family: "Open Sans", "Arial", sans-serif; cursor: pointer; line-height: 1.4; text-align: center; white-space: nowrap; vertical-align: middle; background-image: none; border: 1px solid transparent; border-radius: 4px; color: #333; background-color: #fff; border-color: #ccc">%choice%</button>'
+        }],
+    on_finish: function(data){
+      var choosables = jsPsych.timelineVariable('choices', true);
+      var chosenone = choosables[jsPsych.data.getLastTrialData().trials[0].response];
+      jsPsych.data.addDataToLastTrial({wordchosen: chosenone});
+      jsPsych.data.addDataToLastTrial({correct: jsPsych.timelineVariable('audio', true).includes(chosenone)});
+    },
+    randomize_order: true,
+    timeline_variables: trialstim
+};
+timeline.push(fourthblock)
+
+//End of Part 1, proceed to Part 2
+var instructions1 = {
+        type: jsPsychInstructions,
+         pages: ['感谢完成实验的第一部分，请进入第二部分。'
+     ],
+         button_label_next: "Continue",
+         show_clickable_nav: true,
+        allow_backward:false,
+        };
+    timeline.push(instructions1);
+
+//This shows a loading bar with the message "please wait" while the stimuli are preloading
+var audio2 = ['Audio/Proficiency/1.wav','Audio/Proficiency/2.wav','Audio/Proficiency/3.wav','Audio/Proficiency/4.wav','Audio/Proficiency/5.wav','Audio/Proficiency/6.wav','Audio/Proficiency/7.wav','Audio/Proficiency/8.wav','Audio/Proficiency/9.wav','Audio/Proficiency/10.wav','Audio/Proficiency/11.wav','Audio/Proficiency/12.wav','Audio/Proficiency/13.wav','Audio/Proficiency/14.wav','Audio/Proficiency/15.wav','Audio/Proficiency/16.wav','Audio/Proficiency/PT1_P.wav','Audio/Proficiency/PT2_P.wav'];
+
+var preloadproficiency= {
+    type: jsPsychPreload,
+    audio: audio2, 
+    show_progress_bar: true,
+    message: '实验录音正在加载，请等待。',
+    auto_update_progress_bar: true
+  }
+timeline.push(preloadproficiency);
+
+// Proficiency task
+var instructions= {
+      type: jsPsychInstructions,
+      pages: [
+        '欢迎进入实验的第二部分，在本次实验中，你将听到几段包含一个故事的录音。请仔细听，注意每页文本的段落中被绿色标记的关键词，然后判断每段录音中哪些被绿色标记的关键词读错了，如果你认为哪个关键词读错了，请点击它，然后该单词会变成红色，表明你的答案已经被记录下来。如果你认为没有单词读错，请不要点击任何单词，录音播放完毕后会自动跳到下一页。在正式开始任务之前，你将完成两组练习。当你准备好之后，请点击“continue”。'
+    ],
+      button_label_next:"Continue",
+      show_clickable_nav: true,
+      allow_backward: false,
+    };
+    timeline.push(instructions);
+
+//practice trial 1
+  var practicetrial3 = {
+    type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND_p1',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/PT1_P.wav',
+    test_length: 6, //13 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>The apple #pies# were delicious.',
+};
+  timeline.push(practicetrial3)
+
+  //feedback
+    var feedback1 = {
+        type: jsPsychInstructions,
+        pages: ['正确答案是“pies”.如果准备好继续下一个练习，请点击continue。'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(feedback1);
+
+//practice trial 2
+    var practicetrial4 = {
+    type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND_p2',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/PT2_P.wav',
+    test_length: 7, //13 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>The #water# was boiling in the pot for a few hours',
+};
+  timeline.push(practicetrial4)
+
+  //feedback
+    var feedback2 = {
+        type: jsPsychInstructions,
+        pages: ['正确答案是“所有都正确”，所以不用点击任何单词。如果准备好继续下一个练习，请点击continue。'
+    ],
+    button_label_next: "Continue",
+    show_clickable_nav: true,
+    allow_backward:false,
+    };
+    timeline.push(feedback2);
+
+  //paragraph 1
+    var trial1 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND1',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/1.wav',
+    test_length: 14, //13 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>Mary is having a busy #week#. She is worried about her #three# year old son, Andrew, who is #sick#, so it was hard for her to keep #track# of her schedule.',
+};
+  timeline.push(trial1)  
+
+  //paragraph 2
+    var trial2 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND2',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/2.wav',
+    test_length: 9, //8 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>She almost forgot about the #dinner# tonight, even though she had written it down in #red# pen so she would #remember#.',
+};
+  timeline.push(trial2)  
+ 
+
+  //paragraph 3
+    var trial3 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND4',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/3.wav',
+    test_length: 12, //10 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>She put the gift #bag# for her friend by the door so she would remember to bring it when she #leaves#. The babysitter should arrive at their house #soon#.',
+};
+  timeline.push(trial3)  
+
+  //paragraph 4
+    var trial4 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND5',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/4.wav',
+    test_length: 19, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>Mary feels Andrew’s #cheek#. He must have a #fever#, because it #felt# very warm. “Come on, Andrew. #Sit# on this chair. The doctor said you have to take this #pill# once a day.”',
+};
+  timeline.push(trial4)  
+
+  //paragraph 5
+    var trial5 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND6',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/5.wav',
+    test_length: 18, //17 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>Before Andrew could #refuse#, Mary had put the medicine in his #mouth#. Mary went to get a #cloth# from the #messy# drawer under the #sink#. She #wet# the cloth in cold water and put it on Andrew’s #forehead# just as the doorbell #rang#.',
+};
+  timeline.push(trial5)  
+
+  //paragraph 6
+    var trial6 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND7',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/6.wav',
+    test_length: 19, //14 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>“Hi, Sophie, how are you?” says Mary as she opens the door to the #babysitter#.“I’m good, thanks, Mary. It’s been #raining# so I got some water and #dirt# on my shoes though. How’s Andrew?” asks Sophie.',
+};
+  timeline.push(trial6)  
+
+  //paragraph 7
+    var trial7 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND8',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/7.wav',
+    test_length: 21, //14 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>“He’s not #feeling# well so I’m worried about him. He’s #sleeping# right now in his #bed#,” says Mary.“Don’t worry, Mary. Andrew will be taken care of. He just needs some #rest#. I will make him #soup# when he wakes up,” says Sophie.',
+};
+  timeline.push(trial7)  
+
+  //paragraph 8
+    var trial8 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND9',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/8.wav',
+    test_length: 9, //13 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>Mary #throws# the car keys into her purse and then #waves# goodbye to Sophie as she leaves the house.',
+};
+  timeline.push(trial8) 
+
+  //paragraph 9
+    var trial9 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND10',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/9.wav',
+    test_length: 15, //16 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>She #drives# away to get #gas# and then to a restaurant to get pizza for dinner. She has heard that this restaurant is the #fourth# best Italian restaurant in the city, and that the pizza is also #cheap#.',
+};
+  timeline.push(trial9)   
+
+  //paragraph 10
+    var trial10 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/10.wav',
+    test_length: 15, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>The restaurant is beautiful, and the #first# thing Mary sees is a big photo of the #city# of Rome on the walls. Mary enjoys a wonderful #meal# eating good #food# and catching up with her friends.',
+};
+  timeline.push(trial10)  
+
+  //paragraph 11
+    var trial11 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/11.wav',
+    test_length: 18, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>The car stopped and James opened his eyes. They were here! He #had# been asleep for the whole #free# drive to the Great Lakes, where his friends took him every summer. James felt a #thrill# of excitement and shook himself awake.',
+};
+  timeline.push(trial11) 
+
+  //paragraph 12
+    var trial12 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/12.wav',
+    test_length: 9, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>He #had# acted #like# he didn’t care about the trip, but in #truth# it was his #favourite# thing of the year.',
+};
+  timeline.push(trial12)  
+
+  //paragraph 13
+    var trial13 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/13.wav',
+    test_length: 13, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>James climbed out of his #seat# to look at the vast #lake#. It was even more beautiful than he #thought# it would be. The #lake# was calm and #still# like a mirror.',
+};
+  timeline.push(trial13)
+
+  //paragraph 14
+    var trial14 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/14.wav',
+    test_length: 16, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>James was in a great mood. He #might# play baseball with his cousins later. He #had# brought his lucky #bat# with him. James was looking #forward# to showing off to his little cousin, Mikey.',
+};
+  timeline.push(trial14)  
+
+  //paragraph 15
+    var trial15 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/15.wav',
+    test_length: 20, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>James looked very #thin# but he was actually very strong. He also #had# a towel with him in case he wanted to go #swimming#. He could even just #sit# by the docks and work on his #painting#. When he finally unpacked all his #clothes#, it was already lunch time.',
+};
+  timeline.push(trial15) 
+
+  //paragraph 16
+    var trial16 = {
+        type: jsPsychPassageHighlight,
+    trial_name: 'RPCV_FOR_MAND11',
+    preamble: '<h2>哪个（些）单词读错了？</h2>',
+    stimulus: 'Audio/Proficiency/16.wav',
+    test_length: 19, //12 + 5 sec grace
+    //default_correct: true,
+    word_tag_char: '#',
+    //allow_audio_control: false,
+    text: '<p>The smell of #cake# and ham made him hungry. His #mouth# started to water, which made him realize his #thirst#. He went and got his cousins and took them to the kitchen to help #serve# lunch. The food was #filling# and soon they were #full#.',
+};
+  timeline.push(trial16)  
+
+
+
+//End of main part, introducing survey
+var instructions1 = {
+        type: jsPsychInstructions,
+         pages: ['感谢你完成本次实验的主要部分！接下来是一个5分钟的问卷调查。完成问卷调查之后，本次实验将结束。'
+     ],
+         button_label_next: "Continue",
+         show_clickable_nav: true,
+        allow_backward:false,
+        };
+    timeline.push(instructions1);
+
+    // adding identifying questions
+   var survey = {
+        type: jsPsychSurveyText,
+        questions: [
+          {prompt: '姓名', placeholder: '姓名', required: true, rows: 1, 
+          name: "Name"},
+          {prompt: '年龄', placeholder: '年龄', required: true, rows: 1,
+          name: "Age"},
+          {prompt: '性别', placeholder: '性别', required: true, rows: 1,
+          name: "Gender"},
+          {prompt: '微信号', placeholder: '微信号', required: true, rows: 1,
+          name: "Wechat"},
+        ]
+     };
+     timeline.push(survey) 
+
+//adding in language questions
+ var survey1 = {
+     type: jsPsychSurveyHtmlForm,
+      preamble: '<p>1.  请列出你从出生以来包括母语和外语在内，学习过的所有语言，以及每门语言的水平和学习时长。请在第一语言一栏详细写出你的母语方言（如有）。</p>',
+       html: '<p style="text-align:centre"> 第一语言 <input name="第一语言" type="text" placeholder="某种方言（如有）, etc." required=true />, <select name="熟练程度1"> <option value="母语水平">母语水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>'+
+       '<p style="text-align:centre"> 第二语言 <input name="第二语言" type="text" required=true />, <select name="熟练程度2"> <option value="母语水平">母语水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>'+
+       '<p style="text-align:centre"> 第三语言 <input name="第三语言" type="text" />, <select name="熟练程度3"> <option value="母语者水平">母语者水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>'+
+       '<p style="text-align:centre"> 第四语言 <input name="第四语言" type="text" />, <select name="熟练程度3"> <option value="母语者水平">母语水平</option> <option value="精通">精通</option> <option value="中级">中级</option> <option value="初学者">初学者</option></select>, 学习时长 <input name="学习时长" type="text" /></p>',
+
+       name: "Languages Spoken"
+};
+timeline.push(survey1)
+
+var survey2 = {
+     type: jsPsychSurveyHtmlForm,
+      preamble: '<p>2.  请输入最近一次四、六级，专四、专八或者雅思托福的成绩 </p>',
+       html: '<p style="text-align:centre"> 考试名称 <input name="考试名称" type="text" placeholder="考试名称" required=true /></p>'+
+       '<p style="text-align:centre"> 考试成绩 <input name="考试成绩" type="text" placeholder="分数" required=true /></p>',
+
+       name: "English scores"
+};
+
+timeline.push(survey2)
+
+
+var survey3 = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {
+      prompt: "1-6分，你给自己的英语听力水平打几分?（1代表非常不熟练，6代表母语者水平）", 
+      name: 'English listening', 
+      options: ['1', '2', '3', '4', '5','6'], 
+      required: true,
+      horizontal: true
+    }, 
+    {
+      prompt: "1-6分，你给自己的英语口语水平打几分?（1代表非常不熟练，6代表母语者水平）", 
+      name: 'English speaking', 
+      options: ['1', '2', '3', '4', '5','6'], 
+      required: true,
+      horizontal: true
+    }
+  ],
+};
+timeline.push(survey3)
+
+
+    //Ending message
+    var Goodbye = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "感谢你的参与。请将本页面拍下来，注意一定要包含完成页面以及电脑桌面上显示的完成时间，以便获取报酬。之后请按键盘上的任意键，页面上显示The study is finished之后可以退出浏览器，并结束实验。",
+    };
+    timeline.push(Goodbye)
+
+jatos.onLoad(() => {
+  jsPsych.run(timeline)
+});
+  </script>
+  </html>
